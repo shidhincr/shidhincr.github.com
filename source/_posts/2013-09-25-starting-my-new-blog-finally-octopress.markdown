@@ -16,7 +16,7 @@ I wanted to start writing blog ever since I started coding. I never had a succes
 
 Now finally I'm having some time. I decided to spend some time everyday dedicating to my blog. So first thing I need to do is setting up a wordpress blog with default template. 
 
-I started browsing to find a good theme for the wordpress blog before setting up anything. While browsing, I opened **[paulirish.com](www.paulirish.com)** and saw that he'd recently switched his blog to some new blogging software called Octopress. 
+I started browsing to find a good theme for the wordpress blog before setting up anything. While browsing, I opened **[paulirish.com](http://www.paulirish.com)** and saw that he'd recently switched his blog to some new blogging software called Octopress. 
 <!-- more -->
 I also read about Octopress from my daily reading list, but didn't give much attention to it. But I found Paul's blog very neat –– The default theme of Octopress is awesome –– and it's responsive too. I started checking out all Octopress blogs, and how to configure it. Finally I decided to use Octopress for my blog.
 
