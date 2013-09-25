@@ -1,19 +1,19 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <urlset xmlns='http://www.sitemaps.org/schemas/sitemap/0.9'>
     <url>
-        <loc>http://shidhincr.github.io/2013/09/25/starting-my-new-blog-finally-octopress/</loc>
+        <loc>http://shidhincr.com/2013/09/25/starting-my-new-blog-finally-octopress/</loc>
         <lastmod>2013-09-25T15:02:17+05:30</lastmod>
     </url>
     <url>
-        <loc>http://shidhincr.github.io/blog/archives/</loc>
+        <loc>http://shidhincr.com/blog/archives/</loc>
         <lastmod>2013-09-25T15:02:17+05:30</lastmod>
     </url>
     <url>
-        <loc>http://shidhincr.github.io/</loc>
+        <loc>http://shidhincr.com/</loc>
         <lastmod>2013-09-25T15:02:17+05:30</lastmod>
     </url>
     <url>
-        <loc>http://shidhincr.github.io/robots.txt</loc>
+        <loc>http://shidhincr.com/robots.txt</loc>
         <lastmod>2013-09-18T00:57:11+05:30</lastmod>
     </url>
 </urlset>

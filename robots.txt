@@ -1,4 +1,4 @@
 User-agent: *
 Disallow: 
 
-Sitemap: http://shidhincr.github.io/sitemap.xml 
+Sitemap: http://shidhincr.com/sitemap.xml 
