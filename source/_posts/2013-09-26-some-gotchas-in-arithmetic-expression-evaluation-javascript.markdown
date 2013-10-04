@@ -49,7 +49,7 @@ What I was trying is to write the entire expression in one single line. I wrote 
 
 **Code 1 :** 
 
-```javascript
+```javascript CODE 1
 	var a = 5; b = 3;
 	a = ( a - ( b = ( a = a + b ) - b ) );
 ```
@@ -62,7 +62,7 @@ WTF ? Let me change the code a bit. I modified the code like this
 
 **Code 2 :**
 
-```javascript
+```javascript CODE 2
 	var a = 5; b = 3;
 	a = ( ( b = ( a = a + b ) - b ) - a );
 ```	
@@ -128,58 +128,73 @@ Let's see how JavaScript parser evaluate the value of `a` finally.
 
 ### Steps : 
 
-1. Parser takes the main expression `a = a - X` and evaluated from left to right. At first, parser finds the variable`a` and finds it's value. Now the parser moves to the next variable `X` and try to calculate it's value. Since `X` is an expression, it need to be evaluated to form a primitive value.
+- Parser takes the main expression `a = a - X` and evaluated from left to right. At first, parser finds the variable`a` and finds it's value. Now the parser moves to the next variable `X` and try to calculate it's value. Since `X` is an expression, it need to be evaluated to form a primitive value.
  
     *Note: To get the value, parser internally calls the [GetValue](http://es5.github.io/#x8.7.1) of each operands*
 
     So, for the parser, the expression becomes  like this :
 
-	`a = GetValue( a ) - GetValue( Evaluate( X ) )`
-    
-    Which is :
- 
-	`a = 5 - GetValue( Evaluate( X )`
+``` javascript Value Of "a"
+a = GetValue( a ) - GetValue( Evaluate( X ) )
+```
+Which is :
 
-2. Now it need to evaluate the expression `X` where `b = Y - b`. Here the first operand `Y` itself a sub-expression, so parser has to evaluate it first before calculating the value of the second operand `b`. 
-3. Let's evaluate the expression `Y` which is `a = a + b`. This is straightforward and contains no sub expression , hence evaluated like this.
+``` javascript Value of "a"
+a = 5 - GetValue( Evaluate( X )
+```	
+
+- Now it need to evaluate the expression `X` where `b = Y - b`. Here the first operand `Y` itself a sub-expression, so parser has to evaluate it first before calculating the value of the second operand `b`. 
+
+- Let's evaluate the expression `Y` which is `a = a + b`. This is straightforward and contains no sub expression , hence evaluated like this.
 	
-	`a = GetValue( a ) + GetValue( b )`
-    This equals to :
-    
-    `a = 5 + 3`
-    
-    Finally the value of expression `Y` becomes `8`.
+```javascript New value of "a" is
+	a = GetValue( a ) + GetValue( b )
+```
+This equals to :
 
-4. Coming back to step 2 where expression `X` needs to be completed. expression `X` is
+```javascript "a" became 8   
+	a = 5 + 3
+```    
+Finally the value of expression `Y` becomes `8`.
+
+- Coming back to step 2 where expression `X` needs to be completed. expression `X` is
 	
-	`b = GetValue( Y ) - GetValue( b )`
+```javascript Computing the value of "b"
+	b = GetValue( Y ) - GetValue( b )
+```
 
-	Becomes like this :
+Becomes like this :
 
-	`b = 8 - GetValue( b )`
+```javascript Value of "b"
+	b = 8 - GetValue( b )
+```
 
-	Which is :
+Which is :
 
-	`b = 8 - 3`
+```javascript Final value of "b"
+	b = 8 - 3
+```
 	
-    Finally the value of `b` and expression `X` becomes `5`. 
+Finally the value of `b` and expression `X` becomes `5`. 
 	
-5. So now all the sub expressions are evaluated , the main expression can be completed now.
+- So now all the sub expressions are evaluated , the main expression can be completed now.
 
-	The main expression was :
+The main expression was :
 	
-	`a = 5 - GetValue( X ) and value of X = 5`
+```javascript Evaluating the main expression
+	a = 5 - GetValue( X ) ; // value of X = 5 now
+```	
 
-   That means final value of `a = 5 - 5`  which is `0`.
+That means final value of `a = 5 - 5`  which is `0`.
 	
-6. Finally the values of `a` and `b` will become `a = 0 and b = 5`
+- Finally the values of `a` and `b` will become `a = 0 and b = 5`
 
 Now we're in the same direction with JS engine. We can apply what we learned for the **Code 2** also. 
 
 
 ## Conclusion
 
-I didn't want to write these much long. All I wanted to recollect those basics. Thanks for reading !! 
+I didn't want to write this much long. All I wanted to recollect some of those basic stuff. Thanks for reading !! 
 
 
  References : 

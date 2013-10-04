@@ -1,2 +1,16 @@
 // This File is imported last, and will override other styles in the cascade
 // Add styles here to make changes without digging in too much
+
+html {
+	background-color: rgba(0,0,0,0.6);
+}
+body {
+	background: transparent;
+	@include shadow-box(none,0 0 15px #333);
+}
+body > header {
+	background: url('../images/bg.png') 0 0;
+	h1 {
+		width: 100%;
+	}
+}
