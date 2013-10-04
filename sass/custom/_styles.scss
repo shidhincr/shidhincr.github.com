@@ -14,3 +14,6 @@ body > header {
 		width: 100%;
 	}
 }
+body > footer {
+	@include shadow-box(none,0 15px 15px #333,0.3);
+}
