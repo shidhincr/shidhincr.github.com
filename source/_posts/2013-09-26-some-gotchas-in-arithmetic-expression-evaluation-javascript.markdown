@@ -5,10 +5,10 @@ date: 2013-09-26 16:15
 comments: true
 published: true
 author: Shidhin
-keywords: arithmetic expressions,javascript, parsing
+keywords: arithmetic expressions,JavaScript, parsing
 description: This post explains how the JavaScript engine actually parses the arithmetic expressions.
 categories: 
-- javascript
+- JavaScript
 - arithmetic expressions
 ---
 
@@ -25,15 +25,15 @@ Take your own time to come up with an answer before moving to the next section.
 
 <!-- more -->
 
-## Analysing the problem
+## Analyzing the problem
 
-If your answer is `a = 3 and b = 5 `, this post is written for you. Open your favourite browser and fire up the console. Put the above code in the console and see the values of `a` and `b` now.
+If your answer is `a = 3 and b = 5 `, this post is written for you. Open your favorite browser and fire up the console. Put the above code in the console and see the values of `a` and `b` now.
 
 Stunned ?  Yeah, The values of `a` and `b` are `a = 0  and b = 5 ` now. Honestly I also got it wrong initially. I did ask this question to some of my friends ( who are in JavaScript circle ),  and all of them gave me wrong answer.
 
 ## Some flashback
 
-So, here is how I arrived this to particular question. Last week I was trying to write the code for an interview problem in JavaScript  and it's a very common interview question –– How to swap values of 2 variables with out using a 3rd variable.
+So, here is how I arrived this to particular question. Last week I was trying to write the code for an interview problem in JavaScript  and it's a very common one –– How to swap values of 2 variables with out using a 3rd variable.
 
 Let the variables be `a = 5` and `b = 3`. Swap the values of `a` and `b` with out using any 3rd variable .
 
@@ -58,7 +58,7 @@ Cool .. I thought it's done.
 
 But I got surpriced when I tried it in the console. I was expecting final values should be `a = 3 and b = 5` but the output was different. I got ` a = 0 and b =5 `.
 
-WTF ? Let me change the code a bit. I modifed the code like this 
+WTF ? Let me change the code a bit. I modified the code like this 
 
 **Code 2 :**
 
@@ -66,7 +66,7 @@ WTF ? Let me change the code a bit. I modifed the code like this
 	var a = 5; b = 3;
 	a = ( ( b = ( a = a + b ) - b ) - a );
 ```	
-This time I got the correct results `a = -3 and b = 5`. So why the hell it didnt work for the first expression ?
+This time I got the correct results `a = -3 and b = 5`. So why the hell it didn't work for the first expression ?
 
 ## The answer is :
 
@@ -128,7 +128,7 @@ Let's see how JavaScript parser evaluate the value of `a` finally.
 
 ### Steps : 
 
-1. Parser takes the main expression `a = a - X` and evaluated from left to right. At first, parser finds the variable`a` and finds it's value. Now the parser moves to the next variable `X` and try to calculate it's value. Since `X` is an expression, it need to be evaluated to form a premitive value.
+1. Parser takes the main expression `a = a - X` and evaluated from left to right. At first, parser finds the variable`a` and finds it's value. Now the parser moves to the next variable `X` and try to calculate it's value. Since `X` is an expression, it need to be evaluated to form a primitive value.
  
     *Note: To get the value, parser internally calls the [GetValue](http://es5.github.io/#x8.7.1) of each operands*
 
@@ -140,7 +140,7 @@ Let's see how JavaScript parser evaluate the value of `a` finally.
  
 	`a = 5 - GetValue( Evaluate( X )`
 
-2. Now it need to evaluate the expression `X` where `b = Y - b`. Here the first operand `Y` itself a sub-expression, so parser has to evaluate it first before calcualting the value of the second operand `b`. 
+2. Now it need to evaluate the expression `X` where `b = Y - b`. Here the first operand `Y` itself a sub-expression, so parser has to evaluate it first before calculating the value of the second operand `b`. 
 3. Let's evaluate the expression `Y` which is `a = a + b`. This is straightforward and contains no sub expression , hence evaluated like this.
 	
 	`a = GetValue( a ) + GetValue( b )`
@@ -174,7 +174,7 @@ Let's see how JavaScript parser evaluate the value of `a` finally.
 	
 6. Finally the values of `a` and `b` will become `a = 0 and b = 5`
 
-Now we're in the same direction with JS engine. We can apply what we learnt for the **Code 2** also. 
+Now we're in the same direction with JS engine. We can apply what we learned for the **Code 2** also. 
 
 
 ## Conclusion
