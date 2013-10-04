@@ -4,7 +4,7 @@
   <title><![CDATA[Category: JavaScript | S H I D H I N . C . R]]></title>
   <link href="http://shidhincr.com/blog/categories/javascript/atom.xml" rel="self"/>
   <link href="http://shidhincr.com/"/>
-  <updated>2013-10-04T13:04:25+05:30</updated>
+  <updated>2013-10-04T13:44:34+05:30</updated>
   <id>http://shidhincr.com/</id>
   <author>
     <name><![CDATA[Shidhin C R]]></name>
@@ -60,7 +60,7 @@ a = a - b
 
 <p><strong>Code 1 :</strong></p>
 
-<p>```javascript</p>
+<p>```javascript CODE 1</p>
 
 <pre><code>var a = 5; b = 3;
 a = ( a - ( b = ( a = a + b ) - b ) );
@@ -76,7 +76,7 @@ a = ( a - ( b = ( a = a + b ) - b ) );
 
 <p><strong>Code 2 :</strong></p>
 
-<p>```javascript</p>
+<p>```javascript CODE 2</p>
 
 <pre><code>var a = 5; b = 3;
 a = ( ( b = ( a = a + b ) - b ) - a );
@@ -151,56 +151,104 @@ a     -
 
 <h3>Steps :</h3>
 
-<ol>
+<ul>
 <li><p>Parser takes the main expression <code>a = a - X</code> and evaluated from left to right. At first, parser finds the variable<code>a</code> and finds it&rsquo;s value. Now the parser moves to the next variable <code>X</code> and try to calculate it&rsquo;s value. Since <code>X</code> is an expression, it need to be evaluated to form a primitive value.</p>
 
-<p> <em>Note: To get the value, parser internally calls the <a href="http://es5.github.io/#x8.7.1">GetValue</a> of each operands</em></p>
+<p>  <em>Note: To get the value, parser internally calls the <a href="http://es5.github.io/#x8.7.1">GetValue</a> of each operands</em></p>
 
-<p> So, for the parser, the expression becomes  like this :</p>
+<p>  So, for the parser, the expression becomes  like this :</p></li>
+</ul>
 
-<p> <code>a = GetValue( a ) - GetValue( Evaluate( X ) )</code></p>
 
-<p> Which is :</p>
+<p><code>javascript Value Of "a"
+a = GetValue( a ) - GetValue( Evaluate( X ) )
+</code>
+Which is :</p>
 
-<p> <code>a = 5 - GetValue( Evaluate( X )</code></p></li>
+<p><code>javascript Value of "a"
+a = 5 - GetValue( Evaluate( X )
+</code></p>
+
+<ul>
 <li><p>Now it need to evaluate the expression <code>X</code> where <code>b = Y - b</code>. Here the first operand <code>Y</code> itself a sub-expression, so parser has to evaluate it first before calculating the value of the second operand <code>b</code>.</p></li>
-<li><p>Let&rsquo;s evaluate the expression <code>Y</code> which is <code>a = a + b</code>. This is straightforward and contains no sub expression , hence evaluated like this.</p>
+<li><p>Let&rsquo;s evaluate the expression <code>Y</code> which is <code>a = a + b</code>. This is straightforward and contains no sub expression , hence evaluated like this.</p></li>
+</ul>
 
-<p> <code>a = GetValue( a ) + GetValue( b )</code>
- This equals to :</p>
 
-<p> <code>a = 5 + 3</code></p>
+<p>```javascript New value of &ldquo;a&rdquo; is</p>
 
-<p> Finally the value of expression <code>Y</code> becomes <code>8</code>.</p></li>
-<li><p>Coming back to step 2 where expression <code>X</code> needs to be completed. expression <code>X</code> is</p>
+<pre><code>a = GetValue( a ) + GetValue( b )
+</code></pre>
 
-<p> <code>b = GetValue( Y ) - GetValue( b )</code></p>
+<p>```
+This equals to :</p>
 
-<p> Becomes like this :</p>
+<p>```javascript &ldquo;a&rdquo; became 8</p>
 
-<p> <code>b = 8 - GetValue( b )</code></p>
+<pre><code>a = 5 + 3
+</code></pre>
 
-<p> Which is :</p>
+<p><code>``    
+Finally the value of expression</code>Y<code>becomes</code>8`.</p>
 
-<p> <code>b = 8 - 3</code></p>
+<ul>
+<li>Coming back to step 2 where expression <code>X</code> needs to be completed. expression <code>X</code> is</li>
+</ul>
 
-<p> Finally the value of <code>b</code> and expression <code>X</code> becomes <code>5</code>.</p></li>
-<li><p>So now all the sub expressions are evaluated , the main expression can be completed now.</p>
 
-<p> The main expression was :</p>
+<p>```javascript Computing the value of &ldquo;b&rdquo;</p>
 
-<p> <code>a = 5 - GetValue( X ) and value of X = 5</code></p>
+<pre><code>b = GetValue( Y ) - GetValue( b )
+</code></pre>
 
-<p>That means final value of <code>a = 5 - 5</code>  which is <code>0</code>.</p></li>
-<li><p>Finally the values of <code>a</code> and <code>b</code> will become <code>a = 0 and b = 5</code></p></li>
-</ol>
+<p>```</p>
+
+<p>Becomes like this :</p>
+
+<p>```javascript Value of &ldquo;b&rdquo;</p>
+
+<pre><code>b = 8 - GetValue( b )
+</code></pre>
+
+<p>```</p>
+
+<p>Which is :</p>
+
+<p>```javascript Final value of &ldquo;b&rdquo;</p>
+
+<pre><code>b = 8 - 3
+</code></pre>
+
+<p>```</p>
+
+<p>Finally the value of <code>b</code> and expression <code>X</code> becomes <code>5</code>.</p>
+
+<ul>
+<li>So now all the sub expressions are evaluated , the main expression can be completed now.</li>
+</ul>
+
+
+<p>The main expression was :</p>
+
+<p>```javascript Evaluating the main expression</p>
+
+<pre><code>a = 5 - GetValue( X ) ; // value of X = 5 now
+</code></pre>
+
+<p>```</p>
+
+<p>That means final value of <code>a = 5 - 5</code>  which is <code>0</code>.</p>
+
+<ul>
+<li>Finally the values of <code>a</code> and <code>b</code> will become <code>a = 0 and b = 5</code></li>
+</ul>
 
 
 <p>Now we&rsquo;re in the same direction with JS engine. We can apply what we learned for the <strong>Code 2</strong> also.</p>
 
 <h2>Conclusion</h2>
 
-<p>I didn&rsquo;t want to write these much long. All I wanted to recollect those basics. Thanks for reading !!</p>
+<p>I didn&rsquo;t want to write this much long. All I wanted to recollect some of those basic stuff. Thanks for reading !!</p>
 
 <p> References :</p>
 
