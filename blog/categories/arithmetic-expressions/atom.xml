@@ -4,7 +4,7 @@
   <title><![CDATA[Category: arithmetic expressions | S H I D H I N . C . R]]></title>
   <link href="http://shidhincr.com/blog/categories/arithmetic-expressions/atom.xml" rel="self"/>
   <link href="http://shidhincr.com/"/>
-  <updated>2013-10-04T12:55:33+05:30</updated>
+  <updated>2013-10-04T13:04:25+05:30</updated>
   <id>http://shidhincr.com/</id>
   <author>
     <name><![CDATA[Shidhin C R]]></name>
@@ -35,15 +35,15 @@ a = ( a - ( b = ( a = a + b ) - b ) );
 <!-- more -->
 
 
-<h2>Analysing the problem</h2>
+<h2>Analyzing the problem</h2>
 
-<p>If your answer is <code>a = 3 and b = 5</code>, this post is written for you. Open your favourite browser and fire up the console. Put the above code in the console and see the values of <code>a</code> and <code>b</code> now.</p>
+<p>If your answer is <code>a = 3 and b = 5</code>, this post is written for you. Open your favorite browser and fire up the console. Put the above code in the console and see the values of <code>a</code> and <code>b</code> now.</p>
 
 <p>Stunned ?  Yeah, The values of <code>a</code> and <code>b</code> are <code>a = 0  and b = 5</code> now. Honestly I also got it wrong initially. I did ask this question to some of my friends ( who are in JavaScript circle ),  and all of them gave me wrong answer.</p>
 
 <h2>Some flashback</h2>
 
-<p>So, here is how I arrived this to particular question. Last week I was trying to write the code for an interview problem in JavaScript  and it&rsquo;s a very common interview question –– How to swap values of 2 variables with out using a 3rd variable.</p>
+<p>So, here is how I arrived this to particular question. Last week I was trying to write the code for an interview problem in JavaScript  and it&rsquo;s a very common one –– How to swap values of 2 variables with out using a 3rd variable.</p>
 
 <p>Let the variables be <code>a = 5</code> and <code>b = 3</code>. Swap the values of <code>a</code> and <code>b</code> with out using any 3rd variable .</p>
 
@@ -72,7 +72,7 @@ a = ( a - ( b = ( a = a + b ) - b ) );
 
 <p>But I got surpriced when I tried it in the console. I was expecting final values should be <code>a = 3 and b = 5</code> but the output was different. I got <code>a = 0 and b =5</code>.</p>
 
-<p>WTF ? Let me change the code a bit. I modifed the code like this</p>
+<p>WTF ? Let me change the code a bit. I modified the code like this</p>
 
 <p><strong>Code 2 :</strong></p>
 
@@ -83,7 +83,7 @@ a = ( ( b = ( a = a + b ) - b ) - a );
 </code></pre>
 
 <p><code>``
-This time I got the correct results</code>a = -3 and b = 5`. So why the hell it didnt work for the first expression ?</p>
+This time I got the correct results</code>a = -3 and b = 5`. So why the hell it didn&rsquo;t work for the first expression ?</p>
 
 <h2>The answer is :</h2>
 
@@ -152,7 +152,7 @@ a     -
 <h3>Steps :</h3>
 
 <ol>
-<li><p>Parser takes the main expression <code>a = a - X</code> and evaluated from left to right. At first, parser finds the variable<code>a</code> and finds it&rsquo;s value. Now the parser moves to the next variable <code>X</code> and try to calculate it&rsquo;s value. Since <code>X</code> is an expression, it need to be evaluated to form a premitive value.</p>
+<li><p>Parser takes the main expression <code>a = a - X</code> and evaluated from left to right. At first, parser finds the variable<code>a</code> and finds it&rsquo;s value. Now the parser moves to the next variable <code>X</code> and try to calculate it&rsquo;s value. Since <code>X</code> is an expression, it need to be evaluated to form a primitive value.</p>
 
 <p> <em>Note: To get the value, parser internally calls the <a href="http://es5.github.io/#x8.7.1">GetValue</a> of each operands</em></p>
 
@@ -163,7 +163,7 @@ a     -
 <p> Which is :</p>
 
 <p> <code>a = 5 - GetValue( Evaluate( X )</code></p></li>
-<li><p>Now it need to evaluate the expression <code>X</code> where <code>b = Y - b</code>. Here the first operand <code>Y</code> itself a sub-expression, so parser has to evaluate it first before calcualting the value of the second operand <code>b</code>.</p></li>
+<li><p>Now it need to evaluate the expression <code>X</code> where <code>b = Y - b</code>. Here the first operand <code>Y</code> itself a sub-expression, so parser has to evaluate it first before calculating the value of the second operand <code>b</code>.</p></li>
 <li><p>Let&rsquo;s evaluate the expression <code>Y</code> which is <code>a = a + b</code>. This is straightforward and contains no sub expression , hence evaluated like this.</p>
 
 <p> <code>a = GetValue( a ) + GetValue( b )</code>
@@ -196,7 +196,7 @@ a     -
 </ol>
 
 
-<p>Now we&rsquo;re in the same direction with JS engine. We can apply what we learnt for the <strong>Code 2</strong> also.</p>
+<p>Now we&rsquo;re in the same direction with JS engine. We can apply what we learned for the <strong>Code 2</strong> also.</p>
 
 <h2>Conclusion</h2>
 
