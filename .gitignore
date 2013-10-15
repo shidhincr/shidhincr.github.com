@@ -3,6 +3,7 @@
 .sass-cache
 .gist-cache
 .pygments-cache
+.gradle
 _deploy
 public
 sass.old

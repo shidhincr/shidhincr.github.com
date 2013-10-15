@@ -40,4 +40,25 @@ body > footer {
 	#twitter-widget-1 {
 		float: right
 	}
+	&.sidebar {
+		border: none;
+		background-color: transparent;
+		box-shadow: none;
+		text-align: center;
+		.about-image,#twitter-widget-1 {
+			float: none;
+		}
+		.about-desc {
+			display: block;
+			a {
+				color: rgb(47, 99, 211);
+			}
+		}
+		.about-image {
+			img {
+				border-radius: 50%;
+				box-shadow: 0 0 5px #000;
+			}
+		}
+	}
 }

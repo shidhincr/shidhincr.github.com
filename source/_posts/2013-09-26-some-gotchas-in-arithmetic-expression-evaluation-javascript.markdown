@@ -17,7 +17,7 @@ categories:
 This post is just for recollecting some of the basics of JavaScript. Let's start with a small JavaScript code. Here is the code –– Solve it with out using the console.
 
 ```javascript
-	var a = 5; b = 3;
+	var a = 5, b = 3;
 	a = ( a - ( b = ( a = a + b ) - b ) );
 ```
 	
@@ -50,7 +50,7 @@ What I was trying is to write the entire expression in one single line. I wrote 
 **Code 1 :** 
 
 ```javascript CODE 1
-	var a = 5; b = 3;
+	var a = 5, b = 3;
 	a = ( a - ( b = ( a = a + b ) - b ) );
 ```
 	
@@ -63,7 +63,7 @@ WTF ? Let me change the code a bit. I modified the code like this
 **Code 2 :**
 
 ```javascript CODE 2
-	var a = 5; b = 3;
+	var a = 5, b = 3;
 	a = ( ( b = ( a = a + b ) - b ) - a );
 ```	
 This time I got the correct results `a = -3 and b = 5`. So why the hell it didn't work for the first expression ?
