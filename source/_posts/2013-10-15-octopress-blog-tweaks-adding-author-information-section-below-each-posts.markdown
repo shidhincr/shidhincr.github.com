@@ -10,9 +10,9 @@ categories:
 ---
 
 A good blogging platform is one which allows easy customization. I've been using Octopress for more than 2 weeks and happy to tell that it's one of those allows customization with out any pain. I want to share a tweak I added to my blog recently : It's an author information section below every post. Let's see how I built it and added to my blog.
+<!--more-->
 
 ## What we're going to achieve ##
-<!--more-->
 
 {% img //lh3.googleusercontent.com/-hT72wlBvU-Y/UlzR3V8twdI/AAAAAAAACP0/2aoFaMfzjA0/s916/Screen%2520Shot%25202013-10-15%2520at%252010.57.29%2520AM.png %}
 
