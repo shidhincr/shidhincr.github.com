@@ -4,7 +4,7 @@
   <title><![CDATA[S H I D H I N . C . R]]></title>
   <link href="http://shidhincr.com/atom.xml" rel="self"/>
   <link href="http://shidhincr.com/"/>
-  <updated>2013-10-16T12:05:55+05:30</updated>
+  <updated>2013-10-16T12:34:59+05:30</updated>
   <id>http://shidhincr.com/</id>
   <author>
     <name><![CDATA[Shidhin C R]]></name>
@@ -20,10 +20,10 @@
     <id>http://shidhincr.com/2013/10/15/octopress-blog-tweaks-adding-author-information-section-below-each-posts</id>
     <content type="html"><![CDATA[<p>A good blogging platform is one which allows easy customization. I&rsquo;ve been using Octopress for more than 2 weeks and happy to tell that it&rsquo;s one of those allows customization with out any pain. I want to share a tweak I added to my blog recently : It&rsquo;s an author information section below every post. Let&rsquo;s see how I built it and added to my blog.</p>
 
-<h2>What we&rsquo;re going to achieve</h2>
-
 <!--more-->
 
+
+<h2>What we&rsquo;re going to achieve</h2>
 
 <p><img src="http://shidhincr.com//lh3.googleusercontent.com/-hT72wlBvU-Y/UlzR3V8twdI/AAAAAAAACP0/2aoFaMfzjA0/s916/Screen%2520Shot%25202013-10-15%2520at%252010.57.29%2520AM.png"></p>
 
