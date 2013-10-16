@@ -16,7 +16,7 @@ A good blogging platform is one which allows easy customization. I've been using
 
 {% img //lh3.googleusercontent.com/-hT72wlBvU-Y/UlzR3V8twdI/AAAAAAAACP0/2aoFaMfzjA0/s916/Screen%2520Shot%25202013-10-15%2520at%252010.57.29%2520AM.png %}
 
-See the above screenshot ? It's a simple section containing containing the author image, description and a twitter follow button. I'll explain how to build this and add to every post.
+See the above screenshot ? It's a simple section containing the author image, description and a twitter follow button. I'll explain how to build this and add to every post.
 
 ##Let's Begin##
 
