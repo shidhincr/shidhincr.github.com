@@ -1,0 +1,529 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Octopress Blog Tweaks: Adding Author Info Section Below Each Posts</title>
+  <meta name="author" content="Shidhin C R">
+
+  
+  <meta name="description" content="A good blogging platform is one which allows easy customization. I&rsquo;ve been using Octopress for more than 2 weeks and happy to tell that it& &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://shidhincr.com/2013/10/15/octopress-blog-tweaks-adding-author-information-section-below-each-posts">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="S H I D H I N . C . R" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/lib/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-10379928-17']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">S H I D H I N . C . R</a></h1>
+  
+    <h2>Javascript Enthusiast •• HTML5/CSS3 Passionate •• Here I scribble, Here is my blog</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:shidhincr.com" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Octopress Blog Tweaks: Adding Author Info Section Below Each Posts</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-10-15T10:15:00+05:30" pubdate data-updated="true">Oct 15<span>th</span>, 2013</time>
+        
+         | <a href="#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>A good blogging platform is one which allows easy customization. I&rsquo;ve been using Octopress for more than 2 weeks and happy to tell that it&rsquo;s one of those allows customization with out any pain. I want to share a tweak I added to my blog recently : It&rsquo;s an author information section below every post. Let&rsquo;s see how I built it and added to my blog.</p>
+
+<h2>What we&rsquo;re going to achieve</h2>
+
+<!--more-->
+
+
+<p><img src="//lh3.googleusercontent.com/-hT72wlBvU-Y/UlzR3V8twdI/AAAAAAAACP0/2aoFaMfzjA0/s916/Screen%2520Shot%25202013-10-15%2520at%252010.57.29%2520AM.png"></p>
+
+<p>See the above screenshot ? It&rsquo;s a simple section containing containing the author image, description and a twitter follow button. I&rsquo;ll explain how to build this and add to every post.</p>
+
+<h2>Let&rsquo;s Begin</h2>
+
+<p>Octopress is basically based on Jekyll and liquid templating. Everything in the main view is broken-down to subviews called partials. These partials are nothing but re-usable html files which will be included in other views. So for creating our author information section, we also need to create a partial and include it in the post view.</p>
+
+<p>Before start creating our author information view, let&rsquo;s analyse the files and folders we&rsquo;re interested in.</p>
+
+<p>Open the octopress blog folder and get familiar with these:</p>
+
+<ol>
+<li> source/_layouts/post.html</li>
+<li> source/_includes/custom/</li>
+<li> sass/custom/_styles.scss</li>
+<li> source/images/</li>
+</ol>
+
+
+<p><strong>source/_layouts/post.html</strong></p>
+
+<p>This is the partial responsible for rendering the blog post entry. We need to make modifications in this view to show any changes in the post.</p>
+
+<p><strong>source/_includes/custom/</strong></p>
+
+<p>This folder contains custom partials –– usually from the 3rd party plugins and all. We&rsquo;re going to add our view html file here only.</p>
+
+<p><strong>sass/custom/_styles.scss</strong></p>
+
+<p>Octopress uses SCSS ( a CSS preprocessor ) for all of it&rsquo;s styling and theming. This particular file will be processed at the end, hence any custom styles required for the blog are added in this file only.</p>
+
+<p><strong>source/images/</strong></p>
+
+<p>All the image assets goes to this folder.</p>
+
+<p>Time to create the view for the author information section. I&rsquo;ve created a new file called <strong>&ldquo;aboutauthor.html&rdquo;</strong> (code is given below ) and placed in the <strong><code>source/_includes/custom/</code></strong> folder. It&rsquo;s just the sample and you can create your own template.</p>
+
+<figure class='code'><figcaption><span>aboutauthor.html</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;about&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>     <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">&quot;about-image&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>          <span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">&quot;/images/author.jpg&quot;</span> <span class="na">alt=</span><span class="s">&quot;author name&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>     <span class="nt">&lt;/span&gt;</span>
+</span><span class='line'>     <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">&quot;about-desc&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>          <span class="nt">&lt;span&gt;</span>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+</span><span class='line'>          tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+</span><span class='line'>          quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+</span><span class='line'>          consequat.<span class="nt">&lt;/span&gt;</span>
+</span><span class='line'>          <span class="nt">&lt;br/&gt;</span>
+</span><span class='line'>          <span class="nt">&lt;hr/&gt;</span>
+</span><span class='line'>          <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;https://twitter.com/yourtwittername&quot;</span> <span class="na">class=</span><span class="s">&quot;twitter-follow-button&quot;</span> <span class="na">data-show-count=</span><span class="s">&quot;false&quot;</span> <span class="na">data-size=</span><span class="s">&quot;large&quot;</span><span class="nt">&gt;</span>Follow @yourtwittername<span class="nt">&lt;/a&gt;</span>
+</span><span class='line'>     <span class="nt">&lt;/span&gt;</span>
+</span><span class='line'><span class="nt">&lt;/div&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>The above code is self explanatory. One more extra effort is to add the author image –– which should go to the <strong><code>source/images/</code></strong> folder. I&rsquo;ve used a jpeg image of dimension <code>175x120</code>.</p>
+
+<p>To apply some CSS for our view, open the <strong>&ldquo;_styles.scss&rdquo;</strong> and add the following rules.</p>
+
+<figure class='code'><figcaption><span>_styles.scss</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+</pre></td><td class='code'><pre><code class='scss'><span class='line'><span class="nc">.about</span> <span class="p">{</span>
+</span><span class='line'>     <span class="na">font-style</span><span class="o">:</span> <span class="no">italic</span><span class="p">;</span>
+</span><span class='line'>     <span class="na">background-color</span><span class="o">:</span> <span class="mh">#FFF</span><span class="p">;</span>
+</span><span class='line'>     <span class="na">padding</span><span class="o">:</span> <span class="mi">10</span><span class="kt">px</span><span class="p">;</span>
+</span><span class='line'>     <span class="na">border-radius</span><span class="o">:</span> <span class="mi">5</span><span class="kt">px</span><span class="p">;</span>
+</span><span class='line'>     <span class="na">border</span><span class="o">:</span> <span class="mi">1</span><span class="kt">px</span> <span class="no">solid</span> <span class="mh">#CCC</span><span class="p">;</span>
+</span><span class='line'>     <span class="na">box-shadow</span><span class="o">:</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">5</span><span class="kt">px</span> <span class="mh">#CCC</span><span class="p">;</span>
+</span><span class='line'>     <span class="na">overflow</span><span class="o">:</span> <span class="no">hidden</span><span class="p">;</span>
+</span><span class='line'>     <span class="na">clear</span><span class="o">:</span> <span class="no">both</span><span class="p">;</span>
+</span><span class='line'>     <span class="nc">.about-image</span> <span class="p">{</span>
+</span><span class='line'>          <span class="na">width</span><span class="o">:</span> <span class="mi">150</span><span class="kt">px</span><span class="p">;</span>
+</span><span class='line'>          <span class="na">float</span><span class="o">:</span> <span class="no">left</span><span class="p">;</span>
+</span><span class='line'>          <span class="na">display</span><span class="o">:</span> <span class="no">inline</span><span class="o">-</span><span class="no">block</span><span class="p">;</span>
+</span><span class='line'>          <span class="na">margin-right</span><span class="o">:</span> <span class="mi">20</span><span class="kt">px</span><span class="p">;</span>
+</span><span class='line'>     <span class="p">}</span>
+</span><span class='line'>     <span class="nc">.about-desc</span> <span class="o">&gt;</span> <span class="nt">hr</span> <span class="p">{</span>
+</span><span class='line'>          <span class="na">border</span><span class="o">:</span> <span class="no">none</span><span class="p">;</span>
+</span><span class='line'>          <span class="na">border-top</span><span class="o">:</span> <span class="mi">1</span><span class="kt">px</span> <span class="no">dotted</span> <span class="mh">#CCC</span><span class="p">;</span>
+</span><span class='line'>          <span class="na">padding-top</span><span class="o">:</span> <span class="mi">10</span><span class="kt">px</span><span class="p">;</span>
+</span><span class='line'>     <span class="p">}</span>
+</span><span class='line'>     <span class="nn">#twitter-widget-1</span> <span class="p">{</span>
+</span><span class='line'>          <span class="na">float</span><span class="o">:</span> <span class="no">right</span>
+</span><span class='line'>     <span class="p">}</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>Update Post Template</h2>
+
+<p>Now we&rsquo;ve the CSS and Markup ready for our author information view. We can add the <strong>&ldquo;aboutauthor.html&rdquo;</strong> view to any other view by using <code>include</code> keyword. Let&rsquo;s open the <strong><code>source/_layouts/post.html</code></strong> partial and include our newly created view below the post content.</p>
+
+<p>Here is the diff file for <strong><em>updated post.html</em></strong> :</p>
+
+<div><script src='https://gist.github.com/6989638.js'></script>
+<noscript><pre><code> &lt;div&gt;
+ &lt;article class=&quot;hentry&quot; role=&quot;article&quot;&gt;
+   {% include article.html %}
+   &lt;footer&gt;
+     &lt;p class=&quot;meta&quot;&gt;
+       {% include post/author.html %}
+       {% include post/date.html %}{% if updated %}{{ updated }}{% else %}{{ time }}{% endif %}
+       {% include post/categories.html %}
+     &lt;/p&gt;
+     {% unless page.sharing == false %}
+       {% include post/sharing.html %}
+     {% endunless %}
+     &lt;p class=&quot;meta&quot;&gt;
++    {% include custom/aboutauthor.html %}
++    &lt;/p&gt;
++    &lt;p class=&quot;meta&quot;&gt;
+       {% if page.previous.url %}
+         &lt;a class=&quot;basic-alignment left&quot; href=&quot;{{page.previous.url}}&quot; title=&quot;Previous Post: {{page.previous.title}}&quot;&gt;&amp;laquo; {{page.previous.title}}&lt;/a&gt;
+       {% endif %}
+       {% if page.next.url %}
+         &lt;a class=&quot;basic-alignment right&quot; href=&quot;{{page.next.url}}&quot; title=&quot;Next Post: {{page.next.title}}&quot;&gt;{{page.next.title}} &amp;raquo;&lt;/a&gt;
+       {% endif %}
+     &lt;/p&gt;
+   &lt;/footer&gt;
+ &lt;/article&gt;
+ {% if site.disqus_short_name and page.comments == true %}
+   &lt;section&gt;
+     &lt;h1&gt;Comments&lt;/h1&gt;
+     &lt;div id=&quot;disqus_thread&quot; aria-live=&quot;polite&quot;&gt;{% include post/disqus_thread.html %}&lt;/div&gt;
+   &lt;/section&gt;
+ {% endif %}
+ &lt;/div&gt;
+ {% unless page.sidebar == false %}
+ &lt;aside class=&quot;sidebar&quot;&gt;
+   {% if site.post_asides.size %}
+     {% include_array post_asides %}
+   {% else %}
+     {% include_array default_asides %}
+   {% endif %}
+ &lt;/aside&gt;
+ {% endunless %}</code></pre></noscript></div>
+
+
+<h2>Preview it</h2>
+
+<p>Use below rake commands to preview the blog.</p>
+
+<pre><code>rake generate; rake preview
+</code></pre>
+
+<p>That&rsquo;s it !! The author information section should be appearing below each blog post by now. Replace the &ldquo;Lorum ipsum&rdquo; with the words best describes you.</p>
+
+<p>Thanks for reading, feedbacks are welcome. Enjoy blogging !!</p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Shidhin</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-10-15T10:15:00+05:30" pubdate data-updated="true">Oct 15<span>th</span>, 2013</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/octopress/'>Octopress</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://shidhincr.com/2013/10/15/octopress-blog-tweaks-adding-author-information-section-below-each-posts/" data-via="shidhincr" data-counturl="http://shidhincr.com/2013/10/15/octopress-blog-tweaks-adding-author-information-section-below-each-posts/" >Tweet</a>
+  
+  
+  <div class="g-plusone" data-size="medium"></div>
+  
+  
+    <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
+  
+</div>
+
+    
+    <p class="meta">
+    <div class="about">
+	<span class="about-image">
+		<img src="/images/shidhincr.jpg" alt="shidhincr">
+	</span>
+	<span class="about-desc">
+		<span>Hey, I'm Shidhin C R – UI / Front end developer from Bangalore, India. I use this space to share my experiences, experiments and thoughts. See more about me in <a href="http://www.shidhincr.in" target="_blank">shidhincr.in</a></span>
+		<br/>
+		<hr/>
+		<a href="https://twitter.com/shidhincr" class="twitter-follow-button" data-show-count="false" data-size="large">Follow @shidhincr</a>
+	</span>
+</div> 
+    </p>
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/2013/09/26/some-gotchas-in-arithmetic-expression-evaluation-javascript/" title="Previous Post:  Some Gotchas In Arithmetic Expression Evaluation : JavaScript">&laquo;  Some Gotchas In Arithmetic Expression Evaluation : JavaScript</a>
+      
+      
+    </p>
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+</div>
+
+<aside class="sidebar">
+  
+    <div class="about sidebar">
+  <span class="about-image">
+    <img src="/images/shidhincr.jpg" alt="shidhincr">
+  </span>
+  <span class="about-desc">
+    <span>Hey, I'm Shidhin C R <br/> I'm a UI / Front end developer from Bangalore, India. I use this space to share my experiences, experiments and thoughts. See more about me in <a href="http://www.shidhincr.in" target="_blank">shidhincr.in</a></span>
+    <br/>
+    <hr/>
+    <a href="https://twitter.com/shidhincr" class="twitter-follow-button" data-show-count="false" data-size="large">Follow @shidhincr</a>
+  </span>
+</div> <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/2013/10/15/octopress-blog-tweaks-adding-author-information-section-below-each-posts/">Octopress Blog Tweaks: Adding Author Info Section Below Each Posts</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/09/26/some-gotchas-in-arithmetic-expression-evaluation-javascript/">Some Gotchas in Arithmetic Expression Evaluation : JavaScript</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/09/25/starting-my-new-blog-finally-octopress/">Starting My New Blog: Finally Octopress</a>
+      </li>
+    
+  </ul>
+</section>
+
+<section>
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating...</li>
+  </ul>
+  
+  <a href="https://github.com/shidhincr">@shidhincr</a> on GitHub
+  
+  <script type="text/javascript">
+    $(document).ready(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'shidhincr',
+            count: 3,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
+</section>
+
+
+<section class="googleplus">
+  <h1>
+    <a href="https://plus.google.com/shidhincr?rel=author">
+      <img src="http://www.google.com/images/icons/ui/gprofile_button-32.png" width="32" height="32">
+      Google+
+    </a>
+  </h1>
+</section>
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2013 - Shidhin C R -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'shidhincr';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://shidhincr.com/2013/10/15/octopress-blog-tweaks-adding-author-information-section-below-each-posts/';
+        var disqus_url = 'http://shidhincr.com/2013/10/15/octopress-blog-tweaks-adding-author-information-section-below-each-posts/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id; js.async = true;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+  <script type="text/javascript">
+    (function() {
+      var script = document.createElement('script'); script.type = 'text/javascript'; script.async = true;
+      script.src = 'https://apis.google.com/js/plusone.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(script, s);
+    })();
+  </script>
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+<!-- AddThis Smart Layers BEGIN -->
+<!-- Go to http://www.addthis.com/get/smart-layers to customize -->
+<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-524e674f788aa8b9"></script>
+<script type="text/javascript">
+  addthis.layers({
+    'theme' : 'dark',
+    'share' : {
+      'position' : 'left',
+      'numPreferredServices' : 6
+    } 
+  });
+</script>
+<!-- AddThis Smart Layers END -->
+
+
+
+</body>
+</html>

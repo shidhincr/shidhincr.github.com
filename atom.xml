@@ -4,7 +4,7 @@
   <title><![CDATA[S H I D H I N . C . R]]></title>
   <link href="http://shidhincr.com/atom.xml" rel="self"/>
   <link href="http://shidhincr.com/"/>
-  <updated>2013-10-15T17:09:52+05:30</updated>
+  <updated>2013-10-16T12:05:55+05:30</updated>
   <id>http://shidhincr.com/</id>
   <author>
     <name><![CDATA[Shidhin C R]]></name>
@@ -12,6 +12,205 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Octopress Blog Tweaks: Adding Author Info Section Below Each Posts]]></title>
+    <link href="http://shidhincr.com/2013/10/15/octopress-blog-tweaks-adding-author-information-section-below-each-posts/"/>
+    <updated>2013-10-15T10:15:00+05:30</updated>
+    <id>http://shidhincr.com/2013/10/15/octopress-blog-tweaks-adding-author-information-section-below-each-posts</id>
+    <content type="html"><![CDATA[<p>A good blogging platform is one which allows easy customization. I&rsquo;ve been using Octopress for more than 2 weeks and happy to tell that it&rsquo;s one of those allows customization with out any pain. I want to share a tweak I added to my blog recently : It&rsquo;s an author information section below every post. Let&rsquo;s see how I built it and added to my blog.</p>
+
+<h2>What we&rsquo;re going to achieve</h2>
+
+<!--more-->
+
+
+<p><img src="http://shidhincr.com//lh3.googleusercontent.com/-hT72wlBvU-Y/UlzR3V8twdI/AAAAAAAACP0/2aoFaMfzjA0/s916/Screen%2520Shot%25202013-10-15%2520at%252010.57.29%2520AM.png"></p>
+
+<p>See the above screenshot ? It&rsquo;s a simple section containing containing the author image, description and a twitter follow button. I&rsquo;ll explain how to build this and add to every post.</p>
+
+<h2>Let&rsquo;s Begin</h2>
+
+<p>Octopress is basically based on Jekyll and liquid templating. Everything in the main view is broken-down to subviews called partials. These partials are nothing but re-usable html files which will be included in other views. So for creating our author information section, we also need to create a partial and include it in the post view.</p>
+
+<p>Before start creating our author information view, let&rsquo;s analyse the files and folders we&rsquo;re interested in.</p>
+
+<p>Open the octopress blog folder and get familiar with these:</p>
+
+<ol>
+<li> source/_layouts/post.html</li>
+<li> source/_includes/custom/</li>
+<li> sass/custom/_styles.scss</li>
+<li> source/images/</li>
+</ol>
+
+
+<p><strong>source/_layouts/post.html</strong></p>
+
+<p>This is the partial responsible for rendering the blog post entry. We need to make modifications in this view to show any changes in the post.</p>
+
+<p><strong>source/_includes/custom/</strong></p>
+
+<p>This folder contains custom partials –– usually from the 3rd party plugins and all. We&rsquo;re going to add our view html file here only.</p>
+
+<p><strong>sass/custom/_styles.scss</strong></p>
+
+<p>Octopress uses SCSS ( a CSS preprocessor ) for all of it&rsquo;s styling and theming. This particular file will be processed at the end, hence any custom styles required for the blog are added in this file only.</p>
+
+<p><strong>source/images/</strong></p>
+
+<p>All the image assets goes to this folder.</p>
+
+<p>Time to create the view for the author information section. I&rsquo;ve created a new file called <strong>&ldquo;aboutauthor.html&rdquo;</strong> (code is given below ) and placed in the <strong><code>source/_includes/custom/</code></strong> folder. It&rsquo;s just the sample and you can create your own template.</p>
+
+<figure class='code'><figcaption><span>aboutauthor.html</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;about&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>     <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">&quot;about-image&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>          <span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">&quot;/images/author.jpg&quot;</span> <span class="na">alt=</span><span class="s">&quot;author name&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>     <span class="nt">&lt;/span&gt;</span>
+</span><span class='line'>     <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">&quot;about-desc&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>          <span class="nt">&lt;span&gt;</span>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+</span><span class='line'>          tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+</span><span class='line'>          quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+</span><span class='line'>          consequat.<span class="nt">&lt;/span&gt;</span>
+</span><span class='line'>          <span class="nt">&lt;br/&gt;</span>
+</span><span class='line'>          <span class="nt">&lt;hr/&gt;</span>
+</span><span class='line'>          <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;https://twitter.com/yourtwittername&quot;</span> <span class="na">class=</span><span class="s">&quot;twitter-follow-button&quot;</span> <span class="na">data-show-count=</span><span class="s">&quot;false&quot;</span> <span class="na">data-size=</span><span class="s">&quot;large&quot;</span><span class="nt">&gt;</span>Follow @yourtwittername<span class="nt">&lt;/a&gt;</span>
+</span><span class='line'>     <span class="nt">&lt;/span&gt;</span>
+</span><span class='line'><span class="nt">&lt;/div&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>The above code is self explanatory. One more extra effort is to add the author image –– which should go to the <strong><code>source/images/</code></strong> folder. I&rsquo;ve used a jpeg image of dimension <code>175x120</code>.</p>
+
+<p>To apply some CSS for our view, open the <strong>&ldquo;_styles.scss&rdquo;</strong> and add the following rules.</p>
+
+<figure class='code'><figcaption><span>_styles.scss</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+</pre></td><td class='code'><pre><code class='scss'><span class='line'><span class="nc">.about</span> <span class="p">{</span>
+</span><span class='line'>     <span class="na">font-style</span><span class="o">:</span> <span class="no">italic</span><span class="p">;</span>
+</span><span class='line'>     <span class="na">background-color</span><span class="o">:</span> <span class="mh">#FFF</span><span class="p">;</span>
+</span><span class='line'>     <span class="na">padding</span><span class="o">:</span> <span class="mi">10</span><span class="kt">px</span><span class="p">;</span>
+</span><span class='line'>     <span class="na">border-radius</span><span class="o">:</span> <span class="mi">5</span><span class="kt">px</span><span class="p">;</span>
+</span><span class='line'>     <span class="na">border</span><span class="o">:</span> <span class="mi">1</span><span class="kt">px</span> <span class="no">solid</span> <span class="mh">#CCC</span><span class="p">;</span>
+</span><span class='line'>     <span class="na">box-shadow</span><span class="o">:</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">5</span><span class="kt">px</span> <span class="mh">#CCC</span><span class="p">;</span>
+</span><span class='line'>     <span class="na">overflow</span><span class="o">:</span> <span class="no">hidden</span><span class="p">;</span>
+</span><span class='line'>     <span class="na">clear</span><span class="o">:</span> <span class="no">both</span><span class="p">;</span>
+</span><span class='line'>     <span class="nc">.about-image</span> <span class="p">{</span>
+</span><span class='line'>          <span class="na">width</span><span class="o">:</span> <span class="mi">150</span><span class="kt">px</span><span class="p">;</span>
+</span><span class='line'>          <span class="na">float</span><span class="o">:</span> <span class="no">left</span><span class="p">;</span>
+</span><span class='line'>          <span class="na">display</span><span class="o">:</span> <span class="no">inline</span><span class="o">-</span><span class="no">block</span><span class="p">;</span>
+</span><span class='line'>          <span class="na">margin-right</span><span class="o">:</span> <span class="mi">20</span><span class="kt">px</span><span class="p">;</span>
+</span><span class='line'>     <span class="p">}</span>
+</span><span class='line'>     <span class="nc">.about-desc</span> <span class="o">&gt;</span> <span class="nt">hr</span> <span class="p">{</span>
+</span><span class='line'>          <span class="na">border</span><span class="o">:</span> <span class="no">none</span><span class="p">;</span>
+</span><span class='line'>          <span class="na">border-top</span><span class="o">:</span> <span class="mi">1</span><span class="kt">px</span> <span class="no">dotted</span> <span class="mh">#CCC</span><span class="p">;</span>
+</span><span class='line'>          <span class="na">padding-top</span><span class="o">:</span> <span class="mi">10</span><span class="kt">px</span><span class="p">;</span>
+</span><span class='line'>     <span class="p">}</span>
+</span><span class='line'>     <span class="nn">#twitter-widget-1</span> <span class="p">{</span>
+</span><span class='line'>          <span class="na">float</span><span class="o">:</span> <span class="no">right</span>
+</span><span class='line'>     <span class="p">}</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>Update Post Template</h2>
+
+<p>Now we&rsquo;ve the CSS and Markup ready for our author information view. We can add the <strong>&ldquo;aboutauthor.html&rdquo;</strong> view to any other view by using <code>include</code> keyword. Let&rsquo;s open the <strong><code>source/_layouts/post.html</code></strong> partial and include our newly created view below the post content.</p>
+
+<p>Here is the diff file for <strong><em>updated post.html</em></strong> :</p>
+
+<div><script src='https://gist.github.com/6989638.js'></script>
+<noscript><pre><code> &lt;div&gt;
+ &lt;article class=&quot;hentry&quot; role=&quot;article&quot;&gt;
+   {% include article.html %}
+   &lt;footer&gt;
+     &lt;p class=&quot;meta&quot;&gt;
+       {% include post/author.html %}
+       {% include post/date.html %}{% if updated %}{{ updated }}{% else %}{{ time }}{% endif %}
+       {% include post/categories.html %}
+     &lt;/p&gt;
+     {% unless page.sharing == false %}
+       {% include post/sharing.html %}
+     {% endunless %}
+     &lt;p class=&quot;meta&quot;&gt;
++    {% include custom/aboutauthor.html %}
++    &lt;/p&gt;
++    &lt;p class=&quot;meta&quot;&gt;
+       {% if page.previous.url %}
+         &lt;a class=&quot;basic-alignment left&quot; href=&quot;{{page.previous.url}}&quot; title=&quot;Previous Post: {{page.previous.title}}&quot;&gt;&amp;laquo; {{page.previous.title}}&lt;/a&gt;
+       {% endif %}
+       {% if page.next.url %}
+         &lt;a class=&quot;basic-alignment right&quot; href=&quot;{{page.next.url}}&quot; title=&quot;Next Post: {{page.next.title}}&quot;&gt;{{page.next.title}} &amp;raquo;&lt;/a&gt;
+       {% endif %}
+     &lt;/p&gt;
+   &lt;/footer&gt;
+ &lt;/article&gt;
+ {% if site.disqus_short_name and page.comments == true %}
+   &lt;section&gt;
+     &lt;h1&gt;Comments&lt;/h1&gt;
+     &lt;div id=&quot;disqus_thread&quot; aria-live=&quot;polite&quot;&gt;{% include post/disqus_thread.html %}&lt;/div&gt;
+   &lt;/section&gt;
+ {% endif %}
+ &lt;/div&gt;
+ {% unless page.sidebar == false %}
+ &lt;aside class=&quot;sidebar&quot;&gt;
+   {% if site.post_asides.size %}
+     {% include_array post_asides %}
+   {% else %}
+     {% include_array default_asides %}
+   {% endif %}
+ &lt;/aside&gt;
+ {% endunless %}</code></pre></noscript></div>
+
+
+<h2>Preview it</h2>
+
+<p>Use below rake commands to preview the blog.</p>
+
+<pre><code>rake generate; rake preview
+</code></pre>
+
+<p>That&rsquo;s it !! The author information section should be appearing below each blog post by now. Replace the &ldquo;Lorum ipsum&rdquo; with the words best describes you.</p>
+
+<p>Thanks for reading, feedbacks are welcome. Enjoy blogging !!</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[ Some Gotchas In Arithmetic Expression Evaluation : JavaScript]]></title>
