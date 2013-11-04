@@ -30,7 +30,7 @@ body > footer {
 		width: 150px;
 		float: left;
 		display: inline-block;
-		margin-right: 20px;
+		margin-right: 20px;	
 	}
 	.about-desc > hr {
 		border: none;
@@ -57,7 +57,7 @@ body > footer {
 		.about-image {
 			img {
 				border-radius: 50%;
-				box-shadow: 0 0 5px #000;
+				box-shadow: 0 0 15px #ccc;
 			}
 		}
 		@media only screen and (max-width: 768px) {
