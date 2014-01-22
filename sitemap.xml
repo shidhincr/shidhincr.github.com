@@ -1,41 +1,31 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <urlset xmlns='http://www.sitemaps.org/schemas/sitemap/0.9'>
     <url>
-        <loc>http://shidhincr.com/2013/09/06/javascript-unit-testing-basics/</loc>
-        <lastmod>2013-10-15T15:51:00+05:30</lastmod>
-    </url>
-    <url>
         <loc>http://shidhincr.com/2013/09/25/starting-my-new-blog-finally-octopress/</loc>
-        <lastmod>2013-10-15T15:51:00+05:30</lastmod>
+        <lastmod>2014-01-23T01:28:22+05:30</lastmod>
     </url>
     <url>
         <loc>
             http://shidhincr.com/2013/09/26/some-gotchas-in-arithmetic-expression-evaluation-javascript/
         </loc>
-        <lastmod>2013-10-15T15:51:00+05:30</lastmod>
-    </url>
-    <url>
-        <loc>
-            http://shidhincr.com/2013/10/04/implementing-a-curry-function-with-tdd-test-driven-development-javascript/
-        </loc>
-        <lastmod>2013-10-04T22:03:10+05:30</lastmod>
+        <lastmod>2014-01-23T01:28:22+05:30</lastmod>
     </url>
     <url>
         <loc>
             http://shidhincr.com/2013/10/15/octopress-blog-tweaks-adding-author-information-section-below-each-posts/
         </loc>
-        <lastmod>2013-10-16T18:40:26+05:30</lastmod>
+        <lastmod>2014-01-23T01:28:22+05:30</lastmod>
     </url>
     <url>
         <loc>http://shidhincr.com/blog/archives/</loc>
-        <lastmod>2014-01-23T01:05:57+05:30</lastmod>
+        <lastmod>2014-01-23T01:28:22+05:30</lastmod>
     </url>
     <url>
         <loc>http://shidhincr.com/</loc>
-        <lastmod>2014-01-23T01:05:57+05:30</lastmod>
+        <lastmod>2014-01-23T01:28:22+05:30</lastmod>
     </url>
     <url>
         <loc>http://shidhincr.com/robots.txt</loc>
-        <lastmod>2014-01-23T01:05:57+05:30</lastmod>
+        <lastmod>2014-01-23T01:28:22+05:30</lastmod>
     </url>
 </urlset>
