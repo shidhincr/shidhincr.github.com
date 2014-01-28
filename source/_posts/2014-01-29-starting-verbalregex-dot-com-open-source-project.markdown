@@ -21,7 +21,7 @@ On the other day, while exploring the Github repositories, this one grabbed my a
 [https://github.com/VerbalExpressions/JSVerbalExpressions](https://github.com/VerbalExpressions/JSVerbalExpressions)
 
 I like this idea so much. In fact, I also were trying to build something similar. Writing regular expressions were always a tedious task for me. I've tried learning it enormous times, but still when I want to construct one, I've to google around.
-
+<!-- more -->
 So that's why this project got my interest. The idea is pretty cool; Instead of remembering all those complex patterns of regular expressions, I can just use the simple API provided by the library. That's really cool!
 
 But again, There's a limitation: It's just a JavaScript library that can be used inside the code only. What I really wanted is an user interface where I can use some simple steps –– mostly like the API methods of the above library –– to build my final regular expression.
