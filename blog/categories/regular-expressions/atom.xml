@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Regular Expressions | S H I D H I N . C . R]]></title>
+  <link href="http://shidhincr.com/blog/categories/regular-expressions/atom.xml" rel="self"/>
+  <link href="http://shidhincr.com/"/>
+  <updated>2014-01-29T01:17:05+05:30</updated>
+  <id>http://shidhincr.com/</id>
+  <author>
+    <name><![CDATA[Shidhin C R]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Starting VerbalRegex.com open source project]]></title>
+    <link href="http://shidhincr.com/2014/01/29/starting-verbalregex-dot-com-open-source-project/"/>
+    <updated>2014-01-29T01:09:00+05:30</updated>
+    <id>http://shidhincr.com/2014/01/29/starting-verbalregex-dot-com-open-source-project</id>
+    <content type="html"><![CDATA[<p><code>New Weekend, Another Open Source Project</code></p>
+
+<p>On the other day, while exploring the Github repositories, this one grabbed my attention.</p>
+
+<p><a href="https://github.com/VerbalExpressions/JSVerbalExpressions">https://github.com/VerbalExpressions/JSVerbalExpressions</a></p>
+
+<p>I like this idea so much. In fact, I also were trying to build something similar. Writing regular expressions were always a tedious task for me. I&rsquo;ve tried learning it enormous times, but still when I want to construct one, I&rsquo;ve to google around.</p>
+
+<p>So that&rsquo;s why this project got my interest. The idea is pretty cool; Instead of remembering all those complex patterns of regular expressions, I can just use the simple API provided by the library. That&rsquo;s really cool!</p>
+
+<p>But again, There&rsquo;s a limitation: It&rsquo;s just a JavaScript library that can be used inside the code only. What I really wanted is an user interface where I can use some simple steps –– mostly like the API methods of the above library –– to build my final regular expression.</p>
+
+<p>That&rsquo;s when I started working on a new website called <a href="VerbalRegex.com">http://wwww.verbalregex.com</a>. The website is not live yet. I&rsquo;ve created the repository in Github and started working on the UI of it. The tools used so far are:</p>
+
+<ul>
+<li>Yeo man for scaffolding</li>
+<li>AngularJS</li>
+<li>Angular UI and Twitter Bootstrap</li>
+<li>Grunt</li>
+<li>Karma ( unit testing )</li>
+</ul>
+
+
+<p>The project is in the very early stage. I&rsquo;ve invited some of my friends for the contribution. Once all the designs and requirements ready, the project will find it&rsquo;s momentum.</p>
+
+<p>Here is a screenshot of what I&rsquo;ve built so far.</p>
+
+<p><img src="https://lh5.googleusercontent.com/-oNcO5nhOIwQ/UugGMrn13mI/AAAAAAAAG_c/DSUWGrNxGAw/w958-h495-no/Screen+Shot+2014-01-29+at+1.03.33+am.png" alt="verbalregex.com" /></p>
+
+<p>I&rsquo;m trying to work more on this project on my spare times. Hope everything will go well !!</p>
+]]></content>
+  </entry>
+  
+</feed>
