@@ -8,6 +8,8 @@ _deploy
 public
 sass.old
 source.old
+_source.old
+source_copy
 source/_stash
 source/stylesheets/screen.css
 vendor
