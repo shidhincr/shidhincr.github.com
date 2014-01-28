@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Angular | S H I D H I N . C . R]]></title>
   <link href="http://shidhincr.com/blog/categories/angular/atom.xml" rel="self"/>
   <link href="http://shidhincr.com/"/>
-  <updated>2014-01-29T01:17:05+05:30</updated>
+  <updated>2014-01-29T01:21:58+05:30</updated>
   <id>http://shidhincr.com/</id>
   <author>
     <name><![CDATA[Shidhin C R]]></name>
@@ -25,6 +25,9 @@
 <p><a href="https://github.com/VerbalExpressions/JSVerbalExpressions">https://github.com/VerbalExpressions/JSVerbalExpressions</a></p>
 
 <p>I like this idea so much. In fact, I also were trying to build something similar. Writing regular expressions were always a tedious task for me. I&rsquo;ve tried learning it enormous times, but still when I want to construct one, I&rsquo;ve to google around.</p>
+
+<!-- more -->
+
 
 <p>So that&rsquo;s why this project got my interest. The idea is pretty cool; Instead of remembering all those complex patterns of regular expressions, I can just use the simple API provided by the library. That&rsquo;s really cool!</p>
 
