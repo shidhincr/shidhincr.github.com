@@ -24,13 +24,15 @@ So that's why this project got my interest. The idea is pretty cool; Instead of 
 
 But again, There's a limitation: It's just a JavaScript library that can be used inside the code only. What I really wanted is an user interface where I can use some simple steps –– mostly like the API methods of the above library –– to build my final regular expression.
 
-That's when I started working on a new website called [http://wwww.verbalregex.com](VerbalRegex.com). The website is not live yet. I've created the repository in Github and started working on the UI of it. The tools used so far are:
-    
-- Yeo man for scaffolding
-- AngularJS 
-- Angular UI and Twitter Bootstrap
-- Grunt
-- Karma ( unit testing )
+That's when I started working on a new website called [http://wwww.verbalregex.com](VerbalRegex.com). The website is not live yet. I've created the repository in Github and started working on the UI of it. 
+
+- The tools used so far are:
+
+  - Yeo man for scaffolding
+  - AngularJS 
+  - Angular UI and Twitter Bootstrap
+  - Grunt
+  - Karma ( unit testing )
 
 The project is in the very early stage. I've invited some of my friends for the contribution. Once all the designs and requirements ready, the project will find it's momentum.
 
