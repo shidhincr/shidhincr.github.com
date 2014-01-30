@@ -13,10 +13,8 @@ categories:
 - Angular
 - Yeoman
 ---
-
-`New Weekend, Another Open Source Project`  
-
-On the other day, while exploring the Github repositories, this one grabbed my attention. 
+ 
+On the other day, while exploring the Github repositories, this one grabbed my attention.
 
 [https://github.com/VerbalExpressions/JSVerbalExpressions](https://github.com/VerbalExpressions/JSVerbalExpressions)
 
@@ -39,6 +37,5 @@ The project is in the very early stage. I've invited some of my friends for the 
 Here is a screenshot of what I've built so far.
 
 ![verbalregex.com](https://lh5.googleusercontent.com/-oNcO5nhOIwQ/UugGMrn13mI/AAAAAAAAG_c/DSUWGrNxGAw/w958-h495-no/Screen+Shot+2014-01-29+at+1.03.33+am.png)
-
 
 I'm trying to work more on this project on my spare times. Hope everything will go well !!
