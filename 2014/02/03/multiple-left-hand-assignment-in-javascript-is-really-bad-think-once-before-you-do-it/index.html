@@ -5,11 +5,11 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Starting VerbalRegex.com open source project</title>
+  <title>Multiple Left-hand assignment in JavaScript, is really bad. Think once before you do it.</title>
   <meta name="author" content="Shidhin C R">
 
   
-  <meta name="description" content="On the other day, while exploring the Github repositories, this one grabbed my attention. https://github.com/VerbalExpressions/JSVerbalExpressions I &hellip;">
+  <meta name="description" content="“JavaScript allows multiple left-hand assignments” You may ask, what does that mean ? Well, if you’re not familiar, in JavaScript you can write the &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -18,7 +18,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://shidhincr.com/2014/01/29/starting-verbalregex-dot-com-open-source-project">
+  <link rel="canonical" href="http://shidhincr.com/2014/02/03/multiple-left-hand-assignment-in-javascript-is-really-bad-think-once-before-you-do-it">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/atom.xml" rel="alternate" title="S H I D H I N . C . R" type="application/atom+xml">
@@ -80,7 +80,7 @@
   
   <header>
     
-      <h1 class="entry-title">Starting VerbalRegex.com Open Source Project</h1>
+      <h1 class="entry-title">Multiple Left-hand Assignment in JavaScript, Is Really Bad. Think Once Before You Do It.</h1>
     
     
       <p class="meta">
@@ -96,7 +96,7 @@
   
 
 
-<time datetime="2014-01-29T01:09:00+05:30" pubdate data-updated="true">Jan 29<span>th</span>, 2014</time>
+<time datetime="2014-02-03T12:04:00+05:30" pubdate data-updated="true">Feb 3<span>rd</span>, 2014</time>
         
          | <a href="#disqus_thread">Comments</a>
         
@@ -105,40 +105,65 @@
   </header>
 
 
-<div class="entry-content"><p>On the other day, while exploring the Github repositories, this one grabbed my attention.</p>
+<div class="entry-content"><p><strong>“JavaScript allows multiple left-hand assignments”</strong></p>
 
-<p><a href="https://github.com/VerbalExpressions/JSVerbalExpressions">https://github.com/VerbalExpressions/JSVerbalExpressions</a></p>
+<p>You may ask, what does that mean ? Well, if you’re not familiar, in JavaScript you can write the variable assignment expressions like this.</p>
 
-<p>I like this idea so much. In fact, I also were trying to build something similar. Writing regular expressions were always a tedious task for me. I&rsquo;ve tried learning it enormous times, but still when I want to construct one, I&rsquo;ve to google around.</p>
-
-<!-- more -->
-
-
-<p>So that&rsquo;s why this project got my interest. The idea is pretty cool; Instead of remembering all those complex patterns of regular expressions, I can just use the simple API provided by the library. That&rsquo;s really cool!</p>
-
-<p>But again, There&rsquo;s a limitation: It&rsquo;s just a JavaScript library that can be used inside the code only. What I really wanted is an user interface where I can use some simple steps –– mostly like the API methods of the above library –– to build my final regular expression.</p>
-
-<p>That&rsquo;s when I started working on a new website called <a href="VerbalRegex.com">http://wwww.verbalregex.com</a>. The website is not live yet. I&rsquo;ve created the repository in Github and started working on the UI of it.</p>
-
-<ul>
-<li><p>The tools used so far are:</p>
-
-<pre><code>- Yeo man for scaffolding
-- AngularJS 
-- Angular UI and Twitter Bootstrap
-- Grunt
-- Karma ( unit testing )
-</code></pre></li>
-</ul>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="kd">var</span> <span class="nx">a</span> <span class="o">=</span> <span class="nx">b</span> <span class="o">=</span> <span class="nx">c</span> <span class="o">=</span> <span class="nx">d</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
-<p>The project is in the very early stage. I&rsquo;ve invited some of my friends for the contribution. Once all the designs and requirements ready, the project will find it&rsquo;s momentum.</p>
+<p>The assignment expressions are always evaluated from right-to-left. So what the above expression actually does is, assign the value <code>10</code> to the variable <code>b</code>, then assign the value of <code>b</code> to <code>c</code> and so on. <!--more-->Finally all the variables will get the value <code>10</code>. This kind of &ldquo;short-hand&rdquo; code will allows you to get rid of the repetitive code; especially when you want to initialise multiple variables with an initial value.</p>
 
-<p>Here is a screenshot of what I&rsquo;ve built so far.</p>
+<h3>And what’s the catch here ?</h3>
 
-<p><img src="https://lh5.googleusercontent.com/-oNcO5nhOIwQ/UugGMrn13mI/AAAAAAAAG_c/DSUWGrNxGAw/w958-h495-no/Screen+Shot+2014-01-29+at+1.03.33+am.png" alt="verbalregex.com" /></p>
+<p>Well, in simple words: <strong>“the scope“</strong>  . To understand that, let’s move the same expression inside a function. Like this:</p>
 
-<p>I&rsquo;m trying to work more on this project on my spare times. Hope everything will go well !!</p>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="kd">function</span> <span class="nx">foo</span> <span class="p">(){</span>
+</span><span class='line'>   <span class="kd">var</span> <span class="nx">a</span> <span class="o">=</span> <span class="nx">b</span> <span class="o">=</span> <span class="nx">c</span> <span class="o">=</span> <span class="nx">d</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>If you expect all of these variables are having a scope local to the function <code>foo</code>, then you’re wrong. What happens here is, the var statement is only applicable to the variable <code>a</code>. And all the other variables are considered with out the <code>var</code> statement, hence will be the global. Try executing foo method, you would see:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nx">foo</span><span class="p">();</span>
+</span><span class='line'>
+</span><span class='line'><span class="nb">window</span><span class="p">.</span><span class="nx">a</span> <span class="c1">// undefined</span>
+</span><span class='line'><span class="nb">window</span><span class="p">.</span><span class="nx">b</span> <span class="c1">// will be 10</span>
+</span><span class='line'><span class="nb">window</span><span class="p">.</span><span class="nx">c</span> <span class="c1">// will be 10</span>
+</span><span class='line'><span class="nb">window</span><span class="p">.</span><span class="nx">d</span> <span class="c1">// will be 10 </span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Yes, that’s the catch ! So avoid multiple left-hand assignments inside any functions. If you’re writing this in global level ( you’re assuming all of your variables to go in global scope ), then this is not at all an issue. So better watch our next time before you do this.</p>
+
+<h3>Final note</h3>
+
+<p>If  you&rsquo;re not convinced and still want to do left-hand assignments, then the right way of doing it is like this:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="kd">function</span> <span class="nx">foo</span><span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>  <span class="kd">var</span> <span class="nx">a</span><span class="p">,</span><span class="nx">b</span><span class="p">,</span><span class="nx">c</span><span class="p">,</span><span class="nx">d</span><span class="p">;</span>
+</span><span class='line'>  <span class="nx">a</span> <span class="o">=</span> <span class="nx">b</span> <span class="o">=</span> <span class="nx">c</span> <span class="o">=</span> <span class="nx">d</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Declaring all the variables in the first line is <strong>one of the good coding style</strong>. This will make sure that you’re not the victim of scope issues and hoisting problems.  So always read about the JavaScript best practices, and adhere to good coding style.</p>
 </div>
 
 
@@ -161,12 +186,12 @@
   
 
 
-<time datetime="2014-01-29T01:09:00+05:30" pubdate data-updated="true">Jan 29<span>th</span>, 2014</time>
+<time datetime="2014-02-03T12:04:00+05:30" pubdate data-updated="true">Feb 3<span>rd</span>, 2014</time>
       
 
 <span class="categories">
   
-    <a class='category' href='/blog/categories/angular/'>Angular</a>, <a class='category' href='/blog/categories/javascript/'>JavaScript</a>, <a class='category' href='/blog/categories/oos/'>OOS</a>, <a class='category' href='/blog/categories/regular-expressions/'>Regular Expressions</a>, <a class='category' href='/blog/categories/verbalrgex/'>VerbalRgex</a>, <a class='category' href='/blog/categories/yeoman/'>Yeoman</a>
+    <a class='category' href='/blog/categories/javascript/'>JavaScript</a>
   
 </span>
 
@@ -175,7 +200,7 @@
     
       <div class="sharing">
   
-  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://shidhincr.com/2014/01/29/starting-verbalregex-dot-com-open-source-project/" data-via="shidhincr" data-counturl="http://shidhincr.com/2014/01/29/starting-verbalregex-dot-com-open-source-project/" >Tweet</a>
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://shidhincr.com/2014/02/03/multiple-left-hand-assignment-in-javascript-is-really-bad-think-once-before-you-do-it/" data-via="shidhincr" data-counturl="http://shidhincr.com/2014/02/03/multiple-left-hand-assignment-in-javascript-is-really-bad-think-once-before-you-do-it/" >Tweet</a>
   
   
   <div class="g-plusone" data-size="medium"></div>
@@ -201,10 +226,8 @@
     </p>
     <p class="meta">
       
-        <a class="basic-alignment left" href="/2013/10/15/octopress-blog-tweaks-adding-author-information-section-below-each-posts/" title="Previous Post: Octopress Blog Tweaks: Adding Author Info Section Below Each Posts">&laquo; Octopress Blog Tweaks: Adding Author Info Section Below Each Posts</a>
+        <a class="basic-alignment left" href="/2014/01/29/starting-verbalregex-dot-com-open-source-project/" title="Previous Post: Starting VerbalRegex.com open source project">&laquo; Starting VerbalRegex.com open source project</a>
       
-      
-        <a class="basic-alignment right" href="/2014/02/03/multiple-left-hand-assignment-in-javascript-is-really-bad-think-once-before-you-do-it/" title="Next Post: Multiple Left-hand assignment in JavaScript, is really bad. Think once before you do it.">Multiple Left-hand assignment in JavaScript, is really bad. Think once before you do it. &raquo;</a>
       
     </p>
   </footer>
@@ -309,8 +332,8 @@
       
         
         // var disqus_developer = 1;
-        var disqus_identifier = 'http://shidhincr.com/2014/01/29/starting-verbalregex-dot-com-open-source-project/';
-        var disqus_url = 'http://shidhincr.com/2014/01/29/starting-verbalregex-dot-com-open-source-project/';
+        var disqus_identifier = 'http://shidhincr.com/2014/02/03/multiple-left-hand-assignment-in-javascript-is-really-bad-think-once-before-you-do-it/';
+        var disqus_url = 'http://shidhincr.com/2014/02/03/multiple-left-hand-assignment-in-javascript-is-really-bad-think-once-before-you-do-it/';
         var disqus_script = 'embed.js';
       
     (function () {

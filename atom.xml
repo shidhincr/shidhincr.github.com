@@ -4,7 +4,7 @@
   <title><![CDATA[S H I D H I N . C . R]]></title>
   <link href="http://shidhincr.com/atom.xml" rel="self"/>
   <link href="http://shidhincr.com/"/>
-  <updated>2014-01-30T09:25:14+05:30</updated>
+  <updated>2014-02-03T12:22:00+05:30</updated>
   <id>http://shidhincr.com/</id>
   <author>
     <name><![CDATA[Shidhin C R]]></name>
@@ -12,6 +12,73 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Multiple Left-hand assignment in JavaScript, is really bad. Think once before you do it.]]></title>
+    <link href="http://shidhincr.com/2014/02/03/multiple-left-hand-assignment-in-javascript-is-really-bad-think-once-before-you-do-it/"/>
+    <updated>2014-02-03T12:04:00+05:30</updated>
+    <id>http://shidhincr.com/2014/02/03/multiple-left-hand-assignment-in-javascript-is-really-bad-think-once-before-you-do-it</id>
+    <content type="html"><![CDATA[<p><strong>“JavaScript allows multiple left-hand assignments”</strong></p>
+
+<p>You may ask, what does that mean ? Well, if you’re not familiar, in JavaScript you can write the variable assignment expressions like this.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="kd">var</span> <span class="nx">a</span> <span class="o">=</span> <span class="nx">b</span> <span class="o">=</span> <span class="nx">c</span> <span class="o">=</span> <span class="nx">d</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>The assignment expressions are always evaluated from right-to-left. So what the above expression actually does is, assign the value <code>10</code> to the variable <code>b</code>, then assign the value of <code>b</code> to <code>c</code> and so on. <!--more-->Finally all the variables will get the value <code>10</code>. This kind of &ldquo;short-hand&rdquo; code will allows you to get rid of the repetitive code; especially when you want to initialise multiple variables with an initial value.</p>
+
+<h3>And what’s the catch here ?</h3>
+
+<p>Well, in simple words: <strong>“the scope“</strong>  . To understand that, let’s move the same expression inside a function. Like this:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="kd">function</span> <span class="nx">foo</span> <span class="p">(){</span>
+</span><span class='line'>   <span class="kd">var</span> <span class="nx">a</span> <span class="o">=</span> <span class="nx">b</span> <span class="o">=</span> <span class="nx">c</span> <span class="o">=</span> <span class="nx">d</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>If you expect all of these variables are having a scope local to the function <code>foo</code>, then you’re wrong. What happens here is, the var statement is only applicable to the variable <code>a</code>. And all the other variables are considered with out the <code>var</code> statement, hence will be the global. Try executing foo method, you would see:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nx">foo</span><span class="p">();</span>
+</span><span class='line'>
+</span><span class='line'><span class="nb">window</span><span class="p">.</span><span class="nx">a</span> <span class="c1">// undefined</span>
+</span><span class='line'><span class="nb">window</span><span class="p">.</span><span class="nx">b</span> <span class="c1">// will be 10</span>
+</span><span class='line'><span class="nb">window</span><span class="p">.</span><span class="nx">c</span> <span class="c1">// will be 10</span>
+</span><span class='line'><span class="nb">window</span><span class="p">.</span><span class="nx">d</span> <span class="c1">// will be 10 </span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Yes, that’s the catch ! So avoid multiple left-hand assignments inside any functions. If you’re writing this in global level ( you’re assuming all of your variables to go in global scope ), then this is not at all an issue. So better watch our next time before you do this.</p>
+
+<h3>Final note</h3>
+
+<p>If  you&rsquo;re not convinced and still want to do left-hand assignments, then the right way of doing it is like this:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="kd">function</span> <span class="nx">foo</span><span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>  <span class="kd">var</span> <span class="nx">a</span><span class="p">,</span><span class="nx">b</span><span class="p">,</span><span class="nx">c</span><span class="p">,</span><span class="nx">d</span><span class="p">;</span>
+</span><span class='line'>  <span class="nx">a</span> <span class="o">=</span> <span class="nx">b</span> <span class="o">=</span> <span class="nx">c</span> <span class="o">=</span> <span class="nx">d</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Declaring all the variables in the first line is <strong>one of the good coding style</strong>. This will make sure that you’re not the victim of scope issues and hoisting problems.  So always read about the JavaScript best practices, and adhere to good coding style.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Starting VerbalRegex.com open source project]]></title>
@@ -31,14 +98,17 @@
 
 <p>But again, There&rsquo;s a limitation: It&rsquo;s just a JavaScript library that can be used inside the code only. What I really wanted is an user interface where I can use some simple steps –– mostly like the API methods of the above library –– to build my final regular expression.</p>
 
-<p>That&rsquo;s when I started working on a new website called <a href="VerbalRegex.com">http://wwww.verbalregex.com</a>. The website is not live yet. I&rsquo;ve created the repository in Github and started working on the UI of it. The tools used so far are:</p>
+<p>That&rsquo;s when I started working on a new website called <a href="VerbalRegex.com">http://wwww.verbalregex.com</a>. The website is not live yet. I&rsquo;ve created the repository in Github and started working on the UI of it.</p>
 
 <ul>
-<li>Yeo man for scaffolding</li>
-<li>AngularJS</li>
-<li>Angular UI and Twitter Bootstrap</li>
-<li>Grunt</li>
-<li>Karma ( unit testing )</li>
+<li><p>The tools used so far are:</p>
+
+<pre><code>- Yeo man for scaffolding
+- AngularJS 
+- Angular UI and Twitter Bootstrap
+- Grunt
+- Karma ( unit testing )
+</code></pre></li>
 </ul>
 
 

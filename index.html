@@ -9,7 +9,7 @@
   <meta name="author" content="Shidhin C R">
 
   
-  <meta name="description" content="On the other day, while exploring the Github repositories, this one grabbed my attention. https://github.com/VerbalExpressions/JSVerbalExpressions I &hellip;">
+  <meta name="description" content="“JavaScript allows multiple left-hand assignments” You may ask, what does that mean ? Well, if you’re not familiar, in JavaScript you can write the &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -77,6 +77,56 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/2014/02/03/multiple-left-hand-assignment-in-javascript-is-really-bad-think-once-before-you-do-it/">Multiple Left-hand Assignment in JavaScript, Is Really Bad. Think Once Before You Do It.</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-02-03T12:04:00+05:30" pubdate data-updated="true">Feb 3<span>rd</span>, 2014</time>
+        
+         | <a href="/2014/02/03/multiple-left-hand-assignment-in-javascript-is-really-bad-think-once-before-you-do-it/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p><strong>“JavaScript allows multiple left-hand assignments”</strong></p>
+
+<p>You may ask, what does that mean ? Well, if you’re not familiar, in JavaScript you can write the variable assignment expressions like this.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="kd">var</span> <span class="nx">a</span> <span class="o">=</span> <span class="nx">b</span> <span class="o">=</span> <span class="nx">c</span> <span class="o">=</span> <span class="nx">d</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>The assignment expressions are always evaluated from right-to-left. So what the above expression actually does is, assign the value <code>10</code> to the variable <code>b</code>, then assign the value of <code>b</code> to <code>c</code> and so on. </div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/2014/02/03/multiple-left-hand-assignment-in-javascript-is-really-bad-think-once-before-you-do-it/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
   
   
     <article>
@@ -295,6 +345,10 @@
 </div> <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/2014/02/03/multiple-left-hand-assignment-in-javascript-is-really-bad-think-once-before-you-do-it/">Multiple Left-hand Assignment in JavaScript, Is Really Bad. Think Once Before You Do It.</a>
+      </li>
     
       <li class="post">
         <a href="/2014/01/29/starting-verbalregex-dot-com-open-source-project/">Starting VerbalRegex.com Open Source Project</a>
