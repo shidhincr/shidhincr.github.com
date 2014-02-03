@@ -28,11 +28,11 @@ That's when I started working on a new website called [http://wwww.verbalregex.c
 
 - The tools used so far are:
 
-  - Yeo man for scaffolding
-  - AngularJS 
-  - Angular UI and Twitter Bootstrap
-  - Grunt
-  - Karma ( unit testing )
+	  - Yeo man for scaffolding
+	  - AngularJS 
+	  - Angular UI and Twitter Bootstrap
+	  - Grunt
+	  - Karma ( unit testing )
 
 The project is in the very early stage. I've invited some of my friends for the contribution. Once all the designs and requirements ready, the project will find it's momentum.
 
