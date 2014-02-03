@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Category: arithmetic expressions | S H I D H I N . C . R]]></title>
-  <link href="http://shidhincr.com/blog/categories/arithmetic-expressions/atom.xml" rel="self"/>
-  <link href="http://shidhincr.com/"/>
-  <updated>2014-02-04T01:46:24+05:30</updated>
-  <id>http://shidhincr.com/</id>
+  <title><![CDATA[Category: arithmetic expressions | Web Cod . in]]></title>
+  <link href="http://webcod.in/blog/categories/arithmetic-expressions/atom.xml" rel="self"/>
+  <link href="http://webcod.in/"/>
+  <updated>2014-02-04T02:10:55+05:30</updated>
+  <id>http://webcod.in/</id>
   <author>
     <name><![CDATA[Shidhin C R]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[ Some Gotchas In Arithmetic Expression Evaluation : JavaScript]]></title>
-    <link href="http://shidhincr.com/2013/09/26/some-gotchas-in-arithmetic-expression-evaluation-javascript/"/>
+    <link href="http://webcod.in/2013/09/26/some-gotchas-in-arithmetic-expression-evaluation-javascript/"/>
     <updated>2013-09-26T16:15:00+05:30</updated>
-    <id>http://shidhincr.com/2013/09/26/some-gotchas-in-arithmetic-expression-evaluation-javascript</id>
+    <id>http://webcod.in/2013/09/26/some-gotchas-in-arithmetic-expression-evaluation-javascript</id>
     <content type="html"><![CDATA[<h2>Solve a small problem in JavaScript</h2>
 
 <p>This post is just for recollecting some of the basics of JavaScript. Let&rsquo;s start with a small JavaScript code. Here is the code –– Solve it with out using the console.</p>

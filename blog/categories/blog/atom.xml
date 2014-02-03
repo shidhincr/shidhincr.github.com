@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Category: blog | S H I D H I N . C . R]]></title>
-  <link href="http://shidhincr.com/blog/categories/blog/atom.xml" rel="self"/>
-  <link href="http://shidhincr.com/"/>
-  <updated>2014-02-04T01:46:24+05:30</updated>
-  <id>http://shidhincr.com/</id>
+  <title><![CDATA[Category: blog | Web Cod . in]]></title>
+  <link href="http://webcod.in/blog/categories/blog/atom.xml" rel="self"/>
+  <link href="http://webcod.in/"/>
+  <updated>2014-02-04T02:10:55+05:30</updated>
+  <id>http://webcod.in/</id>
   <author>
     <name><![CDATA[Shidhin C R]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Starting my new blog: Finally Octopress]]></title>
-    <link href="http://shidhincr.com/2013/09/25/starting-my-new-blog-finally-octopress/"/>
+    <link href="http://webcod.in/2013/09/25/starting-my-new-blog-finally-octopress/"/>
     <updated>2013-09-25T07:36:00+05:30</updated>
-    <id>http://shidhincr.com/2013/09/25/starting-my-new-blog-finally-octopress</id>
+    <id>http://webcod.in/2013/09/25/starting-my-new-blog-finally-octopress</id>
     <content type="html"><![CDATA[<h2>Finally Octopress !!</h2>
 
 <p>I wanted to start writing blog ever since I started coding. I never had a success setting it up because of time constraints and many other reasons. During this time, I&rsquo;ve evaluated a number of blogging platforms and eventually I thought of using wordpress as my blogging platform when I start my blog.</p>

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Category: Yeoman | S H I D H I N . C . R]]></title>
-  <link href="http://shidhincr.com/blog/categories/yeoman/atom.xml" rel="self"/>
-  <link href="http://shidhincr.com/"/>
-  <updated>2014-02-04T01:46:24+05:30</updated>
-  <id>http://shidhincr.com/</id>
+  <title><![CDATA[Category: Yeoman | Web Cod . in]]></title>
+  <link href="http://webcod.in/blog/categories/yeoman/atom.xml" rel="self"/>
+  <link href="http://webcod.in/"/>
+  <updated>2014-02-04T02:10:55+05:30</updated>
+  <id>http://webcod.in/</id>
   <author>
     <name><![CDATA[Shidhin C R]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Starting VerbalRegex.com open source project]]></title>
-    <link href="http://shidhincr.com/2014/01/29/starting-verbalregex-dot-com-open-source-project/"/>
+    <link href="http://webcod.in/2014/01/29/starting-verbalregex-dot-com-open-source-project/"/>
     <updated>2014-01-29T01:09:00+05:30</updated>
-    <id>http://shidhincr.com/2014/01/29/starting-verbalregex-dot-com-open-source-project</id>
+    <id>http://webcod.in/2014/01/29/starting-verbalregex-dot-com-open-source-project</id>
     <content type="html"><![CDATA[<p>On the other day, while exploring the Github repositories, this one grabbed my attention.</p>
 
 <p><a href="https://github.com/VerbalExpressions/JSVerbalExpressions">https://github.com/VerbalExpressions/JSVerbalExpressions</a></p>

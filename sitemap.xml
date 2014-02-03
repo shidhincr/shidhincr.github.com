@@ -1,43 +1,41 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <urlset xmlns='http://www.sitemaps.org/schemas/sitemap/0.9'>
     <url>
-        <loc>http://shidhincr.com/2013/09/25/starting-my-new-blog-finally-octopress/</loc>
+        <loc>http://webcod.in/2013/09/25/starting-my-new-blog-finally-octopress/</loc>
         <lastmod>2014-02-03T18:25:01+05:30</lastmod>
     </url>
     <url>
         <loc>
-            http://shidhincr.com/2013/09/26/some-gotchas-in-arithmetic-expression-evaluation-javascript/
+            http://webcod.in/2013/09/26/some-gotchas-in-arithmetic-expression-evaluation-javascript/
         </loc>
         <lastmod>2014-02-03T18:25:01+05:30</lastmod>
     </url>
     <url>
         <loc>
-            http://shidhincr.com/2013/10/15/octopress-blog-tweaks-adding-author-information-section-below-each-posts/
+            http://webcod.in/2013/10/15/octopress-blog-tweaks-adding-author-information-section-below-each-posts/
         </loc>
+        <lastmod>2014-02-03T18:25:01+05:30</lastmod>
+    </url>
+    <url>
+        <loc>http://webcod.in/2014/01/29/starting-verbalregex-dot-com-open-source-project/</loc>
         <lastmod>2014-02-03T18:25:01+05:30</lastmod>
     </url>
     <url>
         <loc>
-            http://shidhincr.com/2014/01/29/starting-verbalregex-dot-com-open-source-project/
+            http://webcod.in/2014/02/03/multiple-left-hand-assignment-in-javascript-is-really-bad-think-once-before-you-do-it/
         </loc>
         <lastmod>2014-02-03T18:25:01+05:30</lastmod>
     </url>
     <url>
-        <loc>
-            http://shidhincr.com/2014/02/03/multiple-left-hand-assignment-in-javascript-is-really-bad-think-once-before-you-do-it/
-        </loc>
+        <loc>http://webcod.in/blog/archives/</loc>
         <lastmod>2014-02-03T18:25:01+05:30</lastmod>
     </url>
     <url>
-        <loc>http://shidhincr.com/blog/archives/</loc>
+        <loc>http://webcod.in/</loc>
         <lastmod>2014-02-03T18:25:01+05:30</lastmod>
     </url>
     <url>
-        <loc>http://shidhincr.com/</loc>
-        <lastmod>2014-02-03T18:25:01+05:30</lastmod>
-    </url>
-    <url>
-        <loc>http://shidhincr.com/robots.txt</loc>
+        <loc>http://webcod.in/robots.txt</loc>
         <lastmod>2014-02-03T16:40:43+05:30</lastmod>
     </url>
 </urlset>
