@@ -4,7 +4,7 @@
   <title><![CDATA[Category: JavaScript | S H I D H I N . C . R]]></title>
   <link href="http://shidhincr.com/blog/categories/javascript/atom.xml" rel="self"/>
   <link href="http://shidhincr.com/"/>
-  <updated>2014-02-03T15:10:51+05:30</updated>
+  <updated>2014-02-03T15:22:00+05:30</updated>
   <id>http://shidhincr.com/</id>
   <author>
     <name><![CDATA[Shidhin C R]]></name>
@@ -14,7 +14,7 @@
 
   
   <entry>
-    <title type="html"><![CDATA[Multiple Left-hand assignment in JavaScript, is really bad. Think once before you do it.]]></title>
+    <title type="html"><![CDATA[Multiple Left-hand assignment in JavaScript, is really bad. Think before you do it.]]></title>
     <link href="http://shidhincr.com/2014/02/03/multiple-left-hand-assignment-in-javascript-is-really-bad-think-once-before-you-do-it/"/>
     <updated>2014-02-03T12:04:00+05:30</updated>
     <id>http://shidhincr.com/2014/02/03/multiple-left-hand-assignment-in-javascript-is-really-bad-think-once-before-you-do-it</id>
@@ -55,7 +55,7 @@ window.d // will be 10</p>
 
 <p>```</p>
 
-<p>Yes, that’s the catch ! So avoid multiple left-hand assignments inside any functions. If you’re writing this in global level ( you’re assuming all of your variables to go in global scope ), then this is not at all an issue. So better watch our next time before you do this.</p>
+<p>Yes, that’s the catch ! So avoid multiple left-hand assignments inside any functions. If you’re writing this in global level ( you’re assuming all of your variables to go in global scope ), then this is not at all an issue. So better watch out next time before you do this.</p>
 
 <h3>Final note</h3>
 
