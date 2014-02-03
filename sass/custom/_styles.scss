@@ -17,6 +17,19 @@ body > header {
 body > footer {
 	@include shadow-box(none,0 15px 15px #333,0.3);
 }
+#content{
+  background: #fff;
+  .entry-content {
+    font-family: HelveticaNeue-Light, 'Helvetica Neue Light', 'Helvetica Neue', Helvetica, Arial, 'Lucida Grande', sans-serif;
+  }
+  .blog-index a[rel=full-article] {
+    border:1px dashed; 
+  }
+  p code, li code {
+    background: #EBF5FF;
+    border: 1px solid #A0BEEC; 
+  }
+}
 .about {
 	font-style: italic;
 	background-color: #FFF;
