@@ -4,7 +4,7 @@
   <title><![CDATA[S H I D H I N . C . R]]></title>
   <link href="http://shidhincr.com/atom.xml" rel="self"/>
   <link href="http://shidhincr.com/"/>
-  <updated>2014-02-03T12:22:00+05:30</updated>
+  <updated>2014-02-03T15:10:51+05:30</updated>
   <id>http://shidhincr.com/</id>
   <author>
     <name><![CDATA[Shidhin C R]]></name>
@@ -27,7 +27,7 @@
 </span></code></pre></td></tr></table></div></figure>
 
 
-<p>The assignment expressions are always evaluated from right-to-left. So what the above expression actually does is, assign the value <code>10</code> to the variable <code>b</code>, then assign the value of <code>b</code> to <code>c</code> and so on. <!--more-->Finally all the variables will get the value <code>10</code>. This kind of &ldquo;short-hand&rdquo; code will allows you to get rid of the repetitive code; especially when you want to initialise multiple variables with an initial value.</p>
+<p>The assignment expressions are always evaluated from right-to-left. So what the above expression actually does is, assign the value <code>10</code> to the variable <code>d</code>, then assign the value of <code>d</code> to <code>c</code> and so on. <!--more-->Finally all the variables will get the value <code>10</code>. This kind of &ldquo;short-hand&rdquo; code will allows you to get rid of the repetitive code; especially when you want to initialise multiple variables with an initial value.</p>
 
 <h3>And what’s the catch here ?</h3>
 
