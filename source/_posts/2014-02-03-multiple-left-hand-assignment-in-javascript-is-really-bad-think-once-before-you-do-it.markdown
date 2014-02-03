@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Multiple Left-hand assignment in JavaScript, is really bad. Think once before you do it."
+title: "Multiple Left-hand assignment in JavaScript, is really bad. Think before you do it."
 date: 2014-02-03 12:04
 comments: true
 author: Shidhin
@@ -19,7 +19,7 @@ var a = b = c = d = 10;
 
 ```
 
-The assignment expressions are always evaluated from right-to-left. So what the above expression actually does is, assign the value `10` to the variable `b`, then assign the value of `b` to `c` and so on. <!--more-->Finally all the variables will get the value `10`. This kind of "short-hand" code will allows you to get rid of the repetitive code; especially when you want to initialise multiple variables with an initial value.
+The assignment expressions are always evaluated from right-to-left. So what the above expression actually does is, assign the value `10` to the variable `d`, then assign the value of `d` to `c` and so on. <!--more-->Finally all the variables will get the value `10`. This kind of "short-hand" code will allows you to get rid of the repetitive code; especially when you want to initialise multiple variables with an initial value.
 
 ### And what’s the catch here ?
 
@@ -46,7 +46,7 @@ window.d // will be 10
 
 ```
 
-Yes, that’s the catch ! So avoid multiple left-hand assignments inside any functions. If you’re writing this in global level ( you’re assuming all of your variables to go in global scope ), then this is not at all an issue. So better watch our next time before you do this.
+Yes, that’s the catch ! So avoid multiple left-hand assignments inside any functions. If you’re writing this in global level ( you’re assuming all of your variables to go in global scope ), then this is not at all an issue. So better watch out next time before you do this.
 
 ### Final note
 
