@@ -16,6 +16,7 @@ body > header {
 }
 body > footer {
 	@include shadow-box(none,0 15px 15px #333,0.3);
+  margin-bottom: 10px;
 }
 #content{
   background: #fff;
