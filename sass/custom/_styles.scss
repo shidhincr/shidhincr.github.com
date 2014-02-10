@@ -2,14 +2,14 @@
 // Add styles here to make changes without digging in too much
 
 html {
-	background-color: rgba(0,0,0,0.6);
+	background-color: rgba(241,241,241,0.6);
 }
 body {
 	background: transparent;
 	@include shadow-box(none,0 0 15px #333);
 }
 body > header {
-	background: url('../images/bg.png') 0 0;
+	background: #333 url('../images/bg.png') 0 0;
 	h1 {
 		width: 100%;
 	}
@@ -18,17 +18,29 @@ body > footer {
 	@include shadow-box(none,0 15px 15px #333,0.3);
   margin-bottom: 10px;
 }
+a,a:visited {
+    text-decoration: none;
+    color: #1863A1
+}
+
+a:hover,article header h1 a:hover {
+    color: #0181EB;
+    text-decoration: none
+}
 #content{
   background: #fff;
   .entry-content {
-    font-family: HelveticaNeue-Light, 'Helvetica Neue Light', 'Helvetica Neue', Helvetica, Arial, 'Lucida Grande', sans-serif;
+    // font-family: HelveticaNeue-Light, 'Helvetica Neue Light', 'Helvetica Neue', Helvetica, Arial, 'Lucida Grande', sans-serif;
+    font-family: Palatino, Georgia, Times, 'Times New Roman';
+    font-size: 1.1em;
+    line-height: 1.5em;
   }
   .blog-index a[rel=full-article] {
     border:1px dashed; 
   }
   p code, li code {
-    background: #EBF5FF;
-    border: 1px solid #A0BEEC; 
+    background: #eee;
+    border: 1px solid #bbb; 
   }
 }
 .about {
