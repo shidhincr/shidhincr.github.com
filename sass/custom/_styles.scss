@@ -34,6 +34,9 @@ a:hover,article header h1 a:hover {
     font-family: Palatino, Georgia, Times, 'Times New Roman';
     font-size: 1.1em;
     line-height: 1.5em;
+    a,a:visited {
+        text-decoration: underline;
+    }
   }
   .blog-index a[rel=full-article] {
     border:1px dashed; 
