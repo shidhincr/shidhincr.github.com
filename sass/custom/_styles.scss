@@ -31,9 +31,9 @@ a:hover,article header h1 a:hover {
   background: #fff;
   .entry-content {
     // font-family: HelveticaNeue-Light, 'Helvetica Neue Light', 'Helvetica Neue', Helvetica, Arial, 'Lucida Grande', sans-serif;
-    font-family: Palatino, Georgia, Times, 'Times New Roman';
+    font-family: Georgia, HelveticaNeue-Light, 'Helvetica Neue Light', 'Helvetica Neue', Helvetica, Times, 'Times New Roman',Arial, 'Lucida Grande', sans-serif;
     font-size: 1.1em;
-    line-height: 1.5em;
+    line-height: 1.7em;
     a,a:visited {
         text-decoration: underline;
     }
@@ -42,8 +42,9 @@ a:hover,article header h1 a:hover {
     border:1px dashed; 
   }
   p code, li code {
-    background: #eee;
-    border: 1px solid #bbb; 
+    background: #f5f5f5;
+    border: 1px dashed #bbb;
+    color: #DD7033; 
   }
 }
 .about {
