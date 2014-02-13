@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Scope | Coding The Web]]></title>
   <link href="http://webcod.in/blog/categories/scope/atom.xml" rel="self"/>
   <link href="http://webcod.in/"/>
-  <updated>2014-02-13T23:31:04+05:30</updated>
+  <updated>2014-02-13T23:44:17+05:30</updated>
   <id>http://webcod.in/</id>
   <author>
     <name><![CDATA[Shidhin C R]]></name>
@@ -29,7 +29,7 @@
 
 <h2>Scopes in AngularJS</h2>
 
-<p>Unlike the other MVC frameworks, AngularJs doesn&rsquo;t have any <code>model</code> classes or functons to create <code>model</code> objects. Instead, AngularJs extended the plain JavaScript object with custom methods and properties. This special object, also known as the <code>scope</code> in AngularJs terms; It works as a glue between the view and other parts ( directives, controllers and services ) of the AngularJs application.</p>
+<p>Unlike the other MVC frameworks, AngularJs doesn&rsquo;t have any <code>model</code> classes or functions to create <code>model</code> objects. Instead, AngularJs extended the plain JavaScript object with custom methods and properties. This special object, also known as the <code>scope</code> in AngularJs terms; It works as a glue between the view and other parts ( directives, controllers and services ) of the AngularJs application.</p>
 
 <p>Whenever the AngularJs application is bootstrapped, a <code>rootScope</code> object is created. All the scopes created by controllers,directives,services are always inherited from this <code>rootScope</code>. This pattern is applicable to any nested controllers, directives added inside any controllers..etc. The point you need to remember is, <code>scopes</code> will be nested inside the AngularJs application and it&rsquo;ll always start from the <code>rootScope</code>. Before going to the next section, get a good grasp on how <code>scope</code> works. See this link :  <a href="https://github.com/angular/angular.js/wiki/Understanding-Scopes">Scopes in AngularJS</a>.</p>
 
@@ -186,7 +186,7 @@ randomColor = function for generating random color code
     }
 </code></pre>
 
-<p>Let&rsquo;s check the directive template. We can see that these properties are referenced there. This means, these properties are finally going to be used inside our directives template or the directive link function. Their behavior depends on the values –– also known as  <strong><em>Prefixes</em></strong>  –– provided. These  <strong><em>Prefixes</em></strong> are basically used to bind the parent scope&rsquo;s methods and properties to the directive scope.</p>
+<p>Let&rsquo;s check the directive template. We can see that these properties are referenced there. This means, these properties are finally going to be used inside our directives template or the directive link function. Their behaviour depends on the values –– also known as  <strong><em>Prefixes</em></strong>  –– provided. These  <strong><em>Prefixes</em></strong> are basically used to bind the parent scope&rsquo;s methods and properties to the directive scope.</p>
 
 <p>There&rsquo;re 3 types of prefixes AngularJS provides.</p>
 
@@ -211,7 +211,7 @@ randomColor = function for generating random color code
 <p>
 ```</p>
 
-<p>When the directive encounters a prefix in the scope object, it will try to map it with the curresponding attribute of the directive element.  It&rsquo;ll try to map the same attribute name if the prefix is not followed by extra name. For example:</p>
+<p>When the directive encounters a prefix in the scope object, it will try to map it with the corresponding attribute of the directive element.  It&rsquo;ll try to map the same attribute name if the prefix is not followed by extra name. For example:</p>
 
 <p>```javascript
 scope : {</p>
