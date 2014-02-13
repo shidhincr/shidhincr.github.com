@@ -4,7 +4,7 @@
   <title><![CDATA[Coding The Web]]></title>
   <link href="http://webcod.in/atom.xml" rel="self"/>
   <link href="http://webcod.in/"/>
-  <updated>2014-02-13T17:28:55+05:30</updated>
+  <updated>2014-02-13T23:31:04+05:30</updated>
   <id>http://webcod.in/</id>
   <author>
     <name><![CDATA[Shidhin C R]]></name>
@@ -12,6 +12,303 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Mastering the scope of the directives in AngularJS]]></title>
+    <link href="http://webcod.in/2014/02/11/mastering-the-scope-of-a-directive-in-angularjs/"/>
+    <updated>2014-02-11T08:26:00+05:30</updated>
+    <id>http://webcod.in/2014/02/11/mastering-the-scope-of-a-directive-in-angularjs</id>
+    <content type="html"><![CDATA[<p><img src="https://lh5.googleusercontent.com/-XOGfvAHr7HQ/UvoUItkZMZI/AAAAAAAAHJk/IJz5JcUB9dw/w520-h274-no/scopes_in_directives.png" alt="" /></p>
+
+<h2>What are Directives</h2>
+
+<p>Directives are one of the most powerful features of AngularJs. You can imagine them as the building blocks ( aka re-usable components ) of any AngularJs application. Mastering the entire directives, is strictly out of topic for this article. For that purpose, I would really recommend this <a href="http://www.packtpub.com/angularjs-directives/book">book</a> as it has covered the nuts and bolts of them. And here, we&rsquo;ll discussing a small part of the directives called : &ldquo;<strong>Directive scope</strong>&rdquo;.</p>
+
+<!--more-->
+
+
+<h2>Scopes in AngularJS</h2>
+
+<p>Unlike the other MVC frameworks, AngularJs doesn&rsquo;t have any <code>model</code> classes or functons to create <code>model</code> objects. Instead, AngularJs extended the plain JavaScript object with custom methods and properties. This special object, also known as the <code>scope</code> in AngularJs terms; It works as a glue between the view and other parts ( directives, controllers and services ) of the AngularJs application.</p>
+
+<p>Whenever the AngularJs application is bootstrapped, a <code>rootScope</code> object is created. All the scopes created by controllers,directives,services are always inherited from this <code>rootScope</code>. This pattern is applicable to any nested controllers, directives added inside any controllers..etc. The point you need to remember is, <code>scopes</code> will be nested inside the AngularJs application and it&rsquo;ll always start from the <code>rootScope</code>. Before going to the next section, get a good grasp on how <code>scope</code> works. See this link :  <a href="https://github.com/angular/angular.js/wiki/Understanding-Scopes">Scopes in AngularJS</a>.</p>
+
+<h2>Scope inside a directive</h2>
+
+<p><em><strong>Note</strong>: This section assumes you&rsquo;ve prior knowledge of creating  a simple directive</em></p>
+
+<p>All directives always have a scope associated with it. This scope object can be accessed inside the directive&rsquo;s link function. Same way, all the methods and properties of the scope will be available inside the directive&rsquo;s template also.
+By default, a directive will not have it&rsquo;s own scope. So the directive will share the the same scope of it&rsquo;s parent ( Controller scope ) where it&rsquo;s been used. But there&rsquo;s always we can force the directive to create a new scope by changing it&rsquo;s directive definition object. A <code>directive definition object</code> ( let&rsquo;s call it as  <em>DDO</em> ) is used to configure a directive when it&rsquo;s defined –– to know more about it check AngularJs docs about directives <a href="http://docs.angularjs.org/guide/directive">link</a>. The <em>DDO</em> has a  property called <code>scope</code> and this is used for setting the scope of the directive. Let&rsquo;s see the example below:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="kd">var</span> <span class="nx">app</span> <span class="o">=</span> <span class="nx">angular</span><span class="p">.</span><span class="nx">module</span><span class="p">(</span><span class="s2">&quot;test&quot;</span><span class="p">,[]);</span>
+</span><span class='line'><span class="nx">app</span><span class="p">.</span><span class="nx">directive</span><span class="p">(</span><span class="s2">&quot;myDirective&quot;</span><span class="p">,</span><span class="kd">function</span><span class="p">(){</span>
+</span><span class='line'>  <span class="k">return</span> <span class="p">{</span>
+</span><span class='line'>      <span class="nx">restrict</span><span class="o">:</span> <span class="s2">&quot;EA&quot;</span><span class="p">,</span>
+</span><span class='line'>      <span class="nx">scope</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+</span><span class='line'>      <span class="nx">link</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">scope</span><span class="p">,</span><span class="nx">elem</span><span class="p">,</span><span class="nx">attr</span><span class="p">){</span>
+</span><span class='line'>          <span class="c1">// code goes here ...</span>
+</span><span class='line'>          <span class="p">}</span>
+</span><span class='line'>      <span class="p">}</span>    
+</span><span class='line'>   <span class="p">});</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Setting a &ldquo;false&rdquo; value to the <code>scope</code> property in <em>DDO</em> is same as having <strong>no</strong> own scope for the directive. At this time, directive will share the parent scope. The other values to the scope property are &ldquo;true&rdquo; and &ldquo;{ }&rdquo;. In the next section, we&rsquo;ll see how these values affect the directive&rsquo;s behaviour.</p>
+
+<h2>Different types of directive scopes</h2>
+
+<p><u><strong>Scope :</u>  False</strong>  (  Parent scope  will be shared to directive )</p>
+
+<p>Let&rsquo;s try another example. We&rsquo;re creating a simple directive that will render a div and a textbox to show and change a name. The <code>name</code> property get&rsquo;s the initial value from the <code>Ctrl1</code> scope ( the parent scope of the directive ).</p>
+
+<iframe style="width: 100%; height: 300px" src="http://jsfiddle.net/shidhincr/eyNYw/4/embedded/js,resources,html,css,result/light/"></iframe>
+
+
+<p>Try changing the name inside the textbox; we can see that the name inside the header also got changed. Since there&rsquo;s no scope provided in the <em>DDO</em>, the directive gets it&rsquo;s parent scope shared to it. Hence any changes we make inside the directive is actually reflecting in the parent scope. The parent <code>Ctrl1</code> has  a method to reverse the name; this method gets triggered when you click on the header. Now if you observe, by clicking on the header will reverse the name inside the directive also.</p>
+
+<p><u> <strong>Scope :</u> True</strong>  ( New child scope will be created for the directive )</p>
+
+<p>It&rsquo;s time for the directive to get some own scope. By setting &ldquo;true&rdquo; to the scope property, AngularJs will create a new scope object and set to the directive. This new scope created, will be prototypically inherited from it&rsquo;s parent scope. So instead of sharing the actual parent scope to directive, it&rsquo;s going to get a scope object inherited from the parent scope.</p>
+
+<p>The exact difference between setting <code>scope: true</code> and <code>scope: false</code> is like this:</p>
+
+<ul>
+<li>When scope is set to &ldquo;<strong>true</strong>&rdquo;, there&rsquo;s explicitly a new scope object created for the directive. Any changes made inside the directive will affect the child scope and not the parent scope. Since the child scope is inherited from the parent scope, any changes made in the <code>Ctrl1</code> ( the parent scope ) will affect the child scope also.</li>
+<li>When scope is set to &ldquo;<strong>false</strong>&rdquo;, the <code>Ctrl1</code> and directive are sharing the same scope. This means any changes happening in the controller or directive will reflect in both places.</li>
+</ul>
+
+
+<p>Let&rsquo;s look at the following fiddle to make it more clear :</p>
+
+<iframe style="width: 100%; height: 300px" src="http://jsfiddle.net/shidhincr/q3kex/3/embedded/js,resources,html,css,result/light/"></iframe>
+
+
+<p>First, try clicking on the header. We can see that the name got reversed inside both <code>Ctrl1</code> and  directive. Secondly,  change the name inside the textbox; we can see that parent <code>scope</code> is not at all getting affected.</p>
+
+<p><em><strong>Note:</strong> If we click on the header again, we can notice that it&rsquo;ll not reflect inside the directive <code>scope</code>. But we saw this working when the first time we clicked the header. I guess this is because the <code>ng-model</code> will only create a new name property once the textbox value is changed; Till then the name property inside directive was referring to it&rsquo;s parent <code>scope</code> ( through prototype chain )</em></p>
+
+<p><u> <strong>Scope :</u>  { }</strong> ( Complete isolated scope will be created for the directive )</p>
+
+<p>Now we&rsquo;ve reached the most interesting part of our article. As of now, we&rsquo;ve seen two situations where a directive scope got created. In the third type, we are going to set scope property in the <em>DDO</em>  to an <strong>Object literal</strong>. When an object literal is passed to the scope property, things are bit different. At this time, there will be a new scope created for the directive, but <strong>will not be inherited from the parent scope</strong>. That means, the directive is going to get a complete <em>Isolated scope</em>. By an isolated scope means, any changes from the parent scope is going to alter the directive scope and vice versa.</p>
+
+<p>Let&rsquo;s re-write our original directive example like this :</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="kd">var</span> <span class="nx">app</span> <span class="o">=</span> <span class="nx">angular</span><span class="p">.</span><span class="nx">module</span><span class="p">(</span><span class="s2">&quot;test&quot;</span><span class="p">,[]);</span>
+</span><span class='line'><span class="nx">app</span><span class="p">.</span><span class="nx">directive</span><span class="p">(</span><span class="s2">&quot;myDirective&quot;</span><span class="p">,</span><span class="kd">function</span><span class="p">(){</span>
+</span><span class='line'>  <span class="k">return</span> <span class="p">{</span>
+</span><span class='line'>      <span class="nx">restrict</span><span class="o">:</span> <span class="s2">&quot;EA&quot;</span><span class="p">,</span>
+</span><span class='line'>      <span class="nx">scope</span><span class="o">:</span> <span class="p">{},</span>
+</span><span class='line'>      <span class="nx">link</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">scope</span><span class="p">,</span><span class="nx">elem</span><span class="p">,</span><span class="nx">attr</span><span class="p">){</span>
+</span><span class='line'>          <span class="c1">// code goes here ...</span>
+</span><span class='line'>          <span class="p">}</span>
+</span><span class='line'>      <span class="p">}</span>    
+</span><span class='line'>   <span class="p">});</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>By far, this is the most recommended way of setting the <code>scope</code> on <em>DDO</em> while creating custom directives. Why because:</p>
+
+<ul>
+<li>It&rsquo;ll make sure that  directive is so generic and can be placed anywhere inside the application. Parent scope is not going to interfere with the directive scope anyways.</li>
+</ul>
+
+
+<p>Though it&rsquo;s been called as an <em>Isolated scope</em>, AngularJs allows to communicate with the parent scope using some special symbols knows as <code>*prefixes*</code>. You might wonder why ? and the answer is : there&rsquo;re many situations we need to get the data from parent scope, execute callbacks in the parent scope when changes inside directive happens ..etc. The next section is entirely dedicated for explaining the <em>Isolated scope</em> and it&rsquo;s properties.</p>
+
+<h2>Isolated Scope Explained</h2>
+
+<p>See the below fiddle:</p>
+
+<iframe style="width: 100%; height: 300px" src="http://jsfiddle.net/shidhincr/q3kex/4/embedded/js,resources,html,css,result/light/"></iframe>
+
+
+<p>We have invoked the directive by passing an empty object to the <em>DDO</em>. Now we can see that, even though the parent scope has a name = &ldquo;Harry&rdquo; , the textbox inside the directive is blank. This is because of the new <em>Isolated scope</em> who doesn&rsquo;t know anything about it&rsquo;s parent scope.</p>
+
+<p><strong>But, what if we want to pass some values from the parent <code>scope</code> to the directives ?</strong></p>
+
+<p>That&rsquo;s absolutely a very good question. Not only just passing some values from the parent, but there can be situations like, changes inside the directives should invoke some callback functions in parent scope; and sometimes, we need two-way binding between parent &amp; directives scope ..etc</p>
+
+<p>For this purposes, AngularJs will allow properties to be added to the <strong>Object literal</strong> passed to the <em>DDO</em>. These  properties <strong>MUST</strong> be set as an attributes of the directive element ( which we are going to place in our HTML ). Don&rsquo;t worry if I&rsquo;m so creating so much confusion over here, let me explain with an example:</p>
+
+<p>Just go through the below fiddle, and look at the &ldquo;HTML&rdquo;, &ldquo;JavaScript&rdquo; and  &ldquo;Results&rdquo; tabs.</p>
+
+<iframe style="width: 100%; height: 300px" src="http://jsfiddle.net/shidhincr/pJLT8/10/embedded/js,resources,html,css,result/light/"></iframe>
+
+
+<p>Now let&rsquo;s try to understand how this works. Take the JavaScript code first:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'> <span class="kd">var</span> <span class="nx">app</span> <span class="o">=</span> <span class="nx">angular</span><span class="p">.</span><span class="nx">module</span><span class="p">(</span><span class="s2">&quot;app&quot;</span><span class="p">,</span> <span class="p">[]);</span>
+</span><span class='line'> <span class="nx">app</span><span class="p">.</span><span class="nx">controller</span><span class="p">(</span><span class="s2">&quot;MainCtrl&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span> <span class="nx">$scope</span> <span class="p">){</span>
+</span><span class='line'>    <span class="nx">$scope</span><span class="p">.</span><span class="nx">name</span> <span class="o">=</span> <span class="s2">&quot;Harry&quot;</span><span class="p">;</span>
+</span><span class='line'>    <span class="nx">$scope</span><span class="p">.</span><span class="nx">color</span> <span class="o">=</span> <span class="s2">&quot;#333333&quot;</span><span class="p">;</span>
+</span><span class='line'>    <span class="nx">$scope</span><span class="p">.</span><span class="nx">reverseName</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(){</span>
+</span><span class='line'>     <span class="nx">$scope</span><span class="p">.</span><span class="nx">name</span> <span class="o">=</span> <span class="nx">$scope</span><span class="p">.</span><span class="nx">name</span><span class="p">.</span><span class="nx">split</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">).</span><span class="nx">reverse</span><span class="p">().</span><span class="nx">join</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">);</span>
+</span><span class='line'>    <span class="p">};</span>
+</span><span class='line'>    <span class="nx">$scope</span><span class="p">.</span><span class="nx">randomColor</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(){</span>
+</span><span class='line'>        <span class="nx">$scope</span><span class="p">.</span><span class="nx">color</span> <span class="o">=</span> <span class="s1">&#39;#&#39;</span><span class="o">+</span><span class="nb">Math</span><span class="p">.</span><span class="nx">floor</span><span class="p">(</span><span class="nb">Math</span><span class="p">.</span><span class="nx">random</span><span class="p">()</span><span class="o">*</span><span class="mi">16777215</span><span class="p">).</span><span class="nx">toString</span><span class="p">(</span><span class="mi">16</span><span class="p">);</span>
+</span><span class='line'>    <span class="p">};</span>
+</span><span class='line'><span class="p">});</span>
+</span><span class='line'><span class="nx">app</span><span class="p">.</span><span class="nx">directive</span><span class="p">(</span><span class="s2">&quot;myDirective&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(){</span>
+</span><span class='line'>    <span class="k">return</span> <span class="p">{</span>
+</span><span class='line'>        <span class="nx">restrict</span><span class="o">:</span> <span class="s2">&quot;EA&quot;</span><span class="p">,</span>
+</span><span class='line'>        <span class="nx">scope</span><span class="o">:</span> <span class="p">{</span>
+</span><span class='line'>            <span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;@&quot;</span><span class="p">,</span>
+</span><span class='line'>            <span class="nx">color</span><span class="o">:</span> <span class="s2">&quot;=&quot;</span><span class="p">,</span>
+</span><span class='line'>            <span class="nx">reverse</span><span class="o">:</span> <span class="s2">&quot;&amp;&quot;</span>
+</span><span class='line'>        <span class="p">},</span>
+</span><span class='line'>        <span class="nx">template</span><span class="o">:</span> <span class="p">[</span>
+</span><span class='line'>            <span class="s2">&quot;&lt;div class=&#39;line&#39;&gt;&quot;</span><span class="p">,</span>
+</span><span class='line'>            <span class="s2">&quot;Name : &lt;strong&gt;&lt;/strong&gt;;  Change name:&lt;input type=&#39;text&#39; ng-model=&#39;name&#39; /&gt;&lt;br/&gt;&quot;</span><span class="p">,</span>
+</span><span class='line'>            <span class="s2">&quot;&lt;/div&gt;&lt;div class=&#39;line&#39;&gt;&quot;</span><span class="p">,</span>
+</span><span class='line'>            <span class="s2">&quot;Color : &lt;strong style=&#39;color:&#39;&gt;&lt;/strong&gt;;  Change color:&lt;input type=&#39;text&#39; ng-model=&#39;color&#39; /&gt;&lt;br/&gt;&lt;/div&gt;&quot;</span><span class="p">,</span>
+</span><span class='line'>            <span class="s2">&quot;&lt;br/&gt;&lt;input type=&#39;button&#39; ng-click=&#39;reverse()&#39; value=&#39;Reverse Name&#39;/&gt;&quot;</span>
+</span><span class='line'>        <span class="p">].</span><span class="nx">join</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+</span><span class='line'>    <span class="p">};</span>
+</span><span class='line'><span class="p">});</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>You can clearly see that, there&rsquo;s this controller <code>MainCtrl</code> which creates the parent scope. Parent scope has the following properties and methods.</p>
+
+<pre><code>name = "Harry"
+color =  "#333333"
+reverseName = function for reversing the name
+randomColor = function for generating random color code
+</code></pre>
+
+<p>Similarly we&rsquo;ve created our directive in <em>Isolated scope</em> by setting an object literal in the <em>DDO</em>. What looks interesting is that our scope object contains some properties :</p>
+
+<pre><code>scope: {
+        name: "@",
+        color: "=",
+        reverse: "&amp;"
+    }
+</code></pre>
+
+<p>Let&rsquo;s check the directive template. We can see that these properties are referenced there. This means, these properties are finally going to be used inside our directives template or the directive link function. Their behavior depends on the values –– also known as  <strong><em>Prefixes</em></strong>  –– provided. These  <strong><em>Prefixes</em></strong> are basically used to bind the parent scope&rsquo;s methods and properties to the directive scope.</p>
+
+<p>There&rsquo;re 3 types of prefixes AngularJS provides.</p>
+
+<pre><code>1. "@"   (  Text binding / one-way binding )
+2. "="   ( Direct model binding / two-way binding )
+3. "&amp;"   ( Behaviour binding / Method binding  )
+</code></pre>
+
+<p>All these prefixes takes the data from the attributes of the directive element. Let&rsquo;s re-look at the HTML code:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'>
+</span><span class='line'><span class="nt">&lt;div</span> <span class="na">my-directive</span>
+</span><span class='line'>  <span class="na">class=</span><span class="s">&quot;directive&quot;</span>
+</span><span class='line'>  <span class="na">name=</span><span class="s">&quot;{{name}}&quot;</span>
+</span><span class='line'>  <span class="na">reverse=</span><span class="s">&quot;reverseName()&quot;</span>
+</span><span class='line'>  <span class="na">color=</span><span class="s">&quot;color&quot;</span> <span class="nt">&gt;</span>
+</span><span class='line'><span class="nt">&lt;/div&gt;</span>
+</span><span class='line'>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>When the directive encounters a prefix in the scope object, it will try to map it with the curresponding attribute of the directive element.  It&rsquo;ll try to map the same attribute name if the prefix is not followed by extra name. For example:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nx">scope</span> <span class="o">:</span> <span class="p">{</span>
+</span><span class='line'>  <span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;@&quot;</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>The above will be mapped to an attribute &ldquo;name&rdquo; in the directive. Now let&rsquo;s see what happens if we change the syntax like below:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nx">scope</span> <span class="o">:</span> <span class="p">{</span>
+</span><span class='line'>  <span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;@parentName&quot;</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>At this time, the name property will be looking for an attribute &ldquo;parentName&rdquo; for getting it&rsquo;s value. This means, any string after the  <strong><em>Prefixes</em></strong> should be matching with the attribute name. I think these parts clear for you now. Let&rsquo;s gets back to the actual difference between each  <strong><em>Prefixes</em></strong>.</p>
+
+<p><em><strong>Note</strong> : If you&rsquo;re confused in any of the sentences below, have a look at the demo code ( HTML,JS ) and come back</em></p>
+
+<ul>
+<li><p>The &ldquo;@&rdquo; prefix is a one-way binding between the directive scope and parent scope. &ldquo;@&rdquo; prefix always expect it&rsquo;s mapped attribute way to be an expression. This is very important; because to make the &ldquo;@&rdquo; prefix work, we need to wrap the attribute value inside <code>{{}}</code>. Since &ldquo;@&rdquo; is creating a one-way binding between the parent and directive scope, any changes made in the parent scope will reflect inside the directive scope; but not vice versa. &ldquo;@&rdquo; prefix is highly useful when our directive needs to be initialised with some data from it&rsquo;s parent scope.</p>
+
+<p>  To understand how it works in our demo, try clicking on the &ldquo;Reverse name&rdquo; button in the parent scope. You can see that both names inside parent and directive scopes got reversed. Now let&rsquo;s change the name from the  textbox inside the directive; you can see that the changes will be applicable only to the directive scope.</p></li>
+<li><p>Now comes the second &ldquo;=&rdquo; prefix. As it looks like, it creates a two-way binding between the parent and directive scope. The important point about &ldquo;=&rdquo; prefix is that, it&rsquo;ll always expect the attribute value to be the model name. That means, you cannot provide an expression as the value of attribute mapped to &ldquo;=&rdquo; prefix. This is useful, when any of our directive scope property to be same as the parent scope property.</p>
+
+<p>  In the demo, try clicking on the &ldquo;Randomize color&rdquo; button and observe the changes inside the parent and directive scopes. Similarly, try changing the color textbox and you can see that the parent scope color also got changed.</p></li>
+<li><p>Alas, we&rsquo;ve finally reached the last prefix. The &ldquo;&amp;&rdquo; prefix is also known as a method binding. This is used to bind any methods from the parent scope to the directive scope. This prefix is particularly useful when our directive needs to execute any  callbacks in the parent scope. Look at the code to see how attribute value for the &ldquo;&amp;&rdquo; prefix to be set.</p>
+
+<p>  In the demo, parent scope has a method called &ldquo;reveseName&rdquo;. Through our &ldquo;&amp;&rdquo; prefix, we bound the &ldquo;reverseName&rdquo; method to a scope property named &ldquo;reverse&rdquo;. So whenever the &ldquo;reverse()&rdquo; method is executed inside the directive, it&rsquo;ll basically invoking the &ldquo;reverseName&rdquo; in the parent scope. Click on the &ldquo;Reverse name&rdquo; inside directive to see it in action.</p></li>
+</ul>
+
+
+<p>I know that AngularJs have made these things little bit difficult to understand. Especially because of these random naming conventions they&rsquo;ve chosen. I believe I&rsquo;ve tried my best to explain how the <em>Isolated scope</em>  works inside a directive. If you think you&rsquo;re still confused, I would recommend to have a look at the below article:</p>
+
+<p><a href="http://umur.io/angularjs-directives-using-isolated-scope-with-attributes/">AngularJS directives: Isolated scope prefixes </a> . This one explains the <em>Isolated scope</em>  and it&rsquo;s properties clearly. It would definitely help to get away from any sort of confusions.</p>
+
+<p>That&rsquo;s it !  I really didn&rsquo;t think that this post is going to be this much longer. But I couldn&rsquo;t help with that because, I didn&rsquo;t want to miss any points when I complete this. I hope everyone enjoyed reading this. I would&rsquo;ve made any errors / personal opinions; but I really want you guys to correct me when I am wrong –– comment box is made just for that. Thanks everyone !!</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Multiple Left-hand assignment in JavaScript, is really bad. Think before you do it.]]></title>
