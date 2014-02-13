@@ -23,7 +23,7 @@ Directives are one of the most powerful features of AngularJs. You can imagine t
 
 ## Scopes in AngularJS
 
-Unlike the other MVC frameworks, AngularJs doesn't have any `model` classes or functons to create `model` objects. Instead, AngularJs extended the plain JavaScript object with custom methods and properties. This special object, also known as the `scope` in AngularJs terms; It works as a glue between the view and other parts ( directives, controllers and services ) of the AngularJs application. 
+Unlike the other MVC frameworks, AngularJs doesn't have any `model` classes or functions to create `model` objects. Instead, AngularJs extended the plain JavaScript object with custom methods and properties. This special object, also known as the `scope` in AngularJs terms; It works as a glue between the view and other parts ( directives, controllers and services ) of the AngularJs application. 
 
 Whenever the AngularJs application is bootstrapped, a `rootScope` object is created. All the scopes created by controllers,directives,services are always inherited from this `rootScope`. This pattern is applicable to any nested controllers, directives added inside any controllers..etc. The point you need to remember is, `scopes` will be nested inside the AngularJs application and it'll always start from the `rootScope`. Before going to the next section, get a good grasp on how `scope` works. See this link :  [Scopes in AngularJS](https://github.com/angular/angular.js/wiki/Understanding-Scopes).
 
@@ -160,7 +160,7 @@ Similarly we've created our directive in *Isolated scope* by setting an object l
             reverse: "&"
         }
 
-Let's check the directive template. We can see that these properties are referenced there. This means, these properties are finally going to be used inside our directives template or the directive link function. Their behavior depends on the values –– also known as  __*Prefixes*__  –– provided. These  __*Prefixes*__ are basically used to bind the parent scope's methods and properties to the directive scope.	
+Let's check the directive template. We can see that these properties are referenced there. This means, these properties are finally going to be used inside our directives template or the directive link function. Their behaviour depends on the values –– also known as  __*Prefixes*__  –– provided. These  __*Prefixes*__ are basically used to bind the parent scope's methods and properties to the directive scope.	
 
 There're 3 types of prefixes AngularJS provides.
 
@@ -181,7 +181,7 @@ All these prefixes takes the data from the attributes of the directive element. 
 {% endraw %}
 ```
 
-When the directive encounters a prefix in the scope object, it will try to map it with the curresponding attribute of the directive element.  It'll try to map the same attribute name if the prefix is not followed by extra name. For example:
+When the directive encounters a prefix in the scope object, it will try to map it with the corresponding attribute of the directive element.  It'll try to map the same attribute name if the prefix is not followed by extra name. For example:
 
 ```javascript
 scope : {
