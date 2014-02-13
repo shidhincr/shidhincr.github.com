@@ -215,6 +215,13 @@ I know that AngularJs have made these things little bit difficult to understand.
 
 That's it !  I really didn't think that this post is going to be this much longer. But I couldn't help with that because, I didn't want to miss any points when I complete this. I hope everyone enjoyed reading this. I would've made any errors / personal opinions; but I really want you guys to correct me when I am wrong –– comment box is made just for that. Thanks everyone !!
 
+<u>**Further Read :**</u>
+
+1. [https://github.com/angular/angular.js/wiki/Understanding-Scopes](https://github.com/angular/angular.js/wiki/Understanding-Scopes)
+2. [http://amitgharat.wordpress.com/2013/06/08/the-hitchhikers-guide-to-the-directive/](http://amitgharat.wordpress.com/2013/06/08/the-hitchhikers-guide-to-the-directive/)
+3. [http://www.ng-newsletter.com/posts/directives.html](http://www.ng-newsletter.com/posts/directives.html)
+4. [https://egghead.io/lessons/angularjs-understanding-isolate-scope](https://egghead.io/lessons/angularjs-understanding-isolate-scope)
+
 
 
 
