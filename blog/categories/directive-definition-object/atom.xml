@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Directive definition object | Coding The Web]]></title>
   <link href="http://webcod.in/blog/categories/directive-definition-object/atom.xml" rel="self"/>
   <link href="http://webcod.in/"/>
-  <updated>2014-02-13T23:44:17+05:30</updated>
+  <updated>2014-02-14T00:17:56+05:30</updated>
   <id>http://webcod.in/</id>
   <author>
     <name><![CDATA[Shidhin C R]]></name>
@@ -251,6 +251,16 @@ At this time, the name property will be looking for an attribute &ldquo;parentNa
 <p><a href="http://umur.io/angularjs-directives-using-isolated-scope-with-attributes/">AngularJS directives: Isolated scope prefixes </a> . This one explains the <em>Isolated scope</em>  and it&rsquo;s properties clearly. It would definitely help to get away from any sort of confusions.</p>
 
 <p>That&rsquo;s it !  I really didn&rsquo;t think that this post is going to be this much longer. But I couldn&rsquo;t help with that because, I didn&rsquo;t want to miss any points when I complete this. I hope everyone enjoyed reading this. I would&rsquo;ve made any errors / personal opinions; but I really want you guys to correct me when I am wrong –– comment box is made just for that. Thanks everyone !!</p>
+
+<p><u><strong>Further Read :</strong></u></p>
+
+<ol>
+<li><a href="https://github.com/angular/angular.js/wiki/Understanding-Scopes">https://github.com/angular/angular.js/wiki/Understanding-Scopes</a></li>
+<li><a href="http://amitgharat.wordpress.com/2013/06/08/the-hitchhikers-guide-to-the-directive/">http://amitgharat.wordpress.com/2013/06/08/the-hitchhikers-guide-to-the-directive/</a></li>
+<li><a href="http://www.ng-newsletter.com/posts/directives.html">http://www.ng-newsletter.com/posts/directives.html</a></li>
+<li><a href="https://egghead.io/lessons/angularjs-understanding-isolate-scope">https://egghead.io/lessons/angularjs-understanding-isolate-scope</a></li>
+</ol>
+
 ]]></content>
   </entry>
   
