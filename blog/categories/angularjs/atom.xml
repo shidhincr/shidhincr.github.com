@@ -4,7 +4,7 @@
   <title><![CDATA[Category: AngularJS | Coding The Web]]></title>
   <link href="http://webcod.in/blog/categories/angularjs/atom.xml" rel="self"/>
   <link href="http://webcod.in/"/>
-  <updated>2014-02-18T15:29:31+05:30</updated>
+  <updated>2014-02-18T18:32:58+05:30</updated>
   <id>http://webcod.in/</id>
   <author>
     <name><![CDATA[Shidhin C R]]></name>
@@ -18,7 +18,7 @@
     <link href="http://webcod.in/2014/02/17/resolve-in-angularjs-routes-explained-as-story/"/>
     <updated>2014-02-17T11:09:00+05:30</updated>
     <id>http://webcod.in/2014/02/17/resolve-in-angularjs-routes-explained-as-story</id>
-    <content type="html"><![CDATA[<p>I feel AngularJS documentation is baffling sometimes. Reason may be I&rsquo;m going through the same <a href="http://www.bennadel.com/blog/2439-My-Experience-With-AngularJS-The-Super-heroic-JavaScript-MVW-Framework.htm">learning curve</a> described by <a href="https://twitter.com/bennadel">@bennadel</a>. Through this article, I&rsquo;m primarily aiming to help those who got stuck at some point of the curve. Don&rsquo;t take it too seriously; I&rsquo;m just sharing some of my experiences with AngularJS.</p>
+    <content type="html"><![CDATA[<p>I feel AngularJS documentation is baffling sometimes. Reason may be,  I&rsquo;m going through the same <a href="http://www.bennadel.com/blog/2439-My-Experience-With-AngularJS-The-Super-heroic-JavaScript-MVW-Framework.htm">learning curve</a> described by <a href="https://twitter.com/bennadel">@bennadel</a>. Through this article, I&rsquo;m primarily aiming to help those who got stuck at some point of the curve. Don&rsquo;t take it too seriously; I&rsquo;m just sharing some of my experiences with AngularJS.</p>
 
 <!--more-->
 
@@ -27,14 +27,14 @@
 
 <h2>The Story</h2>
 
-<p>On one day, I am planning for a trip to a Switzerland. With out any thoughts, I called the tour coordinator who makes the arrangements to this place. He explained the itinerary and hotel details clearly, and asked him to make the necessary arrangements. After that, it&rsquo;s the tour coordinator&rsquo;s responsibility to book the room and make other required set-ups for my trip. They did it so professionally, so I didn&rsquo;t face any difficulties in my trip.</p>
+<p>On one day, I was planning for a trip to a Switzerland. So I called the tour coordinator who makes the arrangements to this place. He explained the itinerary and hotel details clearly, so I asked him to make the necessary arrangements. After that, it&rsquo;s the tour coordinator&rsquo;s responsibility to book the room and make other required set-ups for my trip. Finally, I did a trip to Switzerland.</p>
 
 <p>Let&rsquo;s convert this to AngularJS context.  Now we have:</p>
 
 <ul>
 <li><code>visitplace</code> is our first route.</li>
-<li>The place, it&rsquo;s surroundings and the hotel room are the contents of our template. Let&rsquo;s add it as <code>placetovisit.html</code>.</li>
-<li>Tour coordinator is the one who connects to the place, so he is our controller called <code>TourCoordinatorCtrl</code>.</li>
+<li>The place, it&rsquo;s surroundings and the hotel room are the contents of our template. Let&rsquo;s add it to <code>placetovisit.html</code>.</li>
+<li>Tour coordinator is the one who connects to the place, so we have a controller called <code>TourCoordinatorCtrl</code>.</li>
 </ul>
 
 
@@ -139,7 +139,7 @@
 <code>``
 Everything works as expected when we navigate to the route</code>/visitplace<code>. If you notice, the tour controller has a dependency on</code>accommodation` service. But it&rsquo;s just the controller&rsquo;s responsibility to find the hotel and room details. Also, getting the hotel and room details are completely synchronous events. That means, the room will be arranged before I reach the place.</p>
 
-<p>But what if they&rsquo;re asynchronous events? Let&rsquo;s think this way: If the tour coordinator is not so professional and he forgot to book the hotel and room. Because of this, when I arrived the place, I&rsquo;d to wait till I get a new room. When translating to code, we can see that the view is rendered, but the <code>getHotel()</code> and <code>getRoom()</code> methods are going to take some time to get the room details.</p>
+<p>But what if they&rsquo;re asynchronous events? Let&rsquo;s think this way: What If the tour coordinator is not so professional and he forgot to book the hotel and room. Because of this, when I arrive at the place, I&rsquo;d to wait till I get a new room. Similarly, in the code, we can see that the view is rendered, but the <code>getHotel()</code> and <code>getRoom()</code> methods taking extra time to get the room details.</p>
 
 <p>```javascript
 &ldquo;use strict&rdquo;;
@@ -179,11 +179,11 @@ app.controller( &ldquo;TourCoordinatorCtrl&rdquo;, function( $scope, accommodati
   $scope.roomno = accommodation.roomNo( $scope );
 } );
 ```
-This is not ideal right ? I&rsquo;ve to render the view and wait for some of the data to be loaded. In my case, it&rsquo;s like I already started the trip and reached the place; but I&rsquo;m waiting in the place to get my accommodation. This is really bad ! Is there any way to make sure that these dependencies are resolved before I start my journey ? Let&rsquo;s see :</p>
+This is not ideal in sometimes. I&rsquo;ve to render the view and wait for some of the data to be loaded. In my case, it&rsquo;s like I already started the trip and reached the place; but I&rsquo;m waiting in the place to get my accommodation. This is really annoying ! Is there any way to make sure that these dependencies are resolved before I start my journey ? Let&rsquo;s see :</p>
 
 <h2>Version 2 of the Story</h2>
 
-<p>This time, I&rsquo;ve a friend who is a hotel owner in Switzerland. He is a very close friend of mine, so I can ask him for a room at any time. If I do this, I don&rsquo;t need to depend upon the accommodation provided by tour coordinator. Finally, all I have to do is, to make sure that I myself resolve the accommodation problem and tell the tour coordinator to arrange the rest.</p>
+<p>This time, I&rsquo;ve a friend who is a hotel owner in Switzerland. He is a close friend of mine, so I can ask him for a room at any time. If I do this, I don&rsquo;t need to depend upon the accommodation provided by tour coordinator. Finally, all I have to do is, to make sure that I myself resolve the accommodation problem and tell the tour coordinator to arrange the rest.</p>
 
 <p>This is exactly what we need if the route itself needs to resolve some dependencies in our application. For this, Angular provides a configuration on the <code>$routeProvider</code> service, called as <code>resolve</code>.  The resolve property is an optional map object / [ array of existing service names ]. All the keys of the map object can be injected to the controller as a dependency. The key would be a simple string, and it&rsquo;s value can be either a function or string. If string is provided, Angular will assume that it&rsquo;s an existing service and inject that particular service to the controller. If the value is a function, it will act as a factory function and the return value will be injected to the controller.</p>
 
@@ -263,17 +263,17 @@ app.controller( &ldquo;TourCoordinatorCtrl&rdquo;, function( $scope, accommodati
   $scope.roomno = accommodation.roomNo( );
 } );
 <code>``
-Closely look at each lines and see the differences from the previous one. Did you notice that, this time we've defined a variable</code>myFriend<code>inside the resolve function and initialised it using</code>$q.defer()`. The <strong>$q</strong> is the implementation of <em>Promises</em> API in AngularJS. It&rsquo;s inspired by the &ldquo;Q&rdquo; library implementation by kriskowal ( <a href="https://github.com/kriskowal/q">link</a> here ). If you don&rsquo;t know what a <em>Promise</em> is, then you should definitely check it out <a href="http://12devs.co.uk/articles/promises-an-alternative-way-to-approach-asynchronous-javascript/">here</a>.</p>
+Closely look at each lines and see the differences from the previous one. Did you notice that, this time we've defined a variable</code>myFriend<code>inside the resolve function and initialised it using</code>$q.defer()`. The <strong>$q</strong> is the implementation of <em>Promises</em> API in AngularJS. It&rsquo;s inspired by the &ldquo;<strong>Q</strong>&rdquo; library implementation by kriskowal ( <a href="https://github.com/kriskowal/q">link</a> here ). If you don&rsquo;t know what a <em>Promise</em> is, then you should definitely check it out <a href="http://12devs.co.uk/articles/promises-an-alternative-way-to-approach-asynchronous-javascript/">here</a>.</p>
 
-<p>What happens here is : Our resolve function has created the variable <code>myFriend</code> and it immediately returned the <code>myFriend.promise</code>. This means, we know that some asynchronous event is going to happen and <code>myFriend</code> will update the result of that action to the promise returned. The action can be either successful or a failure. For a successful action, the promise will be resolved with the hotel room data; and for the failure action, the promise will be rejected with data ( mostly the error message ).</p>
+<p>What happens here is : Our resolve function has created the variable <code>myFriend</code> and it immediately returned the <code>myFriend.promise</code>. This means, we know that something is going to happen later and <code>myFriend</code> will update the result of that action to the promise returned. The action can be either successful or a failure. For a successful action, the promise will be resolved with the hotel room data; and for the failure action, the promise will be rejected with data ( mostly the error message ).</p>
 
-<p>Whenever a promise is returned by the factory function, the controller initialisation will be on hold. Once the promise is resolved, the controller will be initialised and the resolved data will be injected to the controller. In our case, it&rsquo;s the <code>accommodation</code> object; after this, a <code>$routeChangeSuccess</code> event will be fired. There&rsquo;re also chances that, the first promise can return another promise. In that case, our controller initialisation will be delayed till all the promises are resolved. At any point, if any of the promises are rejected, the controller will not be initialised; instead a <code>$routeChangeError</code> event will be fired.</p>
+<p>When the factory function returns a promise, the controller initialisation will wait till the promise gets resolved/rejected. Once the promise is resolved, the controller will be initialised and the resolved data will be injected to the controller. In our case, it&rsquo;s the <code>accommodation</code> object; after this, a <code>$routeChangeSuccess</code> event will be fired. There&rsquo;re also chances that, the first promise can return another promise. In that case, our controller initialisation will be delayed till all the promises are resolved. At any point, if any of the promises are rejected, the controller will not be initialised; instead a <code>$routeChangeError</code> event will be fired.</p>
 
 <p>The <code>resolve</code> is very useful if we need to load some data upfront before the controller initialisation and rendering the view. In real world applications, the <code>$timeout</code> can be replaced with a <code>$http</code> object to load data from server. Since it&rsquo;s an asynchronous event, we can always make sure that our view will be rendered with proper data.</p>
 
 <h2>That&rsquo;s the End of All Stories</h2>
 
-<p>I tried to make these as clear I can. Hope everybody understood the concept of resolve in AngularJS routes. Feel free to comment for any improvements/ suggestions. Finally, thanks for reading !</p>
+<p>I tried to make these as clear I can. Hope everybody understood the concept of resolve in AngularJS routes. Feel free to comment for any improvements/ suggestions. Thanks for reading !</p>
 ]]></content>
   </entry>
   
