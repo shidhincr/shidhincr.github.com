@@ -1,0 +1,277 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: resolve | Coding The Web]]></title>
+  <link href="http://webcod.in/blog/categories/resolve/atom.xml" rel="self"/>
+  <link href="http://webcod.in/"/>
+  <updated>2014-02-18T15:27:59+05:30</updated>
+  <id>http://webcod.in/</id>
+  <author>
+    <name><![CDATA[Shidhin C R]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA['Resolve' in AngularJS routes, explained as story]]></title>
+    <link href="http://webcod.in/2014/02/17/resolve-in-angularjs-routes-explained-as-story/"/>
+    <updated>2014-02-17T11:09:00+05:30</updated>
+    <id>http://webcod.in/2014/02/17/resolve-in-angularjs-routes-explained-as-story</id>
+    <content type="html"><![CDATA[<p>I feel AngularJS documentation is baffling sometimes. Reason may be I&rsquo;m going through the same <a href="http://www.bennadel.com/blog/2439-My-Experience-With-AngularJS-The-Super-heroic-JavaScript-MVW-Framework.htm">learning curve</a> described by <a href="https://twitter.com/bennadel">@bennadel</a>. Through this article, I&rsquo;m primarily aiming to help those who got stuck at some point of the curve. Don&rsquo;t take it too seriously; I&rsquo;m just sharing some of my experiences with AngularJS.</p>
+
+<p>Recently, I was learning how routes work in AngularJS, and how they talk to the controller ..etc. Then I observed the controller initialisation can differ based on the route configurations and events like <code>$routeChangeSuccess</code> and <code>$routeChangeError</code> are fired accordingly. Most of these are achieved by a <code>resolve</code> attribute of  the route configuration object. Here, I&rsquo;ll explain it through 3 versions of a story.</p>
+
+<h2>The Story</h2>
+
+<p>On one day, I am planning for a trip to a Switzerland. With out any thoughts, I called the tour coordinator who makes the arrangements to this place. He explained the itinerary and hotel details clearly, and asked him to make the necessary arrangements. After that, it&rsquo;s the tour coordinator&rsquo;s responsibility to book the room and make other required set-ups for my trip. They did it so professionally, so I didn&rsquo;t face any difficulties in my trip.</p>
+
+<p>Let&rsquo;s convert this to AngularJS context.  Now we have:</p>
+
+<ul>
+<li><code>visitplace</code> is our first route.</li>
+<li>The place, it&rsquo;s surroundings and the hotel room are the contents of our template. Let&rsquo;s add it as <code>placetovisit.html</code>.</li>
+<li>Tour coordinator is the one who connects to the place, so he is our controller called <code>TourCoordinatorCtrl</code>.</li>
+</ul>
+
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span>Application (app.js)</span> <a href='/downloads/code/angular_resolve/app.js'>download</a></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+</pre></td><td class='code'><pre><code class='js'><span class='line'><span class="s2">&quot;use strict&quot;</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'><span class="kd">var</span> <span class="nx">app</span> <span class="o">=</span> <span class="nx">angular</span><span class="p">.</span><span class="nx">module</span><span class="p">(</span> <span class="s2">&quot;app&quot;</span><span class="p">,</span> <span class="p">[</span> <span class="p">]</span> <span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'><span class="nx">app</span><span class="p">.</span><span class="nx">config</span><span class="p">(</span> <span class="kd">function</span><span class="p">(</span> <span class="nx">$routeProvider</span> <span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>  <span class="nx">$routeProvider</span><span class="p">.</span><span class="nx">when</span><span class="p">(</span> <span class="s2">&quot;/visitplace&quot;</span><span class="p">,</span> <span class="p">{</span>
+</span><span class='line'>    <span class="nx">templateUrl</span><span class="o">:</span> <span class="s2">&quot;placetovisit.html&quot;</span><span class="p">,</span>
+</span><span class='line'>    <span class="nx">controller</span><span class="o">:</span> <span class="s2">&quot;TourCoordinatorCtrl&quot;</span>
+</span><span class='line'>  <span class="p">}</span> <span class="p">);</span>
+</span><span class='line'><span class="p">}</span> <span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'><span class="nx">app</span><span class="p">.</span><span class="nx">factory</span><span class="p">(</span> <span class="s2">&quot;accommodation&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span> <span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>  <span class="k">return</span> <span class="p">{</span>
+</span><span class='line'>    <span class="nx">hotelName</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span> <span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>      <span class="k">return</span> <span class="s2">&quot;Some Hotel&quot;</span><span class="p">;</span>
+</span><span class='line'>    <span class="p">},</span>
+</span><span class='line'>    <span class="nx">roomNo</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span> <span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>      <span class="k">return</span> <span class="s2">&quot;203&quot;</span><span class="p">;</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'>  <span class="p">};</span>
+</span><span class='line'><span class="p">}</span> <span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'><span class="nx">app</span><span class="p">.</span><span class="nx">controller</span><span class="p">(</span> <span class="s2">&quot;TourCoordinatorCtrl&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span> <span class="nx">$scope</span><span class="p">,</span> <span class="nx">accommodation</span> <span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>  <span class="nx">$scope</span><span class="p">.</span><span class="nx">name</span> <span class="o">=</span> <span class="s2">&quot;Shidhin&quot;</span><span class="p">;</span>
+</span><span class='line'>  <span class="nx">$scope</span><span class="p">.</span><span class="nx">place</span> <span class="o">=</span> <span class="s2">&quot;Switzerland&quot;</span><span class="p">;</span>
+</span><span class='line'>  <span class="nx">$scope</span><span class="p">.</span><span class="nx">hotel</span> <span class="o">=</span> <span class="nx">accommodation</span><span class="p">.</span><span class="nx">hotelName</span><span class="p">(</span> <span class="p">);</span>
+</span><span class='line'>  <span class="nx">$scope</span><span class="p">.</span><span class="nx">roomno</span> <span class="o">=</span> <span class="nx">accommodation</span><span class="p">.</span><span class="nx">roomNo</span><span class="p">(</span> <span class="p">);</span>
+</span><span class='line'><span class="p">}</span> <span class="p">);</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>And the templates <code>placetovisit.html</code> and <code>index.html</code> :</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span>Template (placetovisit.html)</span> <a href='/downloads/code/angular_resolve/placetovisit.html'>download</a></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="nt">&lt;h1&gt;</span>Trip details<span class="nt">&lt;/h1&gt;</span>
+</span><span class='line'><span class="nt">&lt;div&gt;</span>
+</span><span class='line'>	<span class="nt">&lt;h2&gt;</span>Hi, {{name}}. Welcome to {{place}}<span class="nt">&lt;/h2&gt;</span>
+</span><span class='line'>	<span class="nt">&lt;div&gt;</span>The accomodation is arranged on <span class="nt">&lt;strong&gt;</span>{{hotel}}<span class="nt">&lt;/strong&gt;</span> and room number is <span class="nt">&lt;strong&gt;</span>{{roomno}}<span class="nt">&lt;/strong&gt;&lt;/div&gt;</span>	
+</span><span class='line'><span class="nt">&lt;/div&gt;</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>```html Index.html
+&lt;!doctype html>
+<html lang="en" ng-app="app">
+<head></p>
+
+<pre><code>&lt;meta charset="UTF-8"&gt;
+&lt;title&gt;AngularJS Resolve routes example&lt;/title&gt;
+</code></pre>
+
+<p></head>
+<body></p>
+
+<pre><code>&lt;a href="#/visitplace"&gt;I want to go for a trip&lt;/a&gt;
+&lt;div ng-view&gt;&lt;/div&gt;
+</code></pre>
+
+<script src="https://ajax.googleapis.com/ajax/libs/AngularJS/1.0.1/angular.min.js"></script>
+
+
+<script src="app.js"></script>
+
+
+<p></body>
+</html>
+<code>``
+Everything works as expected when we navigate to the route</code>/visitplace<code>. If you notice, the tour controller has a dependency on</code>accommodation` service. But it&rsquo;s just the controller&rsquo;s responsibility to find the hotel and room details. Also, getting the hotel and room details are completely synchronous events. That means, the room will be arranged before I reach the place.</p>
+
+<p>But what if they&rsquo;re asynchronous events? Let&rsquo;s think this way: If the tour coordinator is not so professional and he forgot to book the hotel and room. Because of this, when I arrived the place, I&rsquo;d to wait till I get a new room. When translating to code, we can see that the view is rendered, but the <code>getHotel()</code> and <code>getRoom()</code> methods are going to take some time to get the room details.</p>
+
+<p>```javascript
+&ldquo;use strict&rdquo;;
+var app = angular.module( &ldquo;app&rdquo;, [ ] );
+app.config( function( $routeProvider ) {
+  $routeProvider.when( &ldquo;/visitplace&rdquo;, {</p>
+
+<pre><code>templateUrl: "placetovisit.html",
+controller: "TourCoordinatorCtrl"
+</code></pre>
+
+<p>  } );
+} );
+app.factory( &ldquo;accommodation&rdquo;, function( $timeout ) {
+  return {</p>
+
+<pre><code>hotelName: function( scope ) {
+  $timeout(function(){
+    scope.hotel = "Some hotel";
+  },3000);
+  return "---";
+},
+roomNo: function( scope ) {
+  $timeout(function(){
+    scope.roomno = "103";
+  },3000);
+  return "---";
+}
+</code></pre>
+
+<p>  };
+} );
+app.controller( &ldquo;TourCoordinatorCtrl&rdquo;, function( $scope, accommodation ) {
+  $scope.name = &ldquo;Shidhin&rdquo;;
+  $scope.place = &ldquo;Switzerland&rdquo;;
+  $scope.hotel = accommodation.hotelName( $scope );
+  $scope.roomno = accommodation.roomNo( $scope );
+} );
+```
+This is not ideal right ? I&rsquo;ve to render the view and wait for some of the data to be loaded. In my case, it&rsquo;s like I already started the trip and reached the place; but I&rsquo;m waiting in the place to get my accommodation. This is really bad ! Is there any way to make sure that these dependencies are resolved before I start my journey ? Let&rsquo;s see :</p>
+
+<h2>Version 2 of the Story</h2>
+
+<p>This time, I&rsquo;ve a friend who is a hotel owner in Switzerland. He is a very close friend of mine, so I can ask him for a room at any time. If I do this, I don&rsquo;t need to depend upon the accommodation provided by tour coordinator. Finally, all I have to do is, to make sure that I myself resolve the accommodation problem and tell the tour coordinator to arrange the rest.</p>
+
+<p>This is exactly what we need if the route itself needs to resolve some dependencies in our application. For this, Angular provides a configuration on the <code>$routeProvider</code> service, called as <code>resolve</code>.  The resolve property is an optional map object / [ array of existing service names ]. All the keys of the map object can be injected to the controller as a dependency. The key would be a simple string, and it&rsquo;s value can be either a function or string. If string is provided, Angular will assume that it&rsquo;s an existing service and inject that particular service to the controller. If the value is a function, it will act as a factory function and the return value will be injected to the controller.</p>
+
+<p>Let&rsquo;s relate our current story to Angular&rsquo;s context by using this resolve object. Look at our modified application code:</p>
+
+<p>```javascript
+&ldquo;use strict&rdquo;;
+var app = angular.module( &ldquo;app&rdquo;, [ ] , function( $routeProvider ) {
+  $routeProvider.when( &ldquo;/visitplace&rdquo;, {</p>
+
+<pre><code>templateUrl: "placetovisit.html",
+controller: "TourCoordinatorCtrl",
+resolve: {
+  "myFriendsHotel": function( ) {
+    return {
+      hotelName: function( ) {
+        return "My Friend's hotel";
+      },
+      roomNo: function( ) {
+        return "100";
+      }
+    };
+  }
+}
+</code></pre>
+
+<p>  });
+} );
+app.controller( &ldquo;TourCoordinatorCtrl&rdquo;, function( $scope, myFriendsHotel ) {
+  $scope.name = &ldquo;Shidhin&rdquo;;
+  $scope.place = &ldquo;Switzerland&rdquo;;
+  $scope.hotel = myFriendsHotel.hotelName( );
+  $scope.roomno = myFriendsHotel.roomNo( );
+} );
+```
+<em>Note: When controller is defined in the route, never initialise it again through ng-controller. That might throw an error when used with resolve configuration.</em></p>
+
+<p>By doing this way, we can make sure that the controller initialisation is delayed till the hotel is ready. The view will be rendered only when the controller is initialised and a <code>$routeChangeSuccess</code> event will be fired. Also notice that, finding a hotel is a synchronous action; it means, since my friend is a hotel owner, I got a room immediately. In real world applications, most of the times we&rsquo;re going to deal with asynchronous actions. Let&rsquo;s move to the 3rd version of the story to sort that out.</p>
+
+<h2>Final version of the Story</h2>
+
+<p>Last time we saw that I&rsquo;d a friend who was a hotel owner. But in this version of the story, there is no hotel owner. This time, I&rsquo;ve another friend in Switzerland who knows some of the hotel owners and he can find me a better room for cheaper cost. Once I call him and tell that my requirements, he&rsquo;ll take some time to talk to his friends and arrange me a room. The time cannot be predictable; because my friend will ask his friends, and his friends may talk to their friends, and it can go on like this. But when I called him first, he gave me back a promise that he will surely update the status –– so that I can set up the rest. So, only when I get an update from him, I am going to call up the tour coordinator and ask him to set up the rest of arrangements.</p>
+
+<p>Let&rsquo;s see the final version of our code  in Angular:</p>
+
+<p>```javascript
+&ldquo;use strict&rdquo;;
+var app = angular.module( &ldquo;app&rdquo;, [ ] , function( $routeProvider ) {
+  $routeProvider.when( &ldquo;/visitplace&rdquo;, {</p>
+
+<pre><code>templateUrl: "placetovisit.html",
+controller: "TourCoordinatorCtrl",
+resolve: {
+  "accommodation": function( $q, $timeout ) {
+    var myFriend = $q.defer();        
+    $timeout(function(){
+      myFriend.resolve({
+        hotelName: function( ) {
+          return "My Friend's friend's hotel";
+        },
+        roomNo: function( ) {
+          return "404";
+        }
+      });
+    },5000);
+    return myFriend.promise;
+  }
+}
+</code></pre>
+
+<p>  });
+} );
+app.controller( &ldquo;TourCoordinatorCtrl&rdquo;, function( $scope, accommodation ) {
+  $scope.name = &ldquo;Shidhin&rdquo;;
+  $scope.place = &ldquo;Switzerland&rdquo;;
+  $scope.hotel = accommodation.hotelName( );
+  $scope.roomno = accommodation.roomNo( );
+} );
+<code>``
+Closely look at each lines and see the differences from the previous one. Did you notice that, this time we've defined a variable</code>myFriend<code>inside the resolve function and initialised it using</code>$q.defer()`. The <strong>$q</strong> is the implementation of <em>Promises</em> API in AngularJS. It&rsquo;s inspired by the &ldquo;Q&rdquo; library implementation by kriskowal ( <a href="https://github.com/kriskowal/q">link</a> here ). If you don&rsquo;t know what a <em>Promise</em> is, then you should definitely check it out <a href="http://12devs.co.uk/articles/promises-an-alternative-way-to-approach-asynchronous-javascript/">here</a>.</p>
+
+<p>What happens here is : Our resolve function has created the variable <code>myFriend</code> and it immediately returned the <code>myFriend.promise</code>. This means, we know that some asynchronous event is going to happen and <code>myFriend</code> will update the result of that action to the promise returned. The action can be either successful or a failure. For a successful action, the promise will be resolved with the hotel room data; and for the failure action, the promise will be rejected with data ( mostly the error message ).</p>
+
+<p>Whenever a promise is returned by the factory function, the controller initialisation will be on hold. Once the promise is resolved, the controller will be initialised and the resolved data will be injected to the controller. In our case, it&rsquo;s the <code>accommodation</code> object; after this, a <code>$routeChangeSuccess</code> event will be fired. There&rsquo;re also chances that, the first promise can return another promise. In that case, our controller initialisation will be delayed till all the promises are resolved. At any point, if any of the promises are rejected, the controller will not be initialised; instead a <code>$routeChangeError</code> event will be fired.</p>
+
+<p>The <code>resolve</code> is very useful if we need to load some data upfront before the controller initialisation and rendering the view. In real world applications, the <code>$timeout</code> can be replaced with a <code>$http</code> object to load data from server. Since it&rsquo;s an asynchronous event, we can always make sure that our view will be rendered with proper data.</p>
+
+<h2>That&rsquo;s the End of All Stories</h2>
+
+<p>I tried to make these as clear I can. Hope everybody understood the concept of resolve in AngularJS routes. Feel free to comment for any improvements/ suggestions. Finally, thanks for reading !</p>
+]]></content>
+  </entry>
+  
+</feed>
