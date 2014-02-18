@@ -13,7 +13,7 @@ categories:
 ---
 
 I feel AngularJS documentation is baffling sometimes. Reason may be I'm going through the same [learning curve](http://www.bennadel.com/blog/2439-My-Experience-With-AngularJS-The-Super-heroic-JavaScript-MVW-Framework.htm) described by [@bennadel](https://twitter.com/bennadel). Through this article, I'm primarily aiming to help those who got stuck at some point of the curve. Don't take it too seriously; I'm just sharing some of my experiences with AngularJS.
-
+<!--more-->
 Recently, I was learning how routes work in AngularJS, and how they talk to the controller ..etc. Then I observed the controller initialisation can differ based on the route configurations and events like `$routeChangeSuccess` and `$routeChangeError` are fired accordingly. Most of these are achieved by a `resolve` attribute of  the route configuration object. Here, I'll explain it through 3 versions of a story.
 
 ## The Story
