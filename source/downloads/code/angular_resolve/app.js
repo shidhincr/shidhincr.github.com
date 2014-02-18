@@ -2,16 +2,11 @@
 
 var app = angular.module( "app", [ ] );
 
-
 app.config( function( $routeProvider ) {
-
   $routeProvider.when( "/visitplace", {
-
     templateUrl: "placetovisit.html",
     controller: "TourCoordinatorCtrl"
-
   } );
-
 } );
 
 app.factory( "accommodation", function( ) {
