@@ -4,7 +4,7 @@
   <title><![CDATA[Category: AngularJS | Coding The Web]]></title>
   <link href="http://webcod.in/blog/categories/angularjs/atom.xml" rel="self"/>
   <link href="http://webcod.in/"/>
-  <updated>2014-02-18T18:32:58+05:30</updated>
+  <updated>2014-02-25T18:36:12+05:30</updated>
   <id>http://webcod.in/</id>
   <author>
     <name><![CDATA[Shidhin C R]]></name>
@@ -12,6 +12,145 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[AngularJS: Real time model persistence using local storage]]></title>
+    <link href="http://webcod.in/2014/02/25/angularjs-real-time-model-persistence-using-local-storage/"/>
+    <updated>2014-02-25T07:46:00+05:30</updated>
+    <id>http://webcod.in/2014/02/25/angularjs-real-time-model-persistence-using-local-storage</id>
+    <content type="html"><![CDATA[<p>Last week, I came across a situation while working on a simple AngularJS application. I&rsquo;d to sync the data between multiple open tabs. As you guess,  the easy way to sync data between multiple tabs is through <strong>local storage</strong>. Ofcourse there are better ways of doing this using <strong>websockets</strong>; but here I am going to explain the client-side way –– using local storage and real time updating other tabs.</p>
+
+<!--more-->
+
+
+<h2>The Code</h2>
+
+<p>I created a demo app in Plunker. Code is given below</p>
+
+<p><code>html index.html
+&lt;!DOCTYPE html&gt;
+&lt;html ng-app="app"&gt;
+&lt;head&gt;
+  &lt;script  src="http://code.angularjs.org/1.2.13/angular.js"&gt;&lt;/script&gt;
+  &lt;link rel="stylesheet" href="style.css" /&gt;
+  &lt;script src="script.js"&gt;&lt;/script&gt;
+&lt;/head&gt;
+&lt;body ng-controller="MaintCtrl as m"&gt;
+  &lt;h1&gt;&lt;/h1&gt;
+  &lt;h2&gt;Current LocalStorage value is = &lt;em&gt;&lt;/em&gt;&lt;/h2&gt;
+  &lt;input type="text" ng-model="m.value"&gt;
+  &lt;input type="button" value="update" ng-click="m.update(m.value)"&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code>
+And the JavaScript :</p>
+
+<p>```javascript script.js
+var app;
+app = angular.module(&ldquo;app&rdquo;, []);
+app.controller(&ldquo;MaintCtrl&rdquo;, function(LS) {
+  this.greeting = &ldquo;This is a localstorage demo app&rdquo;;
+  this.value = LS.getData();
+  this.latestData = function() {</p>
+
+<pre><code>return LS.getData();
+</code></pre>
+
+<p>  };
+  this.update = function(val) {</p>
+
+<pre><code>return LS.setData(val);
+</code></pre>
+
+<p>  };
+});
+app.factory(&ldquo;LS&rdquo;, function($window, $rootScope) {
+  return {</p>
+
+<pre><code>setData: function(val) {
+  $window.localStorage &amp;&amp; $window.localStorage.setItem('my-storage', val);
+  return this;
+},
+getData: function() {
+  return $window.localStorage &amp;&amp; $window.localStorage.getItem('my-storage');
+}
+</code></pre>
+
+<p>  };
+});
+```</p>
+
+<p>The above shows a simple application that stores data in local storage. This works well when there&rsquo;s only one tab. Our challenge is to ensure the view is same when the application is opened in multiple tabs as well.</p>
+
+<h2>The Technique</h2>
+
+<p>Local storage provides an <code>event</code> called <code>storage</code> on window object. Whenever the localstorage gets updated, all the event listeners attached to <code>storage</code> gets invoked. The first parameter to the handler function is an event object which contains  an <code>event.key</code> pointing to the local storage value changed.</p>
+
+<p>```javascript
+angular.element($window).on(&lsquo;storage&rsquo;, function(event) {</p>
+
+<pre><code>if (event.key === 'my-storage') {
+  $rootScope.$apply();
+}
+</code></pre>
+
+<p>  });
+```</p>
+
+<p><strong>$rootScope.$apply()</strong>, will trigger a digest cycle from root scope, and all the views will be updated with the new model value.</p>
+
+<p>Final JavaScript :</p>
+
+<p>```javascript
+var app;
+app = angular.module(&ldquo;app&rdquo;, []);
+app.controller(&ldquo;MaintCtrl&rdquo;, function(LS) {
+  this.greeting = &ldquo;This is a localstorage demo app&rdquo;;
+  this.value = LS.getData();
+  this.latestData = function() {</p>
+
+<pre><code>return LS.getData();
+</code></pre>
+
+<p>  };
+  this.update = function(val) {</p>
+
+<pre><code>return LS.setData(val);
+</code></pre>
+
+<p>  };
+});
+app.factory(&ldquo;LS&rdquo;, function($window, $rootScope) {
+  angular.element($window).on(&lsquo;storage&rsquo;, function(event) {</p>
+
+<pre><code>if (event.key === 'my-storage') {
+  $rootScope.$apply();
+}
+</code></pre>
+
+<p>  });
+  return {</p>
+
+<pre><code>setData: function(val) {
+  $window.localStorage &amp;&amp; $window.localStorage.setItem('my-storage', val);
+  return this;
+},
+getData: function() {
+  return $window.localStorage &amp;&amp; $window.localStorage.getItem('my-storage');
+}
+</code></pre>
+
+<p>  };
+});
+```</p>
+
+<h2>Demo</h2>
+
+<p>Try opening the following link in multiple  tabs. Update the input text from different tabs, and you can see them updating the other tabs as well.</p>
+
+<p><a href="http://embed.plnkr.co/ThpFwX7BRhRhNWPuq5ap/preview" target="_blank">Angular LocalStorage Demo</a></p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA['Resolve' in AngularJS routes, explained as story]]></title>
