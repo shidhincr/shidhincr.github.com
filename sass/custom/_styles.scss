@@ -30,8 +30,8 @@ a:hover,article header h1 a:hover {
 #content{
   background: #fff;
   .entry-content {
-    // font-family: HelveticaNeue-Light, 'Helvetica Neue Light', 'Helvetica Neue', Helvetica, Arial, 'Lucida Grande', sans-serif;
-    font-family: Georgia, HelveticaNeue-Light, 'Helvetica Neue Light', 'Helvetica Neue', Helvetica, Times, 'Times New Roman',Arial, 'Lucida Grande', sans-serif;
+    // font-family: Georgia, HelveticaNeue-Light, 'Helvetica Neue Light', 'Helvetica Neue', Helvetica, Times, 'Times New Roman',Arial, 'Lucida Grande', sans-serif;
+    font-family: HelveticaNeue-Light, 'Helvetica Neue Light', 'Helvetica Neue', Helvetica, Times, 'Times New Roman',Arial, 'Lucida Grande', sans-serif;
     font-size: 1.1em;
     line-height: 1.7em;
     a,a:visited {
@@ -42,9 +42,11 @@ a:hover,article header h1 a:hover {
     border:1px dashed; 
   }
   p code, li code {
-    background: #f5f5f5;
-    border: 1px dashed #bbb;
-    color: #DD7033; 
+    background: #F5F5F5;
+    color: #DD7033;
+    border-radius: 2px;
+    box-shadow: 0px 1px 4px #B1B1B1;
+    border: none;
   }
 }
 .about {
