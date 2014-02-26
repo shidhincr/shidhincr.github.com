@@ -116,3 +116,18 @@ a:hover,article header h1 a:hover {
 
 /***** End: Fixing Gist default styling issues ***/
 
+/* Some syntax highlighter CSS fixes */ 
+.highlight .line-numbers, html .gist .gist-file .gist-syntax .highlight .line_numbers {
+  background-color: #FDFDFD !important;
+  text-shadow: none; 
+}
+.highlight, html .gist .gist-file .gist-syntax .gist-highlight {
+  border: none !important;
+}
+.highlight, .gist-highlight {
+  background: #666;
+  box-shadow: 2px 2px 15px #666;
+}
+.pre-code, html .gist .gist-file .gist-syntax .highlight pre, .highlight code {
+  background-color: #1C2020 !important;
+}
