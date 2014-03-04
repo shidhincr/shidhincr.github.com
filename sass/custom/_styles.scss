@@ -12,6 +12,11 @@ body > header {
 	background: #333 url('../images/bg.png') 0 0;
 	h1 {
 		width: 100%;
+    span.note {
+      font-size: 0.7em;
+      color: #130404;
+      text-shadow: 0px 1px 0px #666464;
+    }
 	}
 }
 body > footer {
