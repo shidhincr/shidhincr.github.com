@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: Promises | We.B.Log]]></title>
-  <link href="http://undefinednull.com/blog/categories/promises/atom.xml" rel="self"/>
-  <link href="http://undefinednull.com/"/>
-  <updated>2014-03-04T16:10:49+05:30</updated>
-  <id>http://undefinednull.com/</id>
+  <link href="http://www.undefinednull.com/blog/categories/promises/atom.xml" rel="self"/>
+  <link href="http://www.undefinednull.com/"/>
+  <updated>2014-03-04T16:36:33+05:30</updated>
+  <id>http://www.undefinednull.com/</id>
   <author>
     <name><![CDATA[Shidhin C R]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA['Resolve' in AngularJS routes, explained as story]]></title>
-    <link href="http://undefinednull.com/2014/02/17/resolve-in-angularjs-routes-explained-as-story/"/>
+    <link href="http://www.undefinednull.com/2014/02/17/resolve-in-angularjs-routes-explained-as-story/"/>
     <updated>2014-02-17T11:09:00+05:30</updated>
-    <id>http://undefinednull.com/2014/02/17/resolve-in-angularjs-routes-explained-as-story</id>
+    <id>http://www.undefinednull.com/2014/02/17/resolve-in-angularjs-routes-explained-as-story</id>
     <content type="html"><![CDATA[<p>I feel AngularJS documentation is baffling sometimes. Reason may be,  I&rsquo;m going through the same <a href="http://www.bennadel.com/blog/2439-My-Experience-With-AngularJS-The-Super-heroic-JavaScript-MVW-Framework.htm">learning curve</a> described by <a href="https://twitter.com/bennadel">@bennadel</a>. Through this article, I&rsquo;m primarily aiming to help those who got stuck at some point of the curve. Don&rsquo;t take it too seriously; I&rsquo;m just sharing some of my experiences with AngularJS.</p>
 
 <!--more-->

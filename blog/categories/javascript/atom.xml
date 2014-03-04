@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: JavaScript | We.B.Log]]></title>
-  <link href="http://undefinednull.com/blog/categories/javascript/atom.xml" rel="self"/>
-  <link href="http://undefinednull.com/"/>
-  <updated>2014-03-04T16:10:49+05:30</updated>
-  <id>http://undefinednull.com/</id>
+  <link href="http://www.undefinednull.com/blog/categories/javascript/atom.xml" rel="self"/>
+  <link href="http://www.undefinednull.com/"/>
+  <updated>2014-03-04T16:36:33+05:30</updated>
+  <id>http://www.undefinednull.com/</id>
   <author>
     <name><![CDATA[Shidhin C R]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Multiple Left-hand assignment in JavaScript, is really bad. Think before you do it.]]></title>
-    <link href="http://undefinednull.com/2014/02/03/multiple-left-hand-assignment-in-javascript-is-really-bad-think-once-before-you-do-it/"/>
+    <link href="http://www.undefinednull.com/2014/02/03/multiple-left-hand-assignment-in-javascript-is-really-bad-think-once-before-you-do-it/"/>
     <updated>2014-02-03T12:04:00+05:30</updated>
-    <id>http://undefinednull.com/2014/02/03/multiple-left-hand-assignment-in-javascript-is-really-bad-think-once-before-you-do-it</id>
+    <id>http://www.undefinednull.com/2014/02/03/multiple-left-hand-assignment-in-javascript-is-really-bad-think-once-before-you-do-it</id>
     <content type="html"><![CDATA[<p><strong>“JavaScript allows multiple left-hand assignments”</strong></p>
 
 <p>You may ask, what does that mean ? Well, if you’re not familiar, in JavaScript you can write the variable assignment expressions like this.</p>
@@ -74,9 +74,9 @@ function foo() {
   
   <entry>
     <title type="html"><![CDATA[Starting VerbalRegex.com open source project]]></title>
-    <link href="http://undefinednull.com/2014/01/29/starting-verbalregex-dot-com-open-source-project/"/>
+    <link href="http://www.undefinednull.com/2014/01/29/starting-verbalregex-dot-com-open-source-project/"/>
     <updated>2014-01-29T01:09:00+05:30</updated>
-    <id>http://undefinednull.com/2014/01/29/starting-verbalregex-dot-com-open-source-project</id>
+    <id>http://www.undefinednull.com/2014/01/29/starting-verbalregex-dot-com-open-source-project</id>
     <content type="html"><![CDATA[<p>On the other day, while exploring the Github repositories, this one grabbed my attention.</p>
 
 <p><a href="https://github.com/VerbalExpressions/JSVerbalExpressions">https://github.com/VerbalExpressions/JSVerbalExpressions</a></p>
@@ -116,9 +116,9 @@ function foo() {
   
   <entry>
     <title type="html"><![CDATA[ Some Gotchas In Arithmetic Expression Evaluation : JavaScript]]></title>
-    <link href="http://undefinednull.com/2013/09/26/some-gotchas-in-arithmetic-expression-evaluation-javascript/"/>
+    <link href="http://www.undefinednull.com/2013/09/26/some-gotchas-in-arithmetic-expression-evaluation-javascript/"/>
     <updated>2013-09-26T16:15:00+05:30</updated>
-    <id>http://undefinednull.com/2013/09/26/some-gotchas-in-arithmetic-expression-evaluation-javascript</id>
+    <id>http://www.undefinednull.com/2013/09/26/some-gotchas-in-arithmetic-expression-evaluation-javascript</id>
     <content type="html"><![CDATA[<h2>Solve a small problem in JavaScript</h2>
 
 <p>This post is just for recollecting some of the basics of JavaScript. Let&rsquo;s start with a small JavaScript code. Here is the code –– Solve it with out using the console.</p>

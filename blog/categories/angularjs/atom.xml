@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: AngularJS | We.B.Log]]></title>
-  <link href="http://undefinednull.com/blog/categories/angularjs/atom.xml" rel="self"/>
-  <link href="http://undefinednull.com/"/>
-  <updated>2014-03-04T16:10:49+05:30</updated>
-  <id>http://undefinednull.com/</id>
+  <link href="http://www.undefinednull.com/blog/categories/angularjs/atom.xml" rel="self"/>
+  <link href="http://www.undefinednull.com/"/>
+  <updated>2014-03-04T16:36:33+05:30</updated>
+  <id>http://www.undefinednull.com/</id>
   <author>
     <name><![CDATA[Shidhin C R]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[AngularJS: Real time model persistence using local storage]]></title>
-    <link href="http://undefinednull.com/2014/02/25/angularjs-real-time-model-persistence-using-local-storage/"/>
+    <link href="http://www.undefinednull.com/2014/02/25/angularjs-real-time-model-persistence-using-local-storage/"/>
     <updated>2014-02-25T07:46:00+05:30</updated>
-    <id>http://undefinednull.com/2014/02/25/angularjs-real-time-model-persistence-using-local-storage</id>
+    <id>http://www.undefinednull.com/2014/02/25/angularjs-real-time-model-persistence-using-local-storage</id>
     <content type="html"><![CDATA[<p>Last week, I came across a situation while working on a simple AngularJS application. I&rsquo;d to sync the data between multiple open tabs. As you guess,  the easy way to sync data between multiple tabs is through <strong>local storage</strong>. Ofcourse there are better ways of doing this using <strong>websockets</strong>; but here I am going to explain the client-side way –– using local storage and real time updating other tabs.</p>
 
 <!--more-->
@@ -154,9 +154,9 @@ getData: function() {
   
   <entry>
     <title type="html"><![CDATA['Resolve' in AngularJS routes, explained as story]]></title>
-    <link href="http://undefinednull.com/2014/02/17/resolve-in-angularjs-routes-explained-as-story/"/>
+    <link href="http://www.undefinednull.com/2014/02/17/resolve-in-angularjs-routes-explained-as-story/"/>
     <updated>2014-02-17T11:09:00+05:30</updated>
-    <id>http://undefinednull.com/2014/02/17/resolve-in-angularjs-routes-explained-as-story</id>
+    <id>http://www.undefinednull.com/2014/02/17/resolve-in-angularjs-routes-explained-as-story</id>
     <content type="html"><![CDATA[<p>I feel AngularJS documentation is baffling sometimes. Reason may be,  I&rsquo;m going through the same <a href="http://www.bennadel.com/blog/2439-My-Experience-With-AngularJS-The-Super-heroic-JavaScript-MVW-Framework.htm">learning curve</a> described by <a href="https://twitter.com/bennadel">@bennadel</a>. Through this article, I&rsquo;m primarily aiming to help those who got stuck at some point of the curve. Don&rsquo;t take it too seriously; I&rsquo;m just sharing some of my experiences with AngularJS.</p>
 
 <!--more-->
@@ -418,9 +418,9 @@ Closely look at each lines and see the differences from the previous one. Did yo
   
   <entry>
     <title type="html"><![CDATA[Mastering the scope of the directives in AngularJS]]></title>
-    <link href="http://undefinednull.com/2014/02/11/mastering-the-scope-of-a-directive-in-angularjs/"/>
+    <link href="http://www.undefinednull.com/2014/02/11/mastering-the-scope-of-a-directive-in-angularjs/"/>
     <updated>2014-02-11T08:26:00+05:30</updated>
-    <id>http://undefinednull.com/2014/02/11/mastering-the-scope-of-a-directive-in-angularjs</id>
+    <id>http://www.undefinednull.com/2014/02/11/mastering-the-scope-of-a-directive-in-angularjs</id>
     <content type="html"><![CDATA[<p><img src="https://lh5.googleusercontent.com/-XOGfvAHr7HQ/UvoUItkZMZI/AAAAAAAAHJk/IJz5JcUB9dw/w520-h274-no/scopes_in_directives.png" alt="" /></p>
 
 <h2>What are Directives</h2>

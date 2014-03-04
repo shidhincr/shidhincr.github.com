@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: Directives | We.B.Log]]></title>
-  <link href="http://undefinednull.com/blog/categories/directives/atom.xml" rel="self"/>
-  <link href="http://undefinednull.com/"/>
-  <updated>2014-03-04T16:10:49+05:30</updated>
-  <id>http://undefinednull.com/</id>
+  <link href="http://www.undefinednull.com/blog/categories/directives/atom.xml" rel="self"/>
+  <link href="http://www.undefinednull.com/"/>
+  <updated>2014-03-04T16:36:33+05:30</updated>
+  <id>http://www.undefinednull.com/</id>
   <author>
     <name><![CDATA[Shidhin C R]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Mastering the scope of the directives in AngularJS]]></title>
-    <link href="http://undefinednull.com/2014/02/11/mastering-the-scope-of-a-directive-in-angularjs/"/>
+    <link href="http://www.undefinednull.com/2014/02/11/mastering-the-scope-of-a-directive-in-angularjs/"/>
     <updated>2014-02-11T08:26:00+05:30</updated>
-    <id>http://undefinednull.com/2014/02/11/mastering-the-scope-of-a-directive-in-angularjs</id>
+    <id>http://www.undefinednull.com/2014/02/11/mastering-the-scope-of-a-directive-in-angularjs</id>
     <content type="html"><![CDATA[<p><img src="https://lh5.googleusercontent.com/-XOGfvAHr7HQ/UvoUItkZMZI/AAAAAAAAHJk/IJz5JcUB9dw/w520-h274-no/scopes_in_directives.png" alt="" /></p>
 
 <h2>What are Directives</h2>
