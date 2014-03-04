@@ -1,4 +1,4 @@
 User-agent: *
 Disallow: 
 
-Sitemap: http://webcod.in/sitemap.xml 
+Sitemap: http://www.undefinednull.com/sitemap.xml 
