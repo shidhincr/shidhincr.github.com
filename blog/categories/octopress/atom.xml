@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: Octopress | We.B.Log]]></title>
-  <link href="http://www.undefinednull.com/blog/categories/octopress/atom.xml" rel="self"/>
-  <link href="http://www.undefinednull.com/"/>
-  <updated>2014-03-04T14:32:45+05:30</updated>
-  <id>http://www.undefinednull.com/</id>
+  <link href="http://undefinednull.com/blog/categories/octopress/atom.xml" rel="self"/>
+  <link href="http://undefinednull.com/"/>
+  <updated>2014-03-04T16:10:49+05:30</updated>
+  <id>http://undefinednull.com/</id>
   <author>
     <name><![CDATA[Shidhin C R]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Octopress Blog Tweaks: Adding Author Info Section Below Each Posts]]></title>
-    <link href="http://www.undefinednull.com/2013/10/15/octopress-blog-tweaks-adding-author-information-section-below-each-posts/"/>
+    <link href="http://undefinednull.com/2013/10/15/octopress-blog-tweaks-adding-author-information-section-below-each-posts/"/>
     <updated>2013-10-15T10:15:00+05:30</updated>
-    <id>http://www.undefinednull.com/2013/10/15/octopress-blog-tweaks-adding-author-information-section-below-each-posts</id>
+    <id>http://undefinednull.com/2013/10/15/octopress-blog-tweaks-adding-author-information-section-below-each-posts</id>
     <content type="html"><![CDATA[<p>A good blogging platform is one which allows easy customization. I&rsquo;ve been using Octopress for more than 2 weeks and happy to tell that it&rsquo;s one of those allows customization with out any pain. I want to share a tweak I added to my blog recently : It&rsquo;s an author information section below every post. Let&rsquo;s see how I built it and added to my blog.</p>
 
 <!--more-->
@@ -67,7 +67,7 @@
 
 <div class="about">
      <span class="about-image">
-          <img src="http://www.undefinednull.com/images/author.jpg" alt="author name">
+          <img src="http://undefinednull.com/images/author.jpg" alt="author name">
      </span>
      <span class="about-desc">
           <span>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod

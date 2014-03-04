@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[We.B.Log]]></title>
-  <link href="http://www.undefinednull.com/atom.xml" rel="self"/>
-  <link href="http://www.undefinednull.com/"/>
-  <updated>2014-03-04T14:32:45+05:30</updated>
-  <id>http://www.undefinednull.com/</id>
+  <link href="http://undefinednull.com/atom.xml" rel="self"/>
+  <link href="http://undefinednull.com/"/>
+  <updated>2014-03-04T16:10:49+05:30</updated>
+  <id>http://undefinednull.com/</id>
   <author>
     <name><![CDATA[Shidhin C R]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[AngularJS: Real time model persistence using local storage]]></title>
-    <link href="http://www.undefinednull.com/2014/02/25/angularjs-real-time-model-persistence-using-local-storage/"/>
+    <link href="http://undefinednull.com/2014/02/25/angularjs-real-time-model-persistence-using-local-storage/"/>
     <updated>2014-02-25T07:46:00+05:30</updated>
-    <id>http://www.undefinednull.com/2014/02/25/angularjs-real-time-model-persistence-using-local-storage</id>
+    <id>http://undefinednull.com/2014/02/25/angularjs-real-time-model-persistence-using-local-storage</id>
     <content type="html"><![CDATA[<p>Last week, I came across a situation while working on a simple AngularJS application. I&rsquo;d to sync the data between multiple open tabs. As you guess,  the easy way to sync data between multiple tabs is through <strong>local storage</strong>. Ofcourse there are better ways of doing this using <strong>websockets</strong>; but here I am going to explain the client-side way –– using local storage and real time updating other tabs.</p>
 
 <!--more-->
@@ -201,9 +201,9 @@
   
   <entry>
     <title type="html"><![CDATA['Resolve' in AngularJS routes, explained as story]]></title>
-    <link href="http://www.undefinednull.com/2014/02/17/resolve-in-angularjs-routes-explained-as-story/"/>
+    <link href="http://undefinednull.com/2014/02/17/resolve-in-angularjs-routes-explained-as-story/"/>
     <updated>2014-02-17T11:09:00+05:30</updated>
-    <id>http://www.undefinednull.com/2014/02/17/resolve-in-angularjs-routes-explained-as-story</id>
+    <id>http://undefinednull.com/2014/02/17/resolve-in-angularjs-routes-explained-as-story</id>
     <content type="html"><![CDATA[<p>I feel AngularJS documentation is baffling sometimes. Reason may be,  I&rsquo;m going through the same <a href="http://www.bennadel.com/blog/2439-My-Experience-With-AngularJS-The-Super-heroic-JavaScript-MVW-Framework.htm">learning curve</a> described by <a href="https://twitter.com/bennadel">@bennadel</a>. Through this article, I&rsquo;m primarily aiming to help those who got stuck at some point of the curve. Don&rsquo;t take it too seriously; I&rsquo;m just sharing some of my experiences with AngularJS.</p>
 
 <!--more-->
@@ -224,7 +224,7 @@
 </ul>
 
 
-<figure class='code'><figcaption><span>Application (app.js)</span> <a href='http://www.undefinednull.com/downloads/code/angular_resolve/app.js'>download</a></figcaption>
+<figure class='code'><figcaption><span>Application (app.js)</span> <a href='http://undefinednull.com/downloads/code/angular_resolve/app.js'>download</a></figcaption>
 <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
@@ -286,7 +286,7 @@
 
 <p>And the templates <code>placetovisit.html</code> and <code>index.html</code> :</p>
 
-<figure class='code'><figcaption><span>Template (placetovisit.html)</span> <a href='http://www.undefinednull.com/downloads/code/angular_resolve/placetovisit.html'>download</a></figcaption>
+<figure class='code'><figcaption><span>Template (placetovisit.html)</span> <a href='http://undefinednull.com/downloads/code/angular_resolve/placetovisit.html'>download</a></figcaption>
 <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
@@ -548,9 +548,9 @@
   
   <entry>
     <title type="html"><![CDATA[Mastering the scope of the directives in AngularJS]]></title>
-    <link href="http://www.undefinednull.com/2014/02/11/mastering-the-scope-of-a-directive-in-angularjs/"/>
+    <link href="http://undefinednull.com/2014/02/11/mastering-the-scope-of-a-directive-in-angularjs/"/>
     <updated>2014-02-11T08:26:00+05:30</updated>
-    <id>http://www.undefinednull.com/2014/02/11/mastering-the-scope-of-a-directive-in-angularjs</id>
+    <id>http://undefinednull.com/2014/02/11/mastering-the-scope-of-a-directive-in-angularjs</id>
     <content type="html"><![CDATA[<p><img src="https://lh5.googleusercontent.com/-XOGfvAHr7HQ/UvoUItkZMZI/AAAAAAAAHJk/IJz5JcUB9dw/w520-h274-no/scopes_in_directives.png" alt="" /></p>
 
 <h2>What are Directives</h2>
@@ -855,9 +855,9 @@ randomColor = function for generating random color code
   
   <entry>
     <title type="html"><![CDATA[Multiple Left-hand assignment in JavaScript, is really bad. Think before you do it.]]></title>
-    <link href="http://www.undefinednull.com/2014/02/03/multiple-left-hand-assignment-in-javascript-is-really-bad-think-once-before-you-do-it/"/>
+    <link href="http://undefinednull.com/2014/02/03/multiple-left-hand-assignment-in-javascript-is-really-bad-think-once-before-you-do-it/"/>
     <updated>2014-02-03T12:04:00+05:30</updated>
-    <id>http://www.undefinednull.com/2014/02/03/multiple-left-hand-assignment-in-javascript-is-really-bad-think-once-before-you-do-it</id>
+    <id>http://undefinednull.com/2014/02/03/multiple-left-hand-assignment-in-javascript-is-really-bad-think-once-before-you-do-it</id>
     <content type="html"><![CDATA[<p><strong>“JavaScript allows multiple left-hand assignments”</strong></p>
 
 <p>You may ask, what does that mean ? Well, if you’re not familiar, in JavaScript you can write the variable assignment expressions like this.</p>
@@ -922,9 +922,9 @@ randomColor = function for generating random color code
   
   <entry>
     <title type="html"><![CDATA[Starting VerbalRegex.com open source project]]></title>
-    <link href="http://www.undefinednull.com/2014/01/29/starting-verbalregex-dot-com-open-source-project/"/>
+    <link href="http://undefinednull.com/2014/01/29/starting-verbalregex-dot-com-open-source-project/"/>
     <updated>2014-01-29T01:09:00+05:30</updated>
-    <id>http://www.undefinednull.com/2014/01/29/starting-verbalregex-dot-com-open-source-project</id>
+    <id>http://undefinednull.com/2014/01/29/starting-verbalregex-dot-com-open-source-project</id>
     <content type="html"><![CDATA[<p>On the other day, while exploring the Github repositories, this one grabbed my attention.</p>
 
 <p><a href="https://github.com/VerbalExpressions/JSVerbalExpressions">https://github.com/VerbalExpressions/JSVerbalExpressions</a></p>
@@ -964,9 +964,9 @@ randomColor = function for generating random color code
   
   <entry>
     <title type="html"><![CDATA[Octopress Blog Tweaks: Adding Author Info Section Below Each Posts]]></title>
-    <link href="http://www.undefinednull.com/2013/10/15/octopress-blog-tweaks-adding-author-information-section-below-each-posts/"/>
+    <link href="http://undefinednull.com/2013/10/15/octopress-blog-tweaks-adding-author-information-section-below-each-posts/"/>
     <updated>2013-10-15T10:15:00+05:30</updated>
-    <id>http://www.undefinednull.com/2013/10/15/octopress-blog-tweaks-adding-author-information-section-below-each-posts</id>
+    <id>http://undefinednull.com/2013/10/15/octopress-blog-tweaks-adding-author-information-section-below-each-posts</id>
     <content type="html"><![CDATA[<p>A good blogging platform is one which allows easy customization. I&rsquo;ve been using Octopress for more than 2 weeks and happy to tell that it&rsquo;s one of those allows customization with out any pain. I want to share a tweak I added to my blog recently : It&rsquo;s an author information section below every post. Let&rsquo;s see how I built it and added to my blog.</p>
 
 <!--more-->
@@ -974,7 +974,7 @@ randomColor = function for generating random color code
 
 <h2>What we&rsquo;re going to achieve</h2>
 
-<p><img src="http://www.undefinednull.com//lh3.googleusercontent.com/-hT72wlBvU-Y/UlzR3V8twdI/AAAAAAAACP0/2aoFaMfzjA0/s916/Screen%2520Shot%25202013-10-15%2520at%252010.57.29%2520AM.png"></p>
+<p><img src="http://undefinednull.com//lh3.googleusercontent.com/-hT72wlBvU-Y/UlzR3V8twdI/AAAAAAAACP0/2aoFaMfzjA0/s916/Screen%2520Shot%25202013-10-15%2520at%252010.57.29%2520AM.png"></p>
 
 <p>See the above screenshot ? It&rsquo;s a simple section containing the author image, description and a twitter follow button. I&rsquo;ll explain how to build this and add to every post.</p>
 
@@ -1163,9 +1163,9 @@ randomColor = function for generating random color code
   
   <entry>
     <title type="html"><![CDATA[ Some Gotchas In Arithmetic Expression Evaluation : JavaScript]]></title>
-    <link href="http://www.undefinednull.com/2013/09/26/some-gotchas-in-arithmetic-expression-evaluation-javascript/"/>
+    <link href="http://undefinednull.com/2013/09/26/some-gotchas-in-arithmetic-expression-evaluation-javascript/"/>
     <updated>2013-09-26T16:15:00+05:30</updated>
-    <id>http://www.undefinednull.com/2013/09/26/some-gotchas-in-arithmetic-expression-evaluation-javascript</id>
+    <id>http://undefinednull.com/2013/09/26/some-gotchas-in-arithmetic-expression-evaluation-javascript</id>
     <content type="html"><![CDATA[<h2>Solve a small problem in JavaScript</h2>
 
 <p>This post is just for recollecting some of the basics of JavaScript. Let&rsquo;s start with a small JavaScript code. Here is the code –– Solve it with out using the console.</p>
@@ -1409,9 +1409,9 @@ Finally the value of expression <code>Y</code> becomes <code>8</code>.</p>
   
   <entry>
     <title type="html"><![CDATA[Starting my new blog: Finally Octopress]]></title>
-    <link href="http://www.undefinednull.com/2013/09/25/starting-my-new-blog-finally-octopress/"/>
+    <link href="http://undefinednull.com/2013/09/25/starting-my-new-blog-finally-octopress/"/>
     <updated>2013-09-25T07:36:00+05:30</updated>
-    <id>http://www.undefinednull.com/2013/09/25/starting-my-new-blog-finally-octopress</id>
+    <id>http://undefinednull.com/2013/09/25/starting-my-new-blog-finally-octopress</id>
     <content type="html"><![CDATA[<h2>Finally Octopress !!</h2>
 
 <p>I wanted to start writing blog ever since I started coding. I never had a success setting it up because of time constraints and many other reasons. During this time, I&rsquo;ve evaluated a number of blogging platforms and eventually I thought of using wordpress as my blogging platform when I start my blog.</p>

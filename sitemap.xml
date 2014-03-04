@@ -1,61 +1,61 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <urlset xmlns='http://www.sitemaps.org/schemas/sitemap/0.9'>
     <url>
-        <loc>http://www.undefinednull.com/2013/09/25/starting-my-new-blog-finally-octopress/</loc>
+        <loc>http://undefinednull.com/2013/09/25/starting-my-new-blog-finally-octopress/</loc>
         <lastmod>2014-02-03T18:25:01+05:30</lastmod>
     </url>
     <url>
         <loc>
-            http://www.undefinednull.com/2013/09/26/some-gotchas-in-arithmetic-expression-evaluation-javascript/
+            http://undefinednull.com/2013/09/26/some-gotchas-in-arithmetic-expression-evaluation-javascript/
         </loc>
         <lastmod>2014-02-03T18:25:01+05:30</lastmod>
     </url>
     <url>
         <loc>
-            http://www.undefinednull.com/2013/10/15/octopress-blog-tweaks-adding-author-information-section-below-each-posts/
+            http://undefinednull.com/2013/10/15/octopress-blog-tweaks-adding-author-information-section-below-each-posts/
         </loc>
         <lastmod>2014-02-03T18:25:01+05:30</lastmod>
     </url>
     <url>
         <loc>
-            http://www.undefinednull.com/2014/01/29/starting-verbalregex-dot-com-open-source-project/
+            http://undefinednull.com/2014/01/29/starting-verbalregex-dot-com-open-source-project/
         </loc>
         <lastmod>2014-02-03T18:25:01+05:30</lastmod>
     </url>
     <url>
         <loc>
-            http://www.undefinednull.com/2014/02/03/multiple-left-hand-assignment-in-javascript-is-really-bad-think-once-before-you-do-it/
+            http://undefinednull.com/2014/02/03/multiple-left-hand-assignment-in-javascript-is-really-bad-think-once-before-you-do-it/
         </loc>
         <lastmod>2014-02-04T15:20:33+05:30</lastmod>
     </url>
     <url>
         <loc>
-            http://www.undefinednull.com/2014/02/11/mastering-the-scope-of-a-directive-in-angularjs/
+            http://undefinednull.com/2014/02/11/mastering-the-scope-of-a-directive-in-angularjs/
         </loc>
         <lastmod>2014-02-14T00:17:44+05:30</lastmod>
     </url>
     <url>
         <loc>
-            http://www.undefinednull.com/2014/02/17/resolve-in-angularjs-routes-explained-as-story/
+            http://undefinednull.com/2014/02/17/resolve-in-angularjs-routes-explained-as-story/
         </loc>
         <lastmod>2014-02-19T12:34:10+05:30</lastmod>
     </url>
     <url>
         <loc>
-            http://www.undefinednull.com/2014/02/25/angularjs-real-time-model-persistence-using-local-storage/
+            http://undefinednull.com/2014/02/25/angularjs-real-time-model-persistence-using-local-storage/
         </loc>
         <lastmod>2014-02-25T18:35:13+05:30</lastmod>
     </url>
     <url>
-        <loc>http://www.undefinednull.com/blog/archives/</loc>
+        <loc>http://undefinednull.com/blog/archives/</loc>
         <lastmod>2014-02-25T18:35:13+05:30</lastmod>
     </url>
     <url>
-        <loc>http://www.undefinednull.com/</loc>
+        <loc>http://undefinednull.com/</loc>
         <lastmod>2014-02-25T18:35:13+05:30</lastmod>
     </url>
     <url>
-        <loc>http://www.undefinednull.com/robots.txt</loc>
+        <loc>http://undefinednull.com/robots.txt</loc>
         <lastmod>2014-02-03T16:40:43+05:30</lastmod>
     </url>
 </urlset>
