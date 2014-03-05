@@ -18,21 +18,20 @@ categories:
 
 ##What are Directives
 
-Directives are one of the most powerful features of AngularJs. You can imagine them as the building blocks ( aka re-usable components ) of any AngularJs application. Mastering the entire directives, is strictly out of topic for this article. For that purpose, I would really recommend this [book](http://www.packtpub.com/angularjs-directives/book) as it has covered the nuts and bolts of them. And here, we'll discussing a small part of the directives called : "**Directive scope**".
+Directives are one of the most powerful features of AngularJs. You can imagine them as building blocks ( aka re-usable components ) of any AngularJs application. Mastering the entire directives, is totally out of this article's scope. For that, I would really recommend this [book](http://www.packtpub.com/angularjs-directives/book); it covered the nuts and bolts of them. And here, we'll discussing a small part of the directives called : "**Directive scope**".
 <!--more-->
 
 ## Scopes in AngularJS
 
-Unlike the other MVC frameworks, AngularJs doesn't have any `model` classes or functions to create `model` objects. Instead, AngularJs extended the plain JavaScript object with custom methods and properties. This special object, also known as the `scope` in AngularJs terms; It works as a glue between the view and other parts ( directives, controllers and services ) of the AngularJs application. 
+Unlike the other MVC frameworks, AngularJs doesn't have specific classes or functions to create `model` objects. Instead, AngularJs extended the plain JavaScript object with custom methods and properties. This is known as the `scope` in AngularJs terms. The `scope` works as a glue between the view and other parts ( directives, controllers and services ) inside the AngularJs application. 
 
-Whenever the AngularJs application is bootstrapped, a `rootScope` object is created. All the scopes created by controllers,directives,services are always inherited from this `rootScope`. This pattern is applicable to any nested controllers, directives added inside any controllers..etc. The point you need to remember is, `scopes` will be nested inside the AngularJs application and it'll always start from the `rootScope`. Before going to the next section, get a good grasp on how `scope` works. See this link :  [Scopes in AngularJS](https://github.com/angular/angular.js/wiki/Understanding-Scopes).
+Whenever the AngularJs application is bootstrapped, a `rootScope` object is created. All the scopes created by controllers, directives, services are prototypically inherited from `rootScope`. See this link :  [Scopes in AngularJS](https://github.com/angular/angular.js/wiki/Understanding-Scopes) to know how `scope` inheritance works. This will really help for the upcoming sections.
 
 ##Scope inside a directive
 
 ***Note**: This section assumes you've prior knowledge of creating  a simple directive*
 
-All directives always have a scope associated with it. This scope object can be accessed inside the directive's link function. Same way, all the methods and properties of the scope will be available inside the directive's template also.
-By default, a directive will not have it's own scope. So the directive will share the the same scope of it's parent ( Controller scope ) where it's been used. But there's always we can force the directive to create a new scope by changing it's directive definition object. A `directive definition object` ( let's call it as  *DDO* ) is used to configure a directive when it's defined –– to know more about it check AngularJs docs about directives [link](http://docs.angularjs.org/guide/directive). The *DDO* has a  property called `scope` and this is used for setting the scope of the directive. Let's see the example below:
+All directives always have a scope associated with it. A directive's link function, and template will have access to all properties and methods of its scope. And by default, unless explicitly set, a directive will not have it's own scope. So the directive will share the the same scope of it's parent ( Controller scope ) where it's been used. This default behavior can be changed through directive definition object. A `directive definition object` ( let's call it as  *DDO* ) is used to configure a directive when it's defined –– to know more about it check AngularJs docs about directives [link](http://docs.angularjs.org/guide/directive). The *DDO* has a  property called `scope` and this is used for setting the scope of the directive. Let's see the example below:
 
 ```javascript
 	var app = angular.module("test",[]);
@@ -43,7 +42,7 @@ By default, a directive will not have it's own scope. So the directive will shar
 			link: function(scope,elem,attr){
 				// code goes here ...			}		}		 });
 ```
-Setting a "false" value to the `scope` property in *DDO* is same as having **no** own scope for the directive. At this time, directive will share the parent scope. The other values to the scope property are "true" and "{ }". In the next section, we'll see how these values affect the directive's behaviour.
+Setting a "false" value to the `scope` property in *DDO* is same as having **no** own scope for the directive. At this time, directive will use the parent scope. The other values to the scope property are "true" and "{ }". In following sections, we'll see how these values affect the directive's behaviour.
 
 ##Different types of directive scopes
 
