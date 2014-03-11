@@ -4,7 +4,7 @@
   <title><![CDATA[Category: resolve | We.B.Log]]></title>
   <link href="http://www.undefinednull.com/blog/categories/resolve/atom.xml" rel="self"/>
   <link href="http://www.undefinednull.com/"/>
-  <updated>2014-03-11T12:43:20+05:30</updated>
+  <updated>2014-03-11T16:49:20+05:30</updated>
   <id>http://www.undefinednull.com/</id>
   <author>
     <name><![CDATA[Shidhin C R]]></name>
@@ -38,79 +38,11 @@
 </ul>
 
 
-<p><div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span>Application (app.js)</span> <a href='/downloads/code/angular_resolve/app.js'>download</a></figcaption>
-<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-<span class='line-number'>21</span>
-<span class='line-number'>22</span>
-<span class='line-number'>23</span>
-<span class='line-number'>24</span>
-<span class='line-number'>25</span>
-<span class='line-number'>26</span>
-<span class='line-number'>27</span>
-<span class='line-number'>28</span>
-</pre></td><td class='code'><pre><code class='js'><span class='line'><span class="s2">&quot;use strict&quot;</span><span class="p">;</span>
-</span><span class='line'>
-</span><span class='line'><span class="kd">var</span> <span class="nx">app</span> <span class="o">=</span> <span class="nx">angular</span><span class="p">.</span><span class="nx">module</span><span class="p">(</span> <span class="s2">&quot;app&quot;</span><span class="p">,</span> <span class="p">[</span> <span class="p">]</span> <span class="p">);</span>
-</span><span class='line'>
-</span><span class='line'><span class="nx">app</span><span class="p">.</span><span class="nx">config</span><span class="p">(</span> <span class="kd">function</span><span class="p">(</span> <span class="nx">$routeProvider</span> <span class="p">)</span> <span class="p">{</span>
-</span><span class='line'>  <span class="nx">$routeProvider</span><span class="p">.</span><span class="nx">when</span><span class="p">(</span> <span class="s2">&quot;/visitplace&quot;</span><span class="p">,</span> <span class="p">{</span>
-</span><span class='line'>    <span class="nx">templateUrl</span><span class="o">:</span> <span class="s2">&quot;placetovisit.html&quot;</span><span class="p">,</span>
-</span><span class='line'>    <span class="nx">controller</span><span class="o">:</span> <span class="s2">&quot;TourCoordinatorCtrl&quot;</span>
-</span><span class='line'>  <span class="p">}</span> <span class="p">);</span>
-</span><span class='line'><span class="p">}</span> <span class="p">);</span>
-</span><span class='line'>
-</span><span class='line'><span class="nx">app</span><span class="p">.</span><span class="nx">factory</span><span class="p">(</span> <span class="s2">&quot;accommodation&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span> <span class="p">)</span> <span class="p">{</span>
-</span><span class='line'>  <span class="k">return</span> <span class="p">{</span>
-</span><span class='line'>    <span class="nx">hotelName</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span> <span class="p">)</span> <span class="p">{</span>
-</span><span class='line'>      <span class="k">return</span> <span class="s2">&quot;Some Hotel&quot;</span><span class="p">;</span>
-</span><span class='line'>    <span class="p">},</span>
-</span><span class='line'>    <span class="nx">roomNo</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span> <span class="p">)</span> <span class="p">{</span>
-</span><span class='line'>      <span class="k">return</span> <span class="s2">&quot;203&quot;</span><span class="p">;</span>
-</span><span class='line'>    <span class="p">}</span>
-</span><span class='line'>  <span class="p">};</span>
-</span><span class='line'><span class="p">}</span> <span class="p">);</span>
-</span><span class='line'>
-</span><span class='line'><span class="nx">app</span><span class="p">.</span><span class="nx">controller</span><span class="p">(</span> <span class="s2">&quot;TourCoordinatorCtrl&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span> <span class="nx">$scope</span><span class="p">,</span> <span class="nx">accommodation</span> <span class="p">)</span> <span class="p">{</span>
-</span><span class='line'>  <span class="nx">$scope</span><span class="p">.</span><span class="nx">name</span> <span class="o">=</span> <span class="s2">&quot;Shidhin&quot;</span><span class="p">;</span>
-</span><span class='line'>  <span class="nx">$scope</span><span class="p">.</span><span class="nx">place</span> <span class="o">=</span> <span class="s2">&quot;Switzerland&quot;</span><span class="p">;</span>
-</span><span class='line'>  <span class="nx">$scope</span><span class="p">.</span><span class="nx">hotel</span> <span class="o">=</span> <span class="nx">accommodation</span><span class="p">.</span><span class="nx">hotelName</span><span class="p">(</span> <span class="p">);</span>
-</span><span class='line'>  <span class="nx">$scope</span><span class="p">.</span><span class="nx">roomno</span> <span class="o">=</span> <span class="nx">accommodation</span><span class="p">.</span><span class="nx">roomNo</span><span class="p">(</span> <span class="p">);</span>
-</span><span class='line'><span class="p">}</span> <span class="p">);</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+<p>{% include_code Application angular_resolve/app.js %}</p>
 
 <p>And the templates <code>placetovisit.html</code> and <code>index.html</code> :</p>
 
-<p><div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span>Template (placetovisit.html)</span> <a href='/downloads/code/angular_resolve/placetovisit.html'>download</a></figcaption>
-<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="nt">&lt;h1&gt;</span>Trip details<span class="nt">&lt;/h1&gt;</span>
-</span><span class='line'><span class="nt">&lt;div&gt;</span>
-</span><span class='line'>	<span class="nt">&lt;h2&gt;</span>Hi, {{name}}. Welcome to {{place}}<span class="nt">&lt;/h2&gt;</span>
-</span><span class='line'>	<span class="nt">&lt;div&gt;</span>The accomodation is arranged on <span class="nt">&lt;strong&gt;</span>{{hotel}}<span class="nt">&lt;/strong&gt;</span> and room number is <span class="nt">&lt;strong&gt;</span>{{roomno}}<span class="nt">&lt;/strong&gt;&lt;/div&gt;</span>	
-</span><span class='line'><span class="nt">&lt;/div&gt;</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+<p>{% include_code Template angular_resolve/placetovisit.html %}</p>
 
 <p>```html Index.html
 &lt;!doctype html>

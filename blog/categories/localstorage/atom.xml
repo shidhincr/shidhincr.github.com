@@ -4,7 +4,7 @@
   <title><![CDATA[Category: LocalStorage | We.B.Log]]></title>
   <link href="http://www.undefinednull.com/blog/categories/localstorage/atom.xml" rel="self"/>
   <link href="http://www.undefinednull.com/"/>
-  <updated>2014-03-11T12:43:20+05:30</updated>
+  <updated>2014-03-11T16:49:20+05:30</updated>
   <id>http://www.undefinednull.com/</id>
   <author>
     <name><![CDATA[Shidhin C R]]></name>
@@ -36,8 +36,8 @@
   &lt;script src="script.js"&gt;&lt;/script&gt;
 &lt;/head&gt;
 &lt;body ng-controller="MaintCtrl as m"&gt;
-  &lt;h1&gt;&lt;/h1&gt;
-  &lt;h2&gt;Current LocalStorage value is = &lt;em&gt;&lt;/em&gt;&lt;/h2&gt;
+  &lt;h1&gt;{{m.greeting}}&lt;/h1&gt;
+  &lt;h2&gt;Current LocalStorage value is = &lt;em&gt;{{m.latestData()}}&lt;/em&gt;&lt;/h2&gt;
   &lt;input type="text" ng-model="m.value"&gt;
   &lt;input type="button" value="update" ng-click="m.update(m.value)"&gt;
 &lt;/body&gt;
