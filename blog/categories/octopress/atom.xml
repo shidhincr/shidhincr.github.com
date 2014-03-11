@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Octopress | We.B.Log]]></title>
   <link href="http://www.undefinednull.com/blog/categories/octopress/atom.xml" rel="self"/>
   <link href="http://www.undefinednull.com/"/>
-  <updated>2014-03-11T16:49:20+05:30</updated>
+  <updated>2014-03-11T16:50:27+05:30</updated>
   <id>http://www.undefinednull.com/</id>
   <author>
     <name><![CDATA[Shidhin C R]]></name>
@@ -25,7 +25,7 @@
 
 <h2>What we&rsquo;re going to achieve</h2>
 
-<p>{% img //lh3.googleusercontent.com/-hT72wlBvU-Y/UlzR3V8twdI/AAAAAAAACP0/2aoFaMfzjA0/s916/Screen%2520Shot%25202013-10-15%2520at%252010.57.29%2520AM.png %}</p>
+<p><img src="//lh3.googleusercontent.com/-hT72wlBvU-Y/UlzR3V8twdI/AAAAAAAACP0/2aoFaMfzjA0/s916/Screen%2520Shot%25202013-10-15%2520at%252010.57.29%2520AM.png"></p>
 
 <p>See the above screenshot ? It&rsquo;s a simple section containing the author image, description and a twitter follow button. I&rsquo;ll explain how to build this and add to every post.</p>
 
@@ -123,7 +123,49 @@
 
 <p>Here is the diff file for <strong><em>updated post.html</em></strong> :</p>
 
-<p>{% gist 6989638 %}</p>
+<p><div><script src='https://gist.github.com/6989638.js'></script>
+<noscript><pre><code> &lt;div&gt;
+ &lt;article class=&quot;hentry&quot; role=&quot;article&quot;&gt;
+   {% include article.html %}
+   &lt;footer&gt;
+     &lt;p class=&quot;meta&quot;&gt;
+       {% include post/author.html %}
+       {% include post/date.html %}{% if updated %}{{ updated }}{% else %}{{ time }}{% endif %}
+       {% include post/categories.html %}
+     &lt;/p&gt;
+     {% unless page.sharing == false %}
+       {% include post/sharing.html %}
+     {% endunless %}
+     &lt;p class=&quot;meta&quot;&gt;
++    {% include custom/aboutauthor.html %}
++    &lt;/p&gt;
++    &lt;p class=&quot;meta&quot;&gt;
+       {% if page.previous.url %}
+         &lt;a class=&quot;basic-alignment left&quot; href=&quot;{{page.previous.url}}&quot; title=&quot;Previous Post: {{page.previous.title}}&quot;&gt;&amp;laquo; {{page.previous.title}}&lt;/a&gt;
+       {% endif %}
+       {% if page.next.url %}
+         &lt;a class=&quot;basic-alignment right&quot; href=&quot;{{page.next.url}}&quot; title=&quot;Next Post: {{page.next.title}}&quot;&gt;{{page.next.title}} &amp;raquo;&lt;/a&gt;
+       {% endif %}
+     &lt;/p&gt;
+   &lt;/footer&gt;
+ &lt;/article&gt;
+ {% if site.disqus_short_name and page.comments == true %}
+   &lt;section&gt;
+     &lt;h1&gt;Comments&lt;/h1&gt;
+     &lt;div id=&quot;disqus_thread&quot; aria-live=&quot;polite&quot;&gt;{% include post/disqus_thread.html %}&lt;/div&gt;
+   &lt;/section&gt;
+ {% endif %}
+ &lt;/div&gt;
+ {% unless page.sidebar == false %}
+ &lt;aside class=&quot;sidebar&quot;&gt;
+   {% if site.post_asides.size %}
+     {% include_array post_asides %}
+   {% else %}
+     {% include_array default_asides %}
+   {% endif %}
+ &lt;/aside&gt;
+ {% endunless %}</code></pre></noscript></div>
+</p>
 
 <h2>Preview it</h2>
 

@@ -4,7 +4,7 @@
   <title><![CDATA[We.B.Log]]></title>
   <link href="http://www.undefinednull.com/atom.xml" rel="self"/>
   <link href="http://www.undefinednull.com/"/>
-  <updated>2014-03-11T16:49:16+05:30</updated>
+  <updated>2014-03-11T16:50:27+05:30</updated>
   <id>http://www.undefinednull.com/</id>
   <author>
     <name><![CDATA[Shidhin C R]]></name>
@@ -555,29 +555,22 @@
 
 <h2>What are Directives</h2>
 
-<p>Directives are one of the most powerful features of AngularJS. You can imagine them as building blocks ( aka re-usable components ) of any AngularJS application. Mastering the entire directives, is totally out of this article&rsquo;s scope. For that, I would really recommend this <a href="http://www.packtpub.com/AngularJS-directives/book">book</a>; it covers everything you need to know about directives. And here, we&rsquo;ll discuss a small part of the directives called : &ldquo;<strong>Directive scope</strong>&rdquo;.</p>
+<p>Directives are one of the most powerful features of AngularJs. You can imagine them as building blocks ( aka re-usable components ) of any AngularJs application. Mastering the entire directives, is totally out of this article&rsquo;s scope. For that, I would really recommend this <a href="http://www.packtpub.com/angularjs-directives/book">book</a>; it covered the nuts and bolts of them. And here, we&rsquo;ll discussing a small part of the directives called : &ldquo;<strong>Directive scope</strong>&rdquo;.</p>
 
 <!--more-->
 
 
 <h2>Scopes in AngularJS</h2>
 
-<p>Unlike the other MVC frameworks, AngularJS doesn&rsquo;t have specific classes or functions to create <code>model</code> objects. Instead, AngularJS extended the plain JavaScript object with custom methods and properties. These objects, also known as <code>scope</code> in AngularJS terms, works as a glue between the view and other parts ( directives, controllers and services ) inside the AngularJS application.</p>
+<p>Unlike the other MVC frameworks, AngularJs doesn&rsquo;t have specific classes or functions to create <code>model</code> objects. Instead, AngularJs extended the plain JavaScript object with custom methods and properties. This is known as the <code>scope</code> in AngularJs terms. The <code>scope</code> works as a glue between the view and other parts ( directives, controllers and services ) inside the AngularJs application.</p>
 
-<p>Whenever the AngularJS application is bootstrapped, a <code>rootScope</code> object is created. Each scope created by controllers, directives and services are prototypically inherited from <code>rootScope</code>. AngularJS docs explain the scope inheritence very clearly. See <a href="https://github.com/angular/angular.js/wiki/Understanding-Scopes">Scopes in AngularJS</a>. Understanding how scope inheritence works will be useful in following sections.</p>
+<p>Whenever the AngularJs application is bootstrapped, a <code>rootScope</code> object is created. All the scopes created by controllers, directives, services are prototypically inherited from <code>rootScope</code>. See this link :  <a href="https://github.com/angular/angular.js/wiki/Understanding-Scopes">Scopes in AngularJS</a> to know how <code>scope</code> inheritance works. This will really help for the upcoming sections.</p>
 
 <h2>Scope inside a directive</h2>
 
 <p><em><strong>Note</strong>: This section assumes you&rsquo;ve prior knowledge of creating  a simple directive</em></p>
 
-<ul>
-<li>A directive scope is created</li>
-<li>Setting up directive scope by DDO</li>
-<li>Default values of directive scope</li>
-</ul>
-
-
-<p>All directives always have a scope associated with it. A directive&rsquo;s link function, and template will have access to all properties and methods of its scope. And by default, unless explicitly set, a directive will not have it&rsquo;s own scope. So the directive will share the the same scope of it&rsquo;s parent ( Controller scope ) where it&rsquo;s been used. However, this default behavior can be changed through directive definition object. A <code>directive definition object</code> ( let&rsquo;s call it as  <em>DDO</em> ) is used to configure a directive when it&rsquo;s defined –– to know more about it check AngularJS docs about directives <a href="http://docs.AngularJS.org/guide/directive">link</a>. The <em>DDO</em> has a  property called <code>scope</code> and this is used for setting the scope of the directive. Let&rsquo;s see the example below:</p>
+<p>All directives always have a scope associated with it. A directive&rsquo;s link function, and template will have access to all properties and methods of its scope. And by default, unless explicitly set, a directive will not have it&rsquo;s own scope. So the directive will share the the same scope of it&rsquo;s parent ( Controller scope ) where it&rsquo;s been used. This default behavior can be changed through directive definition object. A <code>directive definition object</code> ( let&rsquo;s call it as  <em>DDO</em> ) is used to configure a directive when it&rsquo;s defined –– to know more about it check AngularJs docs about directives <a href="http://docs.angularjs.org/guide/directive">link</a>. The <em>DDO</em> has a  property called <code>scope</code> and this is used for setting the scope of the directive. Let&rsquo;s see the example below:</p>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -602,12 +595,6 @@
 </span></code></pre></td></tr></table></div></figure>
 
 
-<ul>
-<li>different values of scope property</li>
-<li>false means no scope, so using parent scope</li>
-</ul>
-
-
 <p>Setting a &ldquo;false&rdquo; value to the <code>scope</code> property in <em>DDO</em> is same as having <strong>no</strong> own scope for the directive. At this time, directive will use the parent scope. The other values to the scope property are &ldquo;true&rdquo; and &ldquo;{ }&rdquo;. In following sections, we&rsquo;ll see how these values affect the directive&rsquo;s behaviour.</p>
 
 <h2>Different types of directive scopes</h2>
@@ -623,7 +610,7 @@
 
 <p><u> <strong>Scope :</u> True</strong>  ( New child scope will be created for the directive )</p>
 
-<p>It&rsquo;s time for the directive to get some own scope. By setting &ldquo;true&rdquo; to the scope property, AngularJS will create a new scope object and set to the directive. This new scope created, will be prototypically inherited from it&rsquo;s parent scope. So instead of sharing the actual parent scope to directive, it&rsquo;s going to get a scope object inherited from the parent scope.</p>
+<p>It&rsquo;s time for the directive to get some own scope. By setting &ldquo;true&rdquo; to the scope property, AngularJs will create a new scope object and set to the directive. This new scope created, will be prototypically inherited from it&rsquo;s parent scope. So instead of sharing the actual parent scope to directive, it&rsquo;s going to get a scope object inherited from the parent scope.</p>
 
 <p>The exact difference between setting <code>scope: true</code> and <code>scope: false</code> is like this:</p>
 
@@ -678,7 +665,7 @@
 </ul>
 
 
-<p>Though it&rsquo;s been called as an <em>Isolated scope</em>, AngularJS allows to communicate with the parent scope using some special symbols knows as <code>*prefixes*</code>. You might wonder why ? and the answer is : there&rsquo;re many situations we need to get the data from parent scope, execute callbacks in the parent scope when changes inside directive happens ..etc. The next section is entirely dedicated for explaining the <em>Isolated scope</em> and it&rsquo;s properties.</p>
+<p>Though it&rsquo;s been called as an <em>Isolated scope</em>, AngularJs allows to communicate with the parent scope using some special symbols knows as <code>*prefixes*</code>. You might wonder why ? and the answer is : there&rsquo;re many situations we need to get the data from parent scope, execute callbacks in the parent scope when changes inside directive happens ..etc. The next section is entirely dedicated for explaining the <em>Isolated scope</em> and it&rsquo;s properties.</p>
 
 <h2>Isolated Scope Explained</h2>
 
@@ -693,7 +680,7 @@
 
 <p>That&rsquo;s absolutely a very good question. Not only just passing some values from the parent, but there can be situations like, changes inside the directives should invoke some callback functions in parent scope; and sometimes, we need two-way binding between parent &amp; directives scope ..etc</p>
 
-<p>For this purposes, AngularJS will allow properties to be added to the <strong>Object literal</strong> passed to the <em>DDO</em>. These  properties <strong>MUST</strong> be set as an attributes of the directive element ( which we are going to place in our HTML ). Don&rsquo;t worry if I&rsquo;m so creating so much confusion over here, let me explain with an example:</p>
+<p>For this purposes, AngularJs will allow properties to be added to the <strong>Object literal</strong> passed to the <em>DDO</em>. These  properties <strong>MUST</strong> be set as an attributes of the directive element ( which we are going to place in our HTML ). Don&rsquo;t worry if I&rsquo;m so creating so much confusion over here, let me explain with an example:</p>
 
 <p>Just go through the below fiddle, and look at the &ldquo;HTML&rdquo;, &ldquo;JavaScript&rdquo; and  &ldquo;Results&rdquo; tabs.</p>
 
@@ -847,9 +834,9 @@ randomColor = function for generating random color code
 </ul>
 
 
-<p>I know that AngularJS have made these things little bit difficult to understand. Especially because of these random naming conventions they&rsquo;ve chosen. I believe I&rsquo;ve tried my best to explain how the <em>Isolated scope</em>  works inside a directive. If you think you&rsquo;re still confused, I would recommend to have a look at the below article:</p>
+<p>I know that AngularJs have made these things little bit difficult to understand. Especially because of these random naming conventions they&rsquo;ve chosen. I believe I&rsquo;ve tried my best to explain how the <em>Isolated scope</em>  works inside a directive. If you think you&rsquo;re still confused, I would recommend to have a look at the below article:</p>
 
-<p><a href="http://umur.io/AngularJS-directives-using-isolated-scope-with-attributes/">AngularJS directives: Isolated scope prefixes </a> . This one explains the <em>Isolated scope</em>  and it&rsquo;s properties clearly. It would definitely help to get away from any sort of confusions.</p>
+<p><a href="http://umur.io/angularjs-directives-using-isolated-scope-with-attributes/">AngularJS directives: Isolated scope prefixes </a> . This one explains the <em>Isolated scope</em>  and it&rsquo;s properties clearly. It would definitely help to get away from any sort of confusions.</p>
 
 <p>That&rsquo;s it !  I really didn&rsquo;t think that this post is going to be this much longer. But I couldn&rsquo;t help with that because, I didn&rsquo;t want to miss any points when I complete this. I hope everyone enjoyed reading this. I would&rsquo;ve made any errors / personal opinions; but I really want you guys to correct me when I am wrong –– comment box is made just for that. Thanks everyone !!</p>
 
@@ -859,7 +846,7 @@ randomColor = function for generating random color code
 <li><a href="https://github.com/angular/angular.js/wiki/Understanding-Scopes">https://github.com/angular/angular.js/wiki/Understanding-Scopes</a></li>
 <li><a href="http://amitgharat.wordpress.com/2013/06/08/the-hitchhikers-guide-to-the-directive/">http://amitgharat.wordpress.com/2013/06/08/the-hitchhikers-guide-to-the-directive/</a></li>
 <li><a href="http://www.ng-newsletter.com/posts/directives.html">http://www.ng-newsletter.com/posts/directives.html</a></li>
-<li><a href="https://egghead.io/lessons/AngularJS-understanding-isolate-scope">https://egghead.io/lessons/AngularJS-understanding-isolate-scope</a></li>
+<li><a href="https://egghead.io/lessons/angularjs-understanding-isolate-scope">https://egghead.io/lessons/angularjs-understanding-isolate-scope</a></li>
 </ol>
 
 ]]></content>
