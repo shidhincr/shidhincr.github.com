@@ -4,7 +4,7 @@
   <title><![CDATA[Category: JavaScript | We.B.Log]]></title>
   <link href="http://www.undefinednull.com/blog/categories/javascript/atom.xml" rel="self"/>
   <link href="http://www.undefinednull.com/"/>
-  <updated>2014-03-06T19:34:41+05:30</updated>
+  <updated>2014-03-11T12:43:20+05:30</updated>
   <id>http://www.undefinednull.com/</id>
   <author>
     <name><![CDATA[Shidhin C R]]></name>
@@ -111,6 +111,78 @@ function foo() {
 <p><img src="https://lh5.googleusercontent.com/-oNcO5nhOIwQ/UugGMrn13mI/AAAAAAAAG_c/DSUWGrNxGAw/w958-h495-no/Screen+Shot+2014-01-29+at+1.03.33+am.png" alt="verbalregex.com" /></p>
 
 <p>I&rsquo;m trying to work more on this project on my spare times. Hope everything will go well !!</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Implementing a Curry function with TDD (Test Driven Development ) : JavaScript ]]></title>
+    <link href="http://www.undefinednull.com/2013/10/04/implementing-a-curry-function-with-tdd-test-driven-development-javascript/"/>
+    <updated>2013-10-04T18:04:00+05:30</updated>
+    <id>http://www.undefinednull.com/2013/10/04/implementing-a-curry-function-with-tdd-test-driven-development-javascript</id>
+    <content type="html"><![CDATA[<h2>Points</h2>
+
+<ul>
+<li>Functional Programming
+
+<ul>
+<li>Function Currying</li>
+</ul>
+</li>
+<li>TDD
+
+<ul>
+<li>Why ?</li>
+</ul>
+</li>
+<li>Mathematical explanation of Curry function</li>
+<li>How it should work in JavaScript</li>
+<li>Application of Currying</li>
+<li>Writing the tests</li>
+<li>Writing the Code
+
+<ul>
+<li>Final,Conclusion</li>
+</ul>
+</li>
+</ul>
+
+
+<hr />
+
+<h2>Function Currying</h2>
+
+<p>JavaScript is a very dynamic language which offers functional programming and object oriented programming styles. Here we&rsquo;ll talk about one {feature} of functional programming –– known as &ldquo;Function Currying&rdquo;. In mathematical world, <a href="http://en.wikipedia.org/wiki/Currying">Currying</a> is {defined} as :</p>
+
+<blockquote><p>In mathematics and computer science, currying is the technique of transforming a function that takes multiple arguments (or a tuple of arguments) in such a way that it can be called as a chain of functions, each with a single argument (partial application).</p></blockquote>
+
+<p>So technically, a function is said to be a currying function when it satisfy the following:</p>
+
+<p><code>
+fn(a,b,c,d,e,f) = fn(a)(b)(c)(d)(e)(f)
+</code></p>
+
+<p>Similarly, there is another term called <strong>&ldquo;Partial functions&rdquo;</strong>. A partial function is a {different form} of curried function in which it can be {written} in any of the following form.</p>
+
+<p><code>
+fn(a,b,c,d,e,f) = fn(a,b)(c,d)(e,f) = fn(a,b,c)(d,e,f) = fn(a,b)(c)(d)(e,f)
+</code></p>
+
+<p><strong>Real World Example</strong></p>
+
+<p>From one of the stackoverflow <a href="http://stackoverflow.com/questions/1352855/in-functional-programming-what-is-currying">link</a></p>
+
+<blockquote><p>Suppose you have a function that calculates the gravitational force acting on an object. If you don&rsquo;t know the formula, you can find it here. This function takes in the three necessary parameters as arguments.</p>
+
+<p>Now, being on the earth, you only want to calculate forces for objects on this planet. In a functional language, you could pass in the mass of the earth to the function and then partially evaluate it. What you&rsquo;d get back is another function that takes only two arguments and calculates the gravitational force of objects on earth. This is called currying</p></blockquote>
+
+<h2>TDD</h2>
+
+<h2>Links</h2>
+
+<ol>
+<li><a href="http://blogs.msdn.com/wesdyer/archive/2007/01/29/currying-and-partial-function-application.aspx">http://blogs.msdn.com/wesdyer/archive/2007/01/29/currying-and-partial-function-application.aspx</a></li>
+</ol>
+
 ]]></content>
   </entry>
   

@@ -4,7 +4,7 @@
   <title><![CDATA[We.B.Log]]></title>
   <link href="http://www.undefinednull.com/atom.xml" rel="self"/>
   <link href="http://www.undefinednull.com/"/>
-  <updated>2014-03-06T19:34:41+05:30</updated>
+  <updated>2014-03-11T12:43:20+05:30</updated>
   <id>http://www.undefinednull.com/</id>
   <author>
     <name><![CDATA[Shidhin C R]]></name>
@@ -853,6 +853,221 @@ randomColor = function for generating random color code
   </entry>
   
   <entry>
+    <title type="html"><![CDATA[Difference between $watch and $observe in AngularJS]]></title>
+    <link href="http://www.undefinednull.com/2014/02/10/difference-between-%24watch-and-%24observe-in-angularjs/"/>
+    <updated>2014-02-10T11:48:00+05:30</updated>
+    <id>http://www.undefinednull.com/2014/02/10/difference-between-$watch-and-$observe-in-angularjs</id>
+    <content type="html"><![CDATA[
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Learn EmberJS : Notes from an absolute beginner]]></title>
+    <link href="http://www.undefinednull.com/2014/02/04/learn-emberjs-notes-from-an-absolute-beginner/"/>
+    <updated>2014-02-04T15:19:00+05:30</updated>
+    <id>http://www.undefinednull.com/2014/02/04/learn-emberjs-notes-from-an-absolute-beginner</id>
+    <content type="html"><![CDATA[<p>Last couple of days, I&rsquo;m really trying to understand this framework known as EmberJS. I&rsquo;ve a fair understanding about the MVC and MVVM architecture, and i&rsquo;ve explored some of the client side MVC/MVVM frameworks, especially AngularJS and BackboneJS. So I decided to share my experience of learning EmberJS as I know that I am not the only one who&rsquo;re going to follow this steep learning curve of EmberJS.</p>
+
+<!--more-->
+
+
+<p>I&rsquo;d been working on some of the AngularJS projects ( again those I&rsquo;ve created for learning AngularJS ) and mostly my concentration was only on getting deeper into AngularJS. Now I&rsquo;ve got a good grip on AngularJS and decided to move on to another framework. At this moment, there&rsquo;re something we planned in our UI meeting ( at office ), where each of us will take a presentation on some client side frameworks. So me and my friend Rohith, decided to take session on EmberJS –– that&rsquo;s a good opportunity to learn.</p>
+
+<p>When I started, I found it very very difficult. Especially, I couldn&rsquo;t able to switch from the AngularJS terms and the <strong>&ldquo;Angular way of thinking&rdquo;</strong>. Ember seems to be given more emphasis on naming conventions, and built on top of strict MVC/MVVM concepts. I could able to thing EmberJS as a highly advanced version of BackboneJS. EmberJS has hard dependencies on HandleBars tempting language and jQuery. Though I&rsquo;m pretty much familiar with jQuery, learning the HandleBars templating is also a bit tough job.</p>
+
+<h2>EmberJS : Basic Concepts</h2>
+
+<p>EmberJS is client side MVVM framework. Originally authored and maintained by Yahuda Katz and Tom dale. Yahuda Katz is the guy behind the HandleBars templating language, so now you know why HandleBars is the default templating of Ember !</p>
+
+<p><u>These are the the early impressions about EmberJS:</u></p>
+
+<ul>
+<li>It&rsquo;s an client side MVVM framework</li>
+<li>Have hard dependencies on HandleBars and jQuery</li>
+<li>The file size is fairly bigger compared to Angular, Backbone. EmberJS alone ( prod + gzip ) will take 69KB.</li>
+<li>Core parts of Ember are :
+
+<ul>
+<li>Routers</li>
+<li>Controllers</li>
+<li>Models</li>
+<li>Templates (HandleBars)</li>
+<li>Components</li>
+<li>Two way data binding</li>
+<li>HandleBars helpers</li>
+<li>Support for computed properties</li>
+</ul>
+</li>
+</ul>
+
+
+<p>You see, that&rsquo;s a lot of list. Ember offers all these in it&rsquo;s core, so we don&rsquo;t need to install any other extensions. This is one of reason why the file size is much bigger.</p>
+
+<h2>Let&rsquo;s Start: Build a Contact Manager Application</h2>
+
+<p>Frameworks/ Languages cannot be learn by reading books; We&rsquo;ve to start coding to understand how it actually works. So to learn EmberJS, the best way is to create a real world application using it. And whenever we think about a real world application, the first thing that comes to the mind would be a <strong>&ldquo;TODO List&rdquo;</strong>. But here in this case, there&rsquo;re smart people out there, who created this thing called <a href="http://todomvc.com/">TodoMVC</a> in each and every framework possible. So it&rsquo;s better we&rsquo;ll do some other application like a &ldquo;Contact Manager&rdquo;. Here we go</p>
+
+<p>Since Ember has lot of new terms and conventions we need to understand, it&rsquo;s better to learn by piece by piece. We&rsquo;ll learn each concept in each <strong>Step</strong> and apply it to build a certain part of our application.</p>
+
+<p><u><strong>Files structure</strong></u></p>
+
+<p>Let&rsquo;s start with the files <code>index.html</code>, <code>styles.css</code> and <code>app.js</code> only now. We&rsquo;ll include the EmberJS,jQuery and HandleBars libraries from their corresponding CDN files to <code>index.html</code>. To make our application looks better,we&rsquo;ll be including the twitter bootstrap css too.</p>
+
+<p>The initial <code>index.html</code> looks like the below. The only extra mark-up is added to display a navigational header using twitter bootstrap.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="cp">&lt;!doctype html&gt;</span>
+</span><span class='line'><span class="nt">&lt;html</span> <span class="na">lang=</span><span class="s">&quot;en&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'><span class="nt">&lt;head&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;meta</span> <span class="na">charset=</span><span class="s">&quot;UTF-8&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;title&gt;</span>Ember Learning: Contact Manager App<span class="nt">&lt;/title&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">&quot;stylesheet&quot;</span> <span class="na">href=</span><span class="s">&quot;//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.1.0/css/bootstrap.min.css&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">&quot;stylesheet&quot;</span> <span class="na">href=</span><span class="s">&quot;styles.css&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">&quot;http://code.jquery.com/jquery-2.0.3.min.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">&quot;http://builds.emberjs.com/handlebars-1.0.0.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">&quot;http://builds.emberjs.com/tags/v1.1.2/ember.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">&quot;http://builds.emberjs.com/tags/v1.0.0-beta.3/ember-data.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">&quot;app.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
+</span><span class='line'><span class="nt">&lt;/head&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="nt">&lt;body&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;nav</span> <span class="na">class=</span><span class="s">&quot;navbar navbar-default&quot;</span> <span class="na">role=</span><span class="s">&quot;navigation&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;container-fluid&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>            <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;navbar-header text-center&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>                <span class="nt">&lt;h3&gt;</span>EmberJS Learning: Contact Manager Application<span class="nt">&lt;/h3&gt;</span>
+</span><span class='line'>            <span class="nt">&lt;/div&gt;</span>
+</span><span class='line'>        <span class="nt">&lt;/div&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;/nav&gt;</span>
+</span><span class='line'><span class="nt">&lt;/body&gt;</span>
+</span><span class='line'><span class="nt">&lt;/html&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>In coming steps, we&rsquo;ll be adding required templates to <code>index.html</code> and JavaScript code to <code>app.js</code> only. ( It&rsquo;s better to separate the code to different files: like router.js, model.js, controller.js ..etc. But for a sample application, we&rsquo;ll keep it in just one file ).</p>
+
+<p><u><strong>Point 1:</strong></u> &ldquo;Ember needs some bootstrapping&rdquo;</p>
+
+<p>Ember needs the application to be bootstrapped by the following piece of code. So add this as the first line of our <code>app.js</code>.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="kd">var</span> <span class="nx">App</span> <span class="o">=</span> <span class="nx">Ember</span><span class="p">.</span><span class="nx">Application</span><span class="p">.</span><span class="nx">create</span><span class="p">();</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p><u><strong>Point 2:</strong></u> &ldquo;Ember strictly follows the naming conventions instead of configutations&rdquo;</p>
+
+<p><strong>Pay good attention to this</strong>. As a beginner, I really got struggled to understand what it actually means. Well, this means, EmberJS needs some kind of connection between a router, and it&rsquo;s associated controller,template..etc. To wire-up all these, EmberJS uses a naming conventions for them. For example, whenever we create any new route in Ember , say <code>/users</code> :</p>
+
+<ul>
+<li>Ember needs a route object called Ember.usersRoute</li>
+<li>Ember requires a controller object called Ember.usersController</li>
+<li>Finally, the template with either <code>id= "users"</code> or <code>data-template-name="users"</code></li>
+</ul>
+
+
+<p>See <a href="http://emberjs.com/guides/concepts/naming-conventions/">Ember Naming Conventions</a></p>
+
+<p><strong>Don&rsquo;t worry about this now, we&rsquo;ll discuss more in the coming sections</strong></p>
+
+<p><u><strong>Point 3:</strong></u> &ldquo;Ember will boot to the application template first&rdquo;</p>
+
+<p>When we create an Ember application using the code in <strong>Point 1</strong>, the first thing Ember does is look for the following :</p>
+
+<ul>
+<li>App.ApplicationRoute</li>
+<li>App.ApplicationController</li>
+<li>finally the <code>application</code> template</li>
+</ul>
+
+
+<p>Notice again, the naming convention Ember follows. If the <code>ApplicationRoute</code> and <code>ApplicationController</code> are not present, Ember will create them of its own. Leave them for now, as there will be a separate section for them later.</p>
+
+<p>Let&rsquo;s focus on the <code>application</code> template. This is <strong>main</strong> template Ember uses to render anything inside the application. That means all other views will be going to be rendered inside the <code>application</code> template always. Now let&rsquo;s create a simple HandleBars template with <code>data-template-name="application"</code> and add to our <code>index.html</code>.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="cp">&lt;!doctype html&gt;</span>
+</span><span class='line'><span class="nt">&lt;html</span> <span class="na">lang=</span><span class="s">&quot;en&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'><span class="nt">&lt;head&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;meta</span> <span class="na">charset=</span><span class="s">&quot;UTF-8&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;title&gt;</span>Ember Learning: Contact Manager App<span class="nt">&lt;/title&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">&quot;stylesheet&quot;</span> <span class="na">href=</span><span class="s">&quot;//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.1.0/css/bootstrap.min.css&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">&quot;stylesheet&quot;</span> <span class="na">href=</span><span class="s">&quot;styles.css&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">&quot;http://code.jquery.com/jquery-2.0.3.min.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">&quot;http://builds.emberjs.com/handlebars-1.0.0.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">&quot;http://builds.emberjs.com/tags/v1.1.2/ember.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">&quot;http://builds.emberjs.com/tags/v1.0.0-beta.3/ember-data.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">&quot;app.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
+</span><span class='line'><span class="nt">&lt;/head&gt;</span>
+</span><span class='line'><span class="nt">&lt;body&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;nav</span> <span class="na">class=</span><span class="s">&quot;navbar navbar-default&quot;</span> <span class="na">role=</span><span class="s">&quot;navigation&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;container-fluid&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>            <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;navbar-header text-center&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>                <span class="nt">&lt;h3&gt;</span>EmberJS Learning: Contact Manager Application<span class="nt">&lt;/h3&gt;</span>
+</span><span class='line'>            <span class="nt">&lt;/div&gt;</span>
+</span><span class='line'>        <span class="nt">&lt;/div&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;/nav&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;script </span><span class="na">type=</span><span class="s">&quot;text/x-handlebars&quot;</span> <span class="na">data-template-name=</span><span class="s">&quot;application&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>      <span class="o">&lt;</span><span class="nx">h1</span><span class="o">&gt;</span><span class="nx">This</span> <span class="nx">is</span> <span class="nx">a</span> <span class="nx">simple</span> <span class="nx">Ember</span> <span class="nx">application</span><span class="o">&lt;</span><span class="err">/h1&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;/script&gt;</span>
+</span><span class='line'><span class="nt">&lt;/body&gt;</span>
+</span><span class='line'><span class="nt">&lt;/html&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>We just added a simple HandleBars template with <code>data-template-name=
+"application"</code>. It doesn&rsquo;t have any dynamic data; All it contains is a heading tag. Let&rsquo;s test if it&rsquo;s working by opening the <code>index.html</code> in browser.</p>
+]]></content>
+  </entry>
+  
+  <entry>
     <title type="html"><![CDATA[Multiple Left-hand assignment in JavaScript, is really bad. Think before you do it.]]></title>
     <link href="http://www.undefinednull.com/2014/02/03/multiple-left-hand-assignment-in-javascript-is-really-bad-think-once-before-you-do-it/"/>
     <updated>2014-02-03T12:04:00+05:30</updated>
@@ -916,6 +1131,39 @@ randomColor = function for generating random color code
 
 
 <p>Declaring all the variables in the first line is <strong>one of the good coding style</strong>. This will make sure that you’re not the victim of scope issues and hoisting problems.  So always read about the JavaScript best practices, and adhere to good coding style.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Using Call and Apply in JavaScript. When any Why ?]]></title>
+    <link href="http://www.undefinednull.com/2014/01/30/using-call-and-apply-in-javascript-when-any-why/"/>
+    <updated>2014-01-30T12:23:00+05:30</updated>
+    <id>http://www.undefinednull.com/2014/01/30/using-call-and-apply-in-javascript-when-any-why</id>
+    <content type="html"><![CDATA[<h2>This is heading</h2>
+
+<ol>
+<li>Introduction</li>
+<li>What&rsquo;s Call and Apply</li>
+<li>The scope inside any function. The <code>this</code> operator.</li>
+<li>How to change the <code>this</code> value inside any function</li>
+<li>Conclusion</li>
+</ol>
+
+
+<p><code>Call</code> and <code>Apply</code> are two most powerful feature of JavaScript. These are two ways of invoking functions. Functions are also objects, but the main difference is the existence of the callable property.</p>
+
+<p>Before we start, let&rsquo;s find out how the scope is decided inside any function.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="kd">var</span> <span class="nx">call</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(){</span>
+</span><span class='line'>  <span class="nx">alert</span><span class="p">(</span><span class="k">this</span><span class="p">);</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>this is some block code  for showing and</p>
 ]]></content>
   </entry>
   
@@ -1157,6 +1405,78 @@ randomColor = function for generating random color code
 <p>That&rsquo;s it !! The author information section should be appearing below each blog post by now. Replace the &ldquo;Lorum ipsum&rdquo; with the words best describes you.</p>
 
 <p>Thanks for reading, feedbacks are welcome. Enjoy blogging !!</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Implementing a Curry function with TDD (Test Driven Development ) : JavaScript ]]></title>
+    <link href="http://www.undefinednull.com/2013/10/04/implementing-a-curry-function-with-tdd-test-driven-development-javascript/"/>
+    <updated>2013-10-04T18:04:00+05:30</updated>
+    <id>http://www.undefinednull.com/2013/10/04/implementing-a-curry-function-with-tdd-test-driven-development-javascript</id>
+    <content type="html"><![CDATA[<h2>Points</h2>
+
+<ul>
+<li>Functional Programming
+
+<ul>
+<li>Function Currying</li>
+</ul>
+</li>
+<li>TDD
+
+<ul>
+<li>Why ?</li>
+</ul>
+</li>
+<li>Mathematical explanation of Curry function</li>
+<li>How it should work in JavaScript</li>
+<li>Application of Currying</li>
+<li>Writing the tests</li>
+<li>Writing the Code
+
+<ul>
+<li>Final,Conclusion</li>
+</ul>
+</li>
+</ul>
+
+
+<hr />
+
+<h2>Function Currying</h2>
+
+<p>JavaScript is a very dynamic language which offers functional programming and object oriented programming styles. Here we&rsquo;ll talk about one {feature} of functional programming –– known as &ldquo;Function Currying&rdquo;. In mathematical world, <a href="http://en.wikipedia.org/wiki/Currying">Currying</a> is {defined} as :</p>
+
+<blockquote><p>In mathematics and computer science, currying is the technique of transforming a function that takes multiple arguments (or a tuple of arguments) in such a way that it can be called as a chain of functions, each with a single argument (partial application).</p></blockquote>
+
+<p>So technically, a function is said to be a currying function when it satisfy the following:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>fn(a,b,c,d,e,f) = fn(a)(b)(c)(d)(e)(f)</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Similarly, there is another term called <strong>&ldquo;Partial functions&rdquo;</strong>. A partial function is a {different form} of curried function in which it can be {written} in any of the following form.</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>fn(a,b,c,d,e,f) = fn(a,b)(c,d)(e,f) = fn(a,b,c)(d,e,f) = fn(a,b)(c)(d)(e,f) </span></code></pre></td></tr></table></div></figure>
+
+
+<p><strong>Real World Example</strong></p>
+
+<p>From one of the stackoverflow <a href="http://stackoverflow.com/questions/1352855/in-functional-programming-what-is-currying">link</a></p>
+
+<blockquote><p>Suppose you have a function that calculates the gravitational force acting on an object. If you don&rsquo;t know the formula, you can find it here. This function takes in the three necessary parameters as arguments.</p>
+
+<p>Now, being on the earth, you only want to calculate forces for objects on this planet. In a functional language, you could pass in the mass of the earth to the function and then partially evaluate it. What you&rsquo;d get back is another function that takes only two arguments and calculates the gravitational force of objects on earth. This is called currying</p></blockquote>
+
+<h2>TDD</h2>
+
+<h2>Links</h2>
+
+<ol>
+<li><a href="http://blogs.msdn.com/wesdyer/archive/2007/01/29/currying-and-partial-function-application.aspx">http://blogs.msdn.com/wesdyer/archive/2007/01/29/currying-and-partial-function-application.aspx</a></li>
+</ol>
+
 ]]></content>
   </entry>
   
@@ -1439,6 +1759,319 @@ Finally the value of expression <code>Y</code> becomes <code>8</code>.</p>
 <p>There&rsquo;re couple of good themes built for Octopress ( It&rsquo;s all 3rd party ). Since I like the default Octopress theme, I didn&rsquo;t try any 3rd party themes. But It&rsquo;s worth checking out those.</p>
 
 <p>PS: I&rsquo;ll be writing mainly about Javascript , HTML ,CSS and client side framework and design patterns here. Expect more posts from me soon in this space.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Javascript Unit Testing Basics and TDD - Test Driven Development]]></title>
+    <link href="http://www.undefinednull.com/2013/09/06/javascript-unit-testing-basics/"/>
+    <updated>2013-09-06T15:02:00+05:30</updated>
+    <id>http://www.undefinednull.com/2013/09/06/javascript-unit-testing-basics</id>
+    <content type="html"><![CDATA[<h2>TDD &ndash; Test Driven Development</h2>
+
+<p>TDD is a typical software development style where, first the test will be written for any unit( function/module ) then the actual code. Initially all the tests for the
+particular unit will start failing. Now the developer has to write the unit code to make each test pass. This is how developer will be designing a better, testable code for any unit.</p>
+
+<h2>Which framework to choose ?</h2>
+
+<p>There&rsquo;re many for JS unit testing. Naming few here :</p>
+
+<ul>
+<li>QUnit</li>
+<li>JsTestDriver</li>
+<li>Jasmine</li>
+<li>Mocha</li>
+<li>BusterJS</li>
+<li>PhantomJS</li>
+</ul>
+
+
+<p>The list goes like this ..</p>
+
+<p>It doesn&rsquo;t matter which framework you choose. Few caveats you need to consider when you need to test any unit which has async executing code involved. At that time, you need to check the chosen framework supports asynchronous testing or not.</p>
+
+<p>I&rsquo;m going to use <code>BusterJS</code> here for the example described below. Check the <code>BusterJS</code> website to know how to install it in your system.</p>
+
+<!-- more -->
+
+
+<h2>Example</h2>
+
+<p><strong>What we&rsquo;re going to build :</strong></p>
+
+<p>We need to build an expandable module which has the following API</p>
+
+<ul>
+<li>It should&rsquo;ve a method <code>expand()</code></li>
+<li>It should&rsquo;ve a method <code>collapse</code></li>
+<li>It should&rsquo;ve a method <code>toggle</code></li>
+</ul>
+
+
+<h2>Defining our tests</h2>
+
+<p>In our test/testSuite ( testSuite is a collection of tests ) , we need to write tests that will satisfy the functional criterias. For example : Our first criterias should be</p>
+
+<ul>
+<li>Once initialized,  the module should be an object ( should not be undefined ).</li>
+<li>The module should&rsquo;ve all methods defined as per it&rsquo;s API</li>
+</ul>
+
+
+<p>Wriring these tests in BusterJS is very simple. Buster uses the assertion framework internally ( expect.js ) which is more like writing in natural language.</p>
+
+<p>First we need to define our test&rsquo;s name.We use the <code>describe</code> method buster provides. Before using <code>describe</code> method we&rsquo;ve to expose these methods to public. This is because , Buster encapsulates all these methods in it&rsquo;s namespace –– and if we need to avoid calling such a long namespace, we need to expose these methods to global scope. For that we use the following code</p>
+
+<pre><code>buster.spec.expose()
+</code></pre>
+
+<p><code>spec</code> is same as <code>test</code> rather it&rsquo;s a BDD syntax . I need to explain what BDD is , and that I&rsquo;ll cover later.</p>
+
+<h2>Files</h2>
+
+<p>I&rsquo;ve created a file named <code>expandable.test.js</code> in the <code>TDD\tests</code> folder. Also the actual unit code goes to another file <code>expandable.js</code> which is there in <code>TDD\lib</code> folder.</p>
+
+<p>To tell Buster to pick these files and run , we need to create another configuration file called <code>buster.js</code> –– It&rsquo;s pretty much self explanatory when you see the configuration code. I&rsquo;ve given below for reference :</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="kd">var</span> <span class="nx">config</span> <span class="o">=</span> <span class="nx">module</span><span class="p">.</span><span class="nx">exports</span><span class="p">;</span>
+</span><span class='line'><span class="nx">config</span><span class="p">[</span><span class="s2">&quot;expandableModule&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
+</span><span class='line'>    <span class="nx">rootPath</span><span class="o">:</span> <span class="s2">&quot;../&quot;</span><span class="p">,</span>
+</span><span class='line'>    <span class="nx">environment</span><span class="o">:</span> <span class="s2">&quot;browser&quot;</span><span class="p">,</span> <span class="c1">// or &quot;node&quot;</span>
+</span><span class='line'>    <span class="nx">sources</span><span class="o">:</span> <span class="p">[</span>
+</span><span class='line'>        <span class="s2">&quot;lib/expandable.js&quot;</span>
+</span><span class='line'>    <span class="p">],</span>
+</span><span class='line'>    <span class="nx">tests</span><span class="o">:</span> <span class="p">[</span>
+</span><span class='line'>        <span class="s2">&quot;tests/expandable.test.js&quot;</span>
+</span><span class='line'>    <span class="p">]</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>So our first testcase</h2>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nx">describe</span><span class="p">(</span><span class="s2">&quot;expandable module test&quot;</span> <span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>  <span class="nx">before</span><span class="p">(</span><span class="kd">function</span><span class="p">(){</span>
+</span><span class='line'>      <span class="k">this</span><span class="p">.</span><span class="nx">expandable</span> <span class="o">=</span> <span class="nx">module</span><span class="p">(</span><span class="s2">&quot;expandable&quot;</span><span class="p">);</span>
+</span><span class='line'>  <span class="p">});</span>
+</span><span class='line'>  <span class="nx">it</span><span class="p">(</span><span class="s2">&quot;should be an object when initialized and should&#39;ve all the api defined&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(){</span>
+</span><span class='line'>      <span class="nx">expect</span><span class="p">(</span> <span class="k">this</span><span class="p">.</span><span class="nx">expandable</span> <span class="p">).</span><span class="nx">toBeDefined</span><span class="p">().</span><span class="nx">toBeObject</span><span class="p">();</span>
+</span><span class='line'>      <span class="nx">expect</span><span class="p">(</span> <span class="k">this</span><span class="p">.</span><span class="nx">expandable</span><span class="p">.</span><span class="nx">expand</span> <span class="p">).</span><span class="nx">toBeFunction</span><span class="p">();</span>
+</span><span class='line'>      <span class="nx">expect</span><span class="p">(</span> <span class="k">this</span><span class="p">.</span><span class="nx">expandable</span><span class="p">.</span><span class="nx">collapse</span> <span class="p">).</span><span class="nx">toBeFunction</span><span class="p">();</span>
+</span><span class='line'>      <span class="nx">expect</span><span class="p">(</span> <span class="k">this</span><span class="p">.</span><span class="nx">expandable</span><span class="p">.</span><span class="nx">toggle</span> <span class="p">).</span><span class="nx">toBeFunction</span><span class="p">();</span>
+</span><span class='line'>  <span class="p">});</span>
+</span><span class='line'><span class="p">});</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>The <code>before</code> function will get executed before each <code>it</code> function handler executes. We can utilise this one for resetting any values which already set , and will affect our tests.</p>
+
+<p>Naviagate to this directory in terminal and execute the buster command to start capturing browser slave. This step is required if we choose the running environment as browser. So buster will be running all the code in the browser slave we capture. ( the other option is to directly run in node environment )</p>
+
+<p>So start capturing browser</p>
+
+<pre><code>buster server
+</code></pre>
+
+<p>This will output something similar like this</p>
+
+<pre><code>buster-server running on http://localhost:1111
+</code></pre>
+
+<p>Open up any browser ( I usually use Chrome ), and load the above url. Once it&rsquo;s opened , click on the capture browser to get our first browser slave.</p>
+
+<p>Let&rsquo;s not try anything in the console , since we don&rsquo;t need to interrupt the running Buster server. Open a new tab in the console and run the following command.</p>
+
+<pre><code>buster test
+</code></pre>
+
+<p>This will now pick the <code>buster.js</code> configuration and start executing tests one by one. We can see the test output in the console now.</p>
+
+<p><em>By this time our first test should be failing</em> –––– Yes , it&rsquo;s <strong>FAILING</strong>. The output is like this :</p>
+
+<pre><code>Chrome 28.0.1500.95, Mac OS X 10.7.5: F                                                                                
+Failure: Chrome 28.0.1500.95, Mac OS X 10.7.5 expandable module test should be an object when initialized and should've all the api defined
+    [expect.toBeDefined] Expected to be defined
+    at Object.&lt;anonymous&gt; (./tests/expandable.test.js:9:29)
+
+1 test case, 1 test, 1 assertion, 1 failure, 0 errors, 0 timeouts
+Finished in 0.015s
+</code></pre>
+
+<p>So we can now assume that all our buster configurations are correct. We can add more test cases to the <code>expandable.test.js</code> now ( Ideally we should be writing all the test cases first and then only writing actual implementation of the unit ). But , this is just for learning purpose , I&rsquo;m going to write the implemenation for the <code>expandable</code> module.</p>
+
+<p><strong><code>expandable.js</code></strong> code :</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nx">module</span><span class="p">.</span><span class="nx">create</span><span class="p">(</span><span class="s2">&quot;expandable&quot;</span><span class="p">,</span> <span class="p">{});</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Re-run the command <code>buster test</code> and we can see that our first expect statement is passing. Console output should be pointing to the failure of next assertion statement :</p>
+
+<pre><code>Chrome 28.0.1500.95, Mac OS X 10.7.5: F                                                                                
+Failure: Chrome 28.0.1500.95, Mac OS X 10.7.5 expandable module test should be an object when initialized and should've all the api defined
+    [expect.toBeFunction] undefined (undefined) expected to be function
+    at Object.&lt;anonymous&gt; (./tests/expandable.test.js:10:36)
+
+1 test case, 1 test, 2 assertions, 1 failure, 0 errors, 0 timeouts
+Finished in 0.014s
+</code></pre>
+
+<p>That&rsquo;s cool ! Let&rsquo;s make the entire test pass by defining the api in the expandable object.</p>
+
+<p><strong><code>expandable.js</code></strong> code :</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nx">module</span><span class="p">.</span><span class="nx">create</span><span class="p">(</span><span class="s2">&quot;expandable&quot;</span><span class="p">,</span> <span class="p">{</span>
+</span><span class='line'>  <span class="s2">&quot;expand&quot;</span> <span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{},</span>
+</span><span class='line'>  <span class="s2">&quot;collapse&quot;</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{},</span>
+</span><span class='line'>  <span class="s2">&quot;toggle&quot;</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{}</span>
+</span><span class='line'><span class="p">});</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Run the buster test command again. Now we can see some green text in the console –– Yes, It&rsquo;s <strong>PASSING</strong> now :</p>
+
+<pre><code>Chrome 28.0.1500.95, Mac OS X 10.7.5: .                                                                                
+1 test case, 1 test, 4 assertions, 0 failures, 0 errors, 0 timeouts
+Finished in 0.009s
+</code></pre>
+
+<h2>Further test cases : Designing the entire expandable module</h2>
+
+<p>It&rsquo;s time to write the testcases for each API methods. Let&rsquo;s begin !</p>
+
+<p>Let&rsquo;s assume that our expandable will have a property called <code>expanded</code> which will be <code>true</code> when expanded and will be <code>false</code> when collapsed. We need to make this one work in the initial implementation. We&rsquo;ll add the DOM interaction tests and implementation in the second phase.</p>
+
+<p>So our tests will be something like this</p>
+
+<p><strong><code>expandable.test.js</code></strong> code :</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nx">buster</span><span class="p">.</span><span class="nx">spec</span><span class="p">.</span><span class="nx">expose</span><span class="p">();</span>
+</span><span class='line'><span class="nx">describe</span><span class="p">(</span><span class="s2">&quot;expandable module test&quot;</span> <span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>  <span class="nx">before</span><span class="p">(</span><span class="kd">function</span><span class="p">(){</span>
+</span><span class='line'>      <span class="k">this</span><span class="p">.</span><span class="nx">expandable</span> <span class="o">=</span> <span class="nx">module</span><span class="p">(</span><span class="s2">&quot;expandable&quot;</span><span class="p">);</span>
+</span><span class='line'>  <span class="p">});</span>
+</span><span class='line'>  <span class="nx">it</span><span class="p">(</span><span class="s2">&quot;should be an object when initialized and should&#39;ve all the api defined&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(){</span>
+</span><span class='line'>      <span class="nx">expect</span><span class="p">(</span> <span class="k">this</span><span class="p">.</span><span class="nx">expandable</span> <span class="p">).</span><span class="nx">toBeObject</span><span class="p">();</span>
+</span><span class='line'>      <span class="nx">expect</span><span class="p">(</span> <span class="k">this</span><span class="p">.</span><span class="nx">expandable</span><span class="p">.</span><span class="nx">expand</span> <span class="p">).</span><span class="nx">toBeFunction</span><span class="p">();</span>
+</span><span class='line'>      <span class="nx">expect</span><span class="p">(</span> <span class="k">this</span><span class="p">.</span><span class="nx">expandable</span><span class="p">.</span><span class="nx">collapse</span> <span class="p">).</span><span class="nx">toBeFunction</span><span class="p">();</span>
+</span><span class='line'>      <span class="nx">expect</span><span class="p">(</span> <span class="k">this</span><span class="p">.</span><span class="nx">expandable</span><span class="p">.</span><span class="nx">toggle</span> <span class="p">).</span><span class="nx">toBeFunction</span><span class="p">();</span>
+</span><span class='line'>  <span class="p">});</span>
+</span><span class='line'>  <span class="nx">it</span><span class="p">(</span><span class="s2">&quot;should be able to expand&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(){</span>
+</span><span class='line'>      <span class="nx">expect</span><span class="p">(</span> <span class="k">this</span><span class="p">.</span><span class="nx">expandable</span><span class="p">.</span><span class="nx">expanded</span> <span class="p">).</span><span class="nx">toBeFalse</span><span class="p">();</span>
+</span><span class='line'>      <span class="k">this</span><span class="p">.</span><span class="nx">expandable</span><span class="p">.</span><span class="nx">expand</span><span class="p">();</span>
+</span><span class='line'>      <span class="nx">expect</span><span class="p">(</span> <span class="k">this</span><span class="p">.</span><span class="nx">expandable</span><span class="p">.</span><span class="nx">expanded</span> <span class="p">).</span><span class="nx">toBeTrue</span><span class="p">();</span>
+</span><span class='line'>  <span class="p">});</span>
+</span><span class='line'>  <span class="nx">it</span><span class="p">(</span><span class="s2">&quot;should be able to collapse&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(){</span>
+</span><span class='line'>      <span class="k">this</span><span class="p">.</span><span class="nx">expandable</span><span class="p">.</span><span class="nx">expand</span><span class="p">();</span>
+</span><span class='line'>      <span class="nx">expect</span><span class="p">(</span> <span class="k">this</span><span class="p">.</span><span class="nx">expandable</span><span class="p">.</span><span class="nx">expanded</span> <span class="p">).</span><span class="nx">toBeTrue</span><span class="p">();</span>
+</span><span class='line'>      <span class="k">this</span><span class="p">.</span><span class="nx">expandable</span><span class="p">.</span><span class="nx">collapse</span><span class="p">();</span>
+</span><span class='line'>      <span class="nx">expect</span><span class="p">(</span> <span class="k">this</span><span class="p">.</span><span class="nx">expandable</span><span class="p">.</span><span class="nx">expanded</span> <span class="p">).</span><span class="nx">toBeFalse</span><span class="p">();</span>
+</span><span class='line'>  <span class="p">});</span>
+</span><span class='line'>  <span class="nx">it</span><span class="p">(</span><span class="s2">&quot;should be able to toggle&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(){</span>
+</span><span class='line'>      <span class="k">this</span><span class="p">.</span><span class="nx">expandable</span><span class="p">.</span><span class="nx">collapse</span><span class="p">();</span>
+</span><span class='line'>      <span class="nx">expect</span><span class="p">(</span> <span class="k">this</span><span class="p">.</span><span class="nx">expandable</span><span class="p">.</span><span class="nx">expanded</span> <span class="p">).</span><span class="nx">toBeFalse</span><span class="p">();</span>
+</span><span class='line'>      <span class="k">this</span><span class="p">.</span><span class="nx">expandable</span><span class="p">.</span><span class="nx">toggle</span><span class="p">();</span>
+</span><span class='line'>      <span class="nx">expect</span><span class="p">(</span> <span class="k">this</span><span class="p">.</span><span class="nx">expandable</span><span class="p">.</span><span class="nx">expanded</span> <span class="p">).</span><span class="nx">toBeTrue</span><span class="p">();</span>
+</span><span class='line'>      <span class="k">this</span><span class="p">.</span><span class="nx">expandable</span><span class="p">.</span><span class="nx">toggle</span><span class="p">();</span>
+</span><span class='line'>      <span class="nx">expect</span><span class="p">(</span> <span class="k">this</span><span class="p">.</span><span class="nx">expandable</span><span class="p">.</span><span class="nx">expanded</span> <span class="p">).</span><span class="nx">toBeFalse</span><span class="p">();</span>
+</span><span class='line'>  <span class="p">});</span>
+</span><span class='line'><span class="p">});</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>I hope the code is self explanatory. Let&rsquo;s implement each method.</p>
+
+<p><strong><code>expandable.js</code></strong> code :</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nx">module</span><span class="p">.</span><span class="nx">create</span><span class="p">(</span><span class="s2">&quot;expandable&quot;</span><span class="p">,</span> <span class="p">{</span>
+</span><span class='line'>  <span class="nx">expanded</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+</span><span class='line'>  <span class="s2">&quot;expand&quot;</span> <span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>      <span class="k">this</span><span class="p">.</span><span class="nx">expanded</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
+</span><span class='line'>  <span class="p">},</span>
+</span><span class='line'>  <span class="s2">&quot;collapse&quot;</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>      <span class="k">this</span><span class="p">.</span><span class="nx">expanded</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
+</span><span class='line'>  <span class="p">},</span>
+</span><span class='line'>  <span class="s2">&quot;toggle&quot;</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>      <span class="p">(</span><span class="o">!!</span><span class="k">this</span><span class="p">.</span><span class="nx">expanded</span><span class="p">)</span> <span class="o">?</span> <span class="k">this</span><span class="p">.</span><span class="nx">collapse</span><span class="p">()</span> <span class="o">:</span> <span class="k">this</span><span class="p">.</span><span class="nx">expand</span><span class="p">();</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'><span class="p">});</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>How about units involving DOM manipulation ?</h2>
+
+<p>This is a real world scenario. I would like to cover that in another article or may be I&rsquo;ll update here itself when I gets time.</p>
 ]]></content>
   </entry>
   

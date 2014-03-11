@@ -4,7 +4,7 @@
   <title><![CDATA[Category: AngularJS | We.B.Log]]></title>
   <link href="http://www.undefinednull.com/blog/categories/angularjs/atom.xml" rel="self"/>
   <link href="http://www.undefinednull.com/"/>
-  <updated>2014-03-06T19:34:41+05:30</updated>
+  <updated>2014-03-11T12:43:20+05:30</updated>
   <id>http://www.undefinednull.com/</id>
   <author>
     <name><![CDATA[Shidhin C R]]></name>
@@ -663,6 +663,15 @@ At this time, the name property will be looking for an attribute &ldquo;parentNa
 <li><a href="https://egghead.io/lessons/angularjs-understanding-isolate-scope">https://egghead.io/lessons/angularjs-understanding-isolate-scope</a></li>
 </ol>
 
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Difference between $watch and $observe in AngularJS]]></title>
+    <link href="http://www.undefinednull.com/2014/02/10/difference-between-%24watch-and-%24observe-in-angularjs/"/>
+    <updated>2014-02-10T11:48:00+05:30</updated>
+    <id>http://www.undefinednull.com/2014/02/10/difference-between-$watch-and-$observe-in-angularjs</id>
+    <content type="html"><![CDATA[
 ]]></content>
   </entry>
   
