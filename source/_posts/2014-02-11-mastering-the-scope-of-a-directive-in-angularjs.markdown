@@ -218,7 +218,7 @@ I know that AngularJS have made these things a little bit difficult to understan
 
 [AngularJS directives: Isolated scope prefixes ](http://umur.io/AngularJS-directives-using-isolated-scope-with-attributes/) . This one explains the *Isolated scope*  and it's properties neatly.
 
-That's it !  I really didn't think that this post is going to be this much longer. That's because, I didn't want to miss any points when I complete this article. I hope everyone enjoyed reading this. I would've made any errors / personal opinions; but I really want you guys to correct me where I am wrong –– comment box is made just for that. Thanks everyone !!
+That's it !  This post became much longer than I expected. That's because, I wanted to include everything I know in this article. I hope everyone enjoyed reading this. I would've made any errors / personal opinions; but I really want you guys to correct me where I am wrong –– comment box is made just for that. Thanks everyone !!
 
 <u>**Further Read :**</u>
 
