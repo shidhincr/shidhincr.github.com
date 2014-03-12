@@ -94,7 +94,7 @@ So far, this is the most recommended way of setting the `scope` on *DDO* while c
 
 - It'll make sure that our directive is generic and placed anywhere inside the application. Parent scope is not going to interfere with the directive scope. 
 
-Though it's been called as an *Isolated scope*, AngularJS allows to communicate with the parent scope using some special symbols knows as `*prefixes*`. If you wonder why, there're situations where the directive needs to exchange data back and forth with parent scope. The next section is  dedicated for *Isolated scope* and its properties.
+Though it's been called as an *Isolated scope*, AngularJS allows to communicate with the parent scope using some special symbols knows as **`prefixes`**. If you wonder why, there're situations where the directive needs to exchange data back and forth with parent scope. The next section is  dedicated for *Isolated scope* and its properties.
 
 ## Isolated Scope Explained
 
