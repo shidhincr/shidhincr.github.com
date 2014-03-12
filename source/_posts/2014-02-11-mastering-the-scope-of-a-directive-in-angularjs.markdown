@@ -18,20 +18,22 @@ categories:
 
 ##What are Directives
 
-Directives are one of the most powerful features of AngularJs. You can imagine them as building blocks ( aka re-usable components ) of any AngularJs application. Mastering the entire directives, is totally out of this article's scope. For that, I would really recommend this [book](http://www.packtpub.com/angularjs-directives/book); it covered the nuts and bolts of them. And here, we'll discussing a small part of the directives called : "**Directive scope**".
+Directives are one of the most powerful features of AngularJS. You can imagine them as building blocks ( aka re-usable components ) of any AngularJS application. Mastering the entire directives, is totally out of this article's scope. For that, I would really recommend this [book](http://www.packtpub.com/AngularJS-directives/book); it covers everything you need to know about directives. And here, we'll discuss a small part of the directives called : "**Directive scope**".
 <!--more-->
 
 ## Scopes in AngularJS
 
-Unlike the other MVC frameworks, AngularJs doesn't have specific classes or functions to create `model` objects. Instead, AngularJs extended the plain JavaScript object with custom methods and properties. This is known as the `scope` in AngularJs terms. The `scope` works as a glue between the view and other parts ( directives, controllers and services ) inside the AngularJs application. 
+Unlike the other MVC frameworks, AngularJS doesn't have specific classes or functions to create `model` objects. Instead, AngularJS extended the raw JavaScript objects with custom methods and properties. These objects, also known as `scope` in AngularJS terms, works as a glue between the view and other parts ( directives, controllers and services ) inside the AngularJS application. 
 
-Whenever the AngularJs application is bootstrapped, a `rootScope` object is created. All the scopes created by controllers, directives, services are prototypically inherited from `rootScope`. See this link :  [Scopes in AngularJS](https://github.com/angular/angular.js/wiki/Understanding-Scopes) to know how `scope` inheritance works. This will really help for the upcoming sections.
+Whenever the AngularJS application is bootstrapped, a `rootScope` object is created. Each scope created by controllers, directives and services are prototypically inherited from `rootScope`. AngularJS documentation is the best resource to know the how scope inheritance works: see [Scopes in AngularJS](https://github.com/angular/angular.js/wiki/Understanding-Scopes). Understanding how scope inheritance works will be useful in following sections.
 
 ##Scope inside a directive
 
 ***Note**: This section assumes you've prior knowledge of creating  a simple directive*
 
-All directives always have a scope associated with it. A directive's link function, and template will have access to all properties and methods of its scope. And by default, unless explicitly set, a directive will not have it's own scope. So the directive will share the the same scope of it's parent ( Controller scope ) where it's been used. This default behavior can be changed through directive definition object. A `directive definition object` ( let's call it as  *DDO* ) is used to configure a directive when it's defined –– to know more about it check AngularJs docs about directives [link](http://docs.angularjs.org/guide/directive). The *DDO* has a  property called `scope` and this is used for setting the scope of the directive. Let's see the example below:
+All directives have a scope associated with it. Directive uses this scope for accessing data/methods inside its templates and link function. By default, unless explicitly set, directive doesn't create its own scope. Therefore, directive uses its parent scope ( mostly some controller ) as its own. 
+
+However, AngularJS allows to change the default scope of directives by passing a configuration object known as **directive definition object**. A directive definition object –– let's call it as  *DDO* –– is a simple JavaScript object used for configuring the directive's behaviour,template..etc. Check out [AngularJS docs](http://docs.AngularJS.org/guide/directive) about *DDO*.
 
 ```javascript
 	var app = angular.module("test",[]);
@@ -42,40 +44,41 @@ All directives always have a scope associated with it. A directive's link functi
 			link: function(scope,elem,attr){
 				// code goes here ...			}		}		 });
 ```
-Setting a "false" value to the `scope` property in *DDO* is same as having **no** own scope for the directive. At this time, directive will use the parent scope. The other values to the scope property are "true" and "{ }". In following sections, we'll see how these values affect the directive's behaviour.
+
+In the above example, we created a directive by returning a *DDO* from the function. There're lot of properties of *DDO* to learn, but here we're going to discuss about the `scope` property. Because, the values of scope property decides how the actual scope is created and used inside a directive. These values can be either **"false"**, **"true"** or **"{}"**. In following sections, we'll see how each of these affects directive's behaviour.
 
 ##Different types of directive scopes
 
-<u>**Scope :</u>  False**  (  Parent scope  will be shared to directive )
+<u>**Scope :</u>  False**  (  Directive uses its parent scope )
 	
-Let's try another example. We're creating a simple directive that will render a div and a textbox to show and change a name. The `name` property get's the initial value from the `Ctrl1` scope ( the parent scope of the directive ).
+Let's try another example. We'll create simple directive to render a div and textbox that can show and change a name. The `name` property get's the initial value from the `Ctrl1` scope ( parent scope of the directive ).
 
-{% jsfiddle shidhincr/eyNYw/4/  %}
+{% jsfiddle shidhincr/eyNYw/4/ %}
 	
-Try changing the name inside the textbox; we can see that the name inside the header also got changed. Since there's no scope provided in the *DDO*, the directive gets it's parent scope shared to it. Hence any changes we make inside the directive is actually reflecting in the parent scope. The parent `Ctrl1` has  a method to reverse the name; this method gets triggered when you click on the header. Now if you observe, by clicking on the header will reverse the name inside the directive also.
+If we change the name inside the textbox, notice the header name also gets changed. Since there's no scope provided in the *DDO*, the directive uses its parent scope. Therefore, any changes we make inside the directive is actually reflecting in the parent scope. Similarly, parent `Ctrl1` scope has  a method to reverse the name and this gets triggered when we click on the header. Now as we expect, clicking on the header should reverse the name inside the directive too.
 
-<u> **Scope :</u> True**  ( New child scope will be created for the directive )
+<u> **Scope :</u> True**  ( Directive gets a new scope )
 
-It's time for the directive to get some own scope. By setting "true" to the scope property, AngularJs will create a new scope object and set to the directive. This new scope created, will be prototypically inherited from it's parent scope. So instead of sharing the actual parent scope to directive, it's going to get a scope object inherited from the parent scope. 
+Now it's time for the directive to get its own scope. This is achieved by setting a "true"  value to the scope property of the *DDO*. When directive scope is set to "true", AngularJS will create a new scope object and assign to the directive. This newly created scope object is prototypically inherited from its parent scope ( the controller scope where it's been used ).
 
-The exact difference between setting `scope: true` and `scope: false` is like this:
+Confused ? Let's see the exact differences between setting `scope: true` and `scope: false` :
 
-- When scope is set to "**true**", there's explicitly a new scope object created for the directive. Any changes made inside the directive will affect the child scope and not the parent scope. Since the child scope is inherited from the parent scope, any changes made in the `Ctrl1` ( the parent scope ) will affect the child scope also.
-- When scope is set to "**false**", the `Ctrl1` and directive are sharing the same scope. This means any changes happening in the controller or directive will reflect in both places.
+- When scope is set to "**true**", AngularJS will create a new scope by inheriting parent scope ( controller scope if any, else from the rootScope ). Any changes made to this new scope will not reflect back to the parent scope. On the other hand, since the new scope is inherited from the parent scope, any changes made in the `Ctrl1` ( the parent scope ) will reflected in the directive scope.
+- When scope is set to "**false**", the `Ctrl1` and directive are using the same scope object. This means any changes to the controller or directive will be in sync.
 
 Let's look at the following fiddle to make it more clear :
 
 {% jsfiddle shidhincr/q3kex/3/  %}
 
-First, try clicking on the header. We can see that the name got reversed inside both `Ctrl1` and  directive. Secondly,  change the name inside the textbox; we can see that parent `scope` is not at all getting affected. 
+First, try clicking on the header. We can see that the name gets reversed both inside `Ctrl1` and directive. Next, change the name inside the textbox; the parent `scope` is not at all affected. 
 
-*__Note:__ If we click on the header again, we can notice that it'll not reflect inside the directive `scope`. But we saw this working when the first time we clicked the header. I guess this is because the `ng-model` will only create a new name property once the textbox value is changed; Till then the name property inside directive was referring to it's parent `scope` ( through prototype chain )*
+*__Note:__ Clicking on header again, makes no changess to the directive `scope`. I guess this is because the `ng-model` will create a new name property only when the textbox value is changed. Before this, name property inside directive was referring to it's parent `scope` ( through prototype chain )*
 
-<u> **Scope :</u>  { }** ( Complete isolated scope will be created for the directive )
+<u> **Scope :</u>  { }** ( Directive gets a new isolated scope )
  
-Now we've reached the most interesting part of our article. As of now, we've seen two situations where a directive scope got created. In the third type, we are going to set scope property in the *DDO*  to an **Object literal**. When an object literal is passed to the scope property, things are bit different. At this time, there will be a new scope created for the directive, but **will not be inherited from the parent scope**. That means, the directive is going to get a complete *Isolated scope*. By an isolated scope means, any changes from the parent scope is going to alter the directive scope and vice versa.
+This is the most interesting section. Till now, we saw two situations for directive scope creation. In the third type, we are going to set scope property in *DDO*  to an **Object literal**. When an object literal is passed to the scope property, things are bit different. This time, there will be a new scope created for the directive, but **will not be inherited from the parent scope**. This new scope also known as **Isolated scope** because it is completely detached from its parent scope.
 
-Let's re-write our original directive example like this :
+Let's re-write our original example like this :
 
 ```javascript
 	var app = angular.module("test",[]);
@@ -87,11 +90,11 @@ Let's re-write our original directive example like this :
 				// code goes here ...			}		}		 });
 ```
 
-By far, this is the most recommended way of setting the `scope` on *DDO* while creating custom directives. Why because: 
+So far, this is the most recommended way of setting the `scope` on *DDO* while creating custom directives. Why because: 
 
-- It'll make sure that  directive is so generic and can be placed anywhere inside the application. Parent scope is not going to interfere with the directive scope anyways. 
+- It'll make sure that our directive is generic and placed anywhere inside the application. Parent scope is not going to interfere with the directive scope. 
 
-Though it's been called as an *Isolated scope*, AngularJs allows to communicate with the parent scope using some special symbols knows as `*prefixes*`. You might wonder why ? and the answer is : there're many situations we need to get the data from parent scope, execute callbacks in the parent scope when changes inside directive happens ..etc. The next section is entirely dedicated for explaining the *Isolated scope* and it's properties.
+Though it's been called as an *Isolated scope*, AngularJS allows to communicate with the parent scope using some special symbols knows as `*prefixes*`. If you wonder why, there're situations where the directive needs to exchange data back and forth with parent scope. The next section is  dedicated for *Isolated scope* and its properties.
 
 ## Isolated Scope Explained
 
@@ -99,19 +102,19 @@ See the below fiddle:
 
 {% jsfiddle shidhincr/q3kex/4/  %}
 
-We have invoked the directive by passing an empty object to the *DDO*. Now we can see that, even though the parent scope has a name = "Harry" , the textbox inside the directive is blank. This is because of the new *Isolated scope* who doesn't know anything about it's parent scope.
+We just created a directive with an isolated scope. Notice, even the parent scope has a name "Harry", the textbox inside directive is blank. This is because of the new *Isolated scope* which doesn't know anything about it's parent scope.
 
-**But, what if we want to pass some values from the parent `scope` to the directives ?**
+**But, can we pass some values from the parent `scope` to the directives now?**
 
-That's absolutely a very good question. Not only just passing some values from the parent, but there can be situations like, changes inside the directives should invoke some callback functions in parent scope; and sometimes, we need two-way binding between parent & directives scope ..etc
+Yes ! Not only that, we might need to handle situations like: invoking callbacks in parent scope, two-way binding between parent & directives scope ..etc
 
-For this purposes, AngularJs will allow properties to be added to the **Object literal** passed to the *DDO*. These  properties **MUST** be set as an attributes of the directive element ( which we are going to place in our HTML ). Don't worry if I'm so creating so much confusion over here, let me explain with an example:
+To access any parent scope data, we need to pass that to our directive explicitly. This is achieved by setting properties on the scope object literal in *DDO*. Imagine these properties as interfaces of the directive to communicate with outside scope. Another important thing is that, these properties also **MUST** be set as the attributes of the directive html element. Don't worry if I'm confusing, let me explain with an example:
 
 Just go through the below fiddle, and look at the "HTML", "JavaScript" and  "Results" tabs.
 
 {% jsfiddle shidhincr/pJLT8/10/  %}
 
-Now let's try to understand how this works. Take the JavaScript code first:
+Let's try to understand how this works. Take the JavaScript code first:
 
 ```javascript
  var app = angular.module("app", []);
@@ -144,14 +147,14 @@ app.directive("myDirective", function(){
 });
 ```
 
-You can clearly see that, there's this controller `MainCtrl` which creates the parent scope. Parent scope has the following properties and methods.
+It's clear that, the controller `MainCtrl` creates the parent scope. This parent scope has following properties and methods.
 
 	name = "Harry"
 	color =  "#333333"
 	reverseName = function for reversing the name
 	randomColor = function for generating random color code
 
-Similarly we've created our directive in *Isolated scope* by setting an object literal in the *DDO*. What looks interesting is that our scope object contains some properties :
+Similarly, we've created our directive in *Isolated scope* by setting an object literal in the *DDO*. Notice our scope object has some properties now :
 
 	scope: {
             name: "@",
@@ -159,7 +162,7 @@ Similarly we've created our directive in *Isolated scope* by setting an object l
             reverse: "&"
         }
 
-Let's check the directive template. We can see that these properties are referenced there. This means, these properties are finally going to be used inside our directives template or the directive link function. Their behaviour depends on the values –– also known as  __*Prefixes*__  –– provided. These  __*Prefixes*__ are basically used to bind the parent scope's methods and properties to the directive scope.	
+Look at the directive template and we can see the scope properties are used there. Mostly the directive's templates and link function are going to consume the scope properties. The behaviour of these properties again depends on their values –– also known as  __*Prefixes*__  –– provided. These  __*Prefixes*__ are used to bind the parent scope's methods and properties to the directive scope.	
 
 There're 3 types of prefixes AngularJS provides.
 
@@ -167,7 +170,7 @@ There're 3 types of prefixes AngularJS provides.
 	2. "="   ( Direct model binding / two-way binding )
 	3. "&"   ( Behaviour binding / Method binding  )
 
-All these prefixes takes the data from the attributes of the directive element. Let's re-look at the HTML code:
+All these prefixes receives data from the attributes of the directive element. Let's re-look at the HTML code:
 
 ```html
 {% raw %}
@@ -180,7 +183,7 @@ All these prefixes takes the data from the attributes of the directive element. 
 {% endraw %}
 ```
 
-When the directive encounters a prefix in the scope object, it will try to map it with the corresponding attribute of the directive element.  It'll try to map the same attribute name if the prefix is not followed by extra name. For example:
+When the directive encounters a prefix in the scope property, it will look for an attribute ( with same property name ) on directive's html element. However, we can provide a different mapping between property and attributes. This is done by giving a separate attribute name after the prefix. Look at below code to make it more clear.
 
 ```javascript
 scope : {
@@ -192,34 +195,37 @@ The above will be mapped to an attribute "name" in the directive. Now let's see 
 scope : {
 	name: "@parentName"}
 ```
-At this time, the name property will be looking for an attribute "parentName" for getting it's value. This means, any string after the  __*Prefixes*__ should be matching with the attribute name. I think these parts clear for you now. Let's gets back to the actual difference between each  __*Prefixes*__.
+At this time, the name property will be looking for an attribute "parentName" to get it's value. In simple, any string after the  __*Prefixes*__ should be matching with the attribute name.
 
-*__Note__ : If you're confused in any of the sentences below, have a look at the demo code ( HTML,JS ) and come back*
+*__Note__ : If you gets confused in any of the sections below, have a look at the demo code ( HTML,JS ) and come back*
 
-- The "@" prefix is a one-way binding between the directive scope and parent scope. "@" prefix always expect it's mapped attribute way to be an expression. This is very important; because to make the "@" prefix work, we need to wrap the attribute value inside `{% raw %}{{}}{% endraw %}`. Since "@" is creating a one-way binding between the parent and directive scope, any changes made in the parent scope will reflect inside the directive scope; but not vice versa. "@" prefix is highly useful when our directive needs to be initialised with some data from it's parent scope.
+- The "@" prefix is a one-way binding between the directive scope and parent scope. It always expect the mapped attribute to be an expression. This is very important; because to make the "@" prefix work, we need to wrap the attribute value inside `{% raw %}{{}}{% endraw %}`. Since "@" is creating a one-way binding between the parent and directive scope, any changes made in the parent scope will reflect inside the directive scope, but not the other way. "@" prefix is really useful when our directive needs to be initialised with some data from parent scope.
+	<div class='info'>
+	See this in demo by clicking on the "Reverse name" button in the parent scope. You can see that names inside parent and directive scopes gets reversed. Now let's change the name from the directive's textbox; you can see that the changes will be applicable only to the directive scope.
+	</div>
 
-	To understand how it works in our demo, try clicking on the "Reverse name" button in the parent scope. You can see that both names inside parent and directive scopes got reversed. Now let's change the name from the  textbox inside the directive; you can see that the changes will be applicable only to the directive scope.
+- Now comes the second "=" prefix. As looks like, it creates a two-way binding between the parent and directive scope. The important point about "=" prefix is, it'll always expect the attribute value to be the `model` name. That means, you cannot provide an expression as the value of attribute mapped to "=" prefix. This is useful, when any of our directive scope property to be same as the parent scope property.
+	<div class='info'>
+	In the demo, try clicking on the "Randomize color" button and observe the changes inside the parent and directive scopes. Similarly, try changing the color textbox and you can see that the parent scope color also gets changed.
+	</div>
 
-- Now comes the second "=" prefix. As it looks like, it creates a two-way binding between the parent and directive scope. The important point about "=" prefix is that, it'll always expect the attribute value to be the model name. That means, you cannot provide an expression as the value of attribute mapped to "=" prefix. This is useful, when any of our directive scope property to be same as the parent scope property.
+- Finally, we're going to talk about the last prefix. The "&" prefix is also known as a method binding. This is used to bind any methods from the parent scope to the directive scope. This will be particularly useful when our directive needs to execute any callbacks in the parent scope. Look at the code to see how attribute value for the "&" prefix to be set.
+	<div class='info'>
+	Parent scope has a method called "reveseName". Through our "&" prefix, we bound the "reverseName" method to a scope property named "reverse". So whenever the "reverse()" method is executed inside the directive, it'll basically invoking the "reverseName" in the parent scope. Click on the "Reverse name" inside directive to see it in action.
+	</div>
 
-	In the demo, try clicking on the "Randomize color" button and observe the changes inside the parent and directive scopes. Similarly, try changing the color textbox and you can see that the parent scope color also got changed.
+I know that AngularJS have made these things a little bit difficult to understand. Especially when it comes to the random naming conventions they'd chosen. I believe I've tried my best to explain how the *Isolated scope*  works inside a directive. If you think you're still confused, I would recommend to have a look at the below article:
 
-- Alas, we've finally reached the last prefix. The "&" prefix is also known as a method binding. This is used to bind any methods from the parent scope to the directive scope. This prefix is particularly useful when our directive needs to execute any  callbacks in the parent scope. Look at the code to see how attribute value for the "&" prefix to be set.
-	
-	In the demo, parent scope has a method called "reveseName". Through our "&" prefix, we bound the "reverseName" method to a scope property named "reverse". So whenever the "reverse()" method is executed inside the directive, it'll basically invoking the "reverseName" in the parent scope. Click on the "Reverse name" inside directive to see it in action.
+[AngularJS directives: Isolated scope prefixes ](http://umur.io/AngularJS-directives-using-isolated-scope-with-attributes/) . This one explains the *Isolated scope*  and it's properties neatly.
 
-I know that AngularJs have made these things little bit difficult to understand. Especially because of these random naming conventions they've chosen. I believe I've tried my best to explain how the *Isolated scope*  works inside a directive. If you think you're still confused, I would recommend to have a look at the below article:
-
-[AngularJS directives: Isolated scope prefixes ](http://umur.io/angularjs-directives-using-isolated-scope-with-attributes/) . This one explains the *Isolated scope*  and it's properties clearly. It would definitely help to get away from any sort of confusions.
-
-That's it !  I really didn't think that this post is going to be this much longer. But I couldn't help with that because, I didn't want to miss any points when I complete this. I hope everyone enjoyed reading this. I would've made any errors / personal opinions; but I really want you guys to correct me when I am wrong –– comment box is made just for that. Thanks everyone !!
+That's it !  I really didn't think that this post is going to be this much longer. That's because, I didn't want to miss any points when I complete this article. I hope everyone enjoyed reading this. I would've made any errors / personal opinions; but I really want you guys to correct me where I am wrong –– comment box is made just for that. Thanks everyone !!
 
 <u>**Further Read :**</u>
 
 1. [https://github.com/angular/angular.js/wiki/Understanding-Scopes](https://github.com/angular/angular.js/wiki/Understanding-Scopes)
 2. [http://amitgharat.wordpress.com/2013/06/08/the-hitchhikers-guide-to-the-directive/](http://amitgharat.wordpress.com/2013/06/08/the-hitchhikers-guide-to-the-directive/)
 3. [http://www.ng-newsletter.com/posts/directives.html](http://www.ng-newsletter.com/posts/directives.html)
-4. [https://egghead.io/lessons/angularjs-understanding-isolate-scope](https://egghead.io/lessons/angularjs-understanding-isolate-scope)
+4. [https://egghead.io/lessons/AngularJS-understanding-isolate-scope](https://egghead.io/lessons/AngularJS-understanding-isolate-scope)
 
 
 
