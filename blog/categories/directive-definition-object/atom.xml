@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Directive definition object | We.B.Log]]></title>
   <link href="http://www.undefinednull.com/blog/categories/directive-definition-object/atom.xml" rel="self"/>
   <link href="http://www.undefinednull.com/"/>
-  <updated>2014-03-13T02:14:24+05:30</updated>
+  <updated>2014-03-14T11:22:51+05:30</updated>
   <id>http://www.undefinednull.com/</id>
   <author>
     <name><![CDATA[Shidhin C R]]></name>
@@ -246,7 +246,7 @@ At this time, the name property will be looking for an attribute &ldquo;parentNa
   </div></p></li>
 <li><p>Finally, we&rsquo;re going to talk about the last prefix. The &ldquo;&amp;&rdquo; prefix is also known as a method binding. This is used to bind any methods from the parent scope to the directive scope. This will be particularly useful when our directive needs to execute any callbacks in the parent scope. Look at the code to see how attribute value for the &ldquo;&amp;&rdquo; prefix to be set.
   <div class='info'>
-  Parent scope has a method called &ldquo;reveseName&rdquo;. Through our &ldquo;&amp;&rdquo; prefix, we bound the &ldquo;reverseName&rdquo; method to a scope property named &ldquo;reverse&rdquo;. So whenever the &ldquo;reverse()&rdquo; method is executed inside the directive, it&rsquo;ll basically invoke the &ldquo;reverseName&rdquo; in the parent scope. Click on the &ldquo;Reverse name&rdquo; inside directive to see it in action.
+  Parent scope has a method called &ldquo;reverseName&rdquo;. Through our &ldquo;&amp;&rdquo; prefix, we bound the &ldquo;reverseName&rdquo; method to a scope property named &ldquo;reverse&rdquo;. So whenever the &ldquo;reverse()&rdquo; method is executed inside the directive, it&rsquo;ll basically invoke the &ldquo;reverseName&rdquo; in the parent scope. Click on the &ldquo;Reverse name&rdquo; inside directive to see it in action.
   </div></p></li>
 </ul>
 
