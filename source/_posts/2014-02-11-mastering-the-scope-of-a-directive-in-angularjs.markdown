@@ -211,7 +211,7 @@ At this time, the name property will be looking for an attribute "parentName" to
 
 - Finally, we're going to talk about the last prefix. The "&" prefix is also known as a method binding. This is used to bind any methods from the parent scope to the directive scope. This will be particularly useful when our directive needs to execute any callbacks in the parent scope. Look at the code to see how attribute value for the "&" prefix to be set.
 	<div class='info'>
-	Parent scope has a method called "reveseName". Through our "&" prefix, we bound the "reverseName" method to a scope property named "reverse". So whenever the "reverse()" method is executed inside the directive, it'll basically invoke the "reverseName" in the parent scope. Click on the "Reverse name" inside directive to see it in action.
+	Parent scope has a method called "reverseName". Through our "&" prefix, we bound the "reverseName" method to a scope property named "reverse". So whenever the "reverse()" method is executed inside the directive, it'll basically invoke the "reverseName" in the parent scope. Click on the "Reverse name" inside directive to see it in action.
 	</div>
 
 I know that AngularJS have made these things a little bit difficult to understand. Especially when it comes to the random naming conventions they'd chosen. If you’re still confused, I would recommend having a look at the below article:

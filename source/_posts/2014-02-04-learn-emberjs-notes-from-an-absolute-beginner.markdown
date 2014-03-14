@@ -14,7 +14,7 @@ Last couple of days, I'm really trying to understand this framework known as Emb
 <!--more-->
 I'd been working on some of the AngularJS projects ( again those I've created for learning AngularJS ) and mostly my concentration was only on getting deeper into AngularJS. Now I've got a good grip on AngularJS and decided to move on to another framework. At this moment, there're something we planned in our UI meeting ( at office ), where each of us will take a presentation on some client side frameworks. So me and my friend Rohith, decided to take session on EmberJS –– that's a good opportunity to learn.
 
-When I started, I found it very very difficult. Especially, I couldn't able to switch from the AngularJS terms and the **"Angular way of thinking"**. Ember seems to be given more emphasis on naming conventions, and built on top of strict MVC/MVVM concepts. I could able to thing EmberJS as a highly advanced version of BackboneJS. EmberJS has hard dependencies on HandleBars tempting language and jQuery. Though I'm pretty much familiar with jQuery, learning the HandleBars templating is also a bit tough job.
+When I started, I found it very very difficult. Especially, I couldn't able to switch from the AngularJS terms and the **"Angular way of thinking"**. Ember seems to be given more emphasis on naming conventions, and built on top of strict MVC/MVVM concepts. I could able to think EmberJS as an advanced version of BackboneJS. EmberJS has hard dependencies on HandleBars tempting language and jQuery. Though I'm pretty much familiar with jQuery, learning the HandleBars templating is also a bit tough job.
 
 ## EmberJS : Basic Concepts
 
