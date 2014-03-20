@@ -9,7 +9,7 @@ categories:
 - AngularJS
 - Scope
 - Isolated scope
-- Directive definition object
+- Directive definition objects
 
 ---
 
