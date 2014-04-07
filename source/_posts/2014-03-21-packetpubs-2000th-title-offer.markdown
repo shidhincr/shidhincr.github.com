@@ -3,7 +3,7 @@ layout: post
 title: "PacketPub's 2000th Title Offer"
 date: 2014-03-21 16:25
 comments: true
-published: true
+published: false
 categories: 
 - Packt2k
 - PacketPub offer
@@ -13,7 +13,7 @@ categories:
 
 ## What is this all about ?
 
-Being a good customer of Packet Pub from long time, I did subscribe to their email service, so that I would be notified about the latest book releases, promotional offers..etc. And today, I received an email about their 2000th title offer. I guess this is an exciting offer worth sharing through my blog.
+Being a good customer of Packet Pub from long time, I subscribed to their email service, so that I would be notified about the latest book releases, promotional offers..etc. And today, I received an email about their 2000th title offer. I guess this is an exciting offer worth sharing through my blog.
 
 This was the content of the mail:
 
