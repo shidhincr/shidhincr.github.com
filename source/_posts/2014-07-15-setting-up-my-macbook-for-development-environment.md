@@ -76,5 +76,6 @@ Don't download from nodejs.org. Instead follow the method described in https://g
 - Octopress
 - LightTable
 
+http://blog.zerosharp.com/clone-your-octopress-to-blog-from-two-places/
 
 
