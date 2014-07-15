@@ -10,9 +10,19 @@ categories:
   - development
 ---
 
-Here is my setup for my Macbook. I use macbook primarily for web development, so I hope this post will be useful for those want to follow a similar setup.
+Here is my setup for my Macbook. I use macbook primarily for web development, so this set up will be useful for those working in similar field.
 
 ## Install Apps from App Store
+
+Login to app store using the Apple ID. Download and install the softwares already purchased. 
+
+## Mail, Social and Communication Apps
+
+- Airmail
+- Adium
+- iMessage
+- Skype
+- Twitter
 
 ## Install Browsers
 
