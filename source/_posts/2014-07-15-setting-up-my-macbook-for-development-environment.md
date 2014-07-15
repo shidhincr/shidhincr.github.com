@@ -41,6 +41,9 @@ Here is my setup for my Macbook. I use macbook primarily for web development, so
 
     Git is default installed in OSX. Use HomeBrew for a better version.
 
+## Set up Github SSH Keys
+	Procedure for setting up github ssh keys
+
 ## Install Heroku
 	- Instructions for installing Heroku toolbelt
 ## Install Node and NPM
