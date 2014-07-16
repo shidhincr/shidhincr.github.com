@@ -43,6 +43,12 @@ Sign into Chrome and sync all bookmarks, extentions. Write a post about Chrome e
 - Pocket
 - Evernote
 
+## Cloud storage
+
+- Dropbox
+- Google Drive
+- Microsoft OneDrive
+
 ## Install HomeBrew    
 
 - HomeBrew is the package manager for mac.
