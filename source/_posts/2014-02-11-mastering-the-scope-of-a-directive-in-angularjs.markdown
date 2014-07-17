@@ -42,7 +42,10 @@ However, AngularJS allows us to change the default scope of directives by passin
 			restrict: "EA",
 			scope: true,
 			link: function(scope,elem,attr){
-				// code goes here ...			}		}		 });
+				// code goes here ...
+			}
+		}	
+	 });
 ```
 
 In the above example, we created a directive by returning a *DDO* from the function. There are a lot of properties of the *DDO* to learn, but here we're just going to discuss the `scope` property, because, the values of scope property decides how the actual scope is created and used inside a directive. These values can be either **"false"**, **"true"** or **"{}"**. In the following sections, we'll see how each of these affects directive's behaviour.
@@ -87,7 +90,10 @@ Let's re-write our original example like this :
 			restrict: "EA",
 			scope: {},
 			link: function(scope,elem,attr){
-				// code goes here ...			}		}		 });
+				// code goes here ...
+			}
+		}	
+	 });
 ```
 
 So far, this is the recommended way of setting the `scope` on *DDO* while creating custom directives. Why? Because: 
@@ -162,7 +168,8 @@ Similarly, we've created our directive in *Isolated scope* by setting an object 
             reverse: "&"
         }
 
-Look at the directive template and we can see the scope properties are used there. Mostly the directive's templates and link function are going to consume the scope properties. The behaviour of these properties again depends on their values –– also known as  __*Prefixes*__  –– provided. These  __*Prefixes*__ are used to bind the parent scope's methods and properties to the directive scope.	
+Look at the directive template and we can see the scope properties are used there. Mostly the directive's templates and link function are going to consume the scope properties. The behaviour of these properties again depends on their values –– also known as  __*Prefixes*__  –– provided. These  __*Prefixes*__ are used to bind the parent scope's methods and properties to the directive scope.
+	
 
 There're 3 types of prefixes AngularJS provides.
 
@@ -187,13 +194,15 @@ When the directive encounters a prefix in the scope property, it will look for a
 
 ```javascript
 scope : {
-	name: "@"}
+	name: "@"
+}
 ```
 The above will be mapped to an attribute "name" in the directive. Now let's see what happens if we change the code like below:
 
 ```javascript
 scope : {
-	name: "@parentName"}
+	name: "@parentName"
+}
 ```
 At this time, the name property will be looking for an attribute "parentName" to get its value. Simply, any string after the  __*Prefixes*__ should match the attribute name.
 
@@ -227,7 +236,8 @@ Special thanks to *David Tulip* for proof-reading and helping me to fix grammati
 1. [https://github.com/angular/angular.js/wiki/Understanding-Scopes](https://github.com/angular/angular.js/wiki/Understanding-Scopes)
 2. [http://amitgharat.wordpress.com/2013/06/08/the-hitchhikers-guide-to-the-directive/](http://amitgharat.wordpress.com/2013/06/08/the-hitchhikers-guide-to-the-directive/)
 3. [http://www.ng-newsletter.com/posts/directives.html](http://www.ng-newsletter.com/posts/directives.html)
-4. [https://egghead.io/lessons/AngularJS-understanding-isolate-scope](https://egghead.io/lessons/AngularJS-understanding-isolate-scope)
+4. [https://egghead.io/lessons/angularjs-understanding-isolate-scope](https://egghead.io/lessons/angularjs-understanding-isolate-scope)
+
 
 
 
