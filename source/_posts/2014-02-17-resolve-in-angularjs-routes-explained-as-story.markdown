@@ -23,7 +23,7 @@ On one day, I was planning for a trip to a Switzerland. So I called the tour coo
 Let's convert this to AngularJS context.  Now we have: 
 
 - `visitplace` is our first route.
-- The place, it's surroundings and the hotel room are the contents of our template. Let's add it to `placetovisit.html`.
+- The place, its surroundings and the hotel room are the contents of our template. Let's add it to `placetovisit.html`.
 - Tour coordinator is the one who connects to the place, so we have a controller called `TourCoordinatorCtrl`.
 
 {% include_code Application angular_resolve/app.js %}
@@ -89,7 +89,7 @@ This is not ideal in sometimes. I've to render the view and wait for some of the
 
 This time, I've a friend who is a hotel owner in Switzerland. He is a close friend of mine, so I can ask him for a room at any time. If I do this, I don't need to depend upon the accommodation provided by tour coordinator. Finally, all I have to do is, to make sure that I myself resolve the accommodation problem and tell the tour coordinator to arrange the rest. 
 
-This is exactly what we need if the route itself needs to resolve some dependencies in our application. For this, Angular provides a configuration on the `$routeProvider` service, called as `resolve`.  The resolve property is an optional map object / [ array of existing service names ]. All the keys of the map object can be injected to the controller as a dependency. The key would be a simple string, and it's value can be either a function or string. If string is provided, Angular will assume that it's an existing service and inject that particular service to the controller. If the value is a function, it will act as a factory function and the return value will be injected to the controller. 
+This is exactly what we need if the route itself needs to resolve some dependencies in our application. For this, Angular provides a configuration on the `$routeProvider` service, called as `resolve`.  The resolve property is an optional map object / [ array of existing service names ]. All the keys of the map object can be injected to the controller as a dependency. The key would be a simple string, and its value can be either a function or string. If string is provided, Angular will assume that it's an existing service and inject that particular service to the controller. If the value is a function, it will act as a factory function and the return value will be injected to the controller. 
 
 Let's relate our current story to Angular's context by using this resolve object. Look at our modified application code:
 
