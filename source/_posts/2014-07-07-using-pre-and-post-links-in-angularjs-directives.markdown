@@ -9,19 +9,12 @@ categories:
 published: false
 ---
  
-<!--1. Discussed about scope of a directive in my previous article. -->
-<!--2. Going to explain link function-->
-
 I have discussed about the scope of a directive in my previous [article](http://www.undefinednull.com/2014/02/11/mastering-the-scope-of-a-directive-in-angularjs/). Here we're going to see how to use the link and controller functions of an AngularJs directive.
 
 ## Link function of an Angular Directive
 
-<!--1. Linking the template and model-->
-<!--2. Data binding happens here-->
-<!--3. Safe place to attach event handlers-->
-<!--4. Create a directive called <dad> and show data binding -->
-
 As the name implicates, the link function has the duty of linking the model to the templates. Link function is the place where AngularJs does the data binding to the compiled templates. Let's take a look at the signature of a link function.
+<!--more-->
 
 ```javascript
 	link: function LinkFn(scope, elem, attr, ctrl){}	
@@ -39,14 +32,49 @@ Now let's create a simple directive to see how the data binding works. See the J
 
 The `name` and `greeting` properties attached to the scope are linked to the template once the link function is executed. And, the browser will show **"Hey, I am Paul"** in the view. 
 
-The above is the usual way to create a link function inside a directive. However, AngularJs also allows us to set the `link` property to an object. Advantage of having an object is, we can split the link function into two separate methods called, `pre-link` and `post-link`. We're going to discuss about them in the following sections.
+The above is the usual way to create a link function inside a directive. However, AngularJs  allows to set the `link` property to an object also. Advantage of having an object is, we can split the link function into two separate methods called, `pre-link` and `post-link`. In the following sections, we'll see how to use these link functions.
 
 ## PostLink
 
 <!--1. Post link is same as the link function-->
 <!--2. Example syntax-->
 
-We've seen
+In the previous sections, we saw how to create a link function. For AngularJs, the link function is we created is a post-link function. So in general we can write the post-link function in two ways:
+
+1) Simply set the link method.
+
+```javascript
+var app = angular.module('app', []);
+app.directive('dad', function () {
+    return {
+        restrict: 'EA',
+        template: '<div>{{greeting}}{{name}}</div>',
+        link: function(scope,elem,attr){
+            scope.name = 'Paul';
+            scope.greeting = 'Hey, I am ';
+        }
+    };
+});
+```
+2) link property points to a object literal, which has a `post ` method.
+
+```javascript
+var app = angular.module('app', []);
+app.directive('dad', function () {
+    return {
+        restrict: 'EA',
+        template: '<div>{{greeting}}{{name}}</div>',
+        link: {
+        	post: function(scope,elem,attr){
+	            scope.name = 'Paul';
+	            scope.greeting = 'Hey, I am ';
+	        }	        }
+    };
+});
+```
+<div class="info">
+Both denotes valid post-link functions. In most cases, we need to use the link as a method as shown in step <em>1<em>.
+</div>
 
 ## PreLink
 
