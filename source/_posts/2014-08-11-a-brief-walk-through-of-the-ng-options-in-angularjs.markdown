@@ -89,7 +89,7 @@ We can re-write the above code using ng-options. With ng-options, our html will 
 </html>
 ```
 
-Now the `selectedItem` will be bound to an object instead of the string value. 
+Now the `selectedItem` will be bound to an object instead of the string value. See the codepen demo [here](http://codepen.io/anon/pen/fiqaI) 
 
 The syntax of the ng-options is bit weird. I took some time to really understand the syntax. Next section is dedicated for explaining various ways of using ng-options.
 
