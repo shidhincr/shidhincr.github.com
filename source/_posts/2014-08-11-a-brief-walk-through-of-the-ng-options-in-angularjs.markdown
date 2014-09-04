@@ -50,11 +50,53 @@ The AngularJS documentation for select element says to use ng-options instead of
 Quoted from AngularJS documentation:
 > Note: ngOptions provides an iterator facility for the '`option`' element which should be used instead of ngRepeat when you want the select model to be bound to a non-string value. This is because an option element can only be bound to string values at present.
 
+Let's change the items to an array of objects.
+
+```js
+$scope.items = [{name: 'one', age: 30 },{ name: 'two', age: 27 },{ name: 'three', age: 50 }];
+```
+
+and the html will be
+
+```markup
+<html ng-app="app">
+  <body>
+    <div ng-controller="Test">
+    	<p>selected item is : {{selectedItem}}</p>
+      <select ng-model="selectedItem">
+        <option ng-repeat="item in items" value="{{item.age}}">{{item.name}}</option>
+      </select>
+    </div>
+  </body>
+</html>
+```
+If you notice, the `selectedItem` model is bound to the value of the selected option element. Here we have a limitation of setting the value to only of string type( as explained above ). If we want to have the selectedItem bound to the actual object of items array, then we need to use ng-options.
+
+**Re-write the above code using ng-options**:
+
+We can re-write the above code using ng-options. With ng-options, our html will look like below:
+
+```html
+<html ng-app="app">
+  <body>
+    <div ng-controller="Test">
+    	<p>selected item is : {{selectedItem}}</p>
+    	<p> age of selected item is : {{selectedItem.age}} </p>
+      <select ng-model="selectedItem" ng-options="item.name for item in items">
+      </select>
+    </div>
+  </body>
+</html>
+```
+
+Now the `selectedItem` will be bound to an object instead of the string value. 
+
+The syntax of the ng-options is bit weird. I took some time to really understand the syntax. Next section is dedicated for explaining various ways of using ng-options.
 
 ## Different kinds of syntax
 
 1. Check the AngularJS documentation : link to it
-2. Explain each of them with the help of exaples
+2. Explain each of them with the help of examples
 
 
 ## Things to remember
