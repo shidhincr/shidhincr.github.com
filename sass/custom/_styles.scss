@@ -79,21 +79,24 @@ a:hover,article header h1 a:hover {
 	font-style: italic;
 	background-color: #FFF;
 	padding: 10px;
-	border-radius: 5px;
-	border: 1px solid #CCC;
-	box-shadow: 0 0 5px #CCC;
+	border: #e2edf2 2px dashed;
+    background-color: #f4f8fa;
 	overflow: hidden;
 	clear: both;
 	.about-image {
 		width: 150px;
 		float: left;
 		display: inline-block;
-		margin-right: 20px;	
+		margin-right: 20px;
+        img {
+            border-radius: 50%;
+        }
 	}
 	.about-desc > hr {
 		border: none;
-		border-top: 1px dotted #CCC;
-		padding-top: 10px;
+        border-top: 1px solid #fff;
+        padding-top: 10px;
+        box-shadow: 0 -1px 0 #CBCED1;
 	}
 	#twitter-widget-1 {
 		float: right
