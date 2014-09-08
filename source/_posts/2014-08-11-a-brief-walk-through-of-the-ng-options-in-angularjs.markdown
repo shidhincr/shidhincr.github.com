@@ -150,9 +150,37 @@ Here, each option will have the text as `item.name` but when we select any of th
 
 **3) `label` group by `group` for `value` in `array`**
 
+Group by is the handy way of adding options groups.  In plain html, we need to use the `<optgroup>` tags to group a set of options. Here, we can specify ng-options to render optgroups based on `group` value. Let's see the below code.
 
+```javascript javascript
+$scope.items = [
+     {name: 'one', age: 30 },
+     { name: 'two', age: 27 },
+     { name: 'three', age: 50 },
+     { name: 'four', age: 15 },
+     { name: 'five', age: 27 },
+     { name: 'six', age: 30 }   
+];
+```
+and the ng-options in HTML
+
+	ng-options="item.name group by item.age for item in items"
+
+The above expression tells Angular to group each options based on the `item.age`. If we run the code, the output looks like this
+
+![](https://lh4.googleusercontent.com/-IMgiQ1KQINw/VA2flqQxDiI/AAAAAAAASVQ/LYQ4LHM6Th0/w239-h301-no/Screen%2BShot%2B2014-09-08%2Bat%2B1.38.12%2BPM.png)
 
 **4) `select` as `label` group by `group` for `value` in `array` track by `trackexpr`**
+
+This is similar to the previous one, and the only addition is the `track by`. In fact, this `track by` is the same one used inside the ng-repeat. This is mostly useful when you have an array of objects.
+
+Let's see why we need to use `track by`. Traditionally, when ever AngularJS needs to iterate over an array of objects, it creates a property named **$$hashKey** and attached it to the object. This particular property is then linked to the DOM element generated, so that AngularJS can identify which model object it is pointing to. 
+
+Using `track by`, we can explicitly tell AngularJS to track each DOM node by the specified value. For example, we can use like this:
+
+	ng-options="item.name group by item.age for item in items track by item.name"
+
+**Bennadel** explained this pretty well in his [blog post](http://www.bennadel.com/blog/2556-using-track-by-with-ngrepeat-in-angularjs-1-2.htm).
 
  <u>**For Object data  :**</u>
  

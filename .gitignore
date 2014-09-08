@@ -4,6 +4,7 @@
 .gist-cache
 .pygments-cache
 .gradle
+.preview-mode
 _deploy
 public
 sass.old
