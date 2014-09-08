@@ -9,6 +9,7 @@ categories:
 - ng-options
 
 ---
+![](https://lh4.googleusercontent.com/-ts5lhPEvP2U/VA2txu4TiLI/AAAAAAAASWs/ZR8EkWYzhcI/w681-h250-no/ng-options.jpg)
 
 I don't know how many times I banged my head whenever I had to use `ng-options` in my code. Every time, I had to google around the syntax and tried to understand what it actually does. To be frank, AngularJS documentation for ng-options is less informative and baffling. Even though there're couple of stack-overflow links about ng-options, I decided to write a detailed post. This post, will be more useful to me than any others, as I don't need to google it next time when I use `ng-options`.
 <!--more-->
