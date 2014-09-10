@@ -15,10 +15,6 @@ I don't know how many times I banged my head whenever I had to use `ng-options` 
 <!--more-->
 ## Why ng-options
 
-1. Normal way of generating options elements using ng-repeat 
-2. Problems of using ng-repeat in an option element
-3. Why ng-options are introduced
-
 The simple way of generating the select menu items in Angular would be using ng-repeat. Look at the code below:
 
 ```html
@@ -185,10 +181,44 @@ Using `track by`, we can explicitly tell AngularJS to track each DOM node by the
 
  <u>**For Object data  :**</u>
  
-- `label` for `(key , value)` in `object`
-- `select` as `label` for `(key , value)` in `object`
-- `label` group by `group` for `(key, value)` in `object`
-- `select` as `label` group by `group` for `(key, value)` in `object`
+ng-options is not restricted to array types, but can be used for object data sources too.  In this section, we'll see how ng-options are used for object data. Let's modify the `items` in our code like below:
+
+```javascript
+$scope.items = {
+    'one': 30,
+    'two': 27,
+    'three': 50,
+    'four': 15,
+    'five': 27,
+    'six': 30
+   };
+``` 
+
+**1) `label` for `(key , value)` in `object`**
+
+The expression for object data source is similar to the array data source. The only difference in object data source is, everything is key value pairs. ng-options for object allows us to loop through these (key,value) pairs. The expression is pretty much self explanatory, as all other parts are similar to what we have seen already.
+
+Let's modify the expression like this in our mark-up
+
+	ng-options="name for (name, value) in items"
+	
+The generated html is like this:
+
+[](https://lh3.googleusercontent.com/-eoAgJdq75go/VA_CWccGIqI/AAAAAAAASeo/OE-cjTGnGr4/h166/Screen%2BShot%2B2014-09-10%2Bat%2B7.15.04%2BAM.png)
+
+The generated html is a select box with all the key names. Similarly, we can create the select box with only values, shown below.
+
+	ng-options="name for (name, value) in items"
+
+<div class="info">
+For object data sources, the default model bound to the select box is the value, not the key. That means, in the above example, even though the select box displays only the key names, the model is actually bounds to its value. Try selecting an option in our demo, you can see that the selectedItem is printed as its value. However, this behaviour can be changed by using the **select as** syntax.
+</div>
+
+**2) `select` as `label` for `(key , value)` in `object`**
+
+**3) `label` group by `group` for `(key, value)` in `object`**
+
+**4) `select` as `label` group by `group` for `(key, value)` in `object`**
 
 
 ## Things to remember
