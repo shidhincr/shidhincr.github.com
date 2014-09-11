@@ -11,7 +11,9 @@ categories:
 ---
 ![](https://lh4.googleusercontent.com/-ts5lhPEvP2U/VA2txu4TiLI/AAAAAAAASWs/ZR8EkWYzhcI/w681-h250-no/ng-options.jpg)
 
-Using ng-options was bit tough for me. I banged my head couple of times when I actually used ng-options in my code. And most of the times, I had to google and find out how to make it work. Looking the AngularJS documentation didn't help much, as it's less informative and doesn't have much code samples. I could find lot of stack overflow links, and infact I understood the concepts after reading those links only. Here, finally, I decided to write a blog posts about what I learned. And you know, this post is going to be mostly useful to me more than any one; because next time, I don't need to google it.. :)
+Using ng-options was bit tough for me. I banged my head couple of times when I actually used ng-options in my code. And most of the times, I had to google and find out how to make it work. Looking the AngularJS documentation didn't help much, as it's less informative and doesn't have much code samples. 
+
+But, I could find lot of Stackoverflow links, and infact I understood the concepts after reading those links only. Here, finally, I decided to write a blog posts about what I learned. And you know, this post is going to be mostly useful to me more than any one; because next time, I don't need to google it.. :)
 
 <!--more-->
 ## Why ng-options
@@ -69,7 +71,7 @@ and the HTML
 </html>
 {%endraw%}
 ```
-If you notice, the `selectedItem` model is bound to the value of the selected option element. Here, as already explained, we're restricted to have only strings in our items array. We cannot set the selectedItem model to the object inside items. Here comes the ng-options handy. Let's see how to do it.
+If you notice, the `selectedItem` model is bound to the value of the selected option element. Here, as already explained, we're restricted to have only strings in our items array. We cannot set the selectedItem model to the object inside items. Therefore we need to use the ng-options for these kind of situations. Let's see how to do it.
 
 **Re-write the above code using ng-options**:
 
@@ -110,7 +112,7 @@ We'll cover these different type of **comprehension expressions** with the help 
 
 **1) `label` for `value` in `array`**
 
-This is the simplest and commonly used expression. This tells **ng-options** directive to loop through the arrays, and generate option element containing the current value. The generated html looks like this:
+This is the simplest and commonly used expression. This tells **ng-options** directive to loop through the array, and generate option element containing the current value. The generated html looks like this:
 
 ![](https://lh3.googleusercontent.com/-sWj95dIg0Co/VA0e8YuM7UI/AAAAAAAASRY/kmmupaPV1Ac/h114/Screenshot%2B2014-09-08%2B07.06.16.png)
 
@@ -144,7 +146,7 @@ Here, each option will have the text as `item.name` but when we select any of th
 
 **3) `label` group by `group` for `value` in `array`**
 
-Group by is a real short cut for adding options groups.  In plain html, we need to use the `<optgroup>` tags to group a set of options. But here, we can specify ng-options to render optgroups based on `group` value. Let's see the below code.
+Group by is really a short cut for adding options groups.  In plain html, we need to use the `<optgroup>` tags to group a set of options. But here, we can specify ng-options to render optgroups based on `group` value. Let's see the below code.
 
 ```javascript javascript
 $scope.items = [
@@ -166,9 +168,7 @@ The above expression tells Angular to group each options based on the `item.age`
 
 **4) `select` as `label` group by `group` for `value` in `array` track by `trackexpr`**
 
-This is similar to the previous one, and the only addition is the `track by`. In fact, the `track by` is more or less the same used inside an ng-repeat. This is really useful when you have an array of objects.
-
-Let's see how to use `track by`. Basically, when ever AngularJS needs to iterate over an array of objects, it creates a property named **$$hashKey** and attached it to the object. This particular property is then linked to the generated DOM element, so that AngularJS can identify which model object it is pointing to. 
+This is similar to the previous one, and the only addition is the `track by`. If you have ever used `ng-repeat`, the `track by` won't surprise you. The syntax and usage is same as with `ng-repeat`.
 
 Using `track by`, we can explicitly tell AngularJS to track each DOM node by the specified value. For example, we can use like this:
 
