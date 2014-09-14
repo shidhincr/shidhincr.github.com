@@ -9,6 +9,13 @@ categories:
 - Promises
 
 ---
+![](/images/promises.jpg)
+
+Promise is the new kid in JavaScript world. Even though it's new in JavaScript, it existed in computer science since long time. According to this wikipedia [link](http://en.wikipedia.org/wiki/Futures_and_promises), 
+
+>The term promise was proposed in 1976 by Daniel P. Friedman and David Wise,[1] and Peter Hibbard called it eventual.[2] A somewhat similar concept future was introduced in 1977 in a paper by Henry Baker and Carl Hewitt.[3]
+
+Here in this post, we'll see the basics of promises and why they are useful.
 
 
 ## Synchronous and Asynchronous Code
