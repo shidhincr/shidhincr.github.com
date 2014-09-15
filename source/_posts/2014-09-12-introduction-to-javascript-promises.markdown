@@ -26,6 +26,40 @@ Here in this post, we'll see the basics of promises and why they are useful.
 - Callback: the function used for handling the async code: explain this
 - Examples of synchronous and asynchronous code
 
+Flow of control ( or control flow )is one of the fundamental thing programmers learn first. Flow of control is the order in which each statement in our code gets executed. Knowing the flow of control will help in easy debugging the code and catch early bugs. 
+
+**Synchronous ( Blocking ) code :**
+
+In synchronous code, the control flow is always in sequential order. That means, the compiler/interpreter will go to the next statement only after completing the current statement execution. Usually, developers tends to write synchronous code most of the times; As it's easy to read the code and debug. 
+
+Also, in synchronous code, every statement **may** have a return value after successful completion, or can throw an error for unsuccessful execution. This is very important, as one program statement might need to get value from previous statement to do some operations. If the previous statement error out, the next statement can catch it properly and do the appropriate actions. See the below example:
+
+```javascript
+// get a random userId from an array
+
+function getUserId(){
+	var users = ['user1','user2', 'user3', 'user4', 'user5'];
+	return users[ Math.floor(Math.random()*5) ];}
+function showRandomUser(userId){
+	alert('The random user id is : '+ userId);}
+
+var randomUser;
+try{
+    randomUser = getUserId();
+    showRandomUser(randomUser);	}
+catch(e){
+	alert('error');}
+
+```
+The above code is completely synchronous. It first gets the random userId by executing a function, and assigns to a variable. This variable is then passed to another function for displaying. There is even a try catch block in place, so that if any error occur in these lines will be caught and shows an alert. 
+
+Good thing about the above code is, each and every line is understandable. We know what happens in each line, and what's going to happen next. That's the beauty of synchronous code. 
+
+However, there are situations which should not be handled in synchronous code. Example, assume we are getting the userId from the server instead from an array. If the code is synchronous ( also know as blocking code ), we need to wait till it fetches the details from server. That's why it's also knows as blocking code, as it blocks the interpreter/compiler from executing any other statements.
+
+**Asynchronous ( Unblocking ) code :**
+
+
 ## Callback Hell
 
 - As developers started relying more and more on callbacks, it becomes more difficult to read and debug the code. Exception handling is zero, as we don't know in which callback the error occurred. In that case we need to have code to handle exceptions in each and every callbacks. against the DRY principles
