@@ -30,7 +30,7 @@ Flow of control ( or control flow )is one of the fundamental thing programmers l
 
 **Synchronous ( Blocking ) code :**
 
-In synchronous code, the control flow is always in sequential order. That means, the compiler/interpreter will go to the next statement only after completing the current statement execution. Usually, developers tends to write synchronous code most of the times; As it's easy to read the code and debug. 
+In synchronous code, the control flow is always in sequential order. This means, the compiler/interpreter will go to the next statement only after completing the current statement execution. Usually, developers tends to write synchronous code most of the times; As it's easy to read the code and debug. 
 
 Also, in synchronous code, every statement **may** have a return value after successful completion, or can throw an error for unsuccessful execution. This is very important, as one program statement might need to get value from previous statement to do some operations. If the previous statement error out, the next statement can catch it properly and do the appropriate actions. See the below example:
 
@@ -39,16 +39,20 @@ Also, in synchronous code, every statement **may** have a return value after suc
 
 function getUserId(){
 	var users = ['user1','user2', 'user3', 'user4', 'user5'];
-	return users[ Math.floor(Math.random()*5) ];}
+	return users[ Math.floor(Math.random()*5) ];
+}
 function showRandomUser(userId){
-	alert('The random user id is : '+ userId);}
+	alert('The random user id is : '+ userId);
+}
 
 var randomUser;
 try{
     randomUser = getUserId();
-    showRandomUser(randomUser);	}
+    showRandomUser(randomUser);	
+}
 catch(e){
-	alert('error');}
+	alert('error');
+}
 
 ```
 The above code is completely synchronous. It first gets the random userId by executing a function, and assigns to a variable. This variable is then passed to another function for displaying. There is even a try catch block in place, so that if any error occur in these lines will be caught and shows an alert. 
@@ -59,6 +63,13 @@ However, there are situations which should not be handled in synchronous code. E
 
 **Asynchronous ( Unblocking ) code :**
 
+Asynchronous code doesn't block. ...
+
+It uses callbacks to execute the code after the asynchronous event. ...
+
+Control flow is a mess; developer need to know when the code is going to be executed. ...
+
+No return statements, and catching error is difficult. ...
 
 ## Callback Hell
 
@@ -88,4 +99,6 @@ However, there are situations which should not be handled in synchronous code. E
 
 ## Conclusion
 
-Promises are one of the promising thing in JavaScript. ES6 supports promises natively. Promises were every developers dream thingy. You might find difficult at first time, but learning it will completely change your coding style. It's that powerful ..
+If you know the power of promises, you never go to callback hell. Now that ES6 have native implementation for promises. I would suggest to start writing your promises now itself; because, you might find it difficult for the first few times, but learning it will completely change your coding style. 
+
+Thanks for reading !!!
