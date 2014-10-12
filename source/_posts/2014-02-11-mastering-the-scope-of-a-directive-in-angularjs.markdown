@@ -204,7 +204,7 @@ scope : {
 	name: "@parentName"
 }
 ```
-At this time, the name property will be looking for an attribute "parentName" to get its value. Simply, any string after the  __*Prefixes*__ should match the attribute name.
+At this time, the name property will be looking for an attribute "parent-name" to get its value. In short, any string after the  __*Prefixes*__ should match the attribute name.
 
 *__Note__ : If you gets confused in any of the sections below, have a look at the demo code ( HTML,JS ) and come back*
 
