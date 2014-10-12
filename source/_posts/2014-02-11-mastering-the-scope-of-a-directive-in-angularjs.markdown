@@ -225,7 +225,7 @@ At this time, the name property will be looking for an attribute "parent-name" t
 
 I know that AngularJS have made these things a little bit difficult to understand. Especially when it comes to the random naming conventions they'd chosen. If you’re still confused, I would recommend having a look at the below article:
 
-[AngularJS directives: Isolated scope prefixes ](http://umur.io/AngularJS-directives-using-isolated-scope-with-attributes/) . This one explains the *Isolated scope*  and it's properties neatly.
+[AngularJS directives: Isolated scope prefixes ](https://umur.io/angularjs-directives-using-isolated-scope-with-attributes/) . This one explains the *Isolated scope*  and its properties.
 
 That's it !  This post ended up becoming much longer than I expected, because I wanted to include everything I know. I hope everyone enjoyed reading this. If you find any errors I would really appreciate it if you guys could send me your corrections and comments ––  the comment box is made just for that. Thanks everyone !!
 
