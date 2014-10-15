@@ -17,7 +17,7 @@ Promise is the new kid in JavaScript world. Even though it's new in JavaScript, 
 
 Here in this post, we'll see the basics of promises and why they are useful.
 
-
+<!--more-->
 ## Synchronous and Asynchronous Code
 
 - Developers like to write synchronous code as It won't change the flow of execution. It's easy to read and debug. Always have a return after successful completion or error out for an unsuccessful program execution.
@@ -26,7 +26,7 @@ Here in this post, we'll see the basics of promises and why they are useful.
 - Callback: the function used for handling the async code: explain this
 - Examples of synchronous and asynchronous code
 
-Flow of control ( or control flow )is one of the fundamental thing programmers learn first. Flow of control is the order in which each statement in our code gets executed. Knowing the flow of control will help in easy debugging the code and catch early bugs. 
+Flow of control ( or control flow ) is one of the fundamental steps programmers learn first. Flow of control is the order in which each statement in our code gets executed. Knowing the flow of control will help in easy debugging the code and catch early bugs. 
 
 **Synchronous ( Blocking ) code :**
 
@@ -55,9 +55,10 @@ catch(e){
 }
 
 ```
-The above code is completely synchronous. It first gets the random userId by executing a function, and assigns to a variable. This variable is then passed to another function for displaying. There is even a try catch block in place, so that if any error occur in these lines will be caught and shows an alert. 
 
-Good thing about the above code is, each and every line is understandable. We know what happens in each line, and what's going to happen next. That's the beauty of synchronous code. 
+The above code is completely synchronous. It first gets the random `userId` by executing a function, and assigns to a variable. This variable then passed to another function which displays it. There is even a try catch block in place, so that if any error occur in these lines will be caught and shows an alert. 
+
+Good thing for the above code is, each and every line is understandable. We know what happens in each line, and what's going to happen next. That's the beauty of synchronous code. 
 
 However, there are situations which should not be handled in synchronous code. Example, assume we are getting the userId from the server instead from an array. If the code is synchronous ( also know as blocking code ), we need to wait till it fetches the details from server. That's why it's also knows as blocking code, as it blocks the interpreter/compiler from executing any other statements.
 
@@ -70,6 +71,8 @@ It uses callbacks to execute the code after the asynchronous event. ...
 Control flow is a mess; developer need to know when the code is going to be executed. ...
 
 No return statements, and catching error is difficult. ...
+
+In simple words, **Asynchronous code** doesn't block the program execution.  It uses another mechanism, knows as a `callback` function to switch the control flow once the async operation is completed. 
 
 ## Callback Hell
 
