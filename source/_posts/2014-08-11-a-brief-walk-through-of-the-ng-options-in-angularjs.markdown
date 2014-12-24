@@ -229,3 +229,8 @@ The remaining expressions available for object data source is given below. There
 ## Summary
 
 Thanks for reading !! ng-options is a powerful directive. Mastering it properly will save lot of time in your next project.
+
+I found the below book very helpful for learning AngularJS. Highly recommended.
+
+<a href="http://www.amazon.com/gp/product/1430264489/ref=as_li_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=1430264489&linkCode=as2&tag=undenull-20&linkId=DLBX7OHCOREJKYA6"><img border="0" src="http://ws-na.amazon-adsystem.com/widgets/q?_encoding=UTF8&ASIN=1430264489&Format=_SL250_&ID=AsinImage&MarketPlace=US&ServiceVersion=20070822&WS=1&tag=undenull-20" ></a><img src="http://ir-na.amazon-adsystem.com/e/ir?t=undenull-20&l=as2&o=1&a=1430264489" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />
+<a style="float:right" href="http://www.amazon.com/gp/product/1430264489/ref=as_li_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=1430264489&linkCode=as2&tag=undenull-20&linkId=DLBX7OHCOREJKYA6">Buy Pro AngularJS Book Now</a>
