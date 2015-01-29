@@ -11,7 +11,7 @@ categories:
 ---
 ![](/images/promises.jpg)
 
-Promise is the new kid in JavaScript world. Even though it's new in JavaScript, it existed in computer science since long time. According to this wikipedia [link](http://en.wikipedia.org/wiki/Futures_and_promises), 
+Promise is a new born in JavaScript world. Even though it's new to JavaScript, it existed in computer science already. According to this wikipedia [link](http://en.wikipedia.org/wiki/Futures_and_promises), 
 
 >The term promise was proposed in 1976 by Daniel P. Friedman and David Wise,[1] and Peter Hibbard called it eventual.[2] A somewhat similar concept future was introduced in 1977 in a paper by Henry Baker and Carl Hewitt.[3]
 
@@ -74,7 +74,7 @@ No return statements, and catching error is difficult. ...
 
 In simple words, **Asynchronous code** doesn't block the program execution.  It uses another mechanism, knows as a `callback` function to switch the control flow once the async operation is completed. 
 
-## Callback Hell
+## Callback Hell ( or Callback pyramid )
 
 - As developers started relying more and more on callbacks, it becomes more difficult to read and debug the code. Exception handling is zero, as we don't know in which callback the error occurred. In that case we need to have code to handle exceptions in each and every callbacks. against the DRY principles
 - Example of a callback hell
