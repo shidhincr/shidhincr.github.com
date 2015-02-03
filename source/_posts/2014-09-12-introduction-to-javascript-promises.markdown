@@ -11,7 +11,79 @@ categories:
 ---
 ![](/images/promises.jpg)
 
-Promise is a new born in JavaScript world. Even though it's new to JavaScript, it existed in computer science already. According to this wikipedia [link](http://en.wikipedia.org/wiki/Futures_and_promises), 
+- Promises are available in Javascript
+    + Available in Chrome as of now
+    + One of the best feature of ES6
+    + I am going to explain promises with the native Promises
+
+- What are Promises
+    + They are placeholders for a future value
+    + They have different states
+    + State transitions are possible once
+
+- Why we need Promises
+    + Our brain wants to think in a synchronous way
+    + Callback hell
+    + Return values and error catching
+
+- Deferreds and Thenables
+    + Deferreds are used for resolving the promise
+    + There is no need for a deferred in native promise as it's replaced with a function ( which has resolve, reject parameters )
+    + Thenables has then function
+
+- Analyse the native Promise object
+    + How to create a new Promise
+    + Default Promise state and Promise value
+    + You can only resolve one value from the promise
+    + Promise will be always async even called after the promise is resolved.
+
+- Summary
+    + Promises are very powerful
+    + Promises with generators will be kickass couple.
+    + More browsers will start supporting the native  Promise object
+    + Use Promises in your code.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+----------------------------------------------------------------------
+Promise is the new born kid in JavaScript world. Even though it's new to JavaScript, it existed in computer science already. According to this wikipedia [link](http://en.wikipedia.org/wiki/Futures_and_promises), 
 
 >The term promise was proposed in 1976 by Daniel P. Friedman and David Wise,[1] and Peter Hibbard called it eventual.[2] A somewhat similar concept future was introduced in 1977 in a paper by Henry Baker and Carl Hewitt.[3]
 
