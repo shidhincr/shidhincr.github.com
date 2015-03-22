@@ -176,10 +176,6 @@ This is how the TDD works. In the next section, we'll see how the whole unit imp
 
 ## Evolving the Final Code
 
-- Evolve the code 
-    + Adding more test cases
-    + Make them pass one by one
-
 For now, we have only one test case for the `makeCurry` function. Let's think about different scenarios for our curry function. 
 
 1. Our curry function should always accept one function as parameter, if there is no function provided, it should throw an error.
@@ -247,25 +243,250 @@ curriedAdd(1,2)(3,4,5,6) // should return 6
 - We should be able to make any number of independent curried functions using `makeCurry` function.
 
 ```js
-	var add = function(a,b,c){
-		return a+b+c;
-	}
-	var curryA = makeCurry(add);
-	var curryB = makeCurry(add);
-	
-	curryA(1,2)(3) // return 6
-	curryB(1)(2)(3) // return 6
+var add = function(a,b,c){
+	return a+b+c;
+};
+var curryA = makeCurry(add);
+var curryB = makeCurry(add);
+		
+curryA(1,2)(3) // return 6
+curryB(1)(2)(3) // return 6
 ```
     
-We have came up with all the test scenarios for our curry function. Let's pick one by one and implement the logic. Add the first test case inside the new `describe` block.
+We came up with all the test scenarios for our curry function. Let's pick one by one and implement the logic. Add the first test case inside the new `describe` block.
 
 ```js curry-spec.js
+describe('Curry function generator', function () {
+    it('should return a function', function(){
+        var add = function(){}
+        expect(makeCurry(add)).to.be.a('function');
+    });
 
+    it('should throw an error if there is no valid function provided as argument', function(){
+        expect(function(){
+            makeCurry();
+        }).to.throw('No function provided');
+    });
+});
+
+describe('Curry function', function(){
+    var add;
+
+    beforeEach(function(){
+        add = function(a,b,c){
+            return a + b + c;
+        };
+    });
+
+    it('should return the proper result if called with original number of arguments',function(){
+        var curriedAdd = makeCurry( add );
+        expect( curriedAdd(1,2,3) ).to.eq(6);
+    });
+
+});
 ```
+Testem output should be like this:
+
+```sh
+Curry function should return the proper result if called with original number of arguments
+    ✘ expected undefined to equal 6
+        AssertionError: expected undefined to equal 6
+            at Context.<anonymous> (http://localhost:7357/curry-spec.js:25:40)
+            at callFn (http://localhost:7357/testem/mocha.js:4338:21)
+            at Test.Runnable.run (http://localhost:7357/testem/mocha.js:4331:7)
+            at Runner.runTest (http://localhost:7357/testem/mocha.js:4728:10)
+            at http://localhost:7357/testem/mocha.js:4806:12
+            at next (http://localhost:7357/testem/mocha.js:4653:14)
+            at http://localhost:7357/testem/mocha.js:4663:7
+            at next (http://localhost:7357/testem/mocha.js:4601:23)
+            at http://localhost:7357/testem/mocha.js:4625:7
+            at done (http://localhost:7357/testem/mocha.js:4300:5)
+```
+
+Let's make the test pass by adding the implementation:
+
+```js curry.js
+var makeCurry = function(fn){
+    if(typeof fn!=='function'){
+        throw Error('No function provided');
+    }
+
+    var slice = [].slice;
+    return function curriedFn(){
+      var args = slice.call(arguments);
+      return fn.apply(null, args);
+    };
+};
+```
+Okay now, tests are passing. Let's add the next test case inside the "Curry function" describe block:
+
+```js
+it('should return a function when arguments count is less than the original number of arguments', function(){
+    var curriedAdd = makeCurry( add );
+    expect( curriedAdd(1,2) ).to.be.a('function');
+});
+```
+
+Tests are failing now. Time to make them pass. 
+
+Now we need to verify that the number of arguments passed is less than the original number of arguments. If it lesser, the tests are expecting a function to be returned ( than executing the original function ). Let's implement this:
+
+```js curry.js
+var makeCurry = function(fn){
+    if(typeof fn!=='function'){
+        throw Error('No function provided');
+    }
+
+    var slice = [].slice;
+    return function curriedFn(){
+      var args = slice.call(arguments);
+      
+      if(args.length < fn.length){
+        return curriedFn;
+      }
+      
+      return fn.apply(null, args);
+    };
+};
+```
+
+All the tests are passing now. Let's pick the next test case.
+
+```js
+it('should return the result whenever the total number of arguments is greater than or equal to the original number of arguments', function(){
+    var curriedAdd = makeCurry( add );
+    expect( curriedAdd(1)(2) ).to.be.a('function');
+    expect( curriedAdd(1)(2)(3) ).to.eq(6);
+    expect( curriedAdd(1,2)(3) ).to.eq(6);
+    expect( curriedAdd(1)(2,3) ).to.eq(6);
+    expect( curriedAdd(1,2)(3,4,5,6,7) ).to.eq(6);
+});
+```
+
+And the implementation:
+
+```js curry.js
+
+var makeCurry = function(fn){
+    if(typeof fn!=='function'){
+        throw Error('No function provided');
+    }
+
+    var slice = [].slice;
+    return function curriedFn(){
+      var args = slice.call(arguments);
+      
+      if(args.length < fn.length){
+        return function(){
+          return curriedFn.apply(null, args.concat( slice.call(arguments) ));
+        };
+      }
+
+      return fn.apply(null, args);
+    };
+};
+```
+
+Now, we're going to add our last test case. 
+
+```js
+it('should support creating multple curry functions', function(){
+    var curryA = makeCurry(add);
+    var curryB = makeCurry(add);
+                
+    expect( curryA(1,2)(3) ).to.eq(6);
+    expect( curryA(1,2) ).to.be.a('function');
+        
+    expect( curryB(1)(2)(3) ).to.eq(6);
+    expect( curryB(1)(2) ).to.be.a('function');
+});
+```
+
+And this time, Testem reports that all tests are passing. Voila!, it means we're done with our curry function implementation.
+ 
+## Final code
+
+Here is the final code for **curry-spec.js** and the **curry.js**.
+
+```js curry-spec.js
+describe('Curry function generator', function () {
+    it('should return a function', function(){
+        var add = function(){}
+        expect(makeCurry(add)).to.be.a('function');
+    });
+
+    it('should throw an error if there is no valid function provided as argument', function(){
+        expect(function(){
+            makeCurry();
+        }).to.throw('No function provided');
+    });
+});
+
+describe('Curry function', function(){
+    var add;
+
+    beforeEach(function(){
+        add = function(a,b,c){
+            return a + b + c;
+        };
+    });
+
+    it('should return the proper result if called with original number of arguments',function(){
+        var curriedAdd = makeCurry( add );
+        expect( curriedAdd(1,2,3) ).to.eq(6);
+    });
+
+    it('should return the curried function when arguments count is less than the original number of arguments', function(){
+        var curriedAdd = makeCurry( add );
+        expect( curriedAdd(1,2) ).to.be.a('function');
+    });
+
+    it('should return the result whenever the total number of arguments is greater than or equal to the original number of arguments', function(){
+        var curriedAdd = makeCurry( add );
+        expect( curriedAdd(1)(2) ).to.be.a('function');
+        expect( curriedAdd(1)(2)(3) ).to.eq(6);
+        expect( curriedAdd(1,2)(3) ).to.eq(6);
+        expect( curriedAdd(1)(2,3) ).to.eq(6);
+        expect( curriedAdd(1,2)(3,4,5,6,7) ).to.eq(6);
+    });
     
-- Final code   
-- Summary
+    it('should support creating multple curry functions', function(){
+        var curryA = makeCurry(add);
+        var curryB = makeCurry(add);
+                
+        expect( curryA(1,2)(3) ).to.eq(6);
+        expect( curryA(1,2) ).to.be.a('function');
+        
+        expect( curryB(1)(2)(3) ).to.eq(6);
+        expect( curryB(1)(2) ).to.be.a('function');
+    });
+
+});
+```
+
+```js curry.js
+
+var makeCurry = function(fn){
+    if(typeof fn!=='function'){
+        throw Error('No function provided');
+    }
+
+    var slice = [].slice;
+    return function curriedFn(){
+      var args = slice.call(arguments);
+      if(args.length < fn.length){
+        return function(){
+          return curriedFn.apply(null, args.concat( slice.call(arguments) ));
+        };
+      }
+
+      return fn.apply(null, args);
+    };
+};
+```
+
+## Summary
     + TDD is tough in the beginning
-    + Once we get used to it, it's the best     approach for software design.
+    + Once we get used to it, it's the best approach for software design.
     + Happy TDD  
     
