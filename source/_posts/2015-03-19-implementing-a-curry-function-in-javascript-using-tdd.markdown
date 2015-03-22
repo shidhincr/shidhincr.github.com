@@ -3,29 +3,31 @@ layout: post
 title: "Implementing a curry function in JavaScript using TDD"
 date: 2015-03-19 18:51:27 +0400
 comments: true
-published: false
 categories: 
 - TDD
 - JavaScript
 - Testem
+- Curry
 ---
 
-TDD stands for Test Driven Development. In a typical TDD Environment, the developer start with a basic test case describing the minimal requirement for implementing the module. Then the actual implementation code is written for making the test case pass. 
+TDD stands for Test Driven Development. To those who don't know what TDD means: In a typical TDD Environment, a developer start with a basic test case describing the minimal requirement for implementing the module. Then he writes the actual implementation code for making the test case pass. 
 
 Next, another test case is written for a different expectation for the module, followed by writing the implementation to make the test pass. This process goes on till the all the expectations for the actual module is implemented.
+
+This way of development ( driven by series of test cases ) is called TDD.
 
 ### Setting up the tools
 
 Here we're going to use [Mocha](http://mochajs.org) as the unit testing framework. For running the tests, we will be using [Testem](https://github.com/airportyh/testem).
 <!--more-->
-We'll be using BDD ( Behaviour Driven Development ) style expectations. For that purpose let's use the excellent [Chai.js](http://chaijs.com/) library.
+We'll be using BDD ( Behaviour Driven Development, which is similar to TDD, but instead of `assertions` we use `expectaions`) style syntax. For that purpose let's use the excellent [Chai.js](http://chaijs.com/) library.
 
 First install Testem:
 
 ```sh
 npm install -g testem
 ```
-Now create a folder called `TDD` any where in your system. We're going to keep all our files in this folder.
+Now create a folder called `TDD` anywhere in your system. We're going to keep all our files in this folder.
 
 ```sh
 mkdir TDD && cd TDD
@@ -44,7 +46,7 @@ src_files:
 - curry.js
 - curry-spec.js
 ```
-Open Terminal and run the command `testem` from the TDD folder to verify that testem is running properly.
+Open Terminal and run the command `testem` from the TDD folder to verify testem is running.
 
 #### Mocha and Chai
 As I said earlier, we're going to use **Mocha** and **Chai** for writing the test cases. By default, testem uses Jasmine as the testing framework. So to use Mocha and Chai, we need to change the testem configuration.
@@ -72,7 +74,7 @@ Create a `setup.js` file in TDD folder like below:
 ```js setup.js
 var expect = chai.expect
 ```
-To make sure that everything works fine, edit the curry-spec.js with the following code and run the `testem` command from terminal.
+To make sure that everything works fine, edit the **curry-spec.js** with the following code and run the `testem` command from terminal.
 
 ```js curry-spec.js
 describe('Testem setup', function () {
@@ -81,7 +83,7 @@ describe('Testem setup', function () {
     })
 });
 ```
-Open the link in the terminal to start browser capturing and run the tests. Once the tests ran, you should be able to see similar output like this:
+Open the link in the terminal to start capture the browser and run the tests. Once the tests ran, you should be able to see an output like this:
 
 ```sh
 TEST'EM 'SCRIPTS!
@@ -98,13 +100,13 @@ http://localhost:7357/
 
 ## Thinking about Behaviours of the Module
 
-Behaviour of the module is the output it produces for various inputs. Or we can say, how the module is responding to various scenarios. These scenarios are going to be our test cases. So, before we start writing our test cases, we should think about all possible scenarios that the module can handle with.
+Behaviour of the module is the output it produces for various inputs. Or we can say, how the module is responding to various scenarios. These scenarios are going to be our test cases. So, before we start writing our test cases, we should think about all possible scenarios the module can handle with.
 
 ### JavaScript Curry Function
 
-Here we're going to implement a curry function in JavaScript. So in this case, our module or the unit is the function named `curry`. Now, let's think and start identifying different scenarios ( in this context, inputs ) for our `curry` function.
+Here we're going to implement a curry function in JavaScript. So in this case, the *module* or the *unit* is the function named `curry`. Let's think and start identifying different scenarios ( in this context, inputs ) for our `curry` function.
 
-Accoring to [Wikipedia](http://en.wikipedia.org/wiki/Currying), curry function is defined as:
+According to [Wikipedia](http://en.wikipedia.org/wiki/Currying), curry function is defined as:
 >In mathematics and computer science, currying is the technique of translating the evaluation of a function that takes multiple arguments (or a tuple of arguments) into evaluating a sequence of functions, each with a single argument (partial application).
 
 So by definition, a function `add(a,b,c)` is a curried function if the `add` function supports following:
@@ -119,7 +121,7 @@ var sumofTwoAndThree = add(1,2) // sumofTwoAndThree should be a function
 sumofTwoAndThree(3) // should return 6
 ```
 
-So, what we're going to implement now is a function that can make any function as a curried function. We'll divide our test cases into two groups: one for curry function generator and another one for the actual curry function.
+So, what we're going to implement now is a function that can create a curried function from any other function. We'll divide our test cases into two groups: one for curry function generator and another one for the actual curry function.
 
 ### Writing the first test case
 
@@ -172,7 +174,7 @@ var makeCurry = function(){
 ```
 Our first test should pass now. By far, we have implemented the test case for the simple `makeCurry` function and implemented the `makeCurry` function. 
 
-This is how the TDD works. In the next section, we'll see how the whole unit implementation is evolved in series of test cases and the code to make the pass.
+This is how the TDD works. In the next section, we'll see how the whole unit implementation is evolved in series of test cases and the code to make them pass.
 
 ## Evolving the Final Code
 
@@ -486,7 +488,8 @@ var makeCurry = function(fn){
 ```
 
 ## Summary
-    + TDD is tough in the beginning
-    + Once we get used to it, it's the best approach for software design.
-    + Happy TDD  
+
+I wouldn't say TDD is nice and simple. Writing all the code in TDD way is tough and frustrating for beginners. But if you keep practicing TDD, eventually you are going to love it. TDD will help you to concentrate on a small part of your code and complete it with perfection. Finally, that will lead to implement a better design for your actual module. So my point is, TDD is useful for better architecture of your code and the code will be less error prone.
+
+Thanks for reading. I hope this will help for implementing TDD for your next project. Feedbacks are welcome.
     
