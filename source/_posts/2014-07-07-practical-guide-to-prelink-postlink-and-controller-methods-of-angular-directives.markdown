@@ -19,7 +19,7 @@ As the name implicates, the link function has the duty of linking the model to t
 ```javascript
 	link: function LinkFn(scope, elem, attr, ctrl){}	
 ```
-There are 3 parameters available to the link function. 
+There are 4 parameters available to the link function. 
 
 1. **scope** : 	The `scope` of the directive
 2. **elem** : 	Dom element where the directive is applied
@@ -68,7 +68,8 @@ app.directive('dad', function () {
         	post: function(scope,elem,attr){
 	            scope.name = 'Paul';
 	            scope.greeting = 'Hey, I am ';
-	        }	        }
+	        }	
+        }
     };
 });
 ```
