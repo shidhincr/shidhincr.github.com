@@ -10,6 +10,8 @@ categories:
 - Curry
 ---
 
+![TDD](https://lh3.googleusercontent.com/dtPfB5V-ew-rm3aApkXHTA8jFVwsFzoNNepbn9wU=w264-h207-p-no)
+
 TDD stands for Test Driven Development. To those who don't know what TDD means: In a typical TDD Environment, a developer start with a basic test case describing the minimal requirement for implementing the module. Then he writes the actual implementation code for making the test case pass. 
 
 Next, another test case is written for a different expectation for the module, followed by writing the implementation to make the test pass. This process goes on till the all the expectations for the actual module is implemented.
