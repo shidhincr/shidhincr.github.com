@@ -15,6 +15,24 @@ categories:
 	+ Parsing time and slow page
 	+ Problem with async loading the stylesheet
 	+ Flash of unstyles content
+
+Performance is one of the important area developers concentrating now. Even Google added page load speed as one of the key parameter of their ranking algorithm. Soe if websites need to optimise their page load performance along with other search engine optimisations. 
+
+Amazon came up with the following results after page speed improvements:
+
+> For every 1 second of improvement they experienced up to a 2% increase in conversions. For every 100 ms of improvement, they grew incremental revenue by up to 1%
+
+
+## Improving page load time
+
+Most of the time in loading the page is spent for downloading the resources. 
+
+
+
+
+
+
+	
 - What is Critical CSS
 	+ Analysing what css is required for first render
 	+ Above the fold mark-up
