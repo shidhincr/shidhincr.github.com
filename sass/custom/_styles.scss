@@ -135,6 +135,13 @@ a:hover,article header h1 a:hover {
 	}
 }
 
+li.related {
+  padding-bottom: 5px;
+  a {
+    color: #F9579A;
+  }
+}
+
 /***** Fixing Gist default styling issues ***/
 
 .gist{font-size:13px;line-height:18px;margin-bottom:20px;width:100%}
