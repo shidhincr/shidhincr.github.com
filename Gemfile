@@ -18,4 +18,4 @@ group :development do
 end
 
 gem 'sinatra', '~> 1.4.2'
-gem 'gsl'
+gem 'gsl', :git => 'git://github.com/siefca/rb-gsl'
