@@ -34,18 +34,29 @@ a:hover,article header h1 a:hover {
 }
 #content{
   background: #fff;
+  .entry-title {
+    font-family: sans-serif, PT Serif, 'Droid serif',serif;
+  }
   .entry-content {
     // font-family: Georgia, HelveticaNeue-Light, 'Helvetica Neue Light', 'Helvetica Neue', Helvetica, Times, 'Times New Roman',Arial, 'Lucida Grande', sans-serif;
     // last changes below
     // font-family: HelveticaNeue-Light, 'Helvetica Neue Light', 'Helvetica Neue', Helvetica, Times, 'Times New Roman', Arial, 'Lucida Grande', sans-serif;
     // font-size: 1.05em;
     // line-height: 1.8em;
-    font-family: PT Serif,'Droid serif',serif;
-	font-size: 1.15em;
-	line-height: 1.7em;
+    font-family: sans-serif, PT Serif, 'Droid serif',serif;
+    font-size: 22px;
+    line-height: 1.8em;
+    font-weight: 300;
+    text-rendering: optimizelegibility;
+
     a,a:visited {
-        text-decoration: underline;
-        font-family: 'Droid serif',serif;
+        border-bottom: 2px solid transparent;
+        color: #E4882F;
+        transition: border .5s ease-in-out;
+    }
+    a:hover {
+      transition: border .5s ease-in-out;
+      border-bottom: 2px solid #E49D2F;
     }
   }
   .blog-index a[rel=full-article] {
@@ -136,9 +147,13 @@ a:hover,article header h1 a:hover {
 }
 
 li.related {
-  padding-bottom: 5px;
+  padding-bottom: 10px;
   a {
-    color: #F9579A;
+    color: #F55A0A;
+    font-size: 22px;
+  }
+  a:hover {
+    border-bottom: 2px dashed #F9A67B;
   }
 }
 
