@@ -1,9 +1,9 @@
 ---
 layout: post
-title: "iTerm tips and zsh plugins for enhancing your development environment"
+title: "iTerm tips and zsh plugins for better development environment"
 date: 2015-07-31 13:31:07 +0400
 comments: true
-published: false
+published: true
 author: Shidhin
 categories: 
 - iTerm
@@ -11,7 +11,7 @@ categories:
 - productivity
 ---
 
-This post is about the two tools I use regularly in my development environment:  **iTerm** and **oh-my-zsh**. [iTerm](https://www.iterm2.com/) is a mac terminal replacement and zsh + [oh-my-zsh](https://github.com/robbyrussell/oh-my-zsh) is an excellent combo to replace the bash shell with some cool stuff.
+This post is about the two tools I use regularly in my development environment:  **iTerm** and **oh-my-zsh**. [iTerm](https://www.iterm2.com/) is a mac terminal replacement and zsh + [oh-my-zsh](https://github.com/robbyrussell/oh-my-zsh) is an excellent combo to replace the bash shell with some cool stuffs.
 
 ![iTerm and Oh-my-zsh](https://lh3.googleusercontent.com/-Ccq2BJHbMmI/Vb8hLcwrnbI/AAAAAAAAk3Y/4Jx8wKfWBSk/s600/iterm-ohmyzsh.png "iterm-ohmyzsh.png")
 
@@ -19,7 +19,7 @@ Here, we'll see how to achieve some productivity improvements by effectively usi
 
 ## iTerm
 
-As I said already, iTerm is a mac terminal replacement. It comes with ton of features missing in default terminal. Below, you will see some of the cool features that made me stick with iTerm.
+As I said already, iTerm is a mac terminal replacement. It comes with ton of features missing in default terminal. Below, you will see some of them which made me choose iTerm.
 
 **Multiple tabs and split screens**
 
@@ -54,7 +54,7 @@ This is another feature excites me when I have to work with so many tabs or pane
 ![expose tabs iterm](https://lh3.googleusercontent.com/0tBtS6PAKy96fDhsK-6rEZ7mpag8Y6mWsBC13NbVUgw_=s1200 "Screen Shot 2015-07-31 at 12.56.05 PM.png")
 
 
-That's not the end. iTerm has lot of features, but this post is not enough for explaining all of them. For the complete set of iTerm features, check this [link](https://iterm2.com/documentation-highlights.html).
+This is not the end; iTerm has lot of features, but this post is not enough for explaining all of them. For the complete set of iTerm features, check this [link](https://iterm2.com/documentation-highlights.html).
 
 ## ZSH + Oh-My-ZSH
 
@@ -83,13 +83,13 @@ See `z` in action:
 
 **The H plugin**
 
-The `H` plugin lists all your previous command history right there. Sometimes it is easy to see all of them and select the desired one.
+The `H` plugin lists all your previous command history right there. Sometimes it is easy to see all of them and select the desired one. Enable the `h` plugin by adding it to the plugin section of .zshrc.
 
-![zsh h plugin](https://lh3.googleusercontent.com/-hd7IZEnWeVE/Vb8SN5W_VTI/AAAAAAAAk2A/y9M50mkBuVg/s0/h-plugin.gif "h-plugin.gif")
+Then, type `h` in the command prompt and enter.
 
 **Git Plugin**
 
-This plugin provides a set of git aliases to oh-my-zsh. I use this a lot everyday and I fear I might have forgotten the actual git commands now :). Just kidding, this is a wonderful plugin that saves a lot of my time.  See the below image to know how I usually work with these aliases.
+This plugin provides a set of git aliases to oh-my-zsh. I use this a lot everyday and I think I might've forgotten the original git commands now :). Just kidding, this is a wonderful plugin that saves a lot of my time.  See the below image to know how I usually work with these aliases.
 
 ![zsh git plugin](https://lh3.googleusercontent.com/-5dd8PIO6EsM/Vb8U-IU02-I/AAAAAAAAk2s/vm7nEywxfWU/s0/git-plugin.gif "git-plugin.gif")
 
@@ -103,14 +103,14 @@ Read more : https://github.com/zsh-users/zsh-syntax-highlighting
 
 **Open PR from command line**
 
-I haven't played around with this plugin. Since this might be useful to some of you I did included:  
+I haven't played around with this plugin much. I included this because I think this might be useful to some of you. 
 
 https://github.com/caarlos0/zsh-open-pr
 >Basically, when you call open-pr, the function will verify if you are working on a fork (by convention, you have an upstream remote), then, it will open your browser in the correct URL so you can just hit the Create Pull Request button.
 
 **The `take` command**
 
-One of my  favourite shortcut command provided by Oh-my-zsh. Basically, what the `take` command does is creating a directory and automatically change the path into that. So instead of doing the following:
+One of my  favourite shortcut command provided by Oh-my-zsh. Basically, what the `take` command does is  to create a directory and change the path to it. So instead of doing the following:
 	
 	md someDirectory && cd someDirectory
 
@@ -124,10 +124,10 @@ Everything else: https://github.com/unixorn/awesome-zsh-plugins
 
 ## Antigen for ZSH
 
-I recently started using Antigen and I really liked it.  Antigen is the single tool you need to manage your zsh environment. 
+Antigen is a simple tool to manage the zsh environment. I recently started using Antigen and it seems a better option for installing plugins and all. 
 > Antigen is a small set of functions that help you easily manage your shell (zsh) plugins, called bundles. The concept is pretty much the same as bundles in a typical vim+pathogen setup. Antigen is to zsh, what Vundle is to vim.
 
-Find more about Antigen here: https://github.com/zsh-users/antigen. This will become one of the precious item in your development toolkit.
+Find more about Antigen here: https://github.com/zsh-users/antigen.
 
 ## Summary
 
