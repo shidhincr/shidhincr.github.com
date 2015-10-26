@@ -201,7 +201,7 @@ Let's modify the expression like this in our mark-up
 	
 The generated html is like this:
 
-[](https://lh3.googleusercontent.com/-eoAgJdq75go/VA_CWccGIqI/AAAAAAAASeo/OE-cjTGnGr4/h166/Screen%2BShot%2B2014-09-10%2Bat%2B7.15.04%2BAM.png)
+![](https://lh3.googleusercontent.com/-eoAgJdq75go/VA_CWccGIqI/AAAAAAAASeo/OE-cjTGnGr4/h166/Screen%2BShot%2B2014-09-10%2Bat%2B7.15.04%2BAM.png)
 
 The generated html is a select box with all the key names. Similarly, we can create the select box with only values, shown below.
 
