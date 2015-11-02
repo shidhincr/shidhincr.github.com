@@ -231,6 +231,11 @@ That's it !  This post ended up becoming much longer than I expected, because I 
 
 Special thanks to *David Tulip* for proof-reading and helping me to fix grammatical errors.
 
+#### Please re-tweet if you found this article helpful
+<blockquote class="twitter-tweet" lang="en"><p lang="en" dir="ltr">Everything you need to know about the directive scope in <a href="https://twitter.com/hashtag/AngularJS?src=hash">#AngularJS</a> <a href="http://t.co/qhDDYjo6MD">http://t.co/qhDDYjo6MD</a></p>&mdash; Shidhin (@shidhincr) <a href="https://twitter.com/shidhincr/status/443665764382281728">March 12, 2014</a></blockquote>
+<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+
 <u>**Further Read :**</u>
 
 1. [https://github.com/angular/angular.js/wiki/Understanding-Scopes](https://github.com/angular/angular.js/wiki/Understanding-Scopes)
