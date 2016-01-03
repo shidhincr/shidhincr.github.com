@@ -51,24 +51,25 @@ a:hover,article header h1 a:hover {
     text-rendering: optimizelegibility;
 
     a,a:visited {
-        border-bottom: 2px solid transparent;
-        color: #E4882F;
-        transition: border .5s ease-in-out;
+        border-bottom: 1px dashed;
+        color: inherit;
+        transition: border .1s ease-in-out;
     }
     a:hover {
-      transition: border .5s ease-in-out;
-      border-bottom: 2px solid #E49D2F;
+      transition: border .1s ease-in-out;
+      border-bottom: 3px solid;
     }
   }
   .blog-index a[rel=full-article] {
     border:1px dashed; 
   }
   p code, li code {
-    background-color: #E1EDF5;
-    color: #333;
+    background-color: #5D72B1;
+    color: #fff;
     border-radius: 2px;
-    box-shadow: 0px 1px 3px #B1B1B1;
+    box-shadow: 0px 1px 5px #B1B1B1;
     border: none;
+    padding: 3px 10px;
     font-weight: bold;
     font-family: inherit;
   }
@@ -103,9 +104,10 @@ a:hover,article header h1 a:hover {
 	font-style: italic;
 	background-color: #FFF;
 	padding: 10px;
-	border: #e2edf2 2px dashed;
-    background-color: #f4f8fa;
+	box-shadow: 0 0 5px #ccc;
+  background-color: #F9F9F9;
 	overflow: hidden;
+  margin-top: 30px;
 	clear: both;
 	.about-image {
 		width: 150px;
@@ -161,12 +163,13 @@ a:hover,article header h1 a:hover {
 
 li.related {
   padding-bottom: 10px;
+  list-style: initial;
   a {
-    color: #F55A0A;
+    color: #DB4437s;
     font-size: 22px;
   }
   a:hover {
-    border-bottom: 2px dashed #F9A67B;
+    border-bottom: 2px solid #94B7FF;
   }
 }
 
