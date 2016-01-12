@@ -3,7 +3,7 @@
   <ol class="posts">
   {% for post in site.related_posts limit:4 %}
     <li class="related">
-      <a href="{{ root_url }}{{ post.url }}">{{ post.title }}</a>
+      <a href="{{ root_url }}{{ post.url }}" onClick="ga('send', 'event', 'Post Page', 'Clicked Related Post', '{{ post.url }}', {{ post.id }});">{{ post.title }}</a>
     </li>
   {% endfor %}
   </ol>
