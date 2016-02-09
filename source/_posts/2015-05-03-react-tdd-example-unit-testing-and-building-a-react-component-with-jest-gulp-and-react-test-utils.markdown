@@ -11,6 +11,10 @@ categories:
 - TDD
 ---
 
+<div class="info">
+  <strong>Update Feb 9 2016</strong> : The ReactJS version is bumped to 0.14 in the seed project and updated the article accordingly.
+</div><br/>
+
 ![React and Jest for TDD](https://lh4.googleusercontent.com/-qJ1PeOhFiBM/VVBaO3ZI6qI/AAAAAAAAhpw/l-WLLtdZuxM/w640-h480-no/react-jest.jpg)
 
 ReactJs has attained lot of momentum since its initial release in 2013, and became the best JavaScript library for developing rich UI interface. React also popularised different concepts like Virtual DOM, Uni-directional data flow and Componentization in the front-end community. As of today, React has more than 20,000 stars in [Github repo](https://github.com/facebook/react), and actively maintained by the Facebook team. 
@@ -75,8 +79,10 @@ Write the first test case in **accordionComponent-spec.js**
 jest.dontMock('../scripts/accordionComponent.js');
 
 describe('Accordion', function() {
-  var React = require('react/addons');
-  var TestUtils = React.addons.TestUtils;
+  var React = require('react');
+  var ReactDOM = require('react-dom');
+  var TestUtils = require('react-addons-test-utils');
+  
   var Accordion;
 
   beforeEach(function() {
@@ -100,7 +106,7 @@ Let's make the test pass:
 ```js accordionComponent.js
 'use strict';
 
-var React = require('react/addons');
+var React = require('react');
 
 var Accordion = React.createClass({
   render: function(){
@@ -118,8 +124,9 @@ Okay, the tests are passing now. Let's also make sure that our component renders
 'use strict';
 
 var React = require('react');
+var ReactDOM = require('react-dom');
 var Accordion = require('components/accordionComponent');
-React.render(<Accordion/>, document.getElementById('view'));
+ReactDOM.render(<Accordion/>, document.getElementById('view'));
 ```
 
 If it works, proceed to next test case.
@@ -148,11 +155,11 @@ it('should build the layout from an array of objects passed as prop', function()
     expect(headers.length).toEqual(2);
     expect(contents.length).toEqual(2);
 
-    expect(headers[0].getDOMNode().textContent).toEqual('Title 1');
-    expect(headers[1].getDOMNode().textContent).toEqual('Title 2');
+    expect(headers[0].textContent).toEqual('Title 1');
+    expect(headers[1].textContent).toEqual('Title 2');
 
-    expect(contents[0].getDOMNode().textContent).toEqual('Content belongs to title 1');
-    expect(contents[1].getDOMNode().textContent).toEqual('Content belongs to title 2');
+    expect(contents[0].textContent).toEqual('Content belongs to title 1');
+    expect(contents[1].textContent).toEqual('Content belongs to title 2');
   });
 ```
 
@@ -161,16 +168,16 @@ To make everything green:
 ```js accordionComponent.js
 'use strict';
 
-var React = require('react/addons');
+var React = require('react');
 
 var Accordion = React.createClass({
   render: function(){
     var panes = [];
     var data = this.props.data || [];
 
-    data.forEach(function(item){
+    data.forEach(function(item, index){
       panes.push(
-        <div>
+        <div key={index}>
           <div className="accordion-header">
             {item.name}
           </div>
@@ -198,6 +205,7 @@ All the tests pass now. To see the component works in browser, edit the `app.js`
 'use strict';
 
 var React = require('react');
+var ReactDOM = require('react-dom');
 var Accordion = require('components/accordionComponent');
 var input = [{
   name: 'Title 1',
@@ -207,7 +215,7 @@ var input = [{
   content: 'Content belongs to title 2'
 }];
 
-React.render(<Accordion data={input}/>, document.getElementById('view'));
+ReactDOM.render(<Accordion data={input}/>, document.getElementById('view'));
 ```
 
 You should be able to see that our Accordion component renders the new layout.
@@ -232,7 +240,7 @@ it('should hide all the contents by default unless specified by a flag', functio
     var accordion = TestUtils.renderIntoDocument( <Accordion data={input}/> );
     var contents = TestUtils.scryRenderedDOMComponentsWithClass(accordion, 'accordion-content');
     expect(contents.length).toEqual(1);
-    expect(contents[0].getDOMNode().textContent).toEqual('Content belongs to title 2');
+    expect(contents[0].textContent).toEqual('Content belongs to title 2');
   });
 ```
 And make it pass:
@@ -240,7 +248,7 @@ And make it pass:
 ```js accordionComponent.js
 'use strict';
 
-var React = require('react/addons');
+var React = require('react');
 
 var Accordion = React.createClass({
   render: function(){
@@ -255,9 +263,9 @@ var Accordion = React.createClass({
       );
     };
 
-    data.forEach(function(item){
+    data.forEach(function(item, index){
       panes.push(
-        <div>
+        <div key={index}>
           <div className="accordion-header">
             {item.name}
           </div>
@@ -313,11 +321,11 @@ it('should be able to toggle the content by clicking on the respective title.', 
     var contents = TestUtils.scryRenderedDOMComponentsWithClass(accordion, 'accordion-content');
 
     expect(contents.length).toEqual(0);
-    TestUtils.Simulate.click(headers[0].getDOMNode());
+    TestUtils.Simulate.click(headers[0]);
     contents = TestUtils.scryRenderedDOMComponentsWithClass(accordion, 'accordion-content');
     expect(contents.length).toEqual(1);
-    expect(contents[0].getDOMNode().textContent).toEqual('Content belongs to title 1');
-    TestUtils.Simulate.click(headers[0].getDOMNode());
+    expect(contents[0].textContent).toEqual('Content belongs to title 1');
+    TestUtils.Simulate.click(headers[0]);
     contents = TestUtils.scryRenderedDOMComponentsWithClass(accordion, 'accordion-content');
     expect(contents.length).toEqual(0);
   });
@@ -331,7 +339,7 @@ See the code below:
 ```js accordionComponent.js
 'use strict';
 
-var React = require('react/addons');
+var React = require('react');
 
 var Pane = React.createClass({
   getInitialState: function(){
@@ -373,9 +381,9 @@ var Accordion = React.createClass({
     var panes = [];
     var data = this.props.data || [];
 
-    data.forEach(function(item){
+    data.forEach(function(item, index){
       panes.push(
-        <Pane data={item} />
+        <Pane data={item} key={index}/>
       );
     });
 
@@ -397,8 +405,8 @@ Before we summarise, see the final source code and tests:
 jest.dontMock('../scripts/accordionComponent.js');
 
 describe('Accordion', function() {
-  var React = require('react/addons');
-  var TestUtils = React.addons.TestUtils;
+  var React = require('react');
+  var TestUtils = require('react-addons-test-utils');
   var Accordion;
 
   beforeEach(function() {
@@ -430,11 +438,11 @@ describe('Accordion', function() {
     expect(headers.length).toEqual(2);
     expect(contents.length).toEqual(2);
 
-    expect(headers[0].getDOMNode().textContent).toEqual('Title 1');
-    expect(headers[1].getDOMNode().textContent).toEqual('Title 2');
+    expect(headers[0].textContent).toEqual('Title 1');
+    expect(headers[1].textContent).toEqual('Title 2');
 
-    expect(contents[0].getDOMNode().textContent).toEqual('Content belongs to title 1');
-    expect(contents[1].getDOMNode().textContent).toEqual('Content belongs to title 2');
+    expect(contents[0].textContent).toEqual('Content belongs to title 1');
+    expect(contents[1].textContent).toEqual('Content belongs to title 2');
   });
 
   it('should hide all the contents by default unless specified by a flag', function(){
@@ -450,7 +458,7 @@ describe('Accordion', function() {
     var accordion = TestUtils.renderIntoDocument( <Accordion data={input}/> );
     var contents = TestUtils.scryRenderedDOMComponentsWithClass(accordion, 'accordion-content');
     expect(contents.length).toEqual(1);
-    expect(contents[0].getDOMNode().textContent).toEqual('Content belongs to title 2');
+    expect(contents[0].textContent).toEqual('Content belongs to title 2');
   });
 
   it('should be able to toggle the content by clicking on the respective title.', function(){
@@ -467,11 +475,11 @@ describe('Accordion', function() {
     var contents = TestUtils.scryRenderedDOMComponentsWithClass(accordion, 'accordion-content');
 
     expect(contents.length).toEqual(0);
-    TestUtils.Simulate.click(headers[0].getDOMNode());
+    TestUtils.Simulate.click(headers[0]);
     contents = TestUtils.scryRenderedDOMComponentsWithClass(accordion, 'accordion-content');
     expect(contents.length).toEqual(1);
-    expect(contents[0].getDOMNode().textContent).toEqual('Content belongs to title 1');
-    TestUtils.Simulate.click(headers[0].getDOMNode());
+    expect(contents[0].textContent).toEqual('Content belongs to title 1');
+    TestUtils.Simulate.click(headers[0]);
     contents = TestUtils.scryRenderedDOMComponentsWithClass(accordion, 'accordion-content');
     expect(contents.length).toEqual(0);
   });
@@ -482,7 +490,7 @@ describe('Accordion', function() {
 ```js accordionComponent.js
 'use strict';
 
-var React = require('react/addons');
+var React = require('react');
 
 var Pane = React.createClass({
   getInitialState: function(){
@@ -524,9 +532,9 @@ var Accordion = React.createClass({
     var panes = [];
     var data = this.props.data || [];
 
-    data.forEach(function(item){
+    data.forEach(function(item, index){
       panes.push(
-        <Pane data={item} />
+        <Pane data={item} key={index}/>
       );
     });
 
@@ -545,6 +553,7 @@ module.exports = Accordion;
 'use strict';
 
 var React = require('react');
+var ReactDOM = require('react-dom');
 var Accordion = require('components/accordionComponent');
 var input = [{
   name: 'Title 1',
@@ -554,7 +563,7 @@ var input = [{
   content: 'Content belongs to title 2'
 }];
 
-React.render(<Accordion data={input}/>, document.getElementById('view'));
+ReactDOM.render(<Accordion data={input}/>, document.getElementById('view'));
 ```
 
 ## Summary
