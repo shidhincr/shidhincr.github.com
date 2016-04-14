@@ -4,6 +4,7 @@
 html {
 	background-color: rgba(241,241,241,0.6);
   background-image: image-url('background-image.jpg'); 
+  font-weight: 300;
 }
 body {
 	background: transparent;
@@ -36,7 +37,7 @@ a:hover,article header h1 a:hover {
 #content{
   background: #fff;
   .entry-title {
-    font-family: sans-serif, PT Serif, 'Droid serif',serif;
+    font-family: Kreon, sans-serif, PT Serif, 'Droid serif',serif;
   }
   .entry-content {
     // font-family: Georgia, HelveticaNeue-Light, 'Helvetica Neue Light', 'Helvetica Neue', Helvetica, Times, 'Times New Roman',Arial, 'Lucida Grande', sans-serif;
@@ -44,9 +45,9 @@ a:hover,article header h1 a:hover {
     // font-family: HelveticaNeue-Light, 'Helvetica Neue Light', 'Helvetica Neue', Helvetica, Times, 'Times New Roman', Arial, 'Lucida Grande', sans-serif;
     // font-size: 1.05em;
     // line-height: 1.8em;
-    font-family: sans-serif, PT Serif, 'Droid serif',serif;
-    font-size: 22px;
-    line-height: 1.8em;
+    font-family: Kreon, sans-serif, PT Serif, 'Droid serif',serif;
+    font-size: 24px;
+    line-height: 1.9em;
     font-weight: 300;
     text-rendering: optimizelegibility;
 
@@ -64,12 +65,12 @@ a:hover,article header h1 a:hover {
     border:1px dashed; 
   }
   p code, li code {
-    background-color: #5D72B1;
-    color: #fff;
+    background-color: #fff;
+    color: #E91E63;
     border-radius: 2px;
-    box-shadow: 0px 1px 5px #B1B1B1;
+    box-shadow: 0px 1px 3px #B1B1B1;
     border: none;
-    padding: 3px 10px;
+    padding: 2px 10px;
     font-weight: bold;
     font-family: inherit;
   }
