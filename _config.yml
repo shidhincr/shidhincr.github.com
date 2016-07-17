@@ -2,7 +2,8 @@
 #      Main Configs       #
 # ----------------------- #
 
-url: http://www.undefinednull.com
+url: https://www.undefinednull.com
+domain: www.undefinednull.com
 title: Undefined NULL
 subtitle: Scribbles of a UI developer, JavaScript enthusiast
 author: Shidhin
