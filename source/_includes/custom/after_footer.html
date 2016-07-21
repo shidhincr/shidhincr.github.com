@@ -1,3 +1,22 @@
 {% comment %}
   Add content to be output at the bottom of each page. (You might use this for analytics scripts, for example)
 {% endcomment %}
+
+<script src="{{ root_url }}/javascripts/fontfaceobserver.js" type="text/javascript"></script>
+<script type="text/javascript">
+  var kreon400 = new FontFaceObserver("Kreon", {
+    weight: 400
+  });
+  var kreon300 = new FontFaceObserver("Kreon", {
+    weight: 500
+  });
+
+  Promise.all([
+    kreon300.load(null, 5000),
+    kreon400.load(null ,5000),
+  ]).then(function() {
+    document.documentElement.className += " fonts-loaded";
+  }).catch(function(e){
+    console.log(e);
+  });
+</script>

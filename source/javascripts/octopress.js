@@ -109,7 +109,7 @@ function renderDeliciousLinks(items) {
   $('#delicious').html(output);
 }
 
-$('document').ready(function() {
+window.addEventListener("load", function(event) {
   testFeatures();
   wrapFlashVideos();
   flashVideoFallback();

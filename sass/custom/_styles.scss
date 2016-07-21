@@ -37,7 +37,7 @@ a:hover,article header h1 a:hover {
 #content{
   background: #fff;
   .entry-title {
-    font-family: Kreon, sans-serif, PT Serif, 'Droid serif',serif;
+    font-family: sans-serif, serif;
   }
   .entry-content {
     // font-family: Georgia, HelveticaNeue-Light, 'Helvetica Neue Light', 'Helvetica Neue', Helvetica, Times, 'Times New Roman',Arial, 'Lucida Grande', sans-serif;
@@ -45,7 +45,7 @@ a:hover,article header h1 a:hover {
     // font-family: HelveticaNeue-Light, 'Helvetica Neue Light', 'Helvetica Neue', Helvetica, Times, 'Times New Roman', Arial, 'Lucida Grande', sans-serif;
     // font-size: 1.05em;
     // line-height: 1.8em;
-    font-family: Kreon, sans-serif, PT Serif, 'Droid serif',serif;
+    font-family:sans-serif, serif;
     font-size: 24px;
     line-height: 1.9em;
     font-weight: 300;
@@ -98,6 +98,16 @@ a:hover,article header h1 a:hover {
     .gist-meta {
       background: none;
       border: none !important;
+    }
+  }
+}
+.fonts-loaded {
+  #content {
+    .entry-title {
+      font-family: Kreon, sans-serif, PT Serif, 'Droid serif',serif;
+    }
+    .entry-content {
+      font-family: Kreon, sans-serif, PT Serif, 'Droid serif',serif;
     }
   }
 }
