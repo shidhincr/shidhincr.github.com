@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Undefined NULL]]></title>
-  <link href="http://www.undefinednull.com/atom.xml" rel="self"/>
-  <link href="http://www.undefinednull.com/"/>
-  <updated>2016-07-22T15:08:20+04:00</updated>
-  <id>http://www.undefinednull.com/</id>
+  <link href="https://www.undefinednull.com/atom.xml" rel="self"/>
+  <link href="https://www.undefinednull.com/"/>
+  <updated>2016-07-22T15:31:55+04:00</updated>
+  <id>https://www.undefinednull.com/</id>
   <author>
     <name><![CDATA[Shidhin]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Debugging React Native Apps using Visual Studio Code]]></title>
-    <link href="http://www.undefinednull.com/2016/04/21/debugging-react-native-apps-using-visual-studio-code/"/>
+    <link href="https://www.undefinednull.com/2016/04/21/debugging-react-native-apps-using-visual-studio-code/"/>
     <updated>2016-04-21T15:39:09+04:00</updated>
-    <id>http://www.undefinednull.com/2016/04/21/debugging-react-native-apps-using-visual-studio-code</id>
+    <id>https://www.undefinednull.com/2016/04/21/debugging-react-native-apps-using-visual-studio-code</id>
     <content type="html"><![CDATA[<p> I always think that I am a <a href="https://blog.codinghorror.com/the-magpie-developer/">Magpie developer</a>. I don&rsquo;t know if others do this often; But, most of the times, I switch between my IDEs,  trying out new frameworks ( even though it doesn&rsquo;t solve most of my problems ).</p>
 
 <!-- more -->
@@ -150,9 +150,9 @@
   
   <entry>
     <title type="html"><![CDATA[React Redux Part 1 : Implementing a counter component in react by using state]]></title>
-    <link href="http://www.undefinednull.com/2016/01/21/react-redux-part-1-implementing-a-counter-component-in-react-by-using-state/"/>
+    <link href="https://www.undefinednull.com/2016/01/21/react-redux-part-1-implementing-a-counter-component-in-react-by-using-state/"/>
     <updated>2016-01-21T23:07:48+04:00</updated>
-    <id>http://www.undefinednull.com/2016/01/21/react-redux-part-1-implementing-a-counter-component-in-react-by-using-state</id>
+    <id>https://www.undefinednull.com/2016/01/21/react-redux-part-1-implementing-a-counter-component-in-react-by-using-state</id>
     <content type="html"><![CDATA[<p>The frontend world is moving so fast these days. The hottest trend is React along with the Flux pattern. Flux is a architectural pattern introduced by Facebook to solve some of the problems in large data centric applications. Facebook introduced flux as a concept, but there&rsquo;re number of flux libraries born from then. Today we&rsquo;re gonna talk about the most popular library in that category named <a href="http://redux.js.org/">Redux</a>.</p>
 
 <!-- more -->
@@ -299,9 +299,9 @@
   
   <entry>
     <title type="html"><![CDATA[Injecting Custom JavaScript into React Native's Webview]]></title>
-    <link href="http://www.undefinednull.com/2015/12/27/injecting-custom-javascript-into-react-natives-webview/"/>
+    <link href="https://www.undefinednull.com/2015/12/27/injecting-custom-javascript-into-react-natives-webview/"/>
     <updated>2015-12-27T22:11:28+04:00</updated>
-    <id>http://www.undefinednull.com/2015/12/27/injecting-custom-javascript-into-react-natives-webview</id>
+    <id>https://www.undefinednull.com/2015/12/27/injecting-custom-javascript-into-react-natives-webview</id>
     <content type="html"><![CDATA[<p><img src="https://lh3.googleusercontent.com/-3JWl2Mvff3w/VoApfwiv1TI/AAAAAAAAssU/UJRZsSvHHpo/s800/Screen+Shot+2015-12-27+at+10.09.12+PM.png" title="Screen Shot 2015-12-27 at 10.09.12 PM.png" alt="react native webview" /></p>
 
 <p>I was playing around with <a href="https://facebook.github.io/react-native/">React native</a> these days. Ever since they added the support for the webview in React native for Android ( which happened in their last <a href="https://github.com/facebook/react-native/releases/tag/v0.17.0">release</a> ), I was eager to try it out. So, today&rsquo;s post is about React native webview.</p>
@@ -422,9 +422,9 @@
   
   <entry>
     <title type="html"><![CDATA[iTerm tips and zsh plugins for better development environment]]></title>
-    <link href="http://www.undefinednull.com/2015/07/31/iterm-tips-and-zsh-plugins-for-better-development-environment/"/>
+    <link href="https://www.undefinednull.com/2015/07/31/iterm-tips-and-zsh-plugins-for-better-development-environment/"/>
     <updated>2015-07-31T13:31:07+04:00</updated>
-    <id>http://www.undefinednull.com/2015/07/31/iterm-tips-and-zsh-plugins-for-better-development-environment</id>
+    <id>https://www.undefinednull.com/2015/07/31/iterm-tips-and-zsh-plugins-for-better-development-environment</id>
     <content type="html"><![CDATA[<p>This post is about the two tools I use regularly in my development environment:  <strong>iTerm</strong> and <strong>oh-my-zsh</strong>. <a href="https://www.iterm2.com/">iTerm</a> is a mac terminal replacement and zsh + <a href="https://github.com/robbyrussell/oh-my-zsh">oh-my-zsh</a> is an excellent combo to replace the bash shell with some cool stuffs.</p>
 
 <p><img src="https://lh3.googleusercontent.com/-Ccq2BJHbMmI/Vb8hLcwrnbI/AAAAAAAAk3Y/4Jx8wKfWBSk/s600/iterm-ohmyzsh.png" title="iterm-ohmyzsh.png" alt="iTerm and Oh-my-zsh" /></p>
@@ -560,9 +560,9 @@ plugins=(git bundler foobar)</p></blockquote>
   
   <entry>
     <title type="html"><![CDATA[React TDD Example: Unit Testing and Building a React Component with Jest, Gulp and React Test Utils]]></title>
-    <link href="http://www.undefinednull.com/2015/05/03/react-tdd-example-unit-testing-and-building-a-react-component-with-jest-gulp-and-react-test-utils/"/>
+    <link href="https://www.undefinednull.com/2015/05/03/react-tdd-example-unit-testing-and-building-a-react-component-with-jest-gulp-and-react-test-utils/"/>
     <updated>2015-05-03T10:32:01+04:00</updated>
-    <id>http://www.undefinednull.com/2015/05/03/react-tdd-example-unit-testing-and-building-a-react-component-with-jest-gulp-and-react-test-utils</id>
+    <id>https://www.undefinednull.com/2015/05/03/react-tdd-example-unit-testing-and-building-a-react-component-with-jest-gulp-and-react-test-utils</id>
     <content type="html"><![CDATA[<div class="info">
   <strong>Update Feb 9 2016</strong> : The ReactJS version is bumped to 0.14 in the seed project and updated the article accordingly.
 </div>
@@ -1561,9 +1561,9 @@ This is the beauty of TDD; designing the component step by step. By now, we made
   
   <entry>
     <title type="html"><![CDATA[Repeating Multiple Elements using ng-repeat-start and ng-repeat-end in AngularJS]]></title>
-    <link href="http://www.undefinednull.com/2015/04/10/repeating-multiple-elements-using-ng-repeat-start-and-ng-repeat-end-in-angularjs/"/>
+    <link href="https://www.undefinednull.com/2015/04/10/repeating-multiple-elements-using-ng-repeat-start-and-ng-repeat-end-in-angularjs/"/>
     <updated>2015-04-10T23:45:27+04:00</updated>
-    <id>http://www.undefinednull.com/2015/04/10/repeating-multiple-elements-using-ng-repeat-start-and-ng-repeat-end-in-angularjs</id>
+    <id>https://www.undefinednull.com/2015/04/10/repeating-multiple-elements-using-ng-repeat-start-and-ng-repeat-end-in-angularjs</id>
     <content type="html"><![CDATA[<p>When the AngularJS <a href="http://www.angularjs.org">website</a> is released, the TODO example in their website was one of the main attractions. The example was simple and just below 30 lines of code ( Here is the <a href="https://jsfiddle.net/1waxcf9x/">link</a>  if you want to check ). The whole trick behind the scene was done by a directive named <strong>ng-repeat</strong>, as shown below:</p>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
@@ -1676,9 +1676,9 @@ This is the beauty of TDD; designing the component step by step. By now, we made
   
   <entry>
     <title type="html"><![CDATA[Implementing a curry function in JavaScript using TDD]]></title>
-    <link href="http://www.undefinednull.com/2015/03/19/implementing-a-curry-function-in-javascript-using-tdd/"/>
+    <link href="https://www.undefinednull.com/2015/03/19/implementing-a-curry-function-in-javascript-using-tdd/"/>
     <updated>2015-03-19T18:51:27+04:00</updated>
-    <id>http://www.undefinednull.com/2015/03/19/implementing-a-curry-function-in-javascript-using-tdd</id>
+    <id>https://www.undefinednull.com/2015/03/19/implementing-a-curry-function-in-javascript-using-tdd</id>
     <content type="html"><![CDATA[<p><img src="https://lh3.googleusercontent.com/dtPfB5V-ew-rm3aApkXHTA8jFVwsFzoNNepbn9wU=w264-h207-p-no" alt="TDD" /></p>
 
 <p>TDD stands for Test Driven Development. To those who don&rsquo;t know what TDD means: In a typical TDD Environment, a developer start with a basic test case describing the minimal requirement for implementing the module. Then he writes the actual implementation code for making the test case pass.</p>
@@ -2483,9 +2483,9 @@ This is the beauty of TDD; designing the component step by step. By now, we made
   
   <entry>
     <title type="html"><![CDATA[Remote debugging localhost with weinre ( and HTTPS too ) ]]></title>
-    <link href="http://www.undefinednull.com/2015/03/17/remote-debugging-localhost-with-weinre/"/>
+    <link href="https://www.undefinednull.com/2015/03/17/remote-debugging-localhost-with-weinre/"/>
     <updated>2015-03-17T10:33:00+04:00</updated>
-    <id>http://www.undefinednull.com/2015/03/17/remote-debugging-localhost-with-weinre</id>
+    <id>https://www.undefinednull.com/2015/03/17/remote-debugging-localhost-with-weinre</id>
     <content type="html"><![CDATA[<p>Debugging mobile websites/applications is a real pain. No debuggers for Javascript, no console logs, cannot inspect html/css, and so on.</p>
 
 <p>Sometimes I think that I am debugging like the old IE6 days where I had to put <code>alert</code> in every line of the code to find out where the actual issue is. If you also came across the same, you know the pain.</p>
@@ -2684,9 +2684,9 @@ This is the beauty of TDD; designing the component step by step. By now, we made
   
   <entry>
     <title type="html"><![CDATA[Whatsapp web client: Hide/blur thumbnail images preview]]></title>
-    <link href="http://www.undefinednull.com/2015/02/04/whatsapp-web-client-hide-slash-blur-thumbnail-images-preview/"/>
+    <link href="https://www.undefinednull.com/2015/02/04/whatsapp-web-client-hide-slash-blur-thumbnail-images-preview/"/>
     <updated>2015-02-04T14:07:17+04:00</updated>
-    <id>http://www.undefinednull.com/2015/02/04/whatsapp-web-client-hide-slash-blur-thumbnail-images-preview</id>
+    <id>https://www.undefinednull.com/2015/02/04/whatsapp-web-client-hide-slash-blur-thumbnail-images-preview</id>
     <content type="html"><![CDATA[<p>The most anticipated Whatsapp web is here finally. If you haven&rsquo;t seen it go check it out: <a href="http://web.whatsapp.com">http://web.whatsapp.com</a>. I really like it because of these reasons:</p>
 
 <ol>
@@ -2727,9 +2727,9 @@ This is the beauty of TDD; designing the component step by step. By now, we made
   
   <entry>
     <title type="html"><![CDATA[A brief walk-through of the ng-options in AngularJS]]></title>
-    <link href="http://www.undefinednull.com/2014/08/11/a-brief-walk-through-of-the-ng-options-in-angularjs/"/>
+    <link href="https://www.undefinednull.com/2014/08/11/a-brief-walk-through-of-the-ng-options-in-angularjs/"/>
     <updated>2014-08-11T11:13:45+04:00</updated>
-    <id>http://www.undefinednull.com/2014/08/11/a-brief-walk-through-of-the-ng-options-in-angularjs</id>
+    <id>https://www.undefinednull.com/2014/08/11/a-brief-walk-through-of-the-ng-options-in-angularjs</id>
     <content type="html"><![CDATA[<p><img src="https://lh4.googleusercontent.com/-ts5lhPEvP2U/VA2txu4TiLI/AAAAAAAASWs/ZR8EkWYzhcI/w681-h250-no/ng-options.jpg" alt="" /></p>
 
 <p>Using ng-options was bit tough for me. I banged my head couple of times when I actually used ng-options in my code. And most of the times, I had to google and find out how to make it work. Looking the AngularJS documentation didn&rsquo;t help much, as it&rsquo;s less informative and doesn&rsquo;t have much code samples.</p>
@@ -3047,9 +3047,9 @@ For object data sources, the default model bound to the select box is the value,
   
   <entry>
     <title type="html"><![CDATA[Practical Guide to PreLink, PostLink and Controller Methods of Angular Directives]]></title>
-    <link href="http://www.undefinednull.com/2014/07/07/practical-guide-to-prelink-postlink-and-controller-methods-of-angular-directives/"/>
+    <link href="https://www.undefinednull.com/2014/07/07/practical-guide-to-prelink-postlink-and-controller-methods-of-angular-directives/"/>
     <updated>2014-07-07T14:20:58+04:00</updated>
-    <id>http://www.undefinednull.com/2014/07/07/practical-guide-to-prelink-postlink-and-controller-methods-of-angular-directives</id>
+    <id>https://www.undefinednull.com/2014/07/07/practical-guide-to-prelink-postlink-and-controller-methods-of-angular-directives</id>
     <content type="html"><![CDATA[<p>I have discussed about the scope of a directive in my previous <a href="http://www.undefinednull.com/2014/02/11/mastering-the-scope-of-a-directive-in-angularjs/">article</a>. Here we&rsquo;re going to see how to use the link and controller functions of an AngularJs directive.</p>
 
 <h2>Link function of an Angular Directive</h2>
@@ -3252,9 +3252,9 @@ Used for defining a proper API to the directive. Using controller, directives ca
   
   <entry>
     <title type="html"><![CDATA[Explaining Call and Apply in JavaScript, through Mr.Dave]]></title>
-    <link href="http://www.undefinednull.com/2014/06/26/explaining-call-and-apply-in-javascript-through-mr-dot-dave/"/>
+    <link href="https://www.undefinednull.com/2014/06/26/explaining-call-and-apply-in-javascript-through-mr-dot-dave/"/>
     <updated>2014-06-26T10:41:07+04:00</updated>
-    <id>http://www.undefinednull.com/2014/06/26/explaining-call-and-apply-in-javascript-through-mr-dot-dave</id>
+    <id>https://www.undefinednull.com/2014/06/26/explaining-call-and-apply-in-javascript-through-mr-dot-dave</id>
     <content type="html"><![CDATA[<h3>Call and Apply, makes sense. Who is Mr.Dave ?</h3>
 
 <p>First, I admit the title looks bit weird. I know this topic has been explained a thousand times in many JavaScript blogs, and I don&rsquo;t want to repeat the same here too. So I am gonna explain this through a person &lsquo;<strong>Dave</strong>&rsquo;.</p>
@@ -3422,9 +3422,9 @@ Note: Only difference between the &#8216;call&#8217; and &#8216;apply&#8217; is 
   
   <entry>
     <title type="html"><![CDATA[AngularJS: Real time model persistence using local storage]]></title>
-    <link href="http://www.undefinednull.com/2014/02/25/angularjs-real-time-model-persistence-using-local-storage/"/>
+    <link href="https://www.undefinednull.com/2014/02/25/angularjs-real-time-model-persistence-using-local-storage/"/>
     <updated>2014-02-25T07:46:00+04:00</updated>
-    <id>http://www.undefinednull.com/2014/02/25/angularjs-real-time-model-persistence-using-local-storage</id>
+    <id>https://www.undefinednull.com/2014/02/25/angularjs-real-time-model-persistence-using-local-storage</id>
     <content type="html"><![CDATA[<p>Last week, I came across a situation while working on a simple AngularJS application. I&rsquo;d to sync the data between multiple open tabs. As you guess,  the easy way to sync data between multiple tabs is through <strong>local storage</strong>. Ofcourse there are better ways of doing this using <strong>websockets</strong>; but here I am going to explain the client-side way –– using local storage and real time updating other tabs.</p>
 
 <!--more-->
@@ -3608,9 +3608,9 @@ Note: Only difference between the &#8216;call&#8217; and &#8216;apply&#8217; is 
   
   <entry>
     <title type="html"><![CDATA['Resolve' in AngularJS routes, explained as story]]></title>
-    <link href="http://www.undefinednull.com/2014/02/17/resolve-in-angularjs-routes-explained-as-story/"/>
+    <link href="https://www.undefinednull.com/2014/02/17/resolve-in-angularjs-routes-explained-as-story/"/>
     <updated>2014-02-17T11:09:00+04:00</updated>
-    <id>http://www.undefinednull.com/2014/02/17/resolve-in-angularjs-routes-explained-as-story</id>
+    <id>https://www.undefinednull.com/2014/02/17/resolve-in-angularjs-routes-explained-as-story</id>
     <content type="html"><![CDATA[<p>I feel AngularJS documentation is baffling sometimes. Reason may be,  I&rsquo;m going through the same <a href="http://www.bennadel.com/blog/2439-My-Experience-With-AngularJS-The-Super-heroic-JavaScript-MVW-Framework.htm">learning curve</a> described by <a href="https://twitter.com/bennadel">@bennadel</a>. Through this article, I&rsquo;m primarily aiming to help those who got stuck at some point of the curve. Don&rsquo;t take it too seriously; I&rsquo;m just sharing some of my experiences with AngularJS.</p>
 
 <!--more-->
@@ -3631,7 +3631,7 @@ Note: Only difference between the &#8216;call&#8217; and &#8216;apply&#8217; is 
 </ul>
 
 
-<figure class='code'><figcaption><span>Application (app.js)</span> <a href='http://www.undefinednull.com/downloads/code/angular_resolve/app.js'>download</a></figcaption>
+<figure class='code'><figcaption><span>Application (app.js)</span> <a href='https://www.undefinednull.com/downloads/code/angular_resolve/app.js'>download</a></figcaption>
 <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
@@ -3693,7 +3693,7 @@ Note: Only difference between the &#8216;call&#8217; and &#8216;apply&#8217; is 
 
 <p>And the templates <code>placetovisit.html</code> and <code>index.html</code> :</p>
 
-<figure class='code'><figcaption><span>Template (placetovisit.html)</span> <a href='http://www.undefinednull.com/downloads/code/angular_resolve/placetovisit.html'>download</a></figcaption>
+<figure class='code'><figcaption><span>Template (placetovisit.html)</span> <a href='https://www.undefinednull.com/downloads/code/angular_resolve/placetovisit.html'>download</a></figcaption>
 <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
@@ -3955,9 +3955,9 @@ Note: Only difference between the &#8216;call&#8217; and &#8216;apply&#8217; is 
   
   <entry>
     <title type="html"><![CDATA[Mastering the scope of the directives in AngularJS]]></title>
-    <link href="http://www.undefinednull.com/2014/02/11/mastering-the-scope-of-a-directive-in-angularjs/"/>
+    <link href="https://www.undefinednull.com/2014/02/11/mastering-the-scope-of-a-directive-in-angularjs/"/>
     <updated>2014-02-11T08:26:00+04:00</updated>
-    <id>http://www.undefinednull.com/2014/02/11/mastering-the-scope-of-a-directive-in-angularjs</id>
+    <id>https://www.undefinednull.com/2014/02/11/mastering-the-scope-of-a-directive-in-angularjs</id>
     <content type="html"><![CDATA[<p><img src="https://lh5.googleusercontent.com/-XOGfvAHr7HQ/UvoUItkZMZI/AAAAAAAAHJk/IJz5JcUB9dw/w520-h274-no/scopes_in_directives.png" alt="" /></p>
 
 <h2>What are Directives</h2>
@@ -4276,9 +4276,9 @@ randomColor = function for generating random color code
   
   <entry>
     <title type="html"><![CDATA[Multiple Left-hand assignment in JavaScript, is really bad. Think before you do it.]]></title>
-    <link href="http://www.undefinednull.com/2014/02/03/multiple-left-hand-assignment-in-javascript-is-really-bad-think-once-before-you-do-it/"/>
+    <link href="https://www.undefinednull.com/2014/02/03/multiple-left-hand-assignment-in-javascript-is-really-bad-think-once-before-you-do-it/"/>
     <updated>2014-02-03T12:04:00+04:00</updated>
-    <id>http://www.undefinednull.com/2014/02/03/multiple-left-hand-assignment-in-javascript-is-really-bad-think-once-before-you-do-it</id>
+    <id>https://www.undefinednull.com/2014/02/03/multiple-left-hand-assignment-in-javascript-is-really-bad-think-once-before-you-do-it</id>
     <content type="html"><![CDATA[<p><strong>“JavaScript allows multiple left-hand assignments”</strong></p>
 
 <p>You may ask, what does that mean ? Well, if you’re not familiar, in JavaScript you can write the variable assignment expressions like this.</p>
@@ -4343,9 +4343,9 @@ randomColor = function for generating random color code
   
   <entry>
     <title type="html"><![CDATA[Starting VerbalRegex.com open source project]]></title>
-    <link href="http://www.undefinednull.com/2014/01/29/starting-verbalregex-dot-com-open-source-project/"/>
+    <link href="https://www.undefinednull.com/2014/01/29/starting-verbalregex-dot-com-open-source-project/"/>
     <updated>2014-01-29T01:09:00+04:00</updated>
-    <id>http://www.undefinednull.com/2014/01/29/starting-verbalregex-dot-com-open-source-project</id>
+    <id>https://www.undefinednull.com/2014/01/29/starting-verbalregex-dot-com-open-source-project</id>
     <content type="html"><![CDATA[<p>On the other day, while exploring the Github repositories, this one grabbed my attention.</p>
 
 <p><a href="https://github.com/VerbalExpressions/JSVerbalExpressions">https://github.com/VerbalExpressions/JSVerbalExpressions</a></p>
@@ -4385,9 +4385,9 @@ randomColor = function for generating random color code
   
   <entry>
     <title type="html"><![CDATA[Octopress Blog Tweaks: Adding Author Info Section Below Each Posts]]></title>
-    <link href="http://www.undefinednull.com/2013/10/15/octopress-blog-tweaks-adding-author-information-section-below-each-posts/"/>
+    <link href="https://www.undefinednull.com/2013/10/15/octopress-blog-tweaks-adding-author-information-section-below-each-posts/"/>
     <updated>2013-10-15T10:15:00+04:00</updated>
-    <id>http://www.undefinednull.com/2013/10/15/octopress-blog-tweaks-adding-author-information-section-below-each-posts</id>
+    <id>https://www.undefinednull.com/2013/10/15/octopress-blog-tweaks-adding-author-information-section-below-each-posts</id>
     <content type="html"><![CDATA[<p>A good blogging platform is one which allows easy customization. I&rsquo;ve been using Octopress for more than 2 weeks and happy to tell that it&rsquo;s one of those allows customization with out any pain. I want to share a tweak I added to my blog recently : It&rsquo;s an author information section below every post. Let&rsquo;s see how I built it and added to my blog.</p>
 
 <!--more-->
@@ -4584,9 +4584,9 @@ randomColor = function for generating random color code
   
   <entry>
     <title type="html"><![CDATA[ Some Gotchas In Arithmetic Expression Evaluation : JavaScript]]></title>
-    <link href="http://www.undefinednull.com/2013/09/26/some-gotchas-in-arithmetic-expression-evaluation-javascript/"/>
+    <link href="https://www.undefinednull.com/2013/09/26/some-gotchas-in-arithmetic-expression-evaluation-javascript/"/>
     <updated>2013-09-26T16:15:00+04:00</updated>
-    <id>http://www.undefinednull.com/2013/09/26/some-gotchas-in-arithmetic-expression-evaluation-javascript</id>
+    <id>https://www.undefinednull.com/2013/09/26/some-gotchas-in-arithmetic-expression-evaluation-javascript</id>
     <content type="html"><![CDATA[<h2>Solve a small problem in JavaScript</h2>
 
 <p>This post is just for recollecting some of the basics of JavaScript. Let&rsquo;s start with a small JavaScript code. Here is the code –– Solve it with out using the console.</p>
@@ -4830,9 +4830,9 @@ Finally the value of expression <code>Y</code> becomes <code>8</code>.</p>
   
   <entry>
     <title type="html"><![CDATA[Starting my new blog: Finally Octopress]]></title>
-    <link href="http://www.undefinednull.com/2013/09/25/starting-my-new-blog-finally-octopress/"/>
+    <link href="https://www.undefinednull.com/2013/09/25/starting-my-new-blog-finally-octopress/"/>
     <updated>2013-09-25T07:36:00+04:00</updated>
-    <id>http://www.undefinednull.com/2013/09/25/starting-my-new-blog-finally-octopress</id>
+    <id>https://www.undefinednull.com/2013/09/25/starting-my-new-blog-finally-octopress</id>
     <content type="html"><![CDATA[<h2>Finally Octopress !!</h2>
 
 <p>I wanted to start writing blog ever since I started coding. I never had a success setting it up because of time constraints and many other reasons. During this time, I&rsquo;ve evaluated a number of blogging platforms and eventually I thought of using wordpress as my blogging platform when I start my blog.</p>

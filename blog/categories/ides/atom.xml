@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: IDEs | Undefined NULL]]></title>
-  <link href="http://www.undefinednull.com/blog/categories/ides/atom.xml" rel="self"/>
-  <link href="http://www.undefinednull.com/"/>
-  <updated>2016-07-22T15:08:20+04:00</updated>
-  <id>http://www.undefinednull.com/</id>
+  <link href="https://www.undefinednull.com/blog/categories/ides/atom.xml" rel="self"/>
+  <link href="https://www.undefinednull.com/"/>
+  <updated>2016-07-22T15:31:55+04:00</updated>
+  <id>https://www.undefinednull.com/</id>
   <author>
     <name><![CDATA[Shidhin]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Debugging React Native Apps using Visual Studio Code]]></title>
-    <link href="http://www.undefinednull.com/2016/04/21/debugging-react-native-apps-using-visual-studio-code/"/>
+    <link href="https://www.undefinednull.com/2016/04/21/debugging-react-native-apps-using-visual-studio-code/"/>
     <updated>2016-04-21T15:39:09+04:00</updated>
-    <id>http://www.undefinednull.com/2016/04/21/debugging-react-native-apps-using-visual-studio-code</id>
+    <id>https://www.undefinednull.com/2016/04/21/debugging-react-native-apps-using-visual-studio-code</id>
     <content type="html"><![CDATA[<p> I always think that I am a <a href="https://blog.codinghorror.com/the-magpie-developer/">Magpie developer</a>. I don&rsquo;t know if others do this often; But, most of the times, I switch between my IDEs,  trying out new frameworks ( even though it doesn&rsquo;t solve most of my problems ).</p>
 
 <!-- more -->

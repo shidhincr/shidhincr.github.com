@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: Angular | Undefined NULL]]></title>
-  <link href="http://www.undefinednull.com/blog/categories/angular/atom.xml" rel="self"/>
-  <link href="http://www.undefinednull.com/"/>
-  <updated>2016-07-22T15:08:20+04:00</updated>
-  <id>http://www.undefinednull.com/</id>
+  <link href="https://www.undefinednull.com/blog/categories/angular/atom.xml" rel="self"/>
+  <link href="https://www.undefinednull.com/"/>
+  <updated>2016-07-22T15:31:55+04:00</updated>
+  <id>https://www.undefinednull.com/</id>
   <author>
     <name><![CDATA[Shidhin]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Starting VerbalRegex.com open source project]]></title>
-    <link href="http://www.undefinednull.com/2014/01/29/starting-verbalregex-dot-com-open-source-project/"/>
+    <link href="https://www.undefinednull.com/2014/01/29/starting-verbalregex-dot-com-open-source-project/"/>
     <updated>2014-01-29T01:09:00+04:00</updated>
-    <id>http://www.undefinednull.com/2014/01/29/starting-verbalregex-dot-com-open-source-project</id>
+    <id>https://www.undefinednull.com/2014/01/29/starting-verbalregex-dot-com-open-source-project</id>
     <content type="html"><![CDATA[<p>On the other day, while exploring the Github repositories, this one grabbed my attention.</p>
 
 <p><a href="https://github.com/VerbalExpressions/JSVerbalExpressions">https://github.com/VerbalExpressions/JSVerbalExpressions</a></p>

@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: Jest | Undefined NULL]]></title>
-  <link href="http://www.undefinednull.com/blog/categories/jest/atom.xml" rel="self"/>
-  <link href="http://www.undefinednull.com/"/>
-  <updated>2016-07-22T15:08:20+04:00</updated>
-  <id>http://www.undefinednull.com/</id>
+  <link href="https://www.undefinednull.com/blog/categories/jest/atom.xml" rel="self"/>
+  <link href="https://www.undefinednull.com/"/>
+  <updated>2016-07-22T15:31:55+04:00</updated>
+  <id>https://www.undefinednull.com/</id>
   <author>
     <name><![CDATA[Shidhin]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[React TDD Example: Unit Testing and Building a React Component with Jest, Gulp and React Test Utils]]></title>
-    <link href="http://www.undefinednull.com/2015/05/03/react-tdd-example-unit-testing-and-building-a-react-component-with-jest-gulp-and-react-test-utils/"/>
+    <link href="https://www.undefinednull.com/2015/05/03/react-tdd-example-unit-testing-and-building-a-react-component-with-jest-gulp-and-react-test-utils/"/>
     <updated>2015-05-03T10:32:01+04:00</updated>
-    <id>http://www.undefinednull.com/2015/05/03/react-tdd-example-unit-testing-and-building-a-react-component-with-jest-gulp-and-react-test-utils</id>
+    <id>https://www.undefinednull.com/2015/05/03/react-tdd-example-unit-testing-and-building-a-react-component-with-jest-gulp-and-react-test-utils</id>
     <content type="html"><![CDATA[<div class="info">
   <strong>Update Feb 9 2016</strong> : The ReactJS version is bumped to 0.14 in the seed project and updated the article accordingly.
 </div>

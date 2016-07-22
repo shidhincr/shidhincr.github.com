@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: directives | Undefined NULL]]></title>
-  <link href="http://www.undefinednull.com/blog/categories/directives/atom.xml" rel="self"/>
-  <link href="http://www.undefinednull.com/"/>
-  <updated>2016-07-22T15:08:20+04:00</updated>
-  <id>http://www.undefinednull.com/</id>
+  <link href="https://www.undefinednull.com/blog/categories/directives/atom.xml" rel="self"/>
+  <link href="https://www.undefinednull.com/"/>
+  <updated>2016-07-22T15:31:55+04:00</updated>
+  <id>https://www.undefinednull.com/</id>
   <author>
     <name><![CDATA[Shidhin]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Practical Guide to PreLink, PostLink and Controller Methods of Angular Directives]]></title>
-    <link href="http://www.undefinednull.com/2014/07/07/practical-guide-to-prelink-postlink-and-controller-methods-of-angular-directives/"/>
+    <link href="https://www.undefinednull.com/2014/07/07/practical-guide-to-prelink-postlink-and-controller-methods-of-angular-directives/"/>
     <updated>2014-07-07T14:20:58+04:00</updated>
-    <id>http://www.undefinednull.com/2014/07/07/practical-guide-to-prelink-postlink-and-controller-methods-of-angular-directives</id>
+    <id>https://www.undefinednull.com/2014/07/07/practical-guide-to-prelink-postlink-and-controller-methods-of-angular-directives</id>
     <content type="html"><![CDATA[<p>I have discussed about the scope of a directive in my previous <a href="http://www.undefinednull.com/2014/02/11/mastering-the-scope-of-a-directive-in-angularjs/">article</a>. Here we&rsquo;re going to see how to use the link and controller functions of an AngularJs directive.</p>
 
 <h2>Link function of an Angular Directive</h2>

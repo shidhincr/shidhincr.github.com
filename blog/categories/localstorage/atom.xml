@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: LocalStorage | Undefined NULL]]></title>
-  <link href="http://www.undefinednull.com/blog/categories/localstorage/atom.xml" rel="self"/>
-  <link href="http://www.undefinednull.com/"/>
-  <updated>2016-07-22T15:08:20+04:00</updated>
-  <id>http://www.undefinednull.com/</id>
+  <link href="https://www.undefinednull.com/blog/categories/localstorage/atom.xml" rel="self"/>
+  <link href="https://www.undefinednull.com/"/>
+  <updated>2016-07-22T15:31:55+04:00</updated>
+  <id>https://www.undefinednull.com/</id>
   <author>
     <name><![CDATA[Shidhin]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[AngularJS: Real time model persistence using local storage]]></title>
-    <link href="http://www.undefinednull.com/2014/02/25/angularjs-real-time-model-persistence-using-local-storage/"/>
+    <link href="https://www.undefinednull.com/2014/02/25/angularjs-real-time-model-persistence-using-local-storage/"/>
     <updated>2014-02-25T07:46:00+04:00</updated>
-    <id>http://www.undefinednull.com/2014/02/25/angularjs-real-time-model-persistence-using-local-storage</id>
+    <id>https://www.undefinednull.com/2014/02/25/angularjs-real-time-model-persistence-using-local-storage</id>
     <content type="html"><![CDATA[<p>Last week, I came across a situation while working on a simple AngularJS application. I&rsquo;d to sync the data between multiple open tabs. As you guess,  the easy way to sync data between multiple tabs is through <strong>local storage</strong>. Ofcourse there are better ways of doing this using <strong>websockets</strong>; but here I am going to explain the client-side way –– using local storage and real time updating other tabs.</p>
 
 <!--more-->

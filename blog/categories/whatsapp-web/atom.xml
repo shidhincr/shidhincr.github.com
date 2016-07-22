@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: Whatsapp Web | Undefined NULL]]></title>
-  <link href="http://www.undefinednull.com/blog/categories/whatsapp-web/atom.xml" rel="self"/>
-  <link href="http://www.undefinednull.com/"/>
-  <updated>2016-07-22T15:08:20+04:00</updated>
-  <id>http://www.undefinednull.com/</id>
+  <link href="https://www.undefinednull.com/blog/categories/whatsapp-web/atom.xml" rel="self"/>
+  <link href="https://www.undefinednull.com/"/>
+  <updated>2016-07-22T15:31:55+04:00</updated>
+  <id>https://www.undefinednull.com/</id>
   <author>
     <name><![CDATA[Shidhin]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Whatsapp web client: Hide/blur thumbnail images preview]]></title>
-    <link href="http://www.undefinednull.com/2015/02/04/whatsapp-web-client-hide-slash-blur-thumbnail-images-preview/"/>
+    <link href="https://www.undefinednull.com/2015/02/04/whatsapp-web-client-hide-slash-blur-thumbnail-images-preview/"/>
     <updated>2015-02-04T14:07:17+04:00</updated>
-    <id>http://www.undefinednull.com/2015/02/04/whatsapp-web-client-hide-slash-blur-thumbnail-images-preview</id>
+    <id>https://www.undefinednull.com/2015/02/04/whatsapp-web-client-hide-slash-blur-thumbnail-images-preview</id>
     <content type="html"><![CDATA[<p>The most anticipated Whatsapp web is here finally. If you haven&rsquo;t seen it go check it out: <a href="http://web.whatsapp.com">http://web.whatsapp.com</a>. I really like it because of these reasons:</p>
 
 <ol>

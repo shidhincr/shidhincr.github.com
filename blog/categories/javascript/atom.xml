@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: javascript | Undefined NULL]]></title>
-  <link href="http://www.undefinednull.com/blog/categories/javascript/atom.xml" rel="self"/>
-  <link href="http://www.undefinednull.com/"/>
-  <updated>2016-07-22T15:08:20+04:00</updated>
-  <id>http://www.undefinednull.com/</id>
+  <link href="https://www.undefinednull.com/blog/categories/javascript/atom.xml" rel="self"/>
+  <link href="https://www.undefinednull.com/"/>
+  <updated>2016-07-22T15:31:55+04:00</updated>
+  <id>https://www.undefinednull.com/</id>
   <author>
     <name><![CDATA[Shidhin]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Explaining Call and Apply in JavaScript, through Mr.Dave]]></title>
-    <link href="http://www.undefinednull.com/2014/06/26/explaining-call-and-apply-in-javascript-through-mr-dot-dave/"/>
+    <link href="https://www.undefinednull.com/2014/06/26/explaining-call-and-apply-in-javascript-through-mr-dot-dave/"/>
     <updated>2014-06-26T10:41:07+04:00</updated>
-    <id>http://www.undefinednull.com/2014/06/26/explaining-call-and-apply-in-javascript-through-mr-dot-dave</id>
+    <id>https://www.undefinednull.com/2014/06/26/explaining-call-and-apply-in-javascript-through-mr-dot-dave</id>
     <content type="html"><![CDATA[<h3>Call and Apply, makes sense. Who is Mr.Dave ?</h3>
 
 <p>First, I admit the title looks bit weird. I know this topic has been explained a thousand times in many JavaScript blogs, and I don&rsquo;t want to repeat the same here too. So I am gonna explain this through a person &lsquo;<strong>Dave</strong>&rsquo;.</p>

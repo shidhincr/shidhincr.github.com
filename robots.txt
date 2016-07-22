@@ -1,4 +1,4 @@
 User-agent: *
 Disallow: 
 
-Sitemap: http://www.undefinednull.com/sitemap.xml 
+Sitemap: https://www.undefinednull.com/sitemap.xml 

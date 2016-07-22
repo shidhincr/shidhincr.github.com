@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: Curry | Undefined NULL]]></title>
-  <link href="http://www.undefinednull.com/blog/categories/curry/atom.xml" rel="self"/>
-  <link href="http://www.undefinednull.com/"/>
-  <updated>2016-07-22T15:08:20+04:00</updated>
-  <id>http://www.undefinednull.com/</id>
+  <link href="https://www.undefinednull.com/blog/categories/curry/atom.xml" rel="self"/>
+  <link href="https://www.undefinednull.com/"/>
+  <updated>2016-07-22T15:31:55+04:00</updated>
+  <id>https://www.undefinednull.com/</id>
   <author>
     <name><![CDATA[Shidhin]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Implementing a curry function in JavaScript using TDD]]></title>
-    <link href="http://www.undefinednull.com/2015/03/19/implementing-a-curry-function-in-javascript-using-tdd/"/>
+    <link href="https://www.undefinednull.com/2015/03/19/implementing-a-curry-function-in-javascript-using-tdd/"/>
     <updated>2015-03-19T18:51:27+04:00</updated>
-    <id>http://www.undefinednull.com/2015/03/19/implementing-a-curry-function-in-javascript-using-tdd</id>
+    <id>https://www.undefinednull.com/2015/03/19/implementing-a-curry-function-in-javascript-using-tdd</id>
     <content type="html"><![CDATA[<p><img src="https://lh3.googleusercontent.com/dtPfB5V-ew-rm3aApkXHTA8jFVwsFzoNNepbn9wU=w264-h207-p-no" alt="TDD" /></p>
 
 <p>TDD stands for Test Driven Development. To those who don&rsquo;t know what TDD means: In a typical TDD Environment, a developer start with a basic test case describing the minimal requirement for implementing the module. Then he writes the actual implementation code for making the test case pass.</p>
