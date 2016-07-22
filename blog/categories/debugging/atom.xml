@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Debugging | Undefined NULL]]></title>
+  <link href="http://www.undefinednull.com/blog/categories/debugging/atom.xml" rel="self"/>
+  <link href="http://www.undefinednull.com/"/>
+  <updated>2016-07-22T13:51:36+04:00</updated>
+  <id>http://www.undefinednull.com/</id>
+  <author>
+    <name><![CDATA[Shidhin]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Debugging React Native Apps using Visual Studio Code]]></title>
+    <link href="http://www.undefinednull.com/2016/04/21/debugging-react-native-apps-using-visual-studio-code/"/>
+    <updated>2016-04-21T15:39:09+04:00</updated>
+    <id>http://www.undefinednull.com/2016/04/21/debugging-react-native-apps-using-visual-studio-code</id>
+    <content type="html"><![CDATA[<p> I always think that I am a <a href="https://blog.codinghorror.com/the-magpie-developer/">Magpie developer</a>. I don&rsquo;t know if others do this often; But, most of the times, I switch between my IDEs,  trying out new frameworks ( even though it doesn&rsquo;t solve most of my problems ).</p>
+
+<!-- more -->
+
+
+<p>So far I was using &mdash; and pretty happy with &mdash; Webstorm, Atom and Sublime.  As I started with react-native development these days, I was searching for all the tools that will make my life easier. That&rsquo;s when I added Visual studio Code to my IDEs list again. I tried Visual studio code initially when it&rsquo;s released but didn&rsquo;t give much importance. However,  after trying the new version 1.0.0, I really liked it. The one main reason is the smooth debugging support they added using <code>react-native-tools</code> plugin.</p>
+
+<p>This post is all about setting up Visual studio code for react-native development. I&rsquo;m going to list down all the plugins I am using for linting, debugging and some of the settings I had to change to support ES6 code in Visual studio code.</p>
+
+<h2>Download and Install</h2>
+
+<p>Download the latest version of visual studio code from <a href="https://code.visualstudio.com/Download">here</a>. It&rsquo;s just lightweight as  Atom or Sublime.</p>
+
+<p>install the following npm packages globally.</p>
+
+<p><code>
+npm install -g typescript eslint babel-eslint
+</code></p>
+
+<h2>Enable Plugins</h2>
+
+<p>Installing the plugins in visual studio code is far easy. You just need to open the editor, press <code>CMD+SHIFT+P</code> ( in OSX ) and type <code>ext install</code>. Wait for some seconds, then VS code will show the available plugins ( extensions ).</p>
+
+<p>Install the following plugins:</p>
+
+<ul>
+<li>React Native Tools</li>
+<li>ESLint</li>
+<li>Visual studio code settings sync ( this is useful for sharing the settings between multiple systems )</li>
+<li>Material theme of OneDark theme ( depends on your interest, you can choose any other )</li>
+<li>Babel ES6/ES7 ( for syntax highlighting )</li>
+</ul>
+
+
+<h2>Settings</h2>
+
+<p>The first thing I wanted for react-native development is to make sure all my js files are treated as javascript with react support. Similarly, the default linting in VS Code is not so good with ES6. Yo&rsquo;ll get these errors often:</p>
+
+<p><img src="https://i.imgur.com/pWQzDxb.png" alt="ES6 error" /></p>
+
+<p>Let&rsquo;s add the following configurations to fix these issues. Press <code>CMD+,</code> VS Code will open the settings window for you.</p>
+
+<p>```js
+{</p>
+
+<pre><code>"files.associations": {
+    "*.js": "javascriptreact"
+},
+"javascript.validate.enable" : false
+</code></pre>
+
+<p>}
+```</p>
+
+<p>This should disable the default warnings and enable JSX highlighting inside the JS files.</p>
+
+<p>Create a <code>.eslintrc</code> in the root folder and add the following code:</p>
+
+<p>```js
+{
+  &ldquo;parser&rdquo;: &ldquo;babel-eslint&rdquo;,
+  &ldquo;ecmaFeatures&rdquo;: {</p>
+
+<pre><code>"jsx": true,
+"modules": true
+</code></pre>
+
+<p>  },
+  &ldquo;env&rdquo;: {</p>
+
+<pre><code>"es6": true
+</code></pre>
+
+<p>  },
+  &ldquo;plugins&rdquo;: [</p>
+
+<pre><code>"react"
+</code></pre>
+
+<p>  ]
+}
+```</p>
+
+<h2>Keyboard Shortcuts</h2>
+
+<p>Before moving on, try to use these keyboard shortcuts. They&rsquo;ll come in handy soon.</p>
+
+<ul>
+<li>Toggle output console: <strong>CMD+SHIFT+U</strong></li>
+<li>Open debugger panel: <strong>CMD+SHIFT+D</strong></li>
+<li>Toggle debug console: <strong>CMD+SHIFT+Y</strong></li>
+<li>Toggle file panel: <strong>CMD+B</strong></li>
+<li>Open command pallete: <strong>CMD+SHIFT+P</strong></li>
+<li>Search any file: <strong>CMD+P</strong></li>
+<li>Search any symbol: <strong>CMD+SHIFT+O</strong></li>
+<li>Rename any variable: <strong>F2</strong></li>
+</ul>
+
+
+<h2>React native debugging</h2>
+
+<p>Once you install the react-native-tools extension, you can start debugging your react native application. For this, first, you need to add the configuration settings for the debugger.</p>
+
+<p>Press <code>CMD+SHIFT+D</code> and click on the small play icon as shown in the below pic:</p>
+
+<p><img src="https://i.imgur.com/bdRHCsk.png" alt="settings" /></p>
+
+<p>VS Code will now ask you to select the environment for debugging. Select <code>react-native</code> from the dropdown, so a new launch.json will get created.</p>
+
+<p>To start debugging, open the command window by pressing <code>CMD+SHIFT+P</code> and type <strong>Debug Run</strong></p>
+
+<p>Now you can see that the debugger will attach to the react native packager itself and run <code>react-native run-android</code></p>
+
+<h2>Heads up</h2>
+
+<p>If you have the chrome debugger for react-native running in any of the browser tabs, you need to close that. Else the debugging from visual studio code doesn&rsquo;t work.</p>
+
+<h2>That&rsquo;s for now!</h2>
+
+<p>That&rsquo;s all required for the initial set-up. Now you can put breakpoints in your code and start debugging. You&rsquo;ll get the same environment like Chrome debugger, but right inside your editor. I will post more stuff about better debugging later. Enjoy!</p>
+]]></content>
+  </entry>
+  
+</feed>

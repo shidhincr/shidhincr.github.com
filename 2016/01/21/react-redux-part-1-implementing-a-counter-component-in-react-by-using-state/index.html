@@ -1,0 +1,567 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>React Redux Part 1 : Implementing a counter component in react by using state</title>
+  <meta name="author" content="Shidhin">
+
+  
+  <meta name="description" content="The frontend world is moving so fast these days. The hottest trend is React along with the Flux pattern. Flux is a architectural pattern introduced &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://www.undefinednull.com/2016/01/21/react-redux-part-1-implementing-a-counter-component-in-react-by-using-state">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="http://feeds.feedburner.com/undefinednull/com" rel="alternate" title="Undefined NULL" type="application/atom+xml">
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<!-- <link href="https://fonts.googleapis.com/css?family=Kreon:400,300" rel="stylesheet" type="text/css"> -->
+<style type="text/css">
+  /* latin */
+  @font-face {
+    font-family: 'Kreon';
+    font-style: normal;
+    font-weight: 300;
+    src: local('Kreon Light'), local('Kreon-Light'), url(https://fonts.gstatic.com/s/kreon/v9/76aS1J5Mmu41iLp2Z15uBXYhjbSpvc47ee6xR_80Hnw.woff2) format('woff2');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000;
+  }
+  /* latin */
+  @font-face {
+    font-family: 'Kreon';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Kreon Regular'), local('Kreon-Regular'), url(https://fonts.gstatic.com/s/kreon/v9/DedTOFfDyPja0h-dTOyw06CWcynf_cDxXwCLxiixG1c.woff2) format('woff2');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000;
+  }
+</style>
+
+  <script src="/javascripts/modernizr-2.0.js" async></script>
+  <script src="/javascripts/jquery.min.js" async></script>
+  <script src="/javascripts/octopress.js" type="text/javascript" async></script>
+  
+  <script type="text/javascript">
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ga('create', 'UA-10379928-17', 'auto');
+ga('require', 'displayfeatures');
+ga('send', 'pageview');
+  </script>
+
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">Undefined NULL</a><span class="note">  - by Shidhin </span></h1>
+  
+    <h2>Scribbles of a UI developer, JavaScript enthusiast</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="http://feeds.feedburner.com/undefinednull/com" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="https://www.google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:www.undefinednull.com" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">React Redux Part 1 : Implementing a Counter Component in React by Using State</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2016-01-21T23:07:48+04:00" pubdate data-updated="true">Jan 21<span>st</span>, 2016</time>
+        
+         | <a href="#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>The frontend world is moving so fast these days. The hottest trend is React along with the Flux pattern. Flux is a architectural pattern introduced by Facebook to solve some of the problems in large data centric applications. Facebook introduced flux as a concept, but there&rsquo;re number of flux libraries born from then. Today we&rsquo;re gonna talk about the most popular library in that category named <a href="http://redux.js.org/">Redux</a>.</p>
+
+<!-- more -->
+
+
+<p>Redux is not exactly an flux library. As per the redux tagline, it is known as a &ldquo;predictable state container for Javascript apps&rdquo;. I don&rsquo;t want to state Redux as a flux framework as Redux is deviated from some of the flux principles; And, those are clearly explained in its documentation. This blog post is not about how redux works, but rather demonstrating how redux is used in a typical React application. The tutorial also divided into multiple blog posts, so that you can skip to the interested ones.</p>
+
+<p><strong>Why this post:</strong></p>
+
+<p>If you follow the <a href="https://egghead.io/series/getting-started-with-redux">egghead.io videos</a> from <a href="https://twitter.com/dan_abramov">@dan_abramov</a>, you might feel that Redux is super simple. But then if you try to follow the examples from different sources, you might be overwhelmed by the terms like <code>connect</code>, <code>bindActionCreators</code> ..etc. I was trying to learn them step by step and understand what each of these try to solve. These blog posts are the outcome of my learnings and these are for absolute beginners. So, if you think you&rsquo;re an advanced guy, just share it to your beginner friends.</p>
+
+<p>Here we&rsquo;ll see how to implement a Counter component with:</p>
+
+<ol>
+<li>Section 1 : React with state ( not using Redux )</li>
+<li>Section 2: Try to integrate Redux and using store</li>
+<li>Section 3: Using React-redux library to connect between React and Redux</li>
+<li>Section 4: Removing boilerplate code with redux helper methods.</li>
+<li>Section 5: Async code handling with Redux</li>
+</ol>
+
+
+<h2>Building a simple counter in React ( with data saved in state )</h2>
+
+<p>In our first section, we&rsquo;re going to build a simple <code>Counter</code> component with React. This section is just for the beginners and if you know how this works, feel free to skip to the next section.</p>
+
+<p>Let&rsquo;s build the react Counter component and add a state to save the <code>number</code>. The code is given below:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+<span class='line-number'>38</span>
+<span class='line-number'>39</span>
+<span class='line-number'>40</span>
+<span class='line-number'>41</span>
+<span class='line-number'>42</span>
+<span class='line-number'>43</span>
+<span class='line-number'>44</span>
+<span class='line-number'>45</span>
+<span class='line-number'>46</span>
+<span class='line-number'>47</span>
+<span class='line-number'>48</span>
+<span class='line-number'>49</span>
+</pre></td><td class='code'><pre><code class='js'><span class='line'><span class="s1">&#39;use strict&#39;</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'><span class="kr">import</span> <span class="nx">React</span> <span class="nx">from</span> <span class="s1">&#39;react&#39;</span><span class="p">;</span>
+</span><span class='line'><span class="kr">import</span> <span class="nx">ReactDOM</span> <span class="nx">from</span> <span class="s1">&#39;react-dom&#39;</span><span class="p">;</span>
+</span><span class='line'><span class="kd">let</span> <span class="p">{</span><span class="nx">Component</span><span class="p">}</span> <span class="o">=</span> <span class="nx">React</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'><span class="kr">class</span> <span class="nx">App</span> <span class="kr">extends</span> <span class="nx">Component</span> <span class="p">{</span>
+</span><span class='line'>  <span class="nx">constructor</span><span class="p">(</span><span class="nx">props</span><span class="p">){</span>
+</span><span class='line'>    <span class="kr">super</span><span class="p">(</span><span class="nx">props</span><span class="p">);</span>
+</span><span class='line'>    <span class="k">this</span><span class="p">.</span><span class="nx">state</span> <span class="o">=</span> <span class="p">{</span>
+</span><span class='line'>      <span class="nx">number</span><span class="o">:</span> <span class="k">this</span><span class="p">.</span><span class="nx">props</span><span class="p">.</span><span class="nx">number</span> <span class="o">||</span> <span class="mi">0</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'>    <span class="k">this</span><span class="p">.</span><span class="nx">_increment</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">_increment</span><span class="p">.</span><span class="nx">bind</span><span class="p">(</span><span class="k">this</span><span class="p">);</span>
+</span><span class='line'>    <span class="k">this</span><span class="p">.</span><span class="nx">_decrement</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">_decrement</span><span class="p">.</span><span class="nx">bind</span><span class="p">(</span><span class="k">this</span><span class="p">);</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="nx">render</span><span class="p">(){</span>
+</span><span class='line'>    <span class="kd">let</span> <span class="p">{</span><span class="nx">number</span><span class="p">}</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">state</span><span class="p">;</span>
+</span><span class='line'>    <span class="k">return</span><span class="p">(</span>
+</span><span class='line'>      <span class="o">&lt;</span><span class="nx">div</span><span class="o">&gt;</span>
+</span><span class='line'>        <span class="o">&lt;</span><span class="nx">h2</span><span class="o">&gt;</span><span class="nx">The</span> <span class="nx">number</span> <span class="nx">is</span> <span class="o">=</span> <span class="p">{</span><span class="nx">number</span><span class="p">}</span> <span class="o">&lt;</span><span class="err">/h2&gt;</span>
+</span><span class='line'>        <span class="o">&lt;</span><span class="nx">div</span><span class="o">&gt;</span>
+</span><span class='line'>            <span class="o">&lt;</span><span class="nx">button</span> <span class="nx">onClick</span><span class="o">=</span><span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">_increment</span><span class="p">}</span><span class="o">&gt;</span><span class="nx">Increment</span><span class="o">&lt;</span><span class="err">/button&gt;</span>
+</span><span class='line'>            <span class="o">&lt;</span><span class="nx">button</span> <span class="nx">onClick</span><span class="o">=</span><span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">_decrement</span><span class="p">}</span><span class="o">&gt;</span><span class="nx">Decrement</span><span class="o">&lt;</span><span class="err">/button&gt;</span>
+</span><span class='line'>        <span class="o">&lt;</span><span class="err">/div&gt;</span>
+</span><span class='line'>      <span class="o">&lt;</span><span class="err">/div&gt;</span>
+</span><span class='line'>    <span class="p">);</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="nx">_increment</span><span class="p">(){</span>
+</span><span class='line'>    <span class="k">this</span><span class="p">.</span><span class="nx">setState</span><span class="p">({</span>
+</span><span class='line'>      <span class="nx">number</span><span class="o">:</span> <span class="k">this</span><span class="p">.</span><span class="nx">state</span><span class="p">.</span><span class="nx">number</span> <span class="o">+</span> <span class="mi">1</span>
+</span><span class='line'>    <span class="p">});</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'>  <span class="nx">_decrement</span><span class="p">(){</span>
+</span><span class='line'>    <span class="k">this</span><span class="p">.</span><span class="nx">setState</span><span class="p">({</span>
+</span><span class='line'>      <span class="nx">number</span><span class="o">:</span> <span class="k">this</span><span class="p">.</span><span class="nx">state</span><span class="p">.</span><span class="nx">number</span> <span class="o">-</span> <span class="mi">1</span>
+</span><span class='line'>    <span class="p">});</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="nx">App</span><span class="p">.</span><span class="nx">propTypes</span> <span class="o">=</span><span class="p">{</span>
+</span><span class='line'>  <span class="nx">number</span><span class="o">:</span> <span class="nx">React</span><span class="p">.</span><span class="nx">PropTypes</span><span class="p">.</span><span class="nx">number</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="nx">ReactDOM</span><span class="p">.</span><span class="nx">render</span><span class="p">(</span>
+</span><span class='line'>  <span class="o">&lt;</span><span class="nx">App</span> <span class="nx">number</span><span class="o">=</span><span class="p">{</span><span class="mi">20</span><span class="p">}</span><span class="o">/&gt;</span><span class="p">,</span>
+</span><span class='line'>  <span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s1">&#39;#app&#39;</span><span class="p">)</span>
+</span><span class='line'><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>The example code is available in this Github <a href="https://github.com/shidhincr/SimpleReactReduxCounter">repo</a>. Just clone the repo and switch to the branch <code>react-state</code>.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'>git clone https://github.com/shidhincr/SimpleReactReduxCounter
+</span><span class='line'><span class="nb">cd </span>SimpleReactReduxCounter
+</span><span class='line'>git checkout react-state
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>In the next section we&rsquo;ll see how to use <a href="https://www.npmjs.com/package/redux">redux</a> to implement the same.</p>
+</div>
+<!-- nothing here for now -->
+<!-- Go to www.addthis.com/dashboard to customize your tools -->
+<div class="addthis_sharing_toolbox"></div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Shidhin</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2016-01-21T23:07:48+04:00" pubdate data-updated="true">Jan 21<span>st</span>, 2016</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/flux/'>Flux</a>, <a class='category' href='/blog/categories/reactjs/'>ReactJS</a>, <a class='category' href='/blog/categories/redux/'>Redux</a>
+  
+</span>
+
+
+      
+  <h3>Related posts</h3>
+  <ol class="posts">
+  
+    <li class="related">
+      <a href="/2015/05/03/react-tdd-example-unit-testing-and-building-a-react-component-with-jest-gulp-and-react-test-utils/" onClick="ga('send', 'event', 'Post Page', 'Clicked Related Post', '/2015/05/03/react-tdd-example-unit-testing-and-building-a-react-component-with-jest-gulp-and-react-test-utils/', 1);">React TDD Example: Unit Testing and Building a React Component with Jest, Gulp and React Test Utils</a>
+    </li>
+  
+    <li class="related">
+      <a href="/2014/02/11/mastering-the-scope-of-a-directive-in-angularjs/" onClick="ga('send', 'event', 'Post Page', 'Clicked Related Post', '/2014/02/11/mastering-the-scope-of-a-directive-in-angularjs/', 2);">Mastering the scope of the directives in AngularJS</a>
+    </li>
+  
+    <li class="related">
+      <a href="/2015/03/19/implementing-a-curry-function-in-javascript-using-tdd/" onClick="ga('send', 'event', 'Post Page', 'Clicked Related Post', '/2015/03/19/implementing-a-curry-function-in-javascript-using-tdd/', 3);">Implementing a curry function in JavaScript using TDD</a>
+    </li>
+  
+    <li class="related">
+      <a href="/2014/08/11/a-brief-walk-through-of-the-ng-options-in-angularjs/" onClick="ga('send', 'event', 'Post Page', 'Clicked Related Post', '/2014/08/11/a-brief-walk-through-of-the-ng-options-in-angularjs/', 4);">A brief walk-through of the ng-options in AngularJS</a>
+    </li>
+  
+  </ol>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://www.undefinednull.com/2016/01/21/react-redux-part-1-implementing-a-counter-component-in-react-by-using-state/" data-via="shidhincr" data-counturl="http://www.undefinednull.com/2016/01/21/react-redux-part-1-implementing-a-counter-component-in-react-by-using-state/" >Tweet</a>
+  
+  
+  <div class="g-plusone" data-size="medium"></div>
+  
+  
+    <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
+  
+</div>
+
+    
+    <p class="meta">
+    <div class="about">
+	<span class="about-image">
+		<img src="/images/shidhincr.jpg" alt="shidhincr">
+	</span>
+	<span class="about-desc">
+		<span>Shidhin is a senior Front end developer working in Namshi.com, Dubai. He is passionate about latest web technologies and open source softwares. <a href="http://www.undefinednull.com/">Undefinednull.com</a> is his personal blog, where he shares his experiences, thoughts and ideas. You can follow &amp; talk to him in <a href="http://www.twitter.com/shidhincr" target="_blank">twitter.com/shidhincr</a></span>
+		<br/>
+		<hr/>
+		<a href="https://twitter.com/shidhincr" class="twitter-follow-button" data-show-count="false" data-size="large">Follow @shidhincr</a>
+	</span>
+</div> 
+    </p>
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/2015/12/27/injecting-custom-javascript-into-react-natives-webview/" title="Previous Post: Injecting Custom JavaScript into React Native's Webview">&laquo; Injecting Custom JavaScript into React Native's Webview</a>
+      
+      
+        <a class="basic-alignment right" href="/2016/04/21/debugging-react-native-apps-using-visual-studio-code/" title="Next Post: Debugging React Native Apps using Visual Studio Code">Debugging React Native Apps using Visual Studio Code &raquo;</a>
+      
+    </p>
+    <p class="meta">
+      <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+      <!-- blog_post_bottom -->
+      <ins class="adsbygoogle"
+           style="display:block"
+           data-ad-client="ca-pub-6186681246847670"
+           data-ad-slot="1223204544"
+           data-ad-format="auto"></ins>
+      <script>
+      (adsbygoogle = window.adsbygoogle || []).push({});
+      </script>
+    </p>
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+</div>
+
+<aside class="sidebar">
+  
+    <div class="about sidebar">
+  <span class="about-image">
+    <img src="/images/shidhincr.jpg" alt="shidhincr">
+  </span>
+  <span class="about-desc">
+    <span>Hey, I'm Shidhin C R <br/> I'm a UI / Front end developer ( currently in Dubai, UAE ). I use this space to share my experiences, experiments and thoughts. See more about me in <a href="https://www.linkedin.com/in/shidhincr" target="_blank">my LinkedIn profile.</a></span>
+    <br/>
+    <hr>
+    <a href="https://twitter.com/shidhincr" class="twitter-follow-button" data-show-count="false" data-size="large">Follow @shidhincr</a>
+    <hr>
+    <div class="g-follow" data-href="https://plus.google.com/u/0/113512069167494308499" data-rel="author" data-height="24"></div>
+    <hr>
+    <iframe src="//www.facebook.com/plugins/follow?href=https%3A%2F%2Fwww.facebook.com%2Fshidhincr&amp;layout=standard&amp;show_faces=true&amp;colorscheme=light&amp;width=450&amp;height=80" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:450px; height:80px;" allowTransparency="true"></iframe> 
+  </span>
+</div> <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/2016/04/21/debugging-react-native-apps-using-visual-studio-code/">Debugging React Native Apps Using Visual Studio Code</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2016/01/21/react-redux-part-1-implementing-a-counter-component-in-react-by-using-state/">React Redux Part 1 : Implementing a Counter Component in React by Using State</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2015/12/27/injecting-custom-javascript-into-react-natives-webview/">Injecting Custom JavaScript Into React Native's Webview</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2015/07/31/iterm-tips-and-zsh-plugins-for-better-development-environment/">iTerm Tips and Zsh Plugins for Better Development Environment</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2015/05/03/react-tdd-example-unit-testing-and-building-a-react-component-with-jest-gulp-and-react-test-utils/">React TDD Example: Unit Testing and Building a React Component With Jest, Gulp and React Test Utils</a>
+      </li>
+    
+  </ul>
+</section>
+
+<section>
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating...</li>
+  </ul>
+  
+  <a href="https://github.com/shidhincr">@shidhincr</a> on GitHub
+  
+  <script type="text/javascript">
+    window.addEventListener("load", function(event) {
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'shidhincr',
+            count: 3,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript" async> </script>
+</section>
+
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- undefinednull.com -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-6186681246847670"
+     data-ad-slot="2834158940"
+     data-ad-format="auto"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2016 - Shidhin -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+  <span style="position: absolute; right: 10px">
+   <a href="/privacypolicy.html">Privacy policy</a>&nbsp;|&nbsp;
+   <a href="/disclaimer.html">Disclaimer</a>
+  </span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'shidhincr';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'www.undefinednull.com/2016/01/21/react-redux-part-1-implementing-a-counter-component-in-react-by-using-state/';
+        var disqus_url = 'http://www.undefinednull.com/2016/01/21/react-redux-part-1-implementing-a-counter-component-in-react-by-using-state/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script +'?https';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id; js.async = true;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+  <script type="text/javascript">
+    (function() {
+      var script = document.createElement('script'); script.type = 'text/javascript'; script.async = true;
+      script.src = 'https://apis.google.com/js/plusone.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(script, s);
+    })();
+  </script>
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+<!-- AddThis Smart Layers BEGIN -->
+<!-- Go to http://www.addthis.com/get/smart-layers to customize -->
+<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-524e674f788aa8b9" async></script>
+<script type="text/javascript">
+  window.addEventListener("load", function(event) {
+    addthis.layers({
+      'theme' : 'dark',
+      'share' : {
+        'position' : 'right',
+        'numPreferredServices' : 6
+      } 
+    });
+  });
+</script>
+<!-- AddThis Smart Layers END -->
+
+
+<script src="/javascripts/fontfaceobserver.js" type="text/javascript"></script>
+<script type="text/javascript">
+  var kreon400 = new FontFaceObserver("Kreon", {
+    weight: 400
+  });
+  var kreon300 = new FontFaceObserver("Kreon", {
+    weight: 500
+  });
+
+  Promise.all([
+    kreon300.load(null, 5000),
+    kreon400.load(null ,5000),
+  ]).then(function() {
+    document.documentElement.className += " fonts-loaded";
+  }).catch(function(e){
+    console.log(e);
+  });
+</script>
+
+</body>
+</html>

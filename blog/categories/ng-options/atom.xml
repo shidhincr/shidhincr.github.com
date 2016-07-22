@@ -1,0 +1,288 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: ng-options | Undefined NULL]]></title>
+  <link href="http://www.undefinednull.com/blog/categories/ng-options/atom.xml" rel="self"/>
+  <link href="http://www.undefinednull.com/"/>
+  <updated>2016-07-22T13:51:36+04:00</updated>
+  <id>http://www.undefinednull.com/</id>
+  <author>
+    <name><![CDATA[Shidhin]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[A brief walk-through of the ng-options in AngularJS]]></title>
+    <link href="http://www.undefinednull.com/2014/08/11/a-brief-walk-through-of-the-ng-options-in-angularjs/"/>
+    <updated>2014-08-11T11:13:45+04:00</updated>
+    <id>http://www.undefinednull.com/2014/08/11/a-brief-walk-through-of-the-ng-options-in-angularjs</id>
+    <content type="html"><![CDATA[<p><img src="https://lh4.googleusercontent.com/-ts5lhPEvP2U/VA2txu4TiLI/AAAAAAAASWs/ZR8EkWYzhcI/w681-h250-no/ng-options.jpg" alt="" /></p>
+
+<p>Using ng-options was bit tough for me. I banged my head couple of times when I actually used ng-options in my code. And most of the times, I had to google and find out how to make it work. Looking the AngularJS documentation didn&rsquo;t help much, as it&rsquo;s less informative and doesn&rsquo;t have much code samples.</p>
+
+<p>But, I could find lot of Stackoverflow links, and infact I understood the concepts after reading those links only. Here, finally, I decided to write a blog posts about what I learned. And you know, this post is going to be mostly useful to me more than any one; because next time, I don&rsquo;t need to google it.. :)</p>
+
+<!--more-->
+
+
+<h2>Why ng-options</h2>
+
+<p>Before that, let&rsquo;s see ng-repeat. The simple way of creating a dropdown in Angular is by using ng-repeat. Look at the code below:</p>
+
+<p>```html
+
+<html ng-app="app">
+  <body></p>
+
+<pre><code>&lt;div ng-controller="Test"&gt;
+    &lt;p&gt;selected item is : {{selectedItem}}&lt;/p&gt;
+  &lt;select ng-model="selectedItem"&gt;
+    &lt;option ng-repeat="item in items" value="{{item}}"&gt;{{item}}&lt;/option&gt;
+  &lt;/select&gt;
+&lt;/div&gt;
+</code></pre>
+
+<p>  </body>
+</html>
+
+```
+And the JavaScript:</p>
+
+<p><code>javascript
+var app = angular.module('app',[]);
+app.controller('Test',function($scope){
+   $scope.items = ['one','two','three','four']
+});
+</code>
+We have an array of text in a property called <code>items</code>. The above code is ideal when the items array consists of only string data. However, this cannot be used when the items array contains objects.</p>
+
+<p>The AngularJS documentation for &lsquo;select&rsquo; says to use ng-options instead of ng-repeat in this scenario. The reason behind is, option element can only hold string type as its value.</p>
+
+<p>Quoted from AngularJS documentation:</p>
+
+<blockquote><p>Note: ngOptions provides an iterator facility for the &lsquo;<code>option</code>&rsquo; element which should be used instead of ngRepeat when you want the select model to be bound to a non-string value. This is because an option element can only be bound to string values at present.</p></blockquote>
+
+<p>Let&rsquo;s change the items to an array of objects.</p>
+
+<p><code>js
+$scope.items = [{name: 'one', age: 30 },{ name: 'two', age: 27 },{ name: 'three', age: 50 }];
+</code></p>
+
+<p>and the HTML</p>
+
+<p>```html
+
+<html ng-app="app">
+  <body></p>
+
+<pre><code>&lt;div ng-controller="Test"&gt;
+    &lt;p&gt;selected item is : {{selectedItem}}&lt;/p&gt;
+  &lt;select ng-model="selectedItem"&gt;
+    &lt;option ng-repeat="item in items" value="{{item.age}}"&gt;{{item.name}}&lt;/option&gt;
+  &lt;/select&gt;
+&lt;/div&gt;
+</code></pre>
+
+<p>  </body>
+</html>
+
+<code>``
+If you notice, the</code>selectedItem` model is bound to the value of the selected option element. Here, as already explained, we&rsquo;re restricted to have only strings in our items array. We cannot set the selectedItem model to the object inside items. Therefore we need to use the ng-options for these kind of situations. Let&rsquo;s see how to do it.</p>
+
+<p><strong>Re-write the above code using ng-options</strong>:</p>
+
+<p>We can re-write the above code using ng-options. The new html looks like below:</p>
+
+<p>```html
+
+<html ng-app="app">
+  <body></p>
+
+<pre><code>&lt;div ng-controller="Test"&gt;
+    &lt;p&gt;selected item is : {{selectedItem}}&lt;/p&gt;
+    &lt;p&gt; age of selected item is : {{selectedItem.age}} &lt;/p&gt;
+  &lt;select ng-model="selectedItem" ng-options="item.name for item in items"&gt;
+  &lt;/select&gt;
+&lt;/div&gt;
+</code></pre>
+
+<p>  </body>
+</html>
+
+```</p>
+
+<p>Now the <code>selectedItem</code> is bound to an object instead of the string value. You can see it in action <a href="http://codepen.io/shidhincr/pen/LeuDw">here</a></p>
+
+<div class="info">
+If you notice, the first element inside the dropdown is a blank option element. This is because, initially, the 'selectedItem' does not have any default value and is undefined. Since there's no default option selected, AngularJS will generate a new option tag and select it as default. To fix the issue, just set the 'selectedItem' to the first object in the items array. <br/>
+$scope.selectedItem = $scope.items[0];
+</div>
+
+
+<br/>
+
+
+<p>In the next section, we&rsquo;ll see different types of ng-options expressions.</p>
+
+<h2>Different kinds of syntax</h2>
+
+<p>Before we start, read the official <a href="https://docs.angularjs.org/api/ng/directive/select">documentation</a> here. If you notice, the type of the ng-options is named as  a <strong>comprehension expression</strong>. As quoted from this <a href="https://groups.google.com/forum/#!topic/angular/4EDe8xIbjLU">link</a></p>
+
+<blockquote><p>The &ldquo;comprehension expression&rdquo; is not the same as Angular expressions that $parse parses.  It is a custom expression specific to ngSelect.  You can actually see the regex it uses to parse in the ngSelect source file.</p></blockquote>
+
+<p>We&rsquo;ll cover these different type of <strong>comprehension expressions</strong> with the help of examples below.</p>
+
+<p><u><strong>For Array data  :</strong></u></p>
+
+<p><strong>1) <code>label</code> for <code>value</code> in <code>array</code></strong></p>
+
+<p>This is the simplest and commonly used expression. This tells <strong>ng-options</strong> directive to loop through the array, and generate option element containing the current value. The generated html looks like this:</p>
+
+<p><img src="https://lh3.googleusercontent.com/-sWj95dIg0Co/VA0e8YuM7UI/AAAAAAAASRY/kmmupaPV1Ac/h114/Screenshot%2B2014-09-08%2B07.06.16.png" alt="" /></p>
+
+<p>The <em>value</em> of each option element is the loop couter and the text inside the option element is the current array content. Note the <code>label</code> is the one generates the text inside each option element. So it should be same name as <code>value</code> if items array contains all premitive type. In the above example, both label and value referred as <code>item</code>.</p>
+
+<p>The flexibility of ng-options is when the array contains objects rather than plain strings. To know more, let&rsquo;s change the items like this:</p>
+
+<pre><code>$scope.items = [{name: 'one', age: 30 },{ name: 'two', age: 27 },{ name: 'three', age: 50 }];
+</code></pre>
+
+<p>And we can change our expression as</p>
+
+<pre><code>ng-options="item.name for item in items"
+</code></pre>
+
+<p>The above code is pretty simple to understand. We&rsquo;re telling angular that to loop through all the items in use <code>item.name</code> as the text inside each option element. Let&rsquo;s move to much more complex type of expressions.</p>
+
+<p><strong>2) <code>select</code> as <code>label</code> for <code>value</code> in <code>array</code></strong></p>
+
+<p>By default, unless specified, the model bound the parent select box will be the <code>value</code> of the expression. That means, in the previous example, the <code>item</code> is the model for the select element. If we select the second element in the select box, the model is this:</p>
+
+<p><img src="https://lh5.googleusercontent.com/-H_M5Y7QW9Jw/VA0l1wZY6WI/AAAAAAAASRw/EB54lG4L-rA/h240/Screen%2BShot%2B2014-09-08%2Bat%2B7.43.05%2BAM.png" alt="" /></p>
+
+<p>However, AngularJS provides another variation of expression to change this behaviour. Using <code>select as</code> we can specify a different model to the select box. Let&rsquo;s see the below example:</p>
+
+<pre><code>ng-options="item.age as item.name for item in items"
+</code></pre>
+
+<p><img src="https://lh5.googleusercontent.com/-AY6sL4nCidI/VA0nnsQRQuI/AAAAAAAASR8/ja0NvwcMtyI/h128/Screen%2BShot%2B2014-09-08%2Bat%2B7.50.24%2BAM.png" alt="" /></p>
+
+<p><img src="https://lh6.googleusercontent.com/-MkszZ2GNFv4/VA0n65cdfcI/AAAAAAAASSM/45mrEy-1XKU/h240/Screen%2BShot%2B2014-09-08%2Bat%2B7.51.34%2BAM.png" alt="" /></p>
+
+<p>Here, each option will have the text as <code>item.name</code> but when we select any of them, the selectedItem will be <code>item.age</code>.</p>
+
+<p><strong>3) <code>label</code> group by <code>group</code> for <code>value</code> in <code>array</code></strong></p>
+
+<p>Group by is really a short cut for adding options groups.  In plain html, we need to use the <code>&lt;optgroup&gt;</code> tags to group a set of options. But here, we can specify ng-options to render optgroups based on <code>group</code> value. Let&rsquo;s see the below code.</p>
+
+<p>```javascript javascript
+$scope.items = [</p>
+
+<pre><code> {name: 'one', age: 30 },
+ { name: 'two', age: 27 },
+ { name: 'three', age: 50 },
+ { name: 'four', age: 15 },
+ { name: 'five', age: 27 },
+ { name: 'six', age: 30 }   
+</code></pre>
+
+<p>];
+```
+and the ng-options in HTML</p>
+
+<pre><code>ng-options="item.name group by item.age for item in items"
+</code></pre>
+
+<p>The above expression tells Angular to group each options based on the <code>item.age</code>. If we run the code, the output looks like this</p>
+
+<p><img src="https://lh4.googleusercontent.com/-IMgiQ1KQINw/VA2flqQxDiI/AAAAAAAASVQ/LYQ4LHM6Th0/w239-h301-no/Screen%2BShot%2B2014-09-08%2Bat%2B1.38.12%2BPM.png" alt="" /></p>
+
+<p><strong>4) <code>select</code> as <code>label</code> group by <code>group</code> for <code>value</code> in <code>array</code> track by <code>trackexpr</code></strong></p>
+
+<p>This is similar to the previous one, and the only addition is the <code>track by</code>. If you have ever used <code>ng-repeat</code>, the <code>track by</code> won&rsquo;t surprise you. The syntax and usage is same as with <code>ng-repeat</code>.</p>
+
+<p>Using <code>track by</code>, we can explicitly tell AngularJS to track each DOM node by the specified value. For example, we can use like this:</p>
+
+<pre><code>ng-options="item.name group by item.age for item in items track by item.name"
+</code></pre>
+
+<p><strong>Bennadel</strong> explained this pretty well in his <a href="http://www.bennadel.com/blog/2556-using-track-by-with-ngrepeat-in-angularjs-1-2.htm">blog post</a>.</p>
+
+<p> <u><strong>For Object data  :</strong></u></p>
+
+<p>ng-options is not just restricted to array types, but can be used for object data sources too.  In this section, we&rsquo;ll see how ng-options are used for object data. Let&rsquo;s modify the <code>items</code> in our code like below:</p>
+
+<p>```javascript
+$scope.items = {</p>
+
+<pre><code>'one': 30,
+'two': 27,
+'three': 50,
+'four': 15,
+'five': 27,
+'six': 30
+</code></pre>
+
+<p>   };
+```</p>
+
+<p><strong>1) <code>label</code> for <code>(key , value)</code> in <code>object</code></strong></p>
+
+<p>The expression for object data source is similar to the array data source. The only difference in object data source is, everything is key value pairs. ng-options for object allows us to loop through these (key,value) pairs; The expression is pretty much self explanatory, as all other parts are similar to what we have seen already.</p>
+
+<p>Let&rsquo;s modify the expression like this in our mark-up</p>
+
+<pre><code>ng-options="name for (name, value) in items"
+</code></pre>
+
+<p>The generated html is like this:</p>
+
+<p><img src="https://lh3.googleusercontent.com/-eoAgJdq75go/VA_CWccGIqI/AAAAAAAASeo/OE-cjTGnGr4/h166/Screen%2BShot%2B2014-09-10%2Bat%2B7.15.04%2BAM.png" alt="" /></p>
+
+<p>The generated html is a select box with all the key names. Similarly, we can create the select box with only values, shown below.</p>
+
+<pre><code>ng-options="name for (name, value) in items"
+</code></pre>
+
+<div class="info">
+For object data sources, the default model bound to the select box is the value, not the key. That means, in the above example, even though the select box displays only the key names, the model is actually bounds to its value. Try selecting an option in our demo, you can see that the selectedItem is printed as its value. However, this behaviour can be changed by using the 'select as' syntax.
+</div>
+
+
+<br/>
+
+
+<p>The remaining expressions available for object data source is given below. There is no need of any explanation as they are similar to the array data source. The only difference is, for objects, both <code>(key, value)</code> are available.</p>
+
+<p><strong>2) <code>select</code> as <code>label</code> for <code>(key , value)</code> in <code>object</code></strong></p>
+
+<p><strong>3) <code>label</code> group by <code>group</code> for <code>(key, value)</code> in <code>object</code></strong></p>
+
+<p><strong>4) <code>select</code> as <code>label</code> group by <code>group</code> for <code>(key, value)</code> in <code>object</code></strong></p>
+
+<h2>Extra Points</h2>
+
+<ol>
+<li>If the model is present and not selected, Angular will generate a default option element. This is done for not accidentally setting the model value when the select box gets rendered.</li>
+<li>There is no straight forward way of selecting the default options. Usually the controller is responsible for setting the model for select box, so that the default option will be selected automatically.</li>
+<li>It&rsquo;s also possible to add filters to the ng-options expressions.</li>
+</ol>
+
+
+<h4>Please re-tweet if you found this article helpful</h4>
+
+<blockquote class="twitter-tweet" lang="en"><p lang="en" dir="ltr">A brief walk-through of the ng-options in <a href="https://twitter.com/hashtag/AngularJS?src=hash">#AngularJS</a> <a href="https://t.co/RopuFUtD35">https://t.co/RopuFUtD35</a> via <a href="https://twitter.com/shidhincr">@shidhincr</a></p>&mdash; Shidhin (@shidhincr) <a href="https://twitter.com/shidhincr/status/661084286808756224">November 2, 2015</a></blockquote>
+
+
+<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+
+<h2>Summary</h2>
+
+<p>Thanks for reading !! ng-options is a powerful directive. Mastering it properly will save lot of time in your next project.</p>
+]]></content>
+  </entry>
+  
+</feed>

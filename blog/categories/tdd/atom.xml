@@ -1,0 +1,1225 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: TDD | Undefined NULL]]></title>
+  <link href="http://www.undefinednull.com/blog/categories/tdd/atom.xml" rel="self"/>
+  <link href="http://www.undefinednull.com/"/>
+  <updated>2016-07-22T13:51:36+04:00</updated>
+  <id>http://www.undefinednull.com/</id>
+  <author>
+    <name><![CDATA[Shidhin]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[React TDD Example: Unit Testing and Building a React Component with Jest, Gulp and React Test Utils]]></title>
+    <link href="http://www.undefinednull.com/2015/05/03/react-tdd-example-unit-testing-and-building-a-react-component-with-jest-gulp-and-react-test-utils/"/>
+    <updated>2015-05-03T10:32:01+04:00</updated>
+    <id>http://www.undefinednull.com/2015/05/03/react-tdd-example-unit-testing-and-building-a-react-component-with-jest-gulp-and-react-test-utils</id>
+    <content type="html"><![CDATA[<div class="info">
+  <strong>Update Feb 9 2016</strong> : The ReactJS version is bumped to 0.14 in the seed project and updated the article accordingly.
+</div>
+
+
+<br/>
+
+
+<p><img src="https://lh4.googleusercontent.com/-qJ1PeOhFiBM/VVBaO3ZI6qI/AAAAAAAAhpw/l-WLLtdZuxM/w640-h480-no/react-jest.jpg" alt="React and Jest for TDD" /></p>
+
+<p>ReactJs has attained lot of momentum since its initial release in 2013, and became the best JavaScript library for developing rich UI interface. React also popularised different concepts like Virtual DOM, Uni-directional data flow and Componentization in the front-end community. As of today, React has more than 20,000 stars in <a href="https://github.com/facebook/react">Github repo</a>, and actively maintained by the Facebook team.</p>
+
+<p>As I said already, React is a solid piece of work from Facebook. Any solid software will be built with testability in mind; And React is not an exception to that. Facebook built React with complete testing support &mdash; They even released their own testing framework named &ldquo;<strong>Jest</strong>&rdquo; and <strong>React Test Utils</strong> for unit testing React components.</p>
+
+<p>Here in this post, we&rsquo;ll see how to build a react component in TDD approach.</p>
+
+<!--more-->
+
+
+<h2>What we&rsquo;re going to build ?</h2>
+
+<p>We will build a simple Accordion component in React. If you&rsquo;re not sure what an Accordion is, have a look at the twitter bootstrap page:</p>
+
+<p><a href="http://getbootstrap.com/2.3.2/javascript.html#collapse">Accordion  Widget</a>
+Or,  see
+<a href="https://jqueryui.com/accordion/">jQuery UI Accordion</a></p>
+
+<p>We&rsquo;ll be creating a simple Accordion component in React.</p>
+
+<h2>Setting up the tools</h2>
+
+<p>We&rsquo;re going to build our component in TDD fashion. Hence, we need to set up our environment with a test runner (for running unit tests), and local server ( with automatic reloading enabled ).</p>
+
+<p>These are the tools I am going to use:</p>
+
+<ol>
+<li><a href="www.browsersync.io">BrowserSync</a> for live development ( browser reloading ).</li>
+<li><a href="https://facebook.github.io/jest/">Jest</a> for unit testing.</li>
+<li><a href="http://jspm.io/">JSPM</a> and <a href="https://www.npmjs.org/">npm</a> for package management.</li>
+<li><a href="http://gulpjs.com/">Gulp</a> for running build and test tasks.</li>
+<li>Finally, <a href="https://facebook.github.io/react/">ReactJS</a> for developing our component</li>
+</ol>
+
+
+<p>Setting up all these takes time. Therefore, I have created a  <a href="https://github.com/shidhincr/react-jest-gulp-jspm-seed">seed project</a> for bootstrapping the set-up and the initial boiler plate code. So, as the first step, clone the seed project to your system:</p>
+
+<p><code>sh
+git clone git@github.com:shidhincr/react-jest-gulp-jspm-seed.git react-seed
+cd react-seed
+npm install
+</code>
+Once you download the seed and install the node modules, we&rsquo;re good to start.</p>
+
+<h2>Developing the Component in TDD</h2>
+
+<p>We&rsquo;re using <em>Gulp</em> as our build and task tool. If you open the <strong>gulpfile.js</strong> in the seed folder, you can see there are two main tasks for test driven development ( as explained in the project README file ). One task will build the project and open the development server in browser, while the other task run the unit tests and watch for any changes the source files and test files.</p>
+
+<p>Open two terminal windows, and run <code>gulp develop</code> in one and <code>gulp test</code> in the other one.</p>
+
+<p>There are two example files provided in the <code>scripts</code> folder and <code>__tests__</code> folder. When you run the <code>gulp test</code> task at first, you should see those tests passing.</p>
+
+<h3>Accordion React Component</h3>
+
+<p>Let&rsquo;s add the file <strong>accordionComponent.js</strong> in <code>scripts</code> and <strong>accordionComponent-spec.js</strong> in the <code>__tests__</code> folders respectively.</p>
+
+<p>From here onwards, we&rsquo;re going to build our component by writing each functionality as a test case and then implementing them. When adding the test case, you should be able to see the tests failing in the terminal ( gulp test ). Hence, once we see the failing test, the next step is to implement the code to make them pass.</p>
+
+<p><strong>Test Case 1:</strong></p>
+
+<blockquote><p>The accordion should exist as a React Component</p></blockquote>
+
+<p>Write the first test case in <strong>accordionComponent-spec.js</strong></p>
+
+<p>```js accordionComponent-spec.js
+jest.dontMock(&lsquo;../scripts/accordionComponent.js&rsquo;);</p>
+
+<p>describe(&lsquo;Accordion&rsquo;, function() {
+  var React = require(&lsquo;react&rsquo;);
+  var ReactDOM = require(&lsquo;react-dom&rsquo;);
+  var TestUtils = require(&lsquo;react-addons-test-utils&rsquo;);</p>
+
+<p>  var Accordion;</p>
+
+<p>  beforeEach(function() {</p>
+
+<pre><code>Accordion = require('../scripts/accordionComponent');
+</code></pre>
+
+<p>  });</p>
+
+<p>  it(&lsquo;should exists&rsquo;, function() {</p>
+
+<pre><code>// Render into document
+var accordion = TestUtils.renderIntoDocument( &lt;Accordion /&gt; );
+expect(TestUtils.isCompositeComponent(accordion)).toBeTruthy();
+</code></pre>
+
+<p>  });
+});
+```</p>
+
+<div class="info">
+Note: By using <strong>jest.dontMock</strong>, we get the original react component in the scripts folder ( as Jest tries to mock every component by default ).
+</div>
+
+
+<br>
+
+
+<p>Let&rsquo;s make the test pass:</p>
+
+<p>```js accordionComponent.js
+&lsquo;use strict&rsquo;;</p>
+
+<p>var React = require(&lsquo;react&rsquo;);</p>
+
+<p>var Accordion = React.createClass({
+  render: function(){</p>
+
+<pre><code>return ( 
+  &lt;div&gt;Accordion component&lt;/div&gt;
+);
+</code></pre>
+
+<p>  }
+});</p>
+
+<p>module.exports = Accordion;
+```
+Okay, the tests are passing now. Let&rsquo;s also make sure that our component renders properly in the browser. Modify the <strong>app.js</strong> to render the <strong>accordionComponent</strong>.</p>
+
+<p>```js app.js
+&lsquo;use strict&rsquo;;</p>
+
+<p>var React = require(&lsquo;react&rsquo;);
+var ReactDOM = require(&lsquo;react-dom&rsquo;);
+var Accordion = require(&lsquo;components/accordionComponent&rsquo;);
+ReactDOM.render(<Accordion/>, document.getElementById(&lsquo;view&rsquo;));
+```</p>
+
+<p>If it works, proceed to next test case.</p>
+
+<p><strong>Test Case 2:</strong></p>
+
+<blockquote><p>Accordion should build the layout from an array of objects passed as prop.</p></blockquote>
+
+<p>This time let&rsquo;s make our component configurable. We have to pass an array data to the component, and expect it to build the layout for the Accordion.</p>
+
+<p>```js
+it(&lsquo;should build the layout from an array of objects passed as prop&rsquo;, function() {</p>
+
+<pre><code>var input = [{
+  name: 'Title 1',
+  content: 'Content belongs to title 1'
+},{
+  name: 'Title 2',
+  content: 'Content belongs to title 2'
+}];
+
+var accordion = TestUtils.renderIntoDocument( &lt;Accordion data={input}/&gt; );
+var headers = TestUtils.scryRenderedDOMComponentsWithClass(accordion, 'accordion-header');
+var contents = TestUtils.scryRenderedDOMComponentsWithClass(accordion, 'accordion-content');
+
+expect(headers.length).toEqual(2);
+expect(contents.length).toEqual(2);
+
+expect(headers[0].textContent).toEqual('Title 1');
+expect(headers[1].textContent).toEqual('Title 2');
+
+expect(contents[0].textContent).toEqual('Content belongs to title 1');
+expect(contents[1].textContent).toEqual('Content belongs to title 2');
+</code></pre>
+
+<p>  });
+```</p>
+
+<p>To make everything green:</p>
+
+<p>```js accordionComponent.js
+&lsquo;use strict&rsquo;;</p>
+
+<p>var React = require(&lsquo;react&rsquo;);</p>
+
+<p>var Accordion = React.createClass({
+  render: function(){</p>
+
+<pre><code>var panes = [];
+var data = this.props.data || [];
+
+data.forEach(function(item, index){
+  panes.push(
+    &lt;div key={index}&gt;
+      &lt;div className="accordion-header"&gt;
+        {item.name}
+      &lt;/div&gt;
+      &lt;div className="accordion-content"&gt;
+        {item.content}
+      &lt;/div&gt;
+    &lt;/div&gt;
+  );
+});
+
+return (
+  &lt;div className="accordion"&gt;
+    {panes}
+  &lt;/div&gt;
+);
+</code></pre>
+
+<p>  }
+});</p>
+
+<p>module.exports = Accordion;
+```</p>
+
+<p>All the tests pass now. To see the component works in browser, edit the <code>app.js</code> and pass the configuration:</p>
+
+<p>```js app.js
+&lsquo;use strict&rsquo;;</p>
+
+<p>var React = require(&lsquo;react&rsquo;);
+var ReactDOM = require(&lsquo;react-dom&rsquo;);
+var Accordion = require(&lsquo;components/accordionComponent&rsquo;);
+var input = [{
+  name: &lsquo;Title 1&rsquo;,
+  content: &lsquo;Content belongs to title 1&rsquo;
+},{
+  name: &lsquo;Title 2&rsquo;,
+  content: &lsquo;Content belongs to title 2&rsquo;
+}];</p>
+
+<p>ReactDOM.render(<Accordion data={input}/>, document.getElementById(&lsquo;view&rsquo;));
+```</p>
+
+<p>You should be able to see that our Accordion component renders the new layout.</p>
+
+<p><strong>Test Case 3:</strong></p>
+
+<blockquote><p>By default, all the content section should be hidden unless specified by a flag.</p></blockquote>
+
+<p>Add the following test case:</p>
+
+<p>```js
+it(&lsquo;should hide all the contents by default unless specified by a flag&rsquo;, function(){</p>
+
+<pre><code>var input = [{
+  name: 'Title 1',
+  content: 'Content belongs to title 1'
+},{
+  name: 'Title 2',
+  content: 'Content belongs to title 2',
+  showOnLoad: true
+}];
+
+var accordion = TestUtils.renderIntoDocument( &lt;Accordion data={input}/&gt; );
+var contents = TestUtils.scryRenderedDOMComponentsWithClass(accordion, 'accordion-content');
+expect(contents.length).toEqual(1);
+expect(contents[0].textContent).toEqual('Content belongs to title 2');
+</code></pre>
+
+<p>  });
+```
+And make it pass:</p>
+
+<p>```js accordionComponent.js
+&lsquo;use strict&rsquo;;</p>
+
+<p>var React = require(&lsquo;react&rsquo;);</p>
+
+<p>var Accordion = React.createClass({
+  render: function(){</p>
+
+<pre><code>var panes = [];
+var data = this.props.data || [];
+
+var getContent = function(item){
+  return !item.showOnLoad ? '': (
+    &lt;div className="accordion-content"&gt;
+      {item.content}
+    &lt;/div&gt;
+  );
+};
+
+data.forEach(function(item, index){
+  panes.push(
+    &lt;div key={index}&gt;
+      &lt;div className="accordion-header"&gt;
+        {item.name}
+      &lt;/div&gt;
+      { getContent(item) }
+    &lt;/div&gt;
+  );
+});
+
+return (
+  &lt;div className="accordion"&gt;
+    {panes}
+  &lt;/div&gt;
+);
+</code></pre>
+
+<p>  }
+});</p>
+
+<p>module.exports = Accordion;
+```</p>
+
+<p>This code will make the above test case pass, but you can see that it makes the previous test case ( Test case 2 ) fail.</p>
+
+<p>This is not a problem at all, because in TDD this is what we expect. We need to continuously refactor both source and test codes while we build the component. Let&rsquo;s modify the <code>input</code> in the previous test case to make the tests pass.</p>
+
+<p><code>js TestCase2
+var input = [{
+   name: 'Title 1',
+   content: 'Content belongs to title 1',
+   showOnLoad: true
+ },{
+   name: 'Title 2',
+   content: 'Content belongs to title 2',
+   showOnLoad: true
+ }];
+</code>
+This is the beauty of TDD; designing the component step by step. By now, we made our component configurable also.</p>
+
+<p><strong>Test Case 4:</strong></p>
+
+<blockquote><p>It should be able to toggle the content by clicking on the respective title.</p></blockquote>
+
+<p>```js
+it(&lsquo;should be able to toggle the content by clicking on the respective title.&rsquo;, function(){</p>
+
+<pre><code>var input = [{
+  name: 'Title 1',
+  content: 'Content belongs to title 1'
+},{
+  name: 'Title 2',
+  content: 'Content belongs to title 2'
+}];
+
+var accordion = TestUtils.renderIntoDocument( &lt;Accordion data={input}/&gt; );
+var headers = TestUtils.scryRenderedDOMComponentsWithClass(accordion, 'accordion-header');
+var contents = TestUtils.scryRenderedDOMComponentsWithClass(accordion, 'accordion-content');
+
+expect(contents.length).toEqual(0);
+TestUtils.Simulate.click(headers[0]);
+contents = TestUtils.scryRenderedDOMComponentsWithClass(accordion, 'accordion-content');
+expect(contents.length).toEqual(1);
+expect(contents[0].textContent).toEqual('Content belongs to title 1');
+TestUtils.Simulate.click(headers[0]);
+contents = TestUtils.scryRenderedDOMComponentsWithClass(accordion, 'accordion-content');
+expect(contents.length).toEqual(0);
+</code></pre>
+
+<p>  });
+```
+The tests are <span style="color:red">RED</span> again. Before we move on, it&rsquo;s time to think about the code design again. If you obeserve, we have a stateful component now. It means, each of the <em>pane</em> in the Accordion can have its own closed or open states.</p>
+
+<p>While designing your applications, it&rsquo;s a bad practice to put whole logic into one single component. We should think about small components &mdash; which handles single tasks &mdash; and create composite components for big features. Here, in our code we should move the state-full code into a separate component; Let&rsquo;s call it as a <strong>Pane</strong> component.</p>
+
+<p>See the code below:</p>
+
+<p>```js accordionComponent.js
+&lsquo;use strict&rsquo;;</p>
+
+<p>var React = require(&lsquo;react&rsquo;);</p>
+
+<p>var Pane = React.createClass({
+  getInitialState: function(){</p>
+
+<pre><code>return {
+  show: this.props.data.showOnLoad
+};
+</code></pre>
+
+<p>  },</p>
+
+<p>  toggle: function(){</p>
+
+<pre><code>this.setState({
+  show: !this.state.show
+});
+</code></pre>
+
+<p>  },</p>
+
+<p>  render: function(){</p>
+
+<pre><code>var getContent = (function(item){
+  return this.state.show ? (
+    &lt;div className="accordion-content"&gt;
+      {item.content}
+    &lt;/div&gt;
+  ) : '';
+}).bind(this);
+
+var item = this.props.data;
+
+return (
+  &lt;div&gt;
+    &lt;div className="accordion-header" onClick={this.toggle}&gt;
+      {item.name}
+    &lt;/div&gt;
+    { getContent(item) }
+  &lt;/div&gt;
+);
+</code></pre>
+
+<p>  }
+});</p>
+
+<p>var Accordion = React.createClass({
+  render: function(){</p>
+
+<pre><code>var panes = [];
+var data = this.props.data || [];
+
+data.forEach(function(item, index){
+  panes.push(
+    &lt;Pane data={item} key={index}/&gt;
+  );
+});
+
+return (
+  &lt;div className="accordion"&gt;
+    {panes}
+  &lt;/div&gt;
+);
+</code></pre>
+
+<p>  }
+});</p>
+
+<p>module.exports = Accordion;
+```
+All tests are <span style="color: green">GREEN</span> now ! If you check your browser window ( where the server is running ), you can see that our Accordion component is functional.</p>
+
+<p>Before we summarise, see the final source code and tests:</p>
+
+<p>```js accordionComponent-spec.js
+jest.dontMock(&lsquo;../scripts/accordionComponent.js&rsquo;);</p>
+
+<p>describe(&lsquo;Accordion&rsquo;, function() {
+  var React = require(&lsquo;react&rsquo;);
+  var TestUtils = require(&lsquo;react-addons-test-utils&rsquo;);
+  var Accordion;</p>
+
+<p>  beforeEach(function() {</p>
+
+<pre><code>Accordion = require('../scripts/accordionComponent');
+</code></pre>
+
+<p>  });</p>
+
+<p>  it(&lsquo;should exists&rsquo;, function() {</p>
+
+<pre><code>// Render into document
+var accordion = TestUtils.renderIntoDocument( &lt;Accordion /&gt; );
+expect(TestUtils.isCompositeComponent(accordion)).toBeTruthy();
+</code></pre>
+
+<p>  });</p>
+
+<p>  it(&lsquo;should build the layout from an array of objects passed as prop&rsquo;, function() {</p>
+
+<pre><code>var input = [{
+  name: 'Title 1',
+  content: 'Content belongs to title 1',
+  showOnLoad: true
+},{
+  name: 'Title 2',
+  content: 'Content belongs to title 2',
+  showOnLoad: true
+}];
+
+var accordion = TestUtils.renderIntoDocument( &lt;Accordion data={input}/&gt; );
+var headers = TestUtils.scryRenderedDOMComponentsWithClass(accordion, 'accordion-header');
+var contents = TestUtils.scryRenderedDOMComponentsWithClass(accordion, 'accordion-content');
+
+expect(headers.length).toEqual(2);
+expect(contents.length).toEqual(2);
+
+expect(headers[0].textContent).toEqual('Title 1');
+expect(headers[1].textContent).toEqual('Title 2');
+
+expect(contents[0].textContent).toEqual('Content belongs to title 1');
+expect(contents[1].textContent).toEqual('Content belongs to title 2');
+</code></pre>
+
+<p>  });</p>
+
+<p>  it(&lsquo;should hide all the contents by default unless specified by a flag&rsquo;, function(){</p>
+
+<pre><code>var input = [{
+  name: 'Title 1',
+  content: 'Content belongs to title 1'
+},{
+  name: 'Title 2',
+  content: 'Content belongs to title 2',
+  showOnLoad: true
+}];
+
+var accordion = TestUtils.renderIntoDocument( &lt;Accordion data={input}/&gt; );
+var contents = TestUtils.scryRenderedDOMComponentsWithClass(accordion, 'accordion-content');
+expect(contents.length).toEqual(1);
+expect(contents[0].textContent).toEqual('Content belongs to title 2');
+</code></pre>
+
+<p>  });</p>
+
+<p>  it(&lsquo;should be able to toggle the content by clicking on the respective title.&rsquo;, function(){</p>
+
+<pre><code>var input = [{
+  name: 'Title 1',
+  content: 'Content belongs to title 1'
+},{
+  name: 'Title 2',
+  content: 'Content belongs to title 2'
+}];
+
+var accordion = TestUtils.renderIntoDocument( &lt;Accordion data={input}/&gt; );
+var headers = TestUtils.scryRenderedDOMComponentsWithClass(accordion, 'accordion-header');
+var contents = TestUtils.scryRenderedDOMComponentsWithClass(accordion, 'accordion-content');
+
+expect(contents.length).toEqual(0);
+TestUtils.Simulate.click(headers[0]);
+contents = TestUtils.scryRenderedDOMComponentsWithClass(accordion, 'accordion-content');
+expect(contents.length).toEqual(1);
+expect(contents[0].textContent).toEqual('Content belongs to title 1');
+TestUtils.Simulate.click(headers[0]);
+contents = TestUtils.scryRenderedDOMComponentsWithClass(accordion, 'accordion-content');
+expect(contents.length).toEqual(0);
+</code></pre>
+
+<p>  });</p>
+
+<p>});
+```</p>
+
+<p>```js accordionComponent.js
+&lsquo;use strict&rsquo;;</p>
+
+<p>var React = require(&lsquo;react&rsquo;);</p>
+
+<p>var Pane = React.createClass({
+  getInitialState: function(){</p>
+
+<pre><code>return {
+  show: this.props.data.showOnLoad
+};
+</code></pre>
+
+<p>  },</p>
+
+<p>  toggle: function(){</p>
+
+<pre><code>this.setState({
+  show: !this.state.show
+});
+</code></pre>
+
+<p>  },</p>
+
+<p>  render: function(){</p>
+
+<pre><code>var getContent = (function(item){
+  return this.state.show ? (
+    &lt;div className="accordion-content"&gt;
+      {item.content}
+    &lt;/div&gt;
+  ) : '';
+}).bind(this);
+
+var item = this.props.data;
+
+return (
+  &lt;div&gt;
+    &lt;div className="accordion-header" onClick={this.toggle}&gt;
+      {item.name}
+    &lt;/div&gt;
+    { getContent(item) }
+  &lt;/div&gt;
+);
+</code></pre>
+
+<p>  }
+});</p>
+
+<p>var Accordion = React.createClass({
+  render: function(){</p>
+
+<pre><code>var panes = [];
+var data = this.props.data || [];
+
+data.forEach(function(item, index){
+  panes.push(
+    &lt;Pane data={item} key={index}/&gt;
+  );
+});
+
+return (
+  &lt;div className="accordion"&gt;
+    {panes}
+  &lt;/div&gt;
+);
+</code></pre>
+
+<p>  }
+});</p>
+
+<p>module.exports = Accordion;
+```</p>
+
+<p>```js app.js
+&lsquo;use strict&rsquo;;</p>
+
+<p>var React = require(&lsquo;react&rsquo;);
+var ReactDOM = require(&lsquo;react-dom&rsquo;);
+var Accordion = require(&lsquo;components/accordionComponent&rsquo;);
+var input = [{
+  name: &lsquo;Title 1&rsquo;,
+  content: &lsquo;Content belongs to title 1&rsquo;
+},{
+  name: &lsquo;Title 2&rsquo;,
+  content: &lsquo;Content belongs to title 2&rsquo;
+}];</p>
+
+<p>ReactDOM.render(<Accordion data={input}/>, document.getElementById(&lsquo;view&rsquo;));
+```</p>
+
+<h2>Summary</h2>
+
+<p>When I saw ReactJs first time, I didn&rsquo;t like the syntax at all. I watched the project grow with quite skepticism. Later, I got chance to work with it, and then I knew how powerful it was. Writing code in React really changed my thinking process about a UI driven application. Now I started thinking everything in terms of components, and I know that&rsquo;s the <a href="http://webcomponents.org/">future of web development</a>.</p>
+
+<p>This article is my attempt to mix TDD with ReactJs . Here, we saw how to make a React component from scratch using TDD approach. I hope this tutorial is useful for everyone. Feedbacks are most welcome.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Implementing a curry function in JavaScript using TDD]]></title>
+    <link href="http://www.undefinednull.com/2015/03/19/implementing-a-curry-function-in-javascript-using-tdd/"/>
+    <updated>2015-03-19T18:51:27+04:00</updated>
+    <id>http://www.undefinednull.com/2015/03/19/implementing-a-curry-function-in-javascript-using-tdd</id>
+    <content type="html"><![CDATA[<p><img src="https://lh3.googleusercontent.com/dtPfB5V-ew-rm3aApkXHTA8jFVwsFzoNNepbn9wU=w264-h207-p-no" alt="TDD" /></p>
+
+<p>TDD stands for Test Driven Development. To those who don&rsquo;t know what TDD means: In a typical TDD Environment, a developer start with a basic test case describing the minimal requirement for implementing the module. Then he writes the actual implementation code for making the test case pass.</p>
+
+<p>Next, another test case is written for a different expectation for the module, followed by writing the implementation to make the test pass. This process goes on till the all the expectations for the actual module is implemented.</p>
+
+<p>This way of development ( driven by series of test cases ) is called TDD.</p>
+
+<h3>Setting up the tools</h3>
+
+<p>Here we&rsquo;re going to use <a href="http://mochajs.org">Mocha</a> as the unit testing framework. For running the tests, we will be using <a href="https://github.com/airportyh/testem">Testem</a>.</p>
+
+<!--more-->
+
+
+<p>We&rsquo;ll be using BDD ( Behaviour Driven Development, which is similar to TDD, but instead of <code>assertions</code> we use <code>expectaions</code>) style syntax. For that purpose let&rsquo;s use the excellent <a href="http://chaijs.com/">Chai.js</a> library.</p>
+
+<p>First install Testem:</p>
+
+<p><code>sh
+npm install -g testem
+</code>
+Now create a folder called <code>TDD</code> anywhere in your system. We&rsquo;re going to keep all our files in this folder.</p>
+
+<p><code>sh
+mkdir TDD &amp;&amp; cd TDD
+</code>
+Create the following files:</p>
+
+<ol>
+<li>curry.js  ( The module we&rsquo;re going to implement )</li>
+<li>curry-spec.js ( Test file for the curry.js )</li>
+<li>testem.yml ( Testem configurations )</li>
+</ol>
+
+
+<h4>Testem Configuration</h4>
+
+<p>Edit the <code>testem.yml</code> and set up the source files for running the tests.</p>
+
+<p><code>yml
+src_files:
+- curry.js
+- curry-spec.js
+</code>
+Open Terminal and run the command <code>testem</code> from the TDD folder to verify testem is running.</p>
+
+<h4>Mocha and Chai</h4>
+
+<p>As I said earlier, we&rsquo;re going to use <strong>Mocha</strong> and <strong>Chai</strong> for writing the test cases. By default, testem uses Jasmine as the testing framework. So to use Mocha and Chai, we need to change the testem configuration.</p>
+
+<p>First install Chai.js from npm.</p>
+
+<p><code>sh
+npm install chai
+</code></p>
+
+<p>Open the <code>testem.yml</code> in editor and modify like below.</p>
+
+<p><code>yml
+framework: mocha
+src_files:
+- node_modules/chai/chai.js
+- curry.js
+- curry-spec.js
+</code></p>
+
+<p>We also need to override the global <code>expect</code> in Testem with the <code>expect</code> method of Chai.js</p>
+
+<p>Create a <code>setup.js</code> file in TDD folder like below:</p>
+
+<p><code>js setup.js
+var expect = chai.expect
+</code>
+To make sure that everything works fine, edit the <strong>curry-spec.js</strong> with the following code and run the <code>testem</code> command from terminal.</p>
+
+<p>```js curry-spec.js
+describe(&lsquo;Testem setup&rsquo;, function () {</p>
+
+<pre><code>it('should verify the tests are passing', function(){
+    expect(1).to.eq(1);
+})
+</code></pre>
+
+<p>});
+```
+Open the link in the terminal to start capture the browser and run the tests. Once the tests ran, you should be able to see an output like this:</p>
+
+<p>```sh
+TEST'EM &lsquo;SCRIPTS!
+Open the URL below in a browser to connect.
+<a href="http://localhost:7357/">http://localhost:7357/</a>
+━━━━━━━━━━━━━━┓
+  Chrome 40.0 ┃</p>
+
+<pre><code>1/1 ✔     ┃
+          ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+</code></pre>
+
+<p>✔ 1 tests complete.
+[Press ENTER to run tests; q to quit; p to pause]
+```</p>
+
+<h2>Thinking about Behaviours of the Module</h2>
+
+<p>Behaviour of the module is the output it produces for various inputs. Or we can say, how the module is responding to various scenarios. These scenarios are going to be our test cases. So, before we start writing our test cases, we should think about all possible scenarios the module can handle with.</p>
+
+<h3>JavaScript Curry Function</h3>
+
+<p>Here we&rsquo;re going to implement a curry function in JavaScript. So in this case, the <em>module</em> or the <em>unit</em> is the function named <code>curry</code>. Let&rsquo;s think and start identifying different scenarios ( in this context, inputs ) for our <code>curry</code> function.</p>
+
+<p>According to <a href="http://en.wikipedia.org/wiki/Currying">Wikipedia</a>, curry function is defined as:</p>
+
+<blockquote><p>In mathematics and computer science, currying is the technique of translating the evaluation of a function that takes multiple arguments (or a tuple of arguments) into evaluating a sequence of functions, each with a single argument (partial application).</p></blockquote>
+
+<p>So by definition, a function <code>add(a,b,c)</code> is a curried function if the <code>add</code> function supports following:</p>
+
+<p>```js
+add(1,2,3) // should return 6
+add(1)(2)(3) // should return 6
+add(1,2)(3) // should return 6
+add(1)(2,3) // should return 6</p>
+
+<p>var sumofTwoAndThree = add(1,2) // sumofTwoAndThree should be a function
+sumofTwoAndThree(3) // should return 6
+```</p>
+
+<p>So, what we&rsquo;re going to implement now is a function that can create a curried function from any other function. We&rsquo;ll divide our test cases into two groups: one for curry function generator and another one for the actual curry function.</p>
+
+<h3>Writing the first test case</h3>
+
+<p>Let&rsquo;s start with the curry function generator. We&rsquo;ll name it as <code>makeCurry</code>. Its behaviour is to transform any function into a curried function.</p>
+
+<p>Edit the <strong>curry-spec.js</strong> and remove the test code we already added. Start with a new <code>describe</code> block. The <strong>curry-spec.js</strong> should be like this now:</p>
+
+<p>```js curry-spec.js
+describe(&lsquo;Curry function generator&rsquo;, function () {</p>
+
+<pre><code>it('should return a function', function(){
+    var add = function(){}
+    expect(makeCurry(add)).to.be.a('function');
+});
+</code></pre>
+
+<p>});
+```</p>
+
+<p>Run the <code>testem</code> command ( if it&rsquo;s already running, you can see the following output in the browser captured )</p>
+
+<p>```sh
+ReferenceError: makeCurry is not defined</p>
+
+<pre><code>at Context.&lt;anonymous&gt; (http://localhost:7357/curry-spec.js:4:16)
+at callFn (http://localhost:7357/testem/mocha.js:4338:21)
+at Test.Runnable.run (http://localhost:7357/testem/mocha.js:4331:7)
+at Runner.runTest (http://localhost:7357/testem/mocha.js:4728:10)
+at http://localhost:7357/testem/mocha.js:4806:12
+at next (http://localhost:7357/testem/mocha.js:4653:14)
+at http://localhost:7357/testem/mocha.js:4663:7
+at next (http://localhost:7357/testem/mocha.js:4601:23)
+at http://localhost:7357/testem/mocha.js:4630:5
+at timeslice (http://localhost:7357/testem/mocha.js:5761:27)
+</code></pre>
+
+<p><code>``
+We can see that the test is failing. The whole TDD starts from a failing test, and by making it pass. So why waiting, let's implement the</code>makeCurry` function inside the <strong>curry.js</strong> file.</p>
+
+<p>```js curry.js
+var makeCurry = function(){</p>
+
+<p>};
+```
+Now in the testem window, we can see another failure:</p>
+
+<p><code>sh
+AssertionError: expected undefined to be a function
+</code>
+Modify the <code>makeCurry</code> function to return a dummy function as its output.</p>
+
+<p>```js curry.js
+var makeCurry = function(){</p>
+
+<pre><code>return function(){};
+</code></pre>
+
+<p>};
+<code>``
+Our first test should pass now. By far, we have implemented the test case for the simple</code>makeCurry<code>function and implemented the</code>makeCurry` function.</p>
+
+<p>This is how the TDD works. In the next section, we&rsquo;ll see how the whole unit implementation is evolved in series of test cases and the code to make them pass.</p>
+
+<h2>Evolving the Final Code</h2>
+
+<p>For now, we have only one test case for the <code>makeCurry</code> function. Let&rsquo;s think about different scenarios for our curry function.</p>
+
+<ol>
+<li>Our curry function should always accept one function as parameter, if there is no function provided, it should throw an error.</li>
+</ol>
+
+
+<p>Add the another test case inside the <code>curry-spec.js</code></p>
+
+<p>```js curry-spec.js
+describe(&lsquo;Curry function generator&rsquo;, function () {</p>
+
+<pre><code>it('should return a function', function(){
+    var add = function(){}
+    expect(makeCurry(add)).to.be.a('function');
+});
+
+it('should throw an error if there is no valid function provided as argument', function(){
+    expect(function(){
+        makeCurry();
+    }).to.throw('No function provided');
+});
+</code></pre>
+
+<p>});
+```
+Now we can see that our test case is failing:</p>
+
+<p><code>sh
+AssertionError: expected [Function] to throw an error
+</code>
+This is because we haven&rsquo;t added the code in our <code>makeCurry</code> function to validate the arguments for it. Let&rsquo;s implement this functionality now:</p>
+
+<p>```js curry.js
+var makeCurry = function(fn){</p>
+
+<pre><code>if(typeof fn!=='function'){
+    throw Error('No function provided');
+}
+return function(){};
+</code></pre>
+
+<p>};
+<code>``
+Now we're getting into the rhythm of TDD. For now, we're done with the expectations for the</code>makeCurry<code>function. Let's implement the real</code>curry` function logic.</p>
+
+<p>We are going to add a new describe block for the expectations for curry function. Here, the curry function is the one <code>makeCurry</code> returns. I am going to list down all the expectations for the <code>curry</code> function here. We&rsquo;ll take one by one from the list and add to the test and implement the logic.</p>
+
+<p><strong>Expectations for the curry function</strong>:</p>
+
+<ul>
+<li>We should be able to call the curried function as the original function provided. Ie, if the original function is <code>add(1,2,3)</code> the curried function <code>curriedAdd(1,2,3)</code> should behave same as <code>add</code> function. Like this:</li>
+</ul>
+
+
+<p>```js</p>
+
+<pre><code>var add = function(a,b,c){
+    return a+b+c;
+}
+var curriedAdd = makeCurry( add );
+curriedAdd(1,2,3) // should return 6.
+</code></pre>
+
+<p>```
+&ndash; If we call the curried function with the lesser number of arguments, it should return a function</p>
+
+<p><code>js
+curriedAdd(1) // should return a function
+curriedAdd(1,2) // should return a function
+</code>
+&ndash; When the total number or arguments is equal to or greater than the original number of arguments, it should return the results</p>
+
+<p><code>js
+curriedAdd(1)(2)(3) // should return 6
+curriedAdd(1,2)(3) // should return 6
+curriedAdd(1)(2,3) // should return 6
+curriedAdd(1,2)(3,4,5,6) // should return 6
+</code>
+&ndash; We should be able to make any number of independent curried functions using <code>makeCurry</code> function.</p>
+
+<p>```js
+var add = function(a,b,c){</p>
+
+<pre><code>return a+b+c;
+</code></pre>
+
+<p>};
+var curryA = makeCurry(add);
+var curryB = makeCurry(add);</p>
+
+<p>curryA(1,2)(3) // return 6
+curryB(1)(2)(3) // return 6
+```</p>
+
+<p>We came up with all the test scenarios for our curry function. Let&rsquo;s pick one by one and implement the logic. Add the first test case inside the new <code>describe</code> block.</p>
+
+<p>```js curry-spec.js
+describe(&lsquo;Curry function generator&rsquo;, function () {</p>
+
+<pre><code>it('should return a function', function(){
+    var add = function(){}
+    expect(makeCurry(add)).to.be.a('function');
+});
+
+it('should throw an error if there is no valid function provided as argument', function(){
+    expect(function(){
+        makeCurry();
+    }).to.throw('No function provided');
+});
+</code></pre>
+
+<p>});</p>
+
+<p>describe(&lsquo;Curry function&rsquo;, function(){</p>
+
+<pre><code>var add;
+
+beforeEach(function(){
+    add = function(a,b,c){
+        return a + b + c;
+    };
+});
+
+it('should return the proper result if called with original number of arguments',function(){
+    var curriedAdd = makeCurry( add );
+    expect( curriedAdd(1,2,3) ).to.eq(6);
+});
+</code></pre>
+
+<p>});
+```
+Testem output should be like this:</p>
+
+<p>```sh
+Curry function should return the proper result if called with original number of arguments</p>
+
+<pre><code>✘ expected undefined to equal 6
+    AssertionError: expected undefined to equal 6
+        at Context.&lt;anonymous&gt; (http://localhost:7357/curry-spec.js:25:40)
+        at callFn (http://localhost:7357/testem/mocha.js:4338:21)
+        at Test.Runnable.run (http://localhost:7357/testem/mocha.js:4331:7)
+        at Runner.runTest (http://localhost:7357/testem/mocha.js:4728:10)
+        at http://localhost:7357/testem/mocha.js:4806:12
+        at next (http://localhost:7357/testem/mocha.js:4653:14)
+        at http://localhost:7357/testem/mocha.js:4663:7
+        at next (http://localhost:7357/testem/mocha.js:4601:23)
+        at http://localhost:7357/testem/mocha.js:4625:7
+        at done (http://localhost:7357/testem/mocha.js:4300:5)
+</code></pre>
+
+<p>```</p>
+
+<p>Let&rsquo;s make the test pass by adding the implementation:</p>
+
+<p>```js curry.js
+var makeCurry = function(fn){</p>
+
+<pre><code>if(typeof fn!=='function'){
+    throw Error('No function provided');
+}
+
+var slice = [].slice;
+return function curriedFn(){
+  var args = slice.call(arguments);
+  return fn.apply(null, args);
+};
+</code></pre>
+
+<p>};
+```
+Okay now, tests are passing. Let&rsquo;s add the next test case inside the &ldquo;Curry function&rdquo; describe block:</p>
+
+<p>```js
+it(&lsquo;should return a function when arguments count is less than the original number of arguments&rsquo;, function(){</p>
+
+<pre><code>var curriedAdd = makeCurry( add );
+expect( curriedAdd(1,2) ).to.be.a('function');
+</code></pre>
+
+<p>});
+```</p>
+
+<p>Tests are failing now. Time to make them pass.</p>
+
+<p>Now we need to verify that the number of arguments passed is less than the original number of arguments. If it lesser, the tests are expecting a function to be returned ( than executing the original function ). Let&rsquo;s implement this:</p>
+
+<p>```js curry.js
+var makeCurry = function(fn){</p>
+
+<pre><code>if(typeof fn!=='function'){
+    throw Error('No function provided');
+}
+
+var slice = [].slice;
+return function curriedFn(){
+  var args = slice.call(arguments);
+
+  if(args.length &lt; fn.length){
+    return curriedFn;
+  }
+
+  return fn.apply(null, args);
+};
+</code></pre>
+
+<p>};
+```</p>
+
+<p>All the tests are passing now. Let&rsquo;s pick the next test case.</p>
+
+<p>```js
+it(&lsquo;should return the result whenever the total number of arguments is greater than or equal to the original number of arguments&rsquo;, function(){</p>
+
+<pre><code>var curriedAdd = makeCurry( add );
+expect( curriedAdd(1)(2) ).to.be.a('function');
+expect( curriedAdd(1)(2)(3) ).to.eq(6);
+expect( curriedAdd(1,2)(3) ).to.eq(6);
+expect( curriedAdd(1)(2,3) ).to.eq(6);
+expect( curriedAdd(1,2)(3,4,5,6,7) ).to.eq(6);
+</code></pre>
+
+<p>});
+```</p>
+
+<p>And the implementation:</p>
+
+<p>```js curry.js</p>
+
+<p>var makeCurry = function(fn){</p>
+
+<pre><code>if(typeof fn!=='function'){
+    throw Error('No function provided');
+}
+
+var slice = [].slice;
+return function curriedFn(){
+  var args = slice.call(arguments);
+
+  if(args.length &lt; fn.length){
+    return function(){
+      return curriedFn.apply(null, args.concat( slice.call(arguments) ));
+    };
+  }
+
+  return fn.apply(null, args);
+};
+</code></pre>
+
+<p>};
+```</p>
+
+<p>Now, we&rsquo;re going to add our last test case.</p>
+
+<p>```js
+it(&lsquo;should support creating multple curry functions&rsquo;, function(){</p>
+
+<pre><code>var curryA = makeCurry(add);
+var curryB = makeCurry(add);
+
+expect( curryA(1,2)(3) ).to.eq(6);
+expect( curryA(1,2) ).to.be.a('function');
+
+expect( curryB(1)(2)(3) ).to.eq(6);
+expect( curryB(1)(2) ).to.be.a('function');
+</code></pre>
+
+<p>});
+```</p>
+
+<p>And this time, Testem reports that all tests are passing. Voila!, it means we&rsquo;re done with our curry function implementation.</p>
+
+<h2>Final code</h2>
+
+<p>Here is the final code for <strong>curry-spec.js</strong> and the <strong>curry.js</strong>.</p>
+
+<p>```js curry-spec.js
+describe(&lsquo;Curry function generator&rsquo;, function () {</p>
+
+<pre><code>it('should return a function', function(){
+    var add = function(){}
+    expect(makeCurry(add)).to.be.a('function');
+});
+
+it('should throw an error if there is no valid function provided as argument', function(){
+    expect(function(){
+        makeCurry();
+    }).to.throw('No function provided');
+});
+</code></pre>
+
+<p>});</p>
+
+<p>describe(&lsquo;Curry function&rsquo;, function(){</p>
+
+<pre><code>var add;
+
+beforeEach(function(){
+    add = function(a,b,c){
+        return a + b + c;
+    };
+});
+
+it('should return the proper result if called with original number of arguments',function(){
+    var curriedAdd = makeCurry( add );
+    expect( curriedAdd(1,2,3) ).to.eq(6);
+});
+
+it('should return the curried function when arguments count is less than the original number of arguments', function(){
+    var curriedAdd = makeCurry( add );
+    expect( curriedAdd(1,2) ).to.be.a('function');
+});
+
+it('should return the result whenever the total number of arguments is greater than or equal to the original number of arguments', function(){
+    var curriedAdd = makeCurry( add );
+    expect( curriedAdd(1)(2) ).to.be.a('function');
+    expect( curriedAdd(1)(2)(3) ).to.eq(6);
+    expect( curriedAdd(1,2)(3) ).to.eq(6);
+    expect( curriedAdd(1)(2,3) ).to.eq(6);
+    expect( curriedAdd(1,2)(3,4,5,6,7) ).to.eq(6);
+});
+
+it('should support creating multple curry functions', function(){
+    var curryA = makeCurry(add);
+    var curryB = makeCurry(add);
+
+    expect( curryA(1,2)(3) ).to.eq(6);
+    expect( curryA(1,2) ).to.be.a('function');
+
+    expect( curryB(1)(2)(3) ).to.eq(6);
+    expect( curryB(1)(2) ).to.be.a('function');
+});
+</code></pre>
+
+<p>});
+```</p>
+
+<p>```js curry.js</p>
+
+<p>var makeCurry = function(fn){</p>
+
+<pre><code>if(typeof fn!=='function'){
+    throw Error('No function provided');
+}
+
+var slice = [].slice;
+return function curriedFn(){
+  var args = slice.call(arguments);
+  if(args.length &lt; fn.length){
+    return function(){
+      return curriedFn.apply(null, args.concat( slice.call(arguments) ));
+    };
+  }
+
+  return fn.apply(null, args);
+};
+</code></pre>
+
+<p>};
+```</p>
+
+<h2>Summary</h2>
+
+<p>I wouldn&rsquo;t say TDD is nice and simple. Writing all the code in TDD way is tough and frustrating for beginners. But if you keep practicing TDD, eventually you are going to love it. TDD will help you to concentrate on a small part of your code and complete it with perfection. Finally, that will lead to implement a better design for your actual module. So my point is, TDD is useful for better architecture of your code and the code will be less error prone.</p>
+
+<p>Thanks for reading. I hope this will help for implementing TDD for your next project. Feedbacks are welcome.</p>
+]]></content>
+  </entry>
+  
+</feed>

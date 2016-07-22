@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: localhost | Undefined NULL]]></title>
+  <link href="http://www.undefinednull.com/blog/categories/localhost/atom.xml" rel="self"/>
+  <link href="http://www.undefinednull.com/"/>
+  <updated>2016-07-22T13:51:36+04:00</updated>
+  <id>http://www.undefinednull.com/</id>
+  <author>
+    <name><![CDATA[Shidhin]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Remote debugging localhost with weinre ( and HTTPS too ) ]]></title>
+    <link href="http://www.undefinednull.com/2015/03/17/remote-debugging-localhost-with-weinre/"/>
+    <updated>2015-03-17T10:33:00+04:00</updated>
+    <id>http://www.undefinednull.com/2015/03/17/remote-debugging-localhost-with-weinre</id>
+    <content type="html"><![CDATA[<p>Debugging mobile websites/applications is a real pain. No debuggers for Javascript, no console logs, cannot inspect html/css, and so on.</p>
+
+<p>Sometimes I think that I am debugging like the old IE6 days where I had to put <code>alert</code> in every line of the code to find out where the actual issue is. If you also came across the same, you know the pain.</p>
+
+<p>Lately, Google chrome came for the rescue. They relieved this pain by introducing remote debugging support in chrome mobile. Chrome remote debugging was a real life saver, where we get the same chrome devtools connected to the webpage in mobile browser. And, We can debug like the way we do it in desktop browsers.</p>
+
+<!--more-->
+
+
+<blockquote><p>That is Awesome!</p></blockquote>
+
+<p>But still the problem of Android browser debugging remains the same. Chrome remote debugging can be connected to the webpages loaded inside Chrome browser ( mobile ) only. If we need to debug default browsers, we have to use any other debugging tool. Here, in this post, we&rsquo;ll discuss about another wonderful remote debugging tool known as <strong>Weinre</strong>.</p>
+
+<h2>Install Weinre</h2>
+
+<p>Weinre is available as an npm package. If you have configured npm in your system, let&rsquo;s install weinre globally with the below command:</p>
+
+<p><code>npm -g install weinre</code></p>
+
+<p>You can find more instructions installing weinre <a href="http://people.apache.org/~pmuellr/weinre-docs/latest/Installing.html">HERE</a>.</p>
+
+<p>Now run the command <code>weinre --help</code> to see all available options.</p>
+
+<p>```sh
+usage:   weinre [options]
+version: 2.0.0-pre-HH0SN197</p>
+
+<p>options:</p>
+
+<pre><code>--httpPort     port to run the http server on        default: 8080
+--boundHost    ip address to bind the server to      default: localhost
+--verbose      print more diagnostics                default: false
+--debug        print even more diagnostics           default: false
+--readTimeout  seconds to wait for a client message  default: 5
+--deathTimeout seconds to wait to kill client        default: 3*readTimeout
+</code></pre>
+
+<p>&mdash;boundHost can be an ip address, hostname, or -all-, where -all-
+means binding to all ip address on the current machine
+```</p>
+
+<p>To run weinre in default configurations, use the command <code>weinre -all-</code>.</p>
+
+<h2>Access localhost in mobile browser</h2>
+
+<p>The easiest way of accessing the dev machine is by using the IP address and port. Let&rsquo;s say the application is running on port 9002. To open it in the browser, first, we have to find out the IP address of the system where the application is running. Use the command <code>ifconfig</code> in OSX/Linux and <code>ipconfig</code> in Windows to find out the IP address. Now navigate to the browser window and use the <strong>IP_ADDRESS:PORT</strong> to see the running application.</p>
+
+<p>There are situations where we need to access the application using local hostname. These includes host header validation, solving cross domain request from JavaScript..etc. Normally these things are restricted when using the <strong>IP_ADDRESS:PORT</strong> combination.</p>
+
+<p>Accessing the local hostname in mobile devices is our first hurdle. I have found an excellent article about how to solve this issue. I don&rsquo;t want to explain all of those here, so let&rsquo;s follow this link:</p>
+
+<p><a href="http://egalo.com/2012/05/29/testing-mac-web-site-using-local-hostname-on-mobile-device/">http://egalo.com/2012/05/29/testing-mac-web-site-using-local-hostname-on-mobile-device/</a></p>
+
+<p>Once you&rsquo;re done, come back to check the next section.</p>
+
+<h2>Let&rsquo;s start remote debugging</h2>
+
+<p>Let&rsquo;s run weinre using a custom port and your IP address.</p>
+
+<p><code>sh
+weinre --httpPort 1234 --boundHost 192.168.2.109
+</code></p>
+
+<p>This will start the weinre server in port 1234.</p>
+
+<p><code>sh
+2015-02-19T13:56:42.520Z weinre: starting server at http://192.168.2.109:1234
+</code></p>
+
+<p>Open the link <code>http://192.168.2.109:1234</code> in your browser. We&rsquo;re mainly interested in the following links:</p>
+
+<p>```sh</p>
+
+<h2>Access Points</h2>
+
+<p>debug client user interface:    <a href="http://localhost:1234/client/#anonymous">http://localhost:1234/client/#anonymous</a>
+documentation:  <a href="http://localhost:1234/doc/">http://localhost:1234/doc/</a></p>
+
+<h2>Target Script</h2>
+
+<p>You can use this script to inject the weinre target code into your web page.
+<a href="http://localhost:1234/target/target-script-min.js#anonymous">http://localhost:1234/target/target-script-min.js#anonymous</a>
+```</p>
+
+<p>Add the target script to which-ever page you need to inspect and use the debug client user interface link. The debug client is very similar to the Chrome dev tools.</p>
+
+<h2>HTTPS Support ?</h2>
+
+<p>As of now, weinre target script doesn&rsquo;t not support https. The problem with this is that if your site runs on https protocol and if you need to inject the weinre target script in any of the pages, the browser will block the script. Because the weinre script is loading through http protocol and the browser will not block any http resources if your website is https.</p>
+
+<p>We can fix this problem by using another service called <strong>ngrok</strong>. Basically, ngrok is a tunneling proxy where it exposes a tunnel to any web server and port as a subdomain. Since ngrok supports https, it is fairly easy to get the weinre server tunneled through ngrok with htttps.</p>
+
+<p>Let&rsquo;s see how this is done:</p>
+
+<p><strong>Install ngrok</strong></p>
+
+<p><code>sh
+npm install -g ngrok
+</code></p>
+
+<p><strong>Start the weinre server</strong></p>
+
+<p><code>sh
+weinre --httpPort 1234 --boundHost 192.168.2.109
+</code>
+<strong>Run ngrok pointing to the weinre server</strong></p>
+
+<p><code>sh
+ngrok 192.168.2.109:1234
+</code>
+This will output like this:</p>
+
+<p>```sh
+ngrok                                                                                            (Ctrl+C to quit)</p>
+
+<p>Tunnel Status                 online
+Version                       1.7/1.7
+Forwarding                    <a href="http://74bd4fb7.ngrok.com">http://74bd4fb7.ngrok.com</a> &ndash;> 192.168.2.109:1234
+Forwarding                    <a href="https://74bd4fb7.ngrok.com">https://74bd4fb7.ngrok.com</a> &ndash;> 192.168.2.109:1234
+Web Interface                 127.0.0.1:4040</p>
+
+<h1>Conn                        0</h1>
+
+<p>Avg Conn Time                 0.00ms
+```</p>
+
+<p>Now, <code>https://74bd4fb7.ngrok.com</code> is your https tunnel to weinre server. Open your browser and navigate to <code>192.168.2.109:1234</code>. Follow the set-up instructions given in that page after replacing <code>192.168.2.109</code> with <code>https://74bd4fb7.ngrok.com</code> for https support.</p>
+
+<p><strong>Note:</strong></p>
+
+<p>If you&rsquo;re having any Javascript error in the target script, you might need to modify the <code>target-min-script.js</code>. To do that, find out the weinre path first:</p>
+
+<p><code>sh
+cd `which weinre`/../web/target
+vi target-min-script.js
+</code></p>
+
+<p>Now in the editor, search for the following text</p>
+
+<p><code>js
+pattern = /(http:\/\/(.*?)\/)/;
+</code>
+Replace it with the below one and save.</p>
+
+<p><code>js
+pattern = /(https?:\/\/(.*?)\/)/;
+</code></p>
+
+<p>Now you can use weinre in https pages.</p>
+
+<h2>Summary</h2>
+
+<p>Weinre is really a powerful tool for remote debugging. Here in this guide, we saw how to configure and use weinre to debug local websites. I hope this will help someone who would be struggling to work with Android browsers. I would like also mention that there is an online hosted weinre server available. You can check it out <a href="http://debug.build.phonegap.com/">http://debug.build.phonegap.com/</a>. The only drawback is that it will not support https pages.</p>
+
+<p>Thanks for reading. Let me know the feedback and any comments.</p>
+]]></content>
+  </entry>
+  
+</feed>

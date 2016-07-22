@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: blog | Undefined NULL]]></title>
+  <link href="http://www.undefinednull.com/blog/categories/blog/atom.xml" rel="self"/>
+  <link href="http://www.undefinednull.com/"/>
+  <updated>2016-07-22T13:51:36+04:00</updated>
+  <id>http://www.undefinednull.com/</id>
+  <author>
+    <name><![CDATA[Shidhin]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Starting my new blog: Finally Octopress]]></title>
+    <link href="http://www.undefinednull.com/2013/09/25/starting-my-new-blog-finally-octopress/"/>
+    <updated>2013-09-25T07:36:00+04:00</updated>
+    <id>http://www.undefinednull.com/2013/09/25/starting-my-new-blog-finally-octopress</id>
+    <content type="html"><![CDATA[<h2>Finally Octopress !!</h2>
+
+<p>I wanted to start writing blog ever since I started coding. I never had a success setting it up because of time constraints and many other reasons. During this time, I&rsquo;ve evaluated a number of blogging platforms and eventually I thought of using wordpress as my blogging platform when I start my blog.</p>
+
+<p>Now finally I&rsquo;m having some time. I decided to spend some time everyday dedicating to my blog. So first thing I need to do is setting up a wordpress blog with default template.</p>
+
+<p>I started browsing to find a good theme for the wordpress blog before setting up anything. While browsing, I opened <strong><a href="http://www.paulirish.com">paulirish.com</a></strong> and saw that he&rsquo;d recently switched his blog to some new blogging software called Octopress.</p>
+
+<!-- more -->
+
+
+<p>I also read about Octopress from my daily reading list, but didn&rsquo;t give much attention to it. But I found Paul&rsquo;s blog very neat –– The default theme of Octopress is awesome –– and it&rsquo;s responsive too. I started checking out all Octopress blogs, and how to configure it. Finally I decided to use Octopress for my blog.</p>
+
+<h3>Why Octopress and not Wordpress ?</h3>
+
+<p>Octopress is simple and comes up with a neat, elegant ( and responsive ) theme. Obviously Wordpress is really the most powerful and most widely used blogging software, and it has lot of extentions and plugins available. But for me , for writing some tech tips , don&rsquo;t need all those stuff. Using Octopress , I can use familiar git commands , write everything in markdown and finally can deploy to github pages.</p>
+
+<p>Another thing I liked is, all my blog content will be residing in my system itself in the form of markdown files. I can generate my static blog site anytime I need and deploy to number of hosting services. The advantage of a static website over a dynamic platform like Wordpress is : It&rsquo;s loading time will be faster. Because everytime I access a blog post in Wordpress, it need to fetch from the database. But Octopress blog will have only static html pages –– so it will be loaded faster.</p>
+
+<h3>How to set up an Octopress blog ?</h3>
+
+<p>This had been covered in many articles. Just google around , you can find a lot. I followed these simple instructions given in the Octopress website. Link is given below</p>
+
+<p><a href="http://octopress.org/docs/deploying/github/">http://octopress.org/docs/deploying/github/</a></p>
+
+<p>There&rsquo;re couple of good themes built for Octopress ( It&rsquo;s all 3rd party ). Since I like the default Octopress theme, I didn&rsquo;t try any 3rd party themes. But It&rsquo;s worth checking out those.</p>
+
+<p>PS: I&rsquo;ll be writing mainly about Javascript , HTML ,CSS and client side framework and design patterns here. Expect more posts from me soon in this space.</p>
+]]></content>
+  </entry>
+  
+</feed>

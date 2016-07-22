@@ -1,0 +1,533 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Repeating Multiple Elements using ng-repeat-start and ng-repeat-end in AngularJS</title>
+  <meta name="author" content="Shidhin">
+
+  
+  <meta name="description" content="When the AngularJS website is released, the TODO example in their website was one of the main attractions. The example was simple and just below 30 &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://www.undefinednull.com/2015/04/10/repeating-multiple-elements-using-ng-repeat-start-and-ng-repeat-end-in-angularjs">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="http://feeds.feedburner.com/undefinednull/com" rel="alternate" title="Undefined NULL" type="application/atom+xml">
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<!-- <link href="https://fonts.googleapis.com/css?family=Kreon:400,300" rel="stylesheet" type="text/css"> -->
+<style type="text/css">
+  /* latin */
+  @font-face {
+    font-family: 'Kreon';
+    font-style: normal;
+    font-weight: 300;
+    src: local('Kreon Light'), local('Kreon-Light'), url(https://fonts.gstatic.com/s/kreon/v9/76aS1J5Mmu41iLp2Z15uBXYhjbSpvc47ee6xR_80Hnw.woff2) format('woff2');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000;
+  }
+  /* latin */
+  @font-face {
+    font-family: 'Kreon';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Kreon Regular'), local('Kreon-Regular'), url(https://fonts.gstatic.com/s/kreon/v9/DedTOFfDyPja0h-dTOyw06CWcynf_cDxXwCLxiixG1c.woff2) format('woff2');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000;
+  }
+</style>
+
+  <script src="/javascripts/modernizr-2.0.js" async></script>
+  <script src="/javascripts/jquery.min.js" async></script>
+  <script src="/javascripts/octopress.js" type="text/javascript" async></script>
+  
+  <script type="text/javascript">
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ga('create', 'UA-10379928-17', 'auto');
+ga('require', 'displayfeatures');
+ga('send', 'pageview');
+  </script>
+
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">Undefined NULL</a><span class="note">  - by Shidhin </span></h1>
+  
+    <h2>Scribbles of a UI developer, JavaScript enthusiast</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="http://feeds.feedburner.com/undefinednull/com" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="https://www.google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:www.undefinednull.com" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Repeating Multiple Elements Using Ng-repeat-start and Ng-repeat-end in AngularJS</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2015-04-10T23:45:27+04:00" pubdate data-updated="true">Apr 10<span>th</span>, 2015</time>
+        
+         | <a href="#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>When the AngularJS <a href="http://www.angularjs.org">website</a> is released, the TODO example in their website was one of the main attractions. The example was simple and just below 30 lines of code ( Here is the <a href="https://jsfiddle.net/1waxcf9x/">link</a>  if you want to check ). The whole trick behind the scene was done by a directive named <strong>ng-repeat</strong>, as shown below:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nx">ng</span><span class="o">-</span><span class="nx">repeat</span><span class="o">=</span><span class="s2">&quot;todo in todoList.todos&quot;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Till Angular 1.2, ng-repeat was designed to work on a single DOM element. In other words, ng-repeat can repeat only the DOM element on which it is added. Therefore, some of the situations &mdash; see below &mdash; lead Angular community to think about modifying ng-repeat in version 1.2. In the next section, we&rsquo;ll see the problem with ng-repeat and the solutions introduced.</p>
+
+<!-- more -->
+
+
+<h3>What was the issue ?</h3>
+
+<p>Consider the model like this:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nx">$scope</span><span class="p">.</span><span class="nx">data</span> <span class="o">=</span> <span class="p">[{</span>
+</span><span class='line'>    <span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;Shidhin&#39;</span><span class="p">,</span>
+</span><span class='line'>    <span class="nx">info</span><span class="o">:</span> <span class="s1">&#39;I am from Dubai&#39;</span>
+</span><span class='line'><span class="p">},</span> <span class="p">{</span>
+</span><span class='line'>    <span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;Someone&#39;</span><span class="p">,</span>
+</span><span class='line'>    <span class="nx">info</span><span class="o">:</span> <span class="s1">&#39;I am from New york&#39;</span>
+</span><span class='line'><span class="p">}]</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>And assume if we need an output like this:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="nt">&lt;table&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;tr&gt;</span>
+</span><span class='line'>        <span class="nt">&lt;td&gt;</span>Shidhin<span class="nt">&lt;/td&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;/tr&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;tr&gt;</span>
+</span><span class='line'>        <span class="nt">&lt;td&gt;</span>I am from Dubai<span class="nt">&lt;/td&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;/tr&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;tr&gt;</span>
+</span><span class='line'>        <span class="nt">&lt;td&gt;</span>Someone<span class="nt">&lt;/td&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;/tr&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;tr&gt;</span>
+</span><span class='line'>        <span class="nt">&lt;td&gt;</span>I am from New york<span class="nt">&lt;/td&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;/tr&gt;</span>
+</span><span class='line'><span class="nt">&lt;/table&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>The fundamental problem here is, the <code>TR</code> tag cannot be grouped in another element other than <code>TABLE</code>. Since creating each <code>TABLE</code> for each <code>TR</code> is not feasible, it is difficult to create the above mark-up using ng-repeat.</p>
+
+<h3>What changed in Angular 1.2</h3>
+
+<p>From Angular version 1.2 onwards, ng-repeat got two siblings directives named <code>ng-repeat-start</code> and <code>ng-repeat-end</code>. With these, we can explicitly specify the starting and ending for ng-repeat. So, instead of using the ng-repeat directive on one single DOM element, we can specify the ng-repeat-start and ng-repeat-end on any two DOM elements.</p>
+
+<p>These directives do the same job as ng-repeat &mdash; it uses the same expressions as ng-repeat  &mdash; but the main difference is, it <strong>repeats all DOM elements</strong> between the starting element and ending element (including the starting and ending tags).</p>
+
+<p>Let&rsquo;s implement the above example with these new directives:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'>
+</span><span class='line'><span class="nt">&lt;table&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;tr</span> <span class="na">ng-repeat-start=</span><span class="s">&quot;d in data&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>        <span class="nt">&lt;td&gt;</span>{{d.name}}<span class="nt">&lt;/td&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;/tr&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;tr</span> <span class="na">ng-repeat-end</span><span class="nt">&gt;</span>
+</span><span class='line'>        <span class="nt">&lt;td&gt;</span>{{d.info}}<span class="nt">&lt;/td&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;/tr&gt;</span>
+</span><span class='line'><span class="nt">&lt;/table&gt;</span>
+</span><span class='line'>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>The above code will generate the desired output. You can see a <a href="http://jsfiddle.net/shidhincr/3eLp5u6m/1/">DEMO</a> here</p>
+
+<iframe style="width: 100%; height: 300px" frameborder="0" seamless="seamless" src="https://jsfiddle.net/shidhincr/3eLp5u6m/1/embedded/js,resources,html,css,result/light/"></iframe>
+
+
+<h3>Summary</h3>
+
+<p>Angular community had done a great job by introducing <strong>ng-repeat-start</strong> and <strong>ng-repeat-end</strong> directives. They&rsquo;re really powerful and solve some of the short-comings of the ng-repeat directive. I hope this article will help you for start using ng-repeat effectively in your next project. Thanks for reading!</p>
+</div>
+<!-- nothing here for now -->
+<!-- Go to www.addthis.com/dashboard to customize your tools -->
+<div class="addthis_sharing_toolbox"></div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Shidhin C R</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2015-04-10T23:45:27+04:00" pubdate data-updated="true">Apr 10<span>th</span>, 2015</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/angularjs/'>AngularJS</a>, <a class='category' href='/blog/categories/ng-repeat/'>ng-repeat</a>, <a class='category' href='/blog/categories/ng-repeat-end/'>ng-repeat-end</a>, <a class='category' href='/blog/categories/ng-repeat-start/'>ng-repeat-start</a>
+  
+</span>
+
+
+      
+  <h3>Related posts</h3>
+  <ol class="posts">
+  
+    <li class="related">
+      <a href="/2014/08/11/a-brief-walk-through-of-the-ng-options-in-angularjs/" onClick="ga('send', 'event', 'Post Page', 'Clicked Related Post', '/2014/08/11/a-brief-walk-through-of-the-ng-options-in-angularjs/', 1);">A brief walk-through of the ng-options in AngularJS</a>
+    </li>
+  
+    <li class="related">
+      <a href="/2014/02/11/mastering-the-scope-of-a-directive-in-angularjs/" onClick="ga('send', 'event', 'Post Page', 'Clicked Related Post', '/2014/02/11/mastering-the-scope-of-a-directive-in-angularjs/', 2);">Mastering the scope of the directives in AngularJS</a>
+    </li>
+  
+    <li class="related">
+      <a href="/2014/07/07/practical-guide-to-prelink-postlink-and-controller-methods-of-angular-directives/" onClick="ga('send', 'event', 'Post Page', 'Clicked Related Post', '/2014/07/07/practical-guide-to-prelink-postlink-and-controller-methods-of-angular-directives/', 3);">Practical Guide to PreLink, PostLink and Controller Methods of Angular Directives</a>
+    </li>
+  
+    <li class="related">
+      <a href="/2013/09/26/some-gotchas-in-arithmetic-expression-evaluation-javascript/" onClick="ga('send', 'event', 'Post Page', 'Clicked Related Post', '/2013/09/26/some-gotchas-in-arithmetic-expression-evaluation-javascript/', 4);"> Some Gotchas In Arithmetic Expression Evaluation : JavaScript</a>
+    </li>
+  
+  </ol>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://www.undefinednull.com/2015/04/10/repeating-multiple-elements-using-ng-repeat-start-and-ng-repeat-end-in-angularjs/" data-via="shidhincr" data-counturl="http://www.undefinednull.com/2015/04/10/repeating-multiple-elements-using-ng-repeat-start-and-ng-repeat-end-in-angularjs/" >Tweet</a>
+  
+  
+  <div class="g-plusone" data-size="medium"></div>
+  
+  
+    <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
+  
+</div>
+
+    
+    <p class="meta">
+    <div class="about">
+	<span class="about-image">
+		<img src="/images/shidhincr.jpg" alt="shidhincr">
+	</span>
+	<span class="about-desc">
+		<span>Shidhin is a senior Front end developer working in Namshi.com, Dubai. He is passionate about latest web technologies and open source softwares. <a href="http://www.undefinednull.com/">Undefinednull.com</a> is his personal blog, where he shares his experiences, thoughts and ideas. You can follow &amp; talk to him in <a href="http://www.twitter.com/shidhincr" target="_blank">twitter.com/shidhincr</a></span>
+		<br/>
+		<hr/>
+		<a href="https://twitter.com/shidhincr" class="twitter-follow-button" data-show-count="false" data-size="large">Follow @shidhincr</a>
+	</span>
+</div> 
+    </p>
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/2015/03/19/implementing-a-curry-function-in-javascript-using-tdd/" title="Previous Post: Implementing a curry function in JavaScript using TDD">&laquo; Implementing a curry function in JavaScript using TDD</a>
+      
+      
+        <a class="basic-alignment right" href="/2015/05/03/react-tdd-example-unit-testing-and-building-a-react-component-with-jest-gulp-and-react-test-utils/" title="Next Post: React TDD Example: Unit Testing and Building a React Component with Jest, Gulp and React Test Utils">React TDD Example: Unit Testing and Building a React Component with Jest, Gulp and React Test Utils &raquo;</a>
+      
+    </p>
+    <p class="meta">
+      <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+      <!-- blog_post_bottom -->
+      <ins class="adsbygoogle"
+           style="display:block"
+           data-ad-client="ca-pub-6186681246847670"
+           data-ad-slot="1223204544"
+           data-ad-format="auto"></ins>
+      <script>
+      (adsbygoogle = window.adsbygoogle || []).push({});
+      </script>
+    </p>
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+</div>
+
+<aside class="sidebar">
+  
+    <div class="about sidebar">
+  <span class="about-image">
+    <img src="/images/shidhincr.jpg" alt="shidhincr">
+  </span>
+  <span class="about-desc">
+    <span>Hey, I'm Shidhin C R <br/> I'm a UI / Front end developer ( currently in Dubai, UAE ). I use this space to share my experiences, experiments and thoughts. See more about me in <a href="https://www.linkedin.com/in/shidhincr" target="_blank">my LinkedIn profile.</a></span>
+    <br/>
+    <hr>
+    <a href="https://twitter.com/shidhincr" class="twitter-follow-button" data-show-count="false" data-size="large">Follow @shidhincr</a>
+    <hr>
+    <div class="g-follow" data-href="https://plus.google.com/u/0/113512069167494308499" data-rel="author" data-height="24"></div>
+    <hr>
+    <iframe src="//www.facebook.com/plugins/follow?href=https%3A%2F%2Fwww.facebook.com%2Fshidhincr&amp;layout=standard&amp;show_faces=true&amp;colorscheme=light&amp;width=450&amp;height=80" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:450px; height:80px;" allowTransparency="true"></iframe> 
+  </span>
+</div> <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/2016/04/21/debugging-react-native-apps-using-visual-studio-code/">Debugging React Native Apps Using Visual Studio Code</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2016/01/21/react-redux-part-1-implementing-a-counter-component-in-react-by-using-state/">React Redux Part 1 : Implementing a Counter Component in React by Using State</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2015/12/27/injecting-custom-javascript-into-react-natives-webview/">Injecting Custom JavaScript Into React Native's Webview</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2015/07/31/iterm-tips-and-zsh-plugins-for-better-development-environment/">iTerm Tips and Zsh Plugins for Better Development Environment</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2015/05/03/react-tdd-example-unit-testing-and-building-a-react-component-with-jest-gulp-and-react-test-utils/">React TDD Example: Unit Testing and Building a React Component With Jest, Gulp and React Test Utils</a>
+      </li>
+    
+  </ul>
+</section>
+
+<section>
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating...</li>
+  </ul>
+  
+  <a href="https://github.com/shidhincr">@shidhincr</a> on GitHub
+  
+  <script type="text/javascript">
+    window.addEventListener("load", function(event) {
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'shidhincr',
+            count: 3,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript" async> </script>
+</section>
+
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- undefinednull.com -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-6186681246847670"
+     data-ad-slot="2834158940"
+     data-ad-format="auto"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2016 - Shidhin -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+  <span style="position: absolute; right: 10px">
+   <a href="/privacypolicy.html">Privacy policy</a>&nbsp;|&nbsp;
+   <a href="/disclaimer.html">Disclaimer</a>
+  </span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'shidhincr';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'www.undefinednull.com/2015/04/10/repeating-multiple-elements-using-ng-repeat-start-and-ng-repeat-end-in-angularjs/';
+        var disqus_url = 'http://www.undefinednull.com/2015/04/10/repeating-multiple-elements-using-ng-repeat-start-and-ng-repeat-end-in-angularjs/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script +'?https';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id; js.async = true;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+  <script type="text/javascript">
+    (function() {
+      var script = document.createElement('script'); script.type = 'text/javascript'; script.async = true;
+      script.src = 'https://apis.google.com/js/plusone.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(script, s);
+    })();
+  </script>
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+<!-- AddThis Smart Layers BEGIN -->
+<!-- Go to http://www.addthis.com/get/smart-layers to customize -->
+<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-524e674f788aa8b9" async></script>
+<script type="text/javascript">
+  window.addEventListener("load", function(event) {
+    addthis.layers({
+      'theme' : 'dark',
+      'share' : {
+        'position' : 'right',
+        'numPreferredServices' : 6
+      } 
+    });
+  });
+</script>
+<!-- AddThis Smart Layers END -->
+
+
+<script src="/javascripts/fontfaceobserver.js" type="text/javascript"></script>
+<script type="text/javascript">
+  var kreon400 = new FontFaceObserver("Kreon", {
+    weight: 400
+  });
+  var kreon300 = new FontFaceObserver("Kreon", {
+    weight: 500
+  });
+
+  Promise.all([
+    kreon300.load(null, 5000),
+    kreon400.load(null ,5000),
+  ]).then(function() {
+    document.documentElement.className += " fonts-loaded";
+  }).catch(function(e){
+    console.log(e);
+  });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,583 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Curry | Undefined NULL]]></title>
+  <link href="http://www.undefinednull.com/blog/categories/curry/atom.xml" rel="self"/>
+  <link href="http://www.undefinednull.com/"/>
+  <updated>2016-07-22T13:51:36+04:00</updated>
+  <id>http://www.undefinednull.com/</id>
+  <author>
+    <name><![CDATA[Shidhin]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Implementing a curry function in JavaScript using TDD]]></title>
+    <link href="http://www.undefinednull.com/2015/03/19/implementing-a-curry-function-in-javascript-using-tdd/"/>
+    <updated>2015-03-19T18:51:27+04:00</updated>
+    <id>http://www.undefinednull.com/2015/03/19/implementing-a-curry-function-in-javascript-using-tdd</id>
+    <content type="html"><![CDATA[<p><img src="https://lh3.googleusercontent.com/dtPfB5V-ew-rm3aApkXHTA8jFVwsFzoNNepbn9wU=w264-h207-p-no" alt="TDD" /></p>
+
+<p>TDD stands for Test Driven Development. To those who don&rsquo;t know what TDD means: In a typical TDD Environment, a developer start with a basic test case describing the minimal requirement for implementing the module. Then he writes the actual implementation code for making the test case pass.</p>
+
+<p>Next, another test case is written for a different expectation for the module, followed by writing the implementation to make the test pass. This process goes on till the all the expectations for the actual module is implemented.</p>
+
+<p>This way of development ( driven by series of test cases ) is called TDD.</p>
+
+<h3>Setting up the tools</h3>
+
+<p>Here we&rsquo;re going to use <a href="http://mochajs.org">Mocha</a> as the unit testing framework. For running the tests, we will be using <a href="https://github.com/airportyh/testem">Testem</a>.</p>
+
+<!--more-->
+
+
+<p>We&rsquo;ll be using BDD ( Behaviour Driven Development, which is similar to TDD, but instead of <code>assertions</code> we use <code>expectaions</code>) style syntax. For that purpose let&rsquo;s use the excellent <a href="http://chaijs.com/">Chai.js</a> library.</p>
+
+<p>First install Testem:</p>
+
+<p><code>sh
+npm install -g testem
+</code>
+Now create a folder called <code>TDD</code> anywhere in your system. We&rsquo;re going to keep all our files in this folder.</p>
+
+<p><code>sh
+mkdir TDD &amp;&amp; cd TDD
+</code>
+Create the following files:</p>
+
+<ol>
+<li>curry.js  ( The module we&rsquo;re going to implement )</li>
+<li>curry-spec.js ( Test file for the curry.js )</li>
+<li>testem.yml ( Testem configurations )</li>
+</ol>
+
+
+<h4>Testem Configuration</h4>
+
+<p>Edit the <code>testem.yml</code> and set up the source files for running the tests.</p>
+
+<p><code>yml
+src_files:
+- curry.js
+- curry-spec.js
+</code>
+Open Terminal and run the command <code>testem</code> from the TDD folder to verify testem is running.</p>
+
+<h4>Mocha and Chai</h4>
+
+<p>As I said earlier, we&rsquo;re going to use <strong>Mocha</strong> and <strong>Chai</strong> for writing the test cases. By default, testem uses Jasmine as the testing framework. So to use Mocha and Chai, we need to change the testem configuration.</p>
+
+<p>First install Chai.js from npm.</p>
+
+<p><code>sh
+npm install chai
+</code></p>
+
+<p>Open the <code>testem.yml</code> in editor and modify like below.</p>
+
+<p><code>yml
+framework: mocha
+src_files:
+- node_modules/chai/chai.js
+- curry.js
+- curry-spec.js
+</code></p>
+
+<p>We also need to override the global <code>expect</code> in Testem with the <code>expect</code> method of Chai.js</p>
+
+<p>Create a <code>setup.js</code> file in TDD folder like below:</p>
+
+<p><code>js setup.js
+var expect = chai.expect
+</code>
+To make sure that everything works fine, edit the <strong>curry-spec.js</strong> with the following code and run the <code>testem</code> command from terminal.</p>
+
+<p>```js curry-spec.js
+describe(&lsquo;Testem setup&rsquo;, function () {</p>
+
+<pre><code>it('should verify the tests are passing', function(){
+    expect(1).to.eq(1);
+})
+</code></pre>
+
+<p>});
+```
+Open the link in the terminal to start capture the browser and run the tests. Once the tests ran, you should be able to see an output like this:</p>
+
+<p>```sh
+TEST'EM &lsquo;SCRIPTS!
+Open the URL below in a browser to connect.
+<a href="http://localhost:7357/">http://localhost:7357/</a>
+━━━━━━━━━━━━━━┓
+  Chrome 40.0 ┃</p>
+
+<pre><code>1/1 ✔     ┃
+          ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+</code></pre>
+
+<p>✔ 1 tests complete.
+[Press ENTER to run tests; q to quit; p to pause]
+```</p>
+
+<h2>Thinking about Behaviours of the Module</h2>
+
+<p>Behaviour of the module is the output it produces for various inputs. Or we can say, how the module is responding to various scenarios. These scenarios are going to be our test cases. So, before we start writing our test cases, we should think about all possible scenarios the module can handle with.</p>
+
+<h3>JavaScript Curry Function</h3>
+
+<p>Here we&rsquo;re going to implement a curry function in JavaScript. So in this case, the <em>module</em> or the <em>unit</em> is the function named <code>curry</code>. Let&rsquo;s think and start identifying different scenarios ( in this context, inputs ) for our <code>curry</code> function.</p>
+
+<p>According to <a href="http://en.wikipedia.org/wiki/Currying">Wikipedia</a>, curry function is defined as:</p>
+
+<blockquote><p>In mathematics and computer science, currying is the technique of translating the evaluation of a function that takes multiple arguments (or a tuple of arguments) into evaluating a sequence of functions, each with a single argument (partial application).</p></blockquote>
+
+<p>So by definition, a function <code>add(a,b,c)</code> is a curried function if the <code>add</code> function supports following:</p>
+
+<p>```js
+add(1,2,3) // should return 6
+add(1)(2)(3) // should return 6
+add(1,2)(3) // should return 6
+add(1)(2,3) // should return 6</p>
+
+<p>var sumofTwoAndThree = add(1,2) // sumofTwoAndThree should be a function
+sumofTwoAndThree(3) // should return 6
+```</p>
+
+<p>So, what we&rsquo;re going to implement now is a function that can create a curried function from any other function. We&rsquo;ll divide our test cases into two groups: one for curry function generator and another one for the actual curry function.</p>
+
+<h3>Writing the first test case</h3>
+
+<p>Let&rsquo;s start with the curry function generator. We&rsquo;ll name it as <code>makeCurry</code>. Its behaviour is to transform any function into a curried function.</p>
+
+<p>Edit the <strong>curry-spec.js</strong> and remove the test code we already added. Start with a new <code>describe</code> block. The <strong>curry-spec.js</strong> should be like this now:</p>
+
+<p>```js curry-spec.js
+describe(&lsquo;Curry function generator&rsquo;, function () {</p>
+
+<pre><code>it('should return a function', function(){
+    var add = function(){}
+    expect(makeCurry(add)).to.be.a('function');
+});
+</code></pre>
+
+<p>});
+```</p>
+
+<p>Run the <code>testem</code> command ( if it&rsquo;s already running, you can see the following output in the browser captured )</p>
+
+<p>```sh
+ReferenceError: makeCurry is not defined</p>
+
+<pre><code>at Context.&lt;anonymous&gt; (http://localhost:7357/curry-spec.js:4:16)
+at callFn (http://localhost:7357/testem/mocha.js:4338:21)
+at Test.Runnable.run (http://localhost:7357/testem/mocha.js:4331:7)
+at Runner.runTest (http://localhost:7357/testem/mocha.js:4728:10)
+at http://localhost:7357/testem/mocha.js:4806:12
+at next (http://localhost:7357/testem/mocha.js:4653:14)
+at http://localhost:7357/testem/mocha.js:4663:7
+at next (http://localhost:7357/testem/mocha.js:4601:23)
+at http://localhost:7357/testem/mocha.js:4630:5
+at timeslice (http://localhost:7357/testem/mocha.js:5761:27)
+</code></pre>
+
+<p><code>``
+We can see that the test is failing. The whole TDD starts from a failing test, and by making it pass. So why waiting, let's implement the</code>makeCurry` function inside the <strong>curry.js</strong> file.</p>
+
+<p>```js curry.js
+var makeCurry = function(){</p>
+
+<p>};
+```
+Now in the testem window, we can see another failure:</p>
+
+<p><code>sh
+AssertionError: expected undefined to be a function
+</code>
+Modify the <code>makeCurry</code> function to return a dummy function as its output.</p>
+
+<p>```js curry.js
+var makeCurry = function(){</p>
+
+<pre><code>return function(){};
+</code></pre>
+
+<p>};
+<code>``
+Our first test should pass now. By far, we have implemented the test case for the simple</code>makeCurry<code>function and implemented the</code>makeCurry` function.</p>
+
+<p>This is how the TDD works. In the next section, we&rsquo;ll see how the whole unit implementation is evolved in series of test cases and the code to make them pass.</p>
+
+<h2>Evolving the Final Code</h2>
+
+<p>For now, we have only one test case for the <code>makeCurry</code> function. Let&rsquo;s think about different scenarios for our curry function.</p>
+
+<ol>
+<li>Our curry function should always accept one function as parameter, if there is no function provided, it should throw an error.</li>
+</ol>
+
+
+<p>Add the another test case inside the <code>curry-spec.js</code></p>
+
+<p>```js curry-spec.js
+describe(&lsquo;Curry function generator&rsquo;, function () {</p>
+
+<pre><code>it('should return a function', function(){
+    var add = function(){}
+    expect(makeCurry(add)).to.be.a('function');
+});
+
+it('should throw an error if there is no valid function provided as argument', function(){
+    expect(function(){
+        makeCurry();
+    }).to.throw('No function provided');
+});
+</code></pre>
+
+<p>});
+```
+Now we can see that our test case is failing:</p>
+
+<p><code>sh
+AssertionError: expected [Function] to throw an error
+</code>
+This is because we haven&rsquo;t added the code in our <code>makeCurry</code> function to validate the arguments for it. Let&rsquo;s implement this functionality now:</p>
+
+<p>```js curry.js
+var makeCurry = function(fn){</p>
+
+<pre><code>if(typeof fn!=='function'){
+    throw Error('No function provided');
+}
+return function(){};
+</code></pre>
+
+<p>};
+<code>``
+Now we're getting into the rhythm of TDD. For now, we're done with the expectations for the</code>makeCurry<code>function. Let's implement the real</code>curry` function logic.</p>
+
+<p>We are going to add a new describe block for the expectations for curry function. Here, the curry function is the one <code>makeCurry</code> returns. I am going to list down all the expectations for the <code>curry</code> function here. We&rsquo;ll take one by one from the list and add to the test and implement the logic.</p>
+
+<p><strong>Expectations for the curry function</strong>:</p>
+
+<ul>
+<li>We should be able to call the curried function as the original function provided. Ie, if the original function is <code>add(1,2,3)</code> the curried function <code>curriedAdd(1,2,3)</code> should behave same as <code>add</code> function. Like this:</li>
+</ul>
+
+
+<p>```js</p>
+
+<pre><code>var add = function(a,b,c){
+    return a+b+c;
+}
+var curriedAdd = makeCurry( add );
+curriedAdd(1,2,3) // should return 6.
+</code></pre>
+
+<p>```
+&ndash; If we call the curried function with the lesser number of arguments, it should return a function</p>
+
+<p><code>js
+curriedAdd(1) // should return a function
+curriedAdd(1,2) // should return a function
+</code>
+&ndash; When the total number or arguments is equal to or greater than the original number of arguments, it should return the results</p>
+
+<p><code>js
+curriedAdd(1)(2)(3) // should return 6
+curriedAdd(1,2)(3) // should return 6
+curriedAdd(1)(2,3) // should return 6
+curriedAdd(1,2)(3,4,5,6) // should return 6
+</code>
+&ndash; We should be able to make any number of independent curried functions using <code>makeCurry</code> function.</p>
+
+<p>```js
+var add = function(a,b,c){</p>
+
+<pre><code>return a+b+c;
+</code></pre>
+
+<p>};
+var curryA = makeCurry(add);
+var curryB = makeCurry(add);</p>
+
+<p>curryA(1,2)(3) // return 6
+curryB(1)(2)(3) // return 6
+```</p>
+
+<p>We came up with all the test scenarios for our curry function. Let&rsquo;s pick one by one and implement the logic. Add the first test case inside the new <code>describe</code> block.</p>
+
+<p>```js curry-spec.js
+describe(&lsquo;Curry function generator&rsquo;, function () {</p>
+
+<pre><code>it('should return a function', function(){
+    var add = function(){}
+    expect(makeCurry(add)).to.be.a('function');
+});
+
+it('should throw an error if there is no valid function provided as argument', function(){
+    expect(function(){
+        makeCurry();
+    }).to.throw('No function provided');
+});
+</code></pre>
+
+<p>});</p>
+
+<p>describe(&lsquo;Curry function&rsquo;, function(){</p>
+
+<pre><code>var add;
+
+beforeEach(function(){
+    add = function(a,b,c){
+        return a + b + c;
+    };
+});
+
+it('should return the proper result if called with original number of arguments',function(){
+    var curriedAdd = makeCurry( add );
+    expect( curriedAdd(1,2,3) ).to.eq(6);
+});
+</code></pre>
+
+<p>});
+```
+Testem output should be like this:</p>
+
+<p>```sh
+Curry function should return the proper result if called with original number of arguments</p>
+
+<pre><code>✘ expected undefined to equal 6
+    AssertionError: expected undefined to equal 6
+        at Context.&lt;anonymous&gt; (http://localhost:7357/curry-spec.js:25:40)
+        at callFn (http://localhost:7357/testem/mocha.js:4338:21)
+        at Test.Runnable.run (http://localhost:7357/testem/mocha.js:4331:7)
+        at Runner.runTest (http://localhost:7357/testem/mocha.js:4728:10)
+        at http://localhost:7357/testem/mocha.js:4806:12
+        at next (http://localhost:7357/testem/mocha.js:4653:14)
+        at http://localhost:7357/testem/mocha.js:4663:7
+        at next (http://localhost:7357/testem/mocha.js:4601:23)
+        at http://localhost:7357/testem/mocha.js:4625:7
+        at done (http://localhost:7357/testem/mocha.js:4300:5)
+</code></pre>
+
+<p>```</p>
+
+<p>Let&rsquo;s make the test pass by adding the implementation:</p>
+
+<p>```js curry.js
+var makeCurry = function(fn){</p>
+
+<pre><code>if(typeof fn!=='function'){
+    throw Error('No function provided');
+}
+
+var slice = [].slice;
+return function curriedFn(){
+  var args = slice.call(arguments);
+  return fn.apply(null, args);
+};
+</code></pre>
+
+<p>};
+```
+Okay now, tests are passing. Let&rsquo;s add the next test case inside the &ldquo;Curry function&rdquo; describe block:</p>
+
+<p>```js
+it(&lsquo;should return a function when arguments count is less than the original number of arguments&rsquo;, function(){</p>
+
+<pre><code>var curriedAdd = makeCurry( add );
+expect( curriedAdd(1,2) ).to.be.a('function');
+</code></pre>
+
+<p>});
+```</p>
+
+<p>Tests are failing now. Time to make them pass.</p>
+
+<p>Now we need to verify that the number of arguments passed is less than the original number of arguments. If it lesser, the tests are expecting a function to be returned ( than executing the original function ). Let&rsquo;s implement this:</p>
+
+<p>```js curry.js
+var makeCurry = function(fn){</p>
+
+<pre><code>if(typeof fn!=='function'){
+    throw Error('No function provided');
+}
+
+var slice = [].slice;
+return function curriedFn(){
+  var args = slice.call(arguments);
+
+  if(args.length &lt; fn.length){
+    return curriedFn;
+  }
+
+  return fn.apply(null, args);
+};
+</code></pre>
+
+<p>};
+```</p>
+
+<p>All the tests are passing now. Let&rsquo;s pick the next test case.</p>
+
+<p>```js
+it(&lsquo;should return the result whenever the total number of arguments is greater than or equal to the original number of arguments&rsquo;, function(){</p>
+
+<pre><code>var curriedAdd = makeCurry( add );
+expect( curriedAdd(1)(2) ).to.be.a('function');
+expect( curriedAdd(1)(2)(3) ).to.eq(6);
+expect( curriedAdd(1,2)(3) ).to.eq(6);
+expect( curriedAdd(1)(2,3) ).to.eq(6);
+expect( curriedAdd(1,2)(3,4,5,6,7) ).to.eq(6);
+</code></pre>
+
+<p>});
+```</p>
+
+<p>And the implementation:</p>
+
+<p>```js curry.js</p>
+
+<p>var makeCurry = function(fn){</p>
+
+<pre><code>if(typeof fn!=='function'){
+    throw Error('No function provided');
+}
+
+var slice = [].slice;
+return function curriedFn(){
+  var args = slice.call(arguments);
+
+  if(args.length &lt; fn.length){
+    return function(){
+      return curriedFn.apply(null, args.concat( slice.call(arguments) ));
+    };
+  }
+
+  return fn.apply(null, args);
+};
+</code></pre>
+
+<p>};
+```</p>
+
+<p>Now, we&rsquo;re going to add our last test case.</p>
+
+<p>```js
+it(&lsquo;should support creating multple curry functions&rsquo;, function(){</p>
+
+<pre><code>var curryA = makeCurry(add);
+var curryB = makeCurry(add);
+
+expect( curryA(1,2)(3) ).to.eq(6);
+expect( curryA(1,2) ).to.be.a('function');
+
+expect( curryB(1)(2)(3) ).to.eq(6);
+expect( curryB(1)(2) ).to.be.a('function');
+</code></pre>
+
+<p>});
+```</p>
+
+<p>And this time, Testem reports that all tests are passing. Voila!, it means we&rsquo;re done with our curry function implementation.</p>
+
+<h2>Final code</h2>
+
+<p>Here is the final code for <strong>curry-spec.js</strong> and the <strong>curry.js</strong>.</p>
+
+<p>```js curry-spec.js
+describe(&lsquo;Curry function generator&rsquo;, function () {</p>
+
+<pre><code>it('should return a function', function(){
+    var add = function(){}
+    expect(makeCurry(add)).to.be.a('function');
+});
+
+it('should throw an error if there is no valid function provided as argument', function(){
+    expect(function(){
+        makeCurry();
+    }).to.throw('No function provided');
+});
+</code></pre>
+
+<p>});</p>
+
+<p>describe(&lsquo;Curry function&rsquo;, function(){</p>
+
+<pre><code>var add;
+
+beforeEach(function(){
+    add = function(a,b,c){
+        return a + b + c;
+    };
+});
+
+it('should return the proper result if called with original number of arguments',function(){
+    var curriedAdd = makeCurry( add );
+    expect( curriedAdd(1,2,3) ).to.eq(6);
+});
+
+it('should return the curried function when arguments count is less than the original number of arguments', function(){
+    var curriedAdd = makeCurry( add );
+    expect( curriedAdd(1,2) ).to.be.a('function');
+});
+
+it('should return the result whenever the total number of arguments is greater than or equal to the original number of arguments', function(){
+    var curriedAdd = makeCurry( add );
+    expect( curriedAdd(1)(2) ).to.be.a('function');
+    expect( curriedAdd(1)(2)(3) ).to.eq(6);
+    expect( curriedAdd(1,2)(3) ).to.eq(6);
+    expect( curriedAdd(1)(2,3) ).to.eq(6);
+    expect( curriedAdd(1,2)(3,4,5,6,7) ).to.eq(6);
+});
+
+it('should support creating multple curry functions', function(){
+    var curryA = makeCurry(add);
+    var curryB = makeCurry(add);
+
+    expect( curryA(1,2)(3) ).to.eq(6);
+    expect( curryA(1,2) ).to.be.a('function');
+
+    expect( curryB(1)(2)(3) ).to.eq(6);
+    expect( curryB(1)(2) ).to.be.a('function');
+});
+</code></pre>
+
+<p>});
+```</p>
+
+<p>```js curry.js</p>
+
+<p>var makeCurry = function(fn){</p>
+
+<pre><code>if(typeof fn!=='function'){
+    throw Error('No function provided');
+}
+
+var slice = [].slice;
+return function curriedFn(){
+  var args = slice.call(arguments);
+  if(args.length &lt; fn.length){
+    return function(){
+      return curriedFn.apply(null, args.concat( slice.call(arguments) ));
+    };
+  }
+
+  return fn.apply(null, args);
+};
+</code></pre>
+
+<p>};
+```</p>
+
+<h2>Summary</h2>
+
+<p>I wouldn&rsquo;t say TDD is nice and simple. Writing all the code in TDD way is tough and frustrating for beginners. But if you keep practicing TDD, eventually you are going to love it. TDD will help you to concentrate on a small part of your code and complete it with perfection. Finally, that will lead to implement a better design for your actual module. So my point is, TDD is useful for better architecture of your code and the code will be less error prone.</p>
+
+<p>Thanks for reading. I hope this will help for implementing TDD for your next project. Feedbacks are welcome.</p>
+]]></content>
+  </entry>
+  
+</feed>

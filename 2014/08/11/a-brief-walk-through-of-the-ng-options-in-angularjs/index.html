@@ -1,0 +1,738 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>A brief walk-through of the ng-options in AngularJS</title>
+  <meta name="author" content="Shidhin">
+
+  
+  <meta name="description" content="Using ng-options was bit tough for me. I banged my head couple of times when I actually used ng-options in my code. And most of the times, I had to &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://www.undefinednull.com/2014/08/11/a-brief-walk-through-of-the-ng-options-in-angularjs">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="http://feeds.feedburner.com/undefinednull/com" rel="alternate" title="Undefined NULL" type="application/atom+xml">
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<!-- <link href="https://fonts.googleapis.com/css?family=Kreon:400,300" rel="stylesheet" type="text/css"> -->
+<style type="text/css">
+  /* latin */
+  @font-face {
+    font-family: 'Kreon';
+    font-style: normal;
+    font-weight: 300;
+    src: local('Kreon Light'), local('Kreon-Light'), url(https://fonts.gstatic.com/s/kreon/v9/76aS1J5Mmu41iLp2Z15uBXYhjbSpvc47ee6xR_80Hnw.woff2) format('woff2');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000;
+  }
+  /* latin */
+  @font-face {
+    font-family: 'Kreon';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Kreon Regular'), local('Kreon-Regular'), url(https://fonts.gstatic.com/s/kreon/v9/DedTOFfDyPja0h-dTOyw06CWcynf_cDxXwCLxiixG1c.woff2) format('woff2');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000;
+  }
+</style>
+
+  <script src="/javascripts/modernizr-2.0.js" async></script>
+  <script src="/javascripts/jquery.min.js" async></script>
+  <script src="/javascripts/octopress.js" type="text/javascript" async></script>
+  
+  <script type="text/javascript">
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ga('create', 'UA-10379928-17', 'auto');
+ga('require', 'displayfeatures');
+ga('send', 'pageview');
+  </script>
+
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">Undefined NULL</a><span class="note">  - by Shidhin </span></h1>
+  
+    <h2>Scribbles of a UI developer, JavaScript enthusiast</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="http://feeds.feedburner.com/undefinednull/com" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="https://www.google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:www.undefinednull.com" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">A Brief Walk-through of the Ng-options in AngularJS</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-08-11T11:13:45+04:00" pubdate data-updated="true">Aug 11<span>th</span>, 2014</time>
+        
+         | <a href="#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p><img src="https://lh4.googleusercontent.com/-ts5lhPEvP2U/VA2txu4TiLI/AAAAAAAASWs/ZR8EkWYzhcI/w681-h250-no/ng-options.jpg" alt="" /></p>
+
+<p>Using ng-options was bit tough for me. I banged my head couple of times when I actually used ng-options in my code. And most of the times, I had to google and find out how to make it work. Looking the AngularJS documentation didn&rsquo;t help much, as it&rsquo;s less informative and doesn&rsquo;t have much code samples.</p>
+
+<p>But, I could find lot of Stackoverflow links, and infact I understood the concepts after reading those links only. Here, finally, I decided to write a blog posts about what I learned. And you know, this post is going to be mostly useful to me more than any one; because next time, I don&rsquo;t need to google it.. :)</p>
+
+<!--more-->
+
+
+<h2>Why ng-options</h2>
+
+<p>Before that, let&rsquo;s see ng-repeat. The simple way of creating a dropdown in Angular is by using ng-repeat. Look at the code below:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'>
+</span><span class='line'><span class="nt">&lt;html</span> <span class="na">ng-app=</span><span class="s">&quot;app&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;body&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;div</span> <span class="na">ng-controller=</span><span class="s">&quot;Test&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>      <span class="nt">&lt;p&gt;</span>selected item is : {{selectedItem}}<span class="nt">&lt;/p&gt;</span>
+</span><span class='line'>      <span class="nt">&lt;select</span> <span class="na">ng-model=</span><span class="s">&quot;selectedItem&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>        <span class="nt">&lt;option</span> <span class="na">ng-repeat=</span><span class="s">&quot;item in items&quot;</span> <span class="na">value=</span><span class="s">&quot;{{item}}&quot;</span><span class="nt">&gt;</span>{{item}}<span class="nt">&lt;/option&gt;</span>
+</span><span class='line'>      <span class="nt">&lt;/select&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;/div&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;/body&gt;</span>
+</span><span class='line'><span class="nt">&lt;/html&gt;</span>
+</span><span class='line'>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>And the JavaScript:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="kd">var</span> <span class="nx">app</span> <span class="o">=</span> <span class="nx">angular</span><span class="p">.</span><span class="nx">module</span><span class="p">(</span><span class="s1">&#39;app&#39;</span><span class="p">,[]);</span>
+</span><span class='line'><span class="nx">app</span><span class="p">.</span><span class="nx">controller</span><span class="p">(</span><span class="s1">&#39;Test&#39;</span><span class="p">,</span><span class="kd">function</span><span class="p">(</span><span class="nx">$scope</span><span class="p">){</span>
+</span><span class='line'>   <span class="nx">$scope</span><span class="p">.</span><span class="nx">items</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;one&#39;</span><span class="p">,</span><span class="s1">&#39;two&#39;</span><span class="p">,</span><span class="s1">&#39;three&#39;</span><span class="p">,</span><span class="s1">&#39;four&#39;</span><span class="p">]</span>
+</span><span class='line'><span class="p">});</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>We have an array of text in a property called <code>items</code>. The above code is ideal when the items array consists of only string data. However, this cannot be used when the items array contains objects.</p>
+
+<p>The AngularJS documentation for &lsquo;select&rsquo; says to use ng-options instead of ng-repeat in this scenario. The reason behind is, option element can only hold string type as its value.</p>
+
+<p>Quoted from AngularJS documentation:</p>
+
+<blockquote><p>Note: ngOptions provides an iterator facility for the &lsquo;<code>option</code>&rsquo; element which should be used instead of ngRepeat when you want the select model to be bound to a non-string value. This is because an option element can only be bound to string values at present.</p></blockquote>
+
+<p>Let&rsquo;s change the items to an array of objects.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='js'><span class='line'><span class="nx">$scope</span><span class="p">.</span><span class="nx">items</span> <span class="o">=</span> <span class="p">[{</span><span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;one&#39;</span><span class="p">,</span> <span class="nx">age</span><span class="o">:</span> <span class="mi">30</span> <span class="p">},{</span> <span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;two&#39;</span><span class="p">,</span> <span class="nx">age</span><span class="o">:</span> <span class="mi">27</span> <span class="p">},{</span> <span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;three&#39;</span><span class="p">,</span> <span class="nx">age</span><span class="o">:</span> <span class="mi">50</span> <span class="p">}];</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>and the HTML</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'>
+</span><span class='line'><span class="nt">&lt;html</span> <span class="na">ng-app=</span><span class="s">&quot;app&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;body&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;div</span> <span class="na">ng-controller=</span><span class="s">&quot;Test&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>      <span class="nt">&lt;p&gt;</span>selected item is : {{selectedItem}}<span class="nt">&lt;/p&gt;</span>
+</span><span class='line'>      <span class="nt">&lt;select</span> <span class="na">ng-model=</span><span class="s">&quot;selectedItem&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>        <span class="nt">&lt;option</span> <span class="na">ng-repeat=</span><span class="s">&quot;item in items&quot;</span> <span class="na">value=</span><span class="s">&quot;{{item.age}}&quot;</span><span class="nt">&gt;</span>{{item.name}}<span class="nt">&lt;/option&gt;</span>
+</span><span class='line'>      <span class="nt">&lt;/select&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;/div&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;/body&gt;</span>
+</span><span class='line'><span class="nt">&lt;/html&gt;</span>
+</span><span class='line'>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>If you notice, the <code>selectedItem</code> model is bound to the value of the selected option element. Here, as already explained, we&rsquo;re restricted to have only strings in our items array. We cannot set the selectedItem model to the object inside items. Therefore we need to use the ng-options for these kind of situations. Let&rsquo;s see how to do it.</p>
+
+<p><strong>Re-write the above code using ng-options</strong>:</p>
+
+<p>We can re-write the above code using ng-options. The new html looks like below:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'>
+</span><span class='line'><span class="nt">&lt;html</span> <span class="na">ng-app=</span><span class="s">&quot;app&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;body&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;div</span> <span class="na">ng-controller=</span><span class="s">&quot;Test&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>      <span class="nt">&lt;p&gt;</span>selected item is : {{selectedItem}}<span class="nt">&lt;/p&gt;</span>
+</span><span class='line'>      <span class="nt">&lt;p&gt;</span> age of selected item is : {{selectedItem.age}} <span class="nt">&lt;/p&gt;</span>
+</span><span class='line'>      <span class="nt">&lt;select</span> <span class="na">ng-model=</span><span class="s">&quot;selectedItem&quot;</span> <span class="na">ng-options=</span><span class="s">&quot;item.name for item in items&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>      <span class="nt">&lt;/select&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;/div&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;/body&gt;</span>
+</span><span class='line'><span class="nt">&lt;/html&gt;</span>
+</span><span class='line'>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Now the <code>selectedItem</code> is bound to an object instead of the string value. You can see it in action <a href="http://codepen.io/shidhincr/pen/LeuDw">here</a></p>
+
+<div class="info">
+If you notice, the first element inside the dropdown is a blank option element. This is because, initially, the &#8216;selectedItem&#8217; does not have any default value and is undefined. Since there&#8217;s no default option selected, AngularJS will generate a new option tag and select it as default. To fix the issue, just set the &#8216;selectedItem&#8217; to the first object in the items array. <br/>
+$scope.selectedItem = $scope.items[0];
+</div>
+
+
+<br/>
+
+
+<p>In the next section, we&rsquo;ll see different types of ng-options expressions.</p>
+
+<h2>Different kinds of syntax</h2>
+
+<p>Before we start, read the official <a href="https://docs.angularjs.org/api/ng/directive/select">documentation</a> here. If you notice, the type of the ng-options is named as  a <strong>comprehension expression</strong>. As quoted from this <a href="https://groups.google.com/forum/#!topic/angular/4EDe8xIbjLU">link</a></p>
+
+<blockquote><p>The &ldquo;comprehension expression&rdquo; is not the same as Angular expressions that $parse parses.  It is a custom expression specific to ngSelect.  You can actually see the regex it uses to parse in the ngSelect source file.</p></blockquote>
+
+<p>We&rsquo;ll cover these different type of <strong>comprehension expressions</strong> with the help of examples below.</p>
+
+<p><u><strong>For Array data  :</strong></u></p>
+
+<p><strong>1) <code>label</code> for <code>value</code> in <code>array</code></strong></p>
+
+<p>This is the simplest and commonly used expression. This tells <strong>ng-options</strong> directive to loop through the array, and generate option element containing the current value. The generated html looks like this:</p>
+
+<p><img src="https://lh3.googleusercontent.com/-sWj95dIg0Co/VA0e8YuM7UI/AAAAAAAASRY/kmmupaPV1Ac/h114/Screenshot%2B2014-09-08%2B07.06.16.png" alt="" /></p>
+
+<p>The <em>value</em> of each option element is the loop couter and the text inside the option element is the current array content. Note the <code>label</code> is the one generates the text inside each option element. So it should be same name as <code>value</code> if items array contains all premitive type. In the above example, both label and value referred as <code>item</code>.</p>
+
+<p>The flexibility of ng-options is when the array contains objects rather than plain strings. To know more, let&rsquo;s change the items like this:</p>
+
+<pre><code>$scope.items = [{name: 'one', age: 30 },{ name: 'two', age: 27 },{ name: 'three', age: 50 }];
+</code></pre>
+
+<p>And we can change our expression as</p>
+
+<pre><code>ng-options="item.name for item in items"
+</code></pre>
+
+<p>The above code is pretty simple to understand. We&rsquo;re telling angular that to loop through all the items in use <code>item.name</code> as the text inside each option element. Let&rsquo;s move to much more complex type of expressions.</p>
+
+<p><strong>2) <code>select</code> as <code>label</code> for <code>value</code> in <code>array</code></strong></p>
+
+<p>By default, unless specified, the model bound the parent select box will be the <code>value</code> of the expression. That means, in the previous example, the <code>item</code> is the model for the select element. If we select the second element in the select box, the model is this:</p>
+
+<p><img src="https://lh5.googleusercontent.com/-H_M5Y7QW9Jw/VA0l1wZY6WI/AAAAAAAASRw/EB54lG4L-rA/h240/Screen%2BShot%2B2014-09-08%2Bat%2B7.43.05%2BAM.png" alt="" /></p>
+
+<p>However, AngularJS provides another variation of expression to change this behaviour. Using <code>select as</code> we can specify a different model to the select box. Let&rsquo;s see the below example:</p>
+
+<pre><code>ng-options="item.age as item.name for item in items"
+</code></pre>
+
+<p><img src="https://lh5.googleusercontent.com/-AY6sL4nCidI/VA0nnsQRQuI/AAAAAAAASR8/ja0NvwcMtyI/h128/Screen%2BShot%2B2014-09-08%2Bat%2B7.50.24%2BAM.png" alt="" /></p>
+
+<p><img src="https://lh6.googleusercontent.com/-MkszZ2GNFv4/VA0n65cdfcI/AAAAAAAASSM/45mrEy-1XKU/h240/Screen%2BShot%2B2014-09-08%2Bat%2B7.51.34%2BAM.png" alt="" /></p>
+
+<p>Here, each option will have the text as <code>item.name</code> but when we select any of them, the selectedItem will be <code>item.age</code>.</p>
+
+<p><strong>3) <code>label</code> group by <code>group</code> for <code>value</code> in <code>array</code></strong></p>
+
+<p>Group by is really a short cut for adding options groups.  In plain html, we need to use the <code>&lt;optgroup&gt;</code> tags to group a set of options. But here, we can specify ng-options to render optgroups based on <code>group</code> value. Let&rsquo;s see the below code.</p>
+
+<figure class='code'><figcaption><span>javascript</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nx">$scope</span><span class="p">.</span><span class="nx">items</span> <span class="o">=</span> <span class="p">[</span>
+</span><span class='line'>     <span class="p">{</span><span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;one&#39;</span><span class="p">,</span> <span class="nx">age</span><span class="o">:</span> <span class="mi">30</span> <span class="p">},</span>
+</span><span class='line'>     <span class="p">{</span> <span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;two&#39;</span><span class="p">,</span> <span class="nx">age</span><span class="o">:</span> <span class="mi">27</span> <span class="p">},</span>
+</span><span class='line'>     <span class="p">{</span> <span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;three&#39;</span><span class="p">,</span> <span class="nx">age</span><span class="o">:</span> <span class="mi">50</span> <span class="p">},</span>
+</span><span class='line'>     <span class="p">{</span> <span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;four&#39;</span><span class="p">,</span> <span class="nx">age</span><span class="o">:</span> <span class="mi">15</span> <span class="p">},</span>
+</span><span class='line'>     <span class="p">{</span> <span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;five&#39;</span><span class="p">,</span> <span class="nx">age</span><span class="o">:</span> <span class="mi">27</span> <span class="p">},</span>
+</span><span class='line'>     <span class="p">{</span> <span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;six&#39;</span><span class="p">,</span> <span class="nx">age</span><span class="o">:</span> <span class="mi">30</span> <span class="p">}</span>
+</span><span class='line'><span class="p">];</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>and the ng-options in HTML</p>
+
+<pre><code>ng-options="item.name group by item.age for item in items"
+</code></pre>
+
+<p>The above expression tells Angular to group each options based on the <code>item.age</code>. If we run the code, the output looks like this</p>
+
+<p><img src="https://lh4.googleusercontent.com/-IMgiQ1KQINw/VA2flqQxDiI/AAAAAAAASVQ/LYQ4LHM6Th0/w239-h301-no/Screen%2BShot%2B2014-09-08%2Bat%2B1.38.12%2BPM.png" alt="" /></p>
+
+<p><strong>4) <code>select</code> as <code>label</code> group by <code>group</code> for <code>value</code> in <code>array</code> track by <code>trackexpr</code></strong></p>
+
+<p>This is similar to the previous one, and the only addition is the <code>track by</code>. If you have ever used <code>ng-repeat</code>, the <code>track by</code> won&rsquo;t surprise you. The syntax and usage is same as with <code>ng-repeat</code>.</p>
+
+<p>Using <code>track by</code>, we can explicitly tell AngularJS to track each DOM node by the specified value. For example, we can use like this:</p>
+
+<pre><code>ng-options="item.name group by item.age for item in items track by item.name"
+</code></pre>
+
+<p><strong>Bennadel</strong> explained this pretty well in his <a href="http://www.bennadel.com/blog/2556-using-track-by-with-ngrepeat-in-angularjs-1-2.htm">blog post</a>.</p>
+
+<p> <u><strong>For Object data  :</strong></u></p>
+
+<p>ng-options is not just restricted to array types, but can be used for object data sources too.  In this section, we&rsquo;ll see how ng-options are used for object data. Let&rsquo;s modify the <code>items</code> in our code like below:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nx">$scope</span><span class="p">.</span><span class="nx">items</span> <span class="o">=</span> <span class="p">{</span>
+</span><span class='line'>    <span class="s1">&#39;one&#39;</span><span class="o">:</span> <span class="mi">30</span><span class="p">,</span>
+</span><span class='line'>    <span class="s1">&#39;two&#39;</span><span class="o">:</span> <span class="mi">27</span><span class="p">,</span>
+</span><span class='line'>    <span class="s1">&#39;three&#39;</span><span class="o">:</span> <span class="mi">50</span><span class="p">,</span>
+</span><span class='line'>    <span class="s1">&#39;four&#39;</span><span class="o">:</span> <span class="mi">15</span><span class="p">,</span>
+</span><span class='line'>    <span class="s1">&#39;five&#39;</span><span class="o">:</span> <span class="mi">27</span><span class="p">,</span>
+</span><span class='line'>    <span class="s1">&#39;six&#39;</span><span class="o">:</span> <span class="mi">30</span>
+</span><span class='line'>   <span class="p">};</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p></p>
+
+<p><strong>1) <code>label</code> for <code>(key , value)</code> in <code>object</code></strong></p>
+
+<p>The expression for object data source is similar to the array data source. The only difference in object data source is, everything is key value pairs. ng-options for object allows us to loop through these (key,value) pairs; The expression is pretty much self explanatory, as all other parts are similar to what we have seen already.</p>
+
+<p>Let&rsquo;s modify the expression like this in our mark-up</p>
+
+<pre><code>ng-options="name for (name, value) in items"
+</code></pre>
+
+<p>The generated html is like this:</p>
+
+<p><img src="https://lh3.googleusercontent.com/-eoAgJdq75go/VA_CWccGIqI/AAAAAAAASeo/OE-cjTGnGr4/h166/Screen%2BShot%2B2014-09-10%2Bat%2B7.15.04%2BAM.png" alt="" /></p>
+
+<p>The generated html is a select box with all the key names. Similarly, we can create the select box with only values, shown below.</p>
+
+<pre><code>ng-options="name for (name, value) in items"
+</code></pre>
+
+<div class="info">
+For object data sources, the default model bound to the select box is the value, not the key. That means, in the above example, even though the select box displays only the key names, the model is actually bounds to its value. Try selecting an option in our demo, you can see that the selectedItem is printed as its value. However, this behaviour can be changed by using the &#8216;select as&#8217; syntax.
+</div>
+
+
+<br/>
+
+
+<p>The remaining expressions available for object data source is given below. There is no need of any explanation as they are similar to the array data source. The only difference is, for objects, both <code>(key, value)</code> are available.</p>
+
+<p><strong>2) <code>select</code> as <code>label</code> for <code>(key , value)</code> in <code>object</code></strong></p>
+
+<p><strong>3) <code>label</code> group by <code>group</code> for <code>(key, value)</code> in <code>object</code></strong></p>
+
+<p><strong>4) <code>select</code> as <code>label</code> group by <code>group</code> for <code>(key, value)</code> in <code>object</code></strong></p>
+
+<h2>Extra Points</h2>
+
+<ol>
+<li>If the model is present and not selected, Angular will generate a default option element. This is done for not accidentally setting the model value when the select box gets rendered.</li>
+<li>There is no straight forward way of selecting the default options. Usually the controller is responsible for setting the model for select box, so that the default option will be selected automatically.</li>
+<li>It&rsquo;s also possible to add filters to the ng-options expressions.</li>
+</ol>
+
+
+<h4>Please re-tweet if you found this article helpful</h4>
+
+<blockquote class="twitter-tweet" lang="en"><p lang="en" dir="ltr">A brief walk-through of the ng-options in <a href="https://twitter.com/hashtag/AngularJS?src=hash">#AngularJS</a> <a href="https://t.co/RopuFUtD35">https://t.co/RopuFUtD35</a> via <a href="https://twitter.com/shidhincr">@shidhincr</a></p>&mdash; Shidhin (@shidhincr) <a href="https://twitter.com/shidhincr/status/661084286808756224">November 2, 2015</a></blockquote>
+
+
+<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+
+<h2>Summary</h2>
+
+<p>Thanks for reading !! ng-options is a powerful directive. Mastering it properly will save lot of time in your next project.</p>
+</div>
+<!-- nothing here for now -->
+<!-- Go to www.addthis.com/dashboard to customize your tools -->
+<div class="addthis_sharing_toolbox"></div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Shidhin</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-08-11T11:13:45+04:00" pubdate data-updated="true">Aug 11<span>th</span>, 2014</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/angularjs/'>AngularJS</a>, <a class='category' href='/blog/categories/ng-options/'>ng-options</a>
+  
+</span>
+
+
+      
+  <h3>Related posts</h3>
+  <ol class="posts">
+  
+    <li class="related">
+      <a href="/2014/02/11/mastering-the-scope-of-a-directive-in-angularjs/" onClick="ga('send', 'event', 'Post Page', 'Clicked Related Post', '/2014/02/11/mastering-the-scope-of-a-directive-in-angularjs/', 1);">Mastering the scope of the directives in AngularJS</a>
+    </li>
+  
+    <li class="related">
+      <a href="/2015/05/03/react-tdd-example-unit-testing-and-building-a-react-component-with-jest-gulp-and-react-test-utils/" onClick="ga('send', 'event', 'Post Page', 'Clicked Related Post', '/2015/05/03/react-tdd-example-unit-testing-and-building-a-react-component-with-jest-gulp-and-react-test-utils/', 2);">React TDD Example: Unit Testing and Building a React Component with Jest, Gulp and React Test Utils</a>
+    </li>
+  
+    <li class="related">
+      <a href="/2014/07/07/practical-guide-to-prelink-postlink-and-controller-methods-of-angular-directives/" onClick="ga('send', 'event', 'Post Page', 'Clicked Related Post', '/2014/07/07/practical-guide-to-prelink-postlink-and-controller-methods-of-angular-directives/', 3);">Practical Guide to PreLink, PostLink and Controller Methods of Angular Directives</a>
+    </li>
+  
+    <li class="related">
+      <a href="/2014/02/17/resolve-in-angularjs-routes-explained-as-story/" onClick="ga('send', 'event', 'Post Page', 'Clicked Related Post', '/2014/02/17/resolve-in-angularjs-routes-explained-as-story/', 4);">'Resolve' in AngularJS routes, explained as story</a>
+    </li>
+  
+  </ol>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://www.undefinednull.com/2014/08/11/a-brief-walk-through-of-the-ng-options-in-angularjs/" data-via="shidhincr" data-counturl="http://www.undefinednull.com/2014/08/11/a-brief-walk-through-of-the-ng-options-in-angularjs/" >Tweet</a>
+  
+  
+  <div class="g-plusone" data-size="medium"></div>
+  
+  
+    <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
+  
+</div>
+
+    
+    <p class="meta">
+    <div class="about">
+	<span class="about-image">
+		<img src="/images/shidhincr.jpg" alt="shidhincr">
+	</span>
+	<span class="about-desc">
+		<span>Shidhin is a senior Front end developer working in Namshi.com, Dubai. He is passionate about latest web technologies and open source softwares. <a href="http://www.undefinednull.com/">Undefinednull.com</a> is his personal blog, where he shares his experiences, thoughts and ideas. You can follow &amp; talk to him in <a href="http://www.twitter.com/shidhincr" target="_blank">twitter.com/shidhincr</a></span>
+		<br/>
+		<hr/>
+		<a href="https://twitter.com/shidhincr" class="twitter-follow-button" data-show-count="false" data-size="large">Follow @shidhincr</a>
+	</span>
+</div> 
+    </p>
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/2014/07/07/practical-guide-to-prelink-postlink-and-controller-methods-of-angular-directives/" title="Previous Post: Practical Guide to PreLink, PostLink and Controller Methods of Angular Directives">&laquo; Practical Guide to PreLink, PostLink and Controller Methods of Angular Directives</a>
+      
+      
+        <a class="basic-alignment right" href="/2015/02/04/whatsapp-web-client-hide-slash-blur-thumbnail-images-preview/" title="Next Post: Whatsapp web client: Hide/blur thumbnail images preview">Whatsapp web client: Hide/blur thumbnail images preview &raquo;</a>
+      
+    </p>
+    <p class="meta">
+      <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+      <!-- blog_post_bottom -->
+      <ins class="adsbygoogle"
+           style="display:block"
+           data-ad-client="ca-pub-6186681246847670"
+           data-ad-slot="1223204544"
+           data-ad-format="auto"></ins>
+      <script>
+      (adsbygoogle = window.adsbygoogle || []).push({});
+      </script>
+    </p>
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+</div>
+
+<aside class="sidebar">
+  
+    <div class="about sidebar">
+  <span class="about-image">
+    <img src="/images/shidhincr.jpg" alt="shidhincr">
+  </span>
+  <span class="about-desc">
+    <span>Hey, I'm Shidhin C R <br/> I'm a UI / Front end developer ( currently in Dubai, UAE ). I use this space to share my experiences, experiments and thoughts. See more about me in <a href="https://www.linkedin.com/in/shidhincr" target="_blank">my LinkedIn profile.</a></span>
+    <br/>
+    <hr>
+    <a href="https://twitter.com/shidhincr" class="twitter-follow-button" data-show-count="false" data-size="large">Follow @shidhincr</a>
+    <hr>
+    <div class="g-follow" data-href="https://plus.google.com/u/0/113512069167494308499" data-rel="author" data-height="24"></div>
+    <hr>
+    <iframe src="//www.facebook.com/plugins/follow?href=https%3A%2F%2Fwww.facebook.com%2Fshidhincr&amp;layout=standard&amp;show_faces=true&amp;colorscheme=light&amp;width=450&amp;height=80" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:450px; height:80px;" allowTransparency="true"></iframe> 
+  </span>
+</div> <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/2016/04/21/debugging-react-native-apps-using-visual-studio-code/">Debugging React Native Apps Using Visual Studio Code</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2016/01/21/react-redux-part-1-implementing-a-counter-component-in-react-by-using-state/">React Redux Part 1 : Implementing a Counter Component in React by Using State</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2015/12/27/injecting-custom-javascript-into-react-natives-webview/">Injecting Custom JavaScript Into React Native's Webview</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2015/07/31/iterm-tips-and-zsh-plugins-for-better-development-environment/">iTerm Tips and Zsh Plugins for Better Development Environment</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2015/05/03/react-tdd-example-unit-testing-and-building-a-react-component-with-jest-gulp-and-react-test-utils/">React TDD Example: Unit Testing and Building a React Component With Jest, Gulp and React Test Utils</a>
+      </li>
+    
+  </ul>
+</section>
+
+<section>
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating...</li>
+  </ul>
+  
+  <a href="https://github.com/shidhincr">@shidhincr</a> on GitHub
+  
+  <script type="text/javascript">
+    window.addEventListener("load", function(event) {
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'shidhincr',
+            count: 3,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript" async> </script>
+</section>
+
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- undefinednull.com -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-6186681246847670"
+     data-ad-slot="2834158940"
+     data-ad-format="auto"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2016 - Shidhin -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+  <span style="position: absolute; right: 10px">
+   <a href="/privacypolicy.html">Privacy policy</a>&nbsp;|&nbsp;
+   <a href="/disclaimer.html">Disclaimer</a>
+  </span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'shidhincr';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'www.undefinednull.com/2014/08/11/a-brief-walk-through-of-the-ng-options-in-angularjs/';
+        var disqus_url = 'http://www.undefinednull.com/2014/08/11/a-brief-walk-through-of-the-ng-options-in-angularjs/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script +'?https';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id; js.async = true;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+  <script type="text/javascript">
+    (function() {
+      var script = document.createElement('script'); script.type = 'text/javascript'; script.async = true;
+      script.src = 'https://apis.google.com/js/plusone.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(script, s);
+    })();
+  </script>
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+<!-- AddThis Smart Layers BEGIN -->
+<!-- Go to http://www.addthis.com/get/smart-layers to customize -->
+<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-524e674f788aa8b9" async></script>
+<script type="text/javascript">
+  window.addEventListener("load", function(event) {
+    addthis.layers({
+      'theme' : 'dark',
+      'share' : {
+        'position' : 'right',
+        'numPreferredServices' : 6
+      } 
+    });
+  });
+</script>
+<!-- AddThis Smart Layers END -->
+
+
+<script src="/javascripts/fontfaceobserver.js" type="text/javascript"></script>
+<script type="text/javascript">
+  var kreon400 = new FontFaceObserver("Kreon", {
+    weight: 400
+  });
+  var kreon300 = new FontFaceObserver("Kreon", {
+    weight: 500
+  });
+
+  Promise.all([
+    kreon300.load(null, 5000),
+    kreon400.load(null ,5000),
+  ]).then(function() {
+    document.documentElement.className += " fonts-loaded";
+  }).catch(function(e){
+    console.log(e);
+  });
+</script>
+
+</body>
+</html>
