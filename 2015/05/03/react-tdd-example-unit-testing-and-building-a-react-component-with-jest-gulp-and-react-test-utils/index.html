@@ -9,7 +9,7 @@
   <meta name="author" content="Shidhin">
 
   
-  <meta name="description" content="Update Feb 9 2016 : The ReactJS version is bumped to 0.14 in the seed project and updated the article accordingly. ReactJs has attained lot of &hellip;">
+  <meta name="description" content="ReactJs has attained lot of momentum since its initial release in 2013, and became the best JavaScript library for developing rich UI interface. &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -23,7 +23,8 @@
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="http://feeds.feedburner.com/undefinednull/com" rel="alternate" title="Undefined NULL" type="application/atom+xml">
   <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
-<link href="//fonts.googleapis.com/css?family=Kreon:300,400" rel="stylesheet">
+<!--<link href="//fonts.googleapis.com/css?family=Kreon:300,400" rel="stylesheet">-->
+<link href="https://fonts.googleapis.com/css?family=Yantramanav:300,400,700" rel="stylesheet">
 <!-- <style type="text/css">
   /* latin */
   @font-face {
@@ -43,6 +44,7 @@
   }
 </style>
  -->
+
   <script src="/javascripts/modernizr-2.0.js" async></script>
   <script src="/javascripts/libs/jquery.min.js" async></script>
   <script src="/javascripts/octopress.js" type="text/javascript" async></script>
@@ -119,7 +121,12 @@ ga('send', 'pageview');
   </header>
 
 
-<div class="entry-content"><div class="info">
+<div class="entry-content"><p>ReactJs has attained lot of momentum since its initial release in 2013, and became the best JavaScript library for developing rich UI interface. React also popularized different concepts like Virtual DOM, Uni-directional data flow and Componentization in the front-end community. As of today, React has more than 20,000 stars in <a href="https://github.com/facebook/react">Github repo</a>, and actively maintained by the Facebook team.</p>
+
+<!-- more -->
+
+
+<div class="info">
   <strong>Update Feb 9 2016</strong> : The ReactJS version is bumped to 0.14 in the seed project and updated the article accordingly.
 </div>
 
@@ -129,14 +136,9 @@ ga('send', 'pageview');
 
 <p><img src="https://lh4.googleusercontent.com/-qJ1PeOhFiBM/VVBaO3ZI6qI/AAAAAAAAhpw/l-WLLtdZuxM/w640-h480-no/react-jest.jpg" alt="React and Jest for TDD" /></p>
 
-<p>ReactJs has attained lot of momentum since its initial release in 2013, and became the best JavaScript library for developing rich UI interface. React also popularised different concepts like Virtual DOM, Uni-directional data flow and Componentization in the front-end community. As of today, React has more than 20,000 stars in <a href="https://github.com/facebook/react">Github repo</a>, and actively maintained by the Facebook team.</p>
-
 <p>As I said already, React is a solid piece of work from Facebook. Any solid software will be built with testability in mind; And React is not an exception to that. Facebook built React with complete testing support &mdash; They even released their own testing framework named &ldquo;<strong>Jest</strong>&rdquo; and <strong>React Test Utils</strong> for unit testing React components.</p>
 
 <p>Here in this post, we&rsquo;ll see how to build a react component in TDD approach.</p>
-
-<!--more-->
-
 
 <h2>What we&rsquo;re going to build ?</h2>
 
@@ -597,8 +599,7 @@ Note: By using <strong>jest.dontMock</strong>, we get the original react compone
 </span></code></pre></td></tr></table></div></figure>
 
 
-<p>
-This is the beauty of TDD; designing the component step by step. By now, we made our component configurable also.</p>
+<p>This is the beauty of TDD; designing the component step by step. By now, we made our component configurable also.</p>
 
 <p><strong>Test Case 4:</strong></p>
 
@@ -1186,11 +1187,7 @@ This is the beauty of TDD; designing the component step by step. By now, we made
 
     
     <p class="meta">
-    <section>
-  <h2>Please Like or Retweet</h2>
-  <blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr">So excited to be a <a href="https://twitter.com/google">@Google</a> developer expert. proud moment! Special thanks to <a href="https://twitter.com/sw12">@sw12</a> <a href="https://twitter.com/mhantirah">@mhantirah</a> <a href="https://twitter.com/robertnyman">@robertnyman</a> <a href="https://twitter.com/AhmedMegii">@AhmedMegii</a> <a href="https://twitter.com/salimkayabasi">@salimkayabasi</a> <a href="https://twitter.com/hashtag/GDE?src=hash">#GDE</a></p>&mdash; ＜Shidhin /＞ (@shidhincr) <a href="https://twitter.com/shidhincr/status/748375981384175616">June 30, 2016</a></blockquote>
-</section>
-<div class="about">
+    <div class="about">
 	<span class="about-image">
 		<img src="/images/shidhincr.jpg" alt="shidhincr">
 	</span>
@@ -1201,6 +1198,7 @@ This is the beauty of TDD; designing the component step by step. By now, we made
 		<a href="https://twitter.com/shidhincr" class="twitter-follow-button" data-show-count="false" data-size="large">Follow @shidhincr</a>
 	</span>
 </div>
+
     </p>
     <p class="meta">
       

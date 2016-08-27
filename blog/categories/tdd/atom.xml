@@ -4,7 +4,7 @@
   <title><![CDATA[Category: TDD | Undefined NULL]]></title>
   <link href="https://www.undefinednull.com/blog/categories/tdd/atom.xml" rel="self"/>
   <link href="https://www.undefinednull.com/"/>
-  <updated>2016-08-06T11:09:21+04:00</updated>
+  <updated>2016-08-27T20:07:51+04:00</updated>
   <id>https://www.undefinednull.com/</id>
   <author>
     <name><![CDATA[Shidhin]]></name>
@@ -18,7 +18,12 @@
     <link href="https://www.undefinednull.com/2015/05/03/react-tdd-example-unit-testing-and-building-a-react-component-with-jest-gulp-and-react-test-utils/"/>
     <updated>2015-05-03T10:32:01+04:00</updated>
     <id>https://www.undefinednull.com/2015/05/03/react-tdd-example-unit-testing-and-building-a-react-component-with-jest-gulp-and-react-test-utils</id>
-    <content type="html"><![CDATA[<div class="info">
+    <content type="html"><![CDATA[<p>ReactJs has attained lot of momentum since its initial release in 2013, and became the best JavaScript library for developing rich UI interface. React also popularized different concepts like Virtual DOM, Uni-directional data flow and Componentization in the front-end community. As of today, React has more than 20,000 stars in <a href="https://github.com/facebook/react">Github repo</a>, and actively maintained by the Facebook team.</p>
+
+<!-- more -->
+
+
+<div class="info">
   <strong>Update Feb 9 2016</strong> : The ReactJS version is bumped to 0.14 in the seed project and updated the article accordingly.
 </div>
 
@@ -28,14 +33,9 @@
 
 <p><img src="https://lh4.googleusercontent.com/-qJ1PeOhFiBM/VVBaO3ZI6qI/AAAAAAAAhpw/l-WLLtdZuxM/w640-h480-no/react-jest.jpg" alt="React and Jest for TDD" /></p>
 
-<p>ReactJs has attained lot of momentum since its initial release in 2013, and became the best JavaScript library for developing rich UI interface. React also popularised different concepts like Virtual DOM, Uni-directional data flow and Componentization in the front-end community. As of today, React has more than 20,000 stars in <a href="https://github.com/facebook/react">Github repo</a>, and actively maintained by the Facebook team.</p>
-
 <p>As I said already, React is a solid piece of work from Facebook. Any solid software will be built with testability in mind; And React is not an exception to that. Facebook built React with complete testing support &mdash; They even released their own testing framework named &ldquo;<strong>Jest</strong>&rdquo; and <strong>React Test Utils</strong> for unit testing React components.</p>
 
 <p>Here in this post, we&rsquo;ll see how to build a react component in TDD approach.</p>
-
-<!--more-->
-
 
 <h2>What we&rsquo;re going to build ?</h2>
 
@@ -137,7 +137,7 @@ Note: By using <strong>jest.dontMock</strong>, we get the original react compone
 <p>var Accordion = React.createClass({
   render: function(){</p>
 
-<pre><code>return ( 
+<pre><code>return (
   &lt;div&gt;Accordion component&lt;/div&gt;
 );
 </code></pre>
@@ -660,9 +660,12 @@ var input = [{
     <link href="https://www.undefinednull.com/2015/03/19/implementing-a-curry-function-in-javascript-using-tdd/"/>
     <updated>2015-03-19T18:51:27+04:00</updated>
     <id>https://www.undefinednull.com/2015/03/19/implementing-a-curry-function-in-javascript-using-tdd</id>
-    <content type="html"><![CDATA[<p><img src="https://lh3.googleusercontent.com/dtPfB5V-ew-rm3aApkXHTA8jFVwsFzoNNepbn9wU=w264-h207-p-no" alt="TDD" /></p>
+    <content type="html"><![CDATA[<p>TDD stands for Test Driven Development. To those who don&rsquo;t know what TDD means: In a typical TDD Environment, a developer start with a basic test case describing the minimal requirement for implementing the module. Then he writes the actual implementation code for making the test case pass.</p>
 
-<p>TDD stands for Test Driven Development. To those who don&rsquo;t know what TDD means: In a typical TDD Environment, a developer start with a basic test case describing the minimal requirement for implementing the module. Then he writes the actual implementation code for making the test case pass.</p>
+<!--more-->
+
+
+<p><img src="https://lh3.googleusercontent.com/dtPfB5V-ew-rm3aApkXHTA8jFVwsFzoNNepbn9wU=w264-h207-p-no" alt="TDD" /></p>
 
 <p>Next, another test case is written for a different expectation for the module, followed by writing the implementation to make the test pass. This process goes on till the all the expectations for the actual module is implemented.</p>
 
@@ -671,9 +674,6 @@ var input = [{
 <h3>Setting up the tools</h3>
 
 <p>Here we&rsquo;re going to use <a href="http://mochajs.org">Mocha</a> as the unit testing framework. For running the tests, we will be using <a href="https://github.com/airportyh/testem">Testem</a>.</p>
-
-<!--more-->
-
 
 <p>We&rsquo;ll be using BDD ( Behaviour Driven Development, which is similar to TDD, but instead of <code>assertions</code> we use <code>expectaions</code>) style syntax. For that purpose let&rsquo;s use the excellent <a href="http://chaijs.com/">Chai.js</a> library.</p>
 

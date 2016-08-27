@@ -23,7 +23,8 @@
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="http://feeds.feedburner.com/undefinednull/com" rel="alternate" title="Undefined NULL" type="application/atom+xml">
   <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
-<link href="//fonts.googleapis.com/css?family=Kreon:300,400" rel="stylesheet">
+<!--<link href="//fonts.googleapis.com/css?family=Kreon:300,400" rel="stylesheet">-->
+<link href="https://fonts.googleapis.com/css?family=Yantramanav:300,400,700" rel="stylesheet">
 <!-- <style type="text/css">
   /* latin */
   @font-face {
@@ -43,6 +44,7 @@
   }
 </style>
  -->
+
   <script src="/javascripts/modernizr-2.0.js" async></script>
   <script src="/javascripts/libs/jquery.min.js" async></script>
   <script src="/javascripts/octopress.js" type="text/javascript" async></script>
@@ -119,9 +121,12 @@ ga('send', 'pageview');
   </header>
 
 
-<div class="entry-content"><p><img src="https://lh3.googleusercontent.com/dtPfB5V-ew-rm3aApkXHTA8jFVwsFzoNNepbn9wU=w264-h207-p-no" alt="TDD" /></p>
+<div class="entry-content"><p>TDD stands for Test Driven Development. To those who don&rsquo;t know what TDD means: In a typical TDD Environment, a developer start with a basic test case describing the minimal requirement for implementing the module. Then he writes the actual implementation code for making the test case pass.</p>
 
-<p>TDD stands for Test Driven Development. To those who don&rsquo;t know what TDD means: In a typical TDD Environment, a developer start with a basic test case describing the minimal requirement for implementing the module. Then he writes the actual implementation code for making the test case pass.</p>
+<!--more-->
+
+
+<p><img src="https://lh3.googleusercontent.com/dtPfB5V-ew-rm3aApkXHTA8jFVwsFzoNNepbn9wU=w264-h207-p-no" alt="TDD" /></p>
 
 <p>Next, another test case is written for a different expectation for the module, followed by writing the implementation to make the test pass. This process goes on till the all the expectations for the actual module is implemented.</p>
 
@@ -130,9 +135,6 @@ ga('send', 'pageview');
 <h3>Setting up the tools</h3>
 
 <p>Here we&rsquo;re going to use <a href="http://mochajs.org">Mocha</a> as the unit testing framework. For running the tests, we will be using <a href="https://github.com/airportyh/testem">Testem</a>.</p>
-
-<!--more-->
-
 
 <p>We&rsquo;ll be using BDD ( Behaviour Driven Development, which is similar to TDD, but instead of <code>assertions</code> we use <code>expectaions</code>) style syntax. For that purpose let&rsquo;s use the excellent <a href="http://chaijs.com/">Chai.js</a> library.</p>
 
@@ -495,7 +497,7 @@ ga('send', 'pageview');
 </span><span class='line'><span class="p">};</span>
 </span><span class='line'><span class="kd">var</span> <span class="nx">curryA</span> <span class="o">=</span> <span class="nx">makeCurry</span><span class="p">(</span><span class="nx">add</span><span class="p">);</span>
 </span><span class='line'><span class="kd">var</span> <span class="nx">curryB</span> <span class="o">=</span> <span class="nx">makeCurry</span><span class="p">(</span><span class="nx">add</span><span class="p">);</span>
-</span><span class='line'>      
+</span><span class='line'>
 </span><span class='line'><span class="nx">curryA</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">)(</span><span class="mi">3</span><span class="p">)</span> <span class="c1">// return 6</span>
 </span><span class='line'><span class="nx">curryB</span><span class="p">(</span><span class="mi">1</span><span class="p">)(</span><span class="mi">2</span><span class="p">)(</span><span class="mi">3</span><span class="p">)</span> <span class="c1">// return 6</span>
 </span></code></pre></td></tr></table></div></figure>
@@ -992,11 +994,7 @@ ga('send', 'pageview');
 
     
     <p class="meta">
-    <section>
-  <h2>Please Like or Retweet</h2>
-  <blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr">So excited to be a <a href="https://twitter.com/google">@Google</a> developer expert. proud moment! Special thanks to <a href="https://twitter.com/sw12">@sw12</a> <a href="https://twitter.com/mhantirah">@mhantirah</a> <a href="https://twitter.com/robertnyman">@robertnyman</a> <a href="https://twitter.com/AhmedMegii">@AhmedMegii</a> <a href="https://twitter.com/salimkayabasi">@salimkayabasi</a> <a href="https://twitter.com/hashtag/GDE?src=hash">#GDE</a></p>&mdash; ＜Shidhin /＞ (@shidhincr) <a href="https://twitter.com/shidhincr/status/748375981384175616">June 30, 2016</a></blockquote>
-</section>
-<div class="about">
+    <div class="about">
 	<span class="about-image">
 		<img src="/images/shidhincr.jpg" alt="shidhincr">
 	</span>
@@ -1007,6 +1005,7 @@ ga('send', 'pageview');
 		<a href="https://twitter.com/shidhincr" class="twitter-follow-button" data-show-count="false" data-size="large">Follow @shidhincr</a>
 	</span>
 </div>
+
     </p>
     <p class="meta">
       

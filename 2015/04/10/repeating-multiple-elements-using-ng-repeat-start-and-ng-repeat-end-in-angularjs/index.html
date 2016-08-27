@@ -23,7 +23,8 @@
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="http://feeds.feedburner.com/undefinednull/com" rel="alternate" title="Undefined NULL" type="application/atom+xml">
   <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
-<link href="//fonts.googleapis.com/css?family=Kreon:300,400" rel="stylesheet">
+<!--<link href="//fonts.googleapis.com/css?family=Kreon:300,400" rel="stylesheet">-->
+<link href="https://fonts.googleapis.com/css?family=Yantramanav:300,400,700" rel="stylesheet">
 <!-- <style type="text/css">
   /* latin */
   @font-face {
@@ -43,6 +44,7 @@
   }
 </style>
  -->
+
   <script src="/javascripts/modernizr-2.0.js" async></script>
   <script src="/javascripts/libs/jquery.min.js" async></script>
   <script src="/javascripts/octopress.js" type="text/javascript" async></script>
@@ -121,15 +123,15 @@ ga('send', 'pageview');
 
 <div class="entry-content"><p>When the AngularJS <a href="http://www.angularjs.org">website</a> is released, the TODO example in their website was one of the main attractions. The example was simple and just below 30 lines of code ( Here is the <a href="https://jsfiddle.net/1waxcf9x/">link</a>  if you want to check ). The whole trick behind the scene was done by a directive named <strong>ng-repeat</strong>, as shown below:</p>
 
+<!-- more -->
+
+
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 </pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nx">ng</span><span class="o">-</span><span class="nx">repeat</span><span class="o">=</span><span class="s2">&quot;todo in todoList.todos&quot;</span>
 </span></code></pre></td></tr></table></div></figure>
 
 
 <p>Till Angular 1.2, ng-repeat was designed to work on a single DOM element. In other words, ng-repeat can repeat only the DOM element on which it is added. Therefore, some of the situations &mdash; see below &mdash; lead Angular community to think about modifying ng-repeat in version 1.2. In the next section, we&rsquo;ll see the problem with ng-repeat and the solutions introduced.</p>
-
-<!-- more -->
-
 
 <h3>What was the issue ?</h3>
 
@@ -300,11 +302,7 @@ ga('send', 'pageview');
 
     
     <p class="meta">
-    <section>
-  <h2>Please Like or Retweet</h2>
-  <blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr">So excited to be a <a href="https://twitter.com/google">@Google</a> developer expert. proud moment! Special thanks to <a href="https://twitter.com/sw12">@sw12</a> <a href="https://twitter.com/mhantirah">@mhantirah</a> <a href="https://twitter.com/robertnyman">@robertnyman</a> <a href="https://twitter.com/AhmedMegii">@AhmedMegii</a> <a href="https://twitter.com/salimkayabasi">@salimkayabasi</a> <a href="https://twitter.com/hashtag/GDE?src=hash">#GDE</a></p>&mdash; ＜Shidhin /＞ (@shidhincr) <a href="https://twitter.com/shidhincr/status/748375981384175616">June 30, 2016</a></blockquote>
-</section>
-<div class="about">
+    <div class="about">
 	<span class="about-image">
 		<img src="/images/shidhincr.jpg" alt="shidhincr">
 	</span>
@@ -315,6 +313,7 @@ ga('send', 'pageview');
 		<a href="https://twitter.com/shidhincr" class="twitter-follow-button" data-show-count="false" data-size="large">Follow @shidhincr</a>
 	</span>
 </div>
+
     </p>
     <p class="meta">
       

@@ -23,7 +23,8 @@
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="http://feeds.feedburner.com/undefinednull/com" rel="alternate" title="Undefined NULL" type="application/atom+xml">
   <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
-<link href="//fonts.googleapis.com/css?family=Kreon:300,400" rel="stylesheet">
+<!--<link href="//fonts.googleapis.com/css?family=Kreon:300,400" rel="stylesheet">-->
+<link href="https://fonts.googleapis.com/css?family=Yantramanav:300,400,700" rel="stylesheet">
 <!-- <style type="text/css">
   /* latin */
   @font-face {
@@ -43,6 +44,7 @@
   }
 </style>
  -->
+
   <script src="/javascripts/modernizr-2.0.js" async></script>
   <script src="/javascripts/libs/jquery.min.js" async></script>
   <script src="/javascripts/octopress.js" type="text/javascript" async></script>
@@ -255,18 +257,6 @@ ga('send', 'pageview');
 
   <div class="entry-content"><p>This post is about the two tools I use regularly in my development environment:  <strong>iTerm</strong> and <strong>oh-my-zsh</strong>. <a href="https://www.iterm2.com/">iTerm</a> is a mac terminal replacement and zsh + <a href="https://github.com/robbyrussell/oh-my-zsh">oh-my-zsh</a> is an excellent combo to replace the bash shell with some cool stuffs.</p>
 
-<p><img src="https://lh3.googleusercontent.com/-Ccq2BJHbMmI/Vb8hLcwrnbI/AAAAAAAAk3Y/4Jx8wKfWBSk/s600/iterm-ohmyzsh.png" title="iterm-ohmyzsh.png" alt="iTerm and Oh-my-zsh" /></p>
-
-<p>Here, we&rsquo;ll see how to achieve some productivity improvements by effectively using these tools.</p>
-
-<h2>iTerm</h2>
-
-<p>As I said already, iTerm is a mac terminal replacement. It comes with ton of features missing in default terminal. Below, you will see some of them which made me choose iTerm.</p>
-
-<p><strong>Multiple tabs and split screens</strong></p>
-
-<p>Often we have to work with multiple terminals. iTerm support splitting the current terminal panes vertically/horizontally and adding any number of tabs. The shortcuts for splitting the terminal is <code>CMD+D</code> ( for vertical ) and <code>CMD+SHIFT+D</code> ( for horizontal ).</p>
-
 </div>
   
   
@@ -308,21 +298,7 @@ ga('send', 'pageview');
   </header>
 
 
-  <div class="entry-content"><div class="info">
-  <strong>Update Feb 9 2016</strong> : The ReactJS version is bumped to 0.14 in the seed project and updated the article accordingly.
-</div>
-
-
-<br/>
-
-
-<p><img src="https://lh4.googleusercontent.com/-qJ1PeOhFiBM/VVBaO3ZI6qI/AAAAAAAAhpw/l-WLLtdZuxM/w640-h480-no/react-jest.jpg" alt="React and Jest for TDD" /></p>
-
-<p>ReactJs has attained lot of momentum since its initial release in 2013, and became the best JavaScript library for developing rich UI interface. React also popularised different concepts like Virtual DOM, Uni-directional data flow and Componentization in the front-end community. As of today, React has more than 20,000 stars in <a href="https://github.com/facebook/react">Github repo</a>, and actively maintained by the Facebook team.</p>
-
-<p>As I said already, React is a solid piece of work from Facebook. Any solid software will be built with testability in mind; And React is not an exception to that. Facebook built React with complete testing support &mdash; They even released their own testing framework named &ldquo;<strong>Jest</strong>&rdquo; and <strong>React Test Utils</strong> for unit testing React components.</p>
-
-<p>Here in this post, we&rsquo;ll see how to build a react component in TDD approach.</p>
+  <div class="entry-content"><p>ReactJs has attained lot of momentum since its initial release in 2013, and became the best JavaScript library for developing rich UI interface. React also popularized different concepts like Virtual DOM, Uni-directional data flow and Componentization in the front-end community. As of today, React has more than 20,000 stars in <a href="https://github.com/facebook/react">Github repo</a>, and actively maintained by the Facebook team.</p>
 
 </div>
   
@@ -367,13 +343,6 @@ ga('send', 'pageview');
 
   <div class="entry-content"><p>When the AngularJS <a href="http://www.angularjs.org">website</a> is released, the TODO example in their website was one of the main attractions. The example was simple and just below 30 lines of code ( Here is the <a href="https://jsfiddle.net/1waxcf9x/">link</a>  if you want to check ). The whole trick behind the scene was done by a directive named <strong>ng-repeat</strong>, as shown below:</p>
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nx">ng</span><span class="o">-</span><span class="nx">repeat</span><span class="o">=</span><span class="s2">&quot;todo in todoList.todos&quot;</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>Till Angular 1.2, ng-repeat was designed to work on a single DOM element. In other words, ng-repeat can repeat only the DOM element on which it is added. Therefore, some of the situations &mdash; see below &mdash; lead Angular community to think about modifying ng-repeat in version 1.2. In the next section, we&rsquo;ll see the problem with ng-repeat and the solutions introduced.</p>
-
 </div>
   
   
@@ -415,17 +384,7 @@ ga('send', 'pageview');
   </header>
 
 
-  <div class="entry-content"><p><img src="https://lh3.googleusercontent.com/dtPfB5V-ew-rm3aApkXHTA8jFVwsFzoNNepbn9wU=w264-h207-p-no" alt="TDD" /></p>
-
-<p>TDD stands for Test Driven Development. To those who don&rsquo;t know what TDD means: In a typical TDD Environment, a developer start with a basic test case describing the minimal requirement for implementing the module. Then he writes the actual implementation code for making the test case pass.</p>
-
-<p>Next, another test case is written for a different expectation for the module, followed by writing the implementation to make the test pass. This process goes on till the all the expectations for the actual module is implemented.</p>
-
-<p>This way of development ( driven by series of test cases ) is called TDD.</p>
-
-<h3>Setting up the tools</h3>
-
-<p>Here we&rsquo;re going to use <a href="http://mochajs.org">Mocha</a> as the unit testing framework. For running the tests, we will be using <a href="https://github.com/airportyh/testem">Testem</a>.</p>
+  <div class="entry-content"><p>TDD stands for Test Driven Development. To those who don&rsquo;t know what TDD means: In a typical TDD Environment, a developer start with a basic test case describing the minimal requirement for implementing the module. Then he writes the actual implementation code for making the test case pass.</p>
 
 </div>
   
@@ -469,10 +428,6 @@ ga('send', 'pageview');
 
 
   <div class="entry-content"><p>Debugging mobile websites/applications is a real pain. No debuggers for Javascript, no console logs, cannot inspect html/css, and so on.</p>
-
-<p>Sometimes I think that I am debugging like the old IE6 days where I had to put <code>alert</code> in every line of the code to find out where the actual issue is. If you also came across the same, you know the pain.</p>
-
-<p>Lately, Google chrome came for the rescue. They relieved this pain by introducing remote debugging support in chrome mobile. Chrome remote debugging was a real life saver, where we get the same chrome devtools connected to the webpage in mobile browser. And, We can debug like the way we do it in desktop browsers.</p>
 
 </div>
   

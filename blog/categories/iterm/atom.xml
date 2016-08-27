@@ -4,7 +4,7 @@
   <title><![CDATA[Category: iTerm | Undefined NULL]]></title>
   <link href="https://www.undefinednull.com/blog/categories/iterm/atom.xml" rel="self"/>
   <link href="https://www.undefinednull.com/"/>
-  <updated>2016-08-06T11:09:21+04:00</updated>
+  <updated>2016-08-27T20:07:51+04:00</updated>
   <id>https://www.undefinednull.com/</id>
   <author>
     <name><![CDATA[Shidhin]]></name>
@@ -20,6 +20,9 @@
     <id>https://www.undefinednull.com/2015/07/31/iterm-tips-and-zsh-plugins-for-better-development-environment</id>
     <content type="html"><![CDATA[<p>This post is about the two tools I use regularly in my development environment:  <strong>iTerm</strong> and <strong>oh-my-zsh</strong>. <a href="https://www.iterm2.com/">iTerm</a> is a mac terminal replacement and zsh + <a href="https://github.com/robbyrussell/oh-my-zsh">oh-my-zsh</a> is an excellent combo to replace the bash shell with some cool stuffs.</p>
 
+<!--more-->
+
+
 <p><img src="https://lh3.googleusercontent.com/-Ccq2BJHbMmI/Vb8hLcwrnbI/AAAAAAAAk3Y/4Jx8wKfWBSk/s600/iterm-ohmyzsh.png" title="iterm-ohmyzsh.png" alt="iTerm and Oh-my-zsh" /></p>
 
 <p>Here, we&rsquo;ll see how to achieve some productivity improvements by effectively using these tools.</p>
@@ -31,9 +34,6 @@
 <p><strong>Multiple tabs and split screens</strong></p>
 
 <p>Often we have to work with multiple terminals. iTerm support splitting the current terminal panes vertically/horizontally and adding any number of tabs. The shortcuts for splitting the terminal is <code>CMD+D</code> ( for vertical ) and <code>CMD+SHIFT+D</code> ( for horizontal ).</p>
-
-<!--more-->
-
 
 <p>For adding a new tab, the shortcut is <code>CMD + T</code> ( same like your browser ).</p>
 

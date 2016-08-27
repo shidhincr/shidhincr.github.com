@@ -4,7 +4,7 @@
   <title><![CDATA[Category: angularjs | Undefined NULL]]></title>
   <link href="https://www.undefinednull.com/blog/categories/angularjs/atom.xml" rel="self"/>
   <link href="https://www.undefinednull.com/"/>
-  <updated>2016-08-06T11:09:21+04:00</updated>
+  <updated>2016-08-27T20:07:51+04:00</updated>
   <id>https://www.undefinednull.com/</id>
   <author>
     <name><![CDATA[Shidhin]]></name>
@@ -20,16 +20,16 @@
     <id>https://www.undefinednull.com/2014/07/07/practical-guide-to-prelink-postlink-and-controller-methods-of-angular-directives</id>
     <content type="html"><![CDATA[<p>I have discussed about the scope of a directive in my previous <a href="http://www.undefinednull.com/2014/02/11/mastering-the-scope-of-a-directive-in-angularjs/">article</a>. Here we&rsquo;re going to see how to use the link and controller functions of an AngularJs directive.</p>
 
+<!--more-->
+
+
 <h2>Link function of an Angular Directive</h2>
 
 <p>As the name implicates, the link function has the duty of linking the model to the templates. Link function is the place where AngularJs does the data binding to the compiled templates. Let&rsquo;s take a look at the signature of a link function.</p>
 
-<!--more-->
-
-
 <p>```javascript</p>
 
-<pre><code>link: function LinkFn(scope, elem, attr, ctrl){}    
+<pre><code>link: function LinkFn(scope, elem, attr, ctrl){}
 </code></pre>
 
 <p>```
@@ -92,7 +92,7 @@ app.directive(&lsquo;dad&rsquo;, function () {</p>
         post: function(scope,elem,attr){
             scope.name = 'Paul';
             scope.greeting = 'Hey, I am ';
-        }   
+        }
     }
 };
 </code></pre>

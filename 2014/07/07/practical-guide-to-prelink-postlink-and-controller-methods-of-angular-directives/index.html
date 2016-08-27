@@ -23,7 +23,8 @@
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="http://feeds.feedburner.com/undefinednull/com" rel="alternate" title="Undefined NULL" type="application/atom+xml">
   <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
-<link href="//fonts.googleapis.com/css?family=Kreon:300,400" rel="stylesheet">
+<!--<link href="//fonts.googleapis.com/css?family=Kreon:300,400" rel="stylesheet">-->
+<link href="https://fonts.googleapis.com/css?family=Yantramanav:300,400,700" rel="stylesheet">
 <!-- <style type="text/css">
   /* latin */
   @font-face {
@@ -43,6 +44,7 @@
   }
 </style>
  -->
+
   <script src="/javascripts/modernizr-2.0.js" async></script>
   <script src="/javascripts/libs/jquery.min.js" async></script>
   <script src="/javascripts/octopress.js" type="text/javascript" async></script>
@@ -121,17 +123,15 @@ ga('send', 'pageview');
 
 <div class="entry-content"><p>I have discussed about the scope of a directive in my previous <a href="http://www.undefinednull.com/2014/02/11/mastering-the-scope-of-a-directive-in-angularjs/">article</a>. Here we&rsquo;re going to see how to use the link and controller functions of an AngularJs directive.</p>
 
+<!--more-->
+
+
 <h2>Link function of an Angular Directive</h2>
 
 <p>As the name implicates, the link function has the duty of linking the model to the templates. Link function is the place where AngularJs does the data binding to the compiled templates. Let&rsquo;s take a look at the signature of a link function.</p>
 
-<!--more-->
-
-
-
-
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nx">link</span><span class="o">:</span> <span class="kd">function</span> <span class="nx">LinkFn</span><span class="p">(</span><span class="nx">scope</span><span class="p">,</span> <span class="nx">elem</span><span class="p">,</span> <span class="nx">attr</span><span class="p">,</span> <span class="nx">ctrl</span><span class="p">){}</span> 
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nx">link</span><span class="o">:</span> <span class="kd">function</span> <span class="nx">LinkFn</span><span class="p">(</span><span class="nx">scope</span><span class="p">,</span> <span class="nx">elem</span><span class="p">,</span> <span class="nx">attr</span><span class="p">,</span> <span class="nx">ctrl</span><span class="p">){}</span>
 </span></code></pre></td></tr></table></div></figure>
 
 
@@ -215,7 +215,7 @@ ga('send', 'pageview');
 </span><span class='line'>          <span class="nx">post</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">scope</span><span class="p">,</span><span class="nx">elem</span><span class="p">,</span><span class="nx">attr</span><span class="p">){</span>
 </span><span class='line'>              <span class="nx">scope</span><span class="p">.</span><span class="nx">name</span> <span class="o">=</span> <span class="s1">&#39;Paul&#39;</span><span class="p">;</span>
 </span><span class='line'>              <span class="nx">scope</span><span class="p">.</span><span class="nx">greeting</span> <span class="o">=</span> <span class="s1">&#39;Hey, I am &#39;</span><span class="p">;</span>
-</span><span class='line'>          <span class="p">}</span>    
+</span><span class='line'>          <span class="p">}</span>
 </span><span class='line'>        <span class="p">}</span>
 </span><span class='line'>    <span class="p">};</span>
 </span><span class='line'><span class="p">});</span>
@@ -390,11 +390,7 @@ Used for defining a proper API to the directive. Using controller, directives ca
 
     
     <p class="meta">
-    <section>
-  <h2>Please Like or Retweet</h2>
-  <blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr">So excited to be a <a href="https://twitter.com/google">@Google</a> developer expert. proud moment! Special thanks to <a href="https://twitter.com/sw12">@sw12</a> <a href="https://twitter.com/mhantirah">@mhantirah</a> <a href="https://twitter.com/robertnyman">@robertnyman</a> <a href="https://twitter.com/AhmedMegii">@AhmedMegii</a> <a href="https://twitter.com/salimkayabasi">@salimkayabasi</a> <a href="https://twitter.com/hashtag/GDE?src=hash">#GDE</a></p>&mdash; ＜Shidhin /＞ (@shidhincr) <a href="https://twitter.com/shidhincr/status/748375981384175616">June 30, 2016</a></blockquote>
-</section>
-<div class="about">
+    <div class="about">
 	<span class="about-image">
 		<img src="/images/shidhincr.jpg" alt="shidhincr">
 	</span>
@@ -405,6 +401,7 @@ Used for defining a proper API to the directive. Using controller, directives ca
 		<a href="https://twitter.com/shidhincr" class="twitter-follow-button" data-show-count="false" data-size="large">Follow @shidhincr</a>
 	</span>
 </div>
+
     </p>
     <p class="meta">
       

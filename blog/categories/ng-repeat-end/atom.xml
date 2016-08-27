@@ -4,7 +4,7 @@
   <title><![CDATA[Category: ng-repeat-end | Undefined NULL]]></title>
   <link href="https://www.undefinednull.com/blog/categories/ng-repeat-end/atom.xml" rel="self"/>
   <link href="https://www.undefinednull.com/"/>
-  <updated>2016-08-06T11:09:21+04:00</updated>
+  <updated>2016-08-27T20:07:51+04:00</updated>
   <id>https://www.undefinednull.com/</id>
   <author>
     <name><![CDATA[Shidhin]]></name>
@@ -20,13 +20,13 @@
     <id>https://www.undefinednull.com/2015/04/10/repeating-multiple-elements-using-ng-repeat-start-and-ng-repeat-end-in-angularjs</id>
     <content type="html"><![CDATA[<p>When the AngularJS <a href="http://www.angularjs.org">website</a> is released, the TODO example in their website was one of the main attractions. The example was simple and just below 30 lines of code ( Here is the <a href="https://jsfiddle.net/1waxcf9x/">link</a>  if you want to check ). The whole trick behind the scene was done by a directive named <strong>ng-repeat</strong>, as shown below:</p>
 
+<!-- more -->
+
+
 <p><code>javascript
 ng-repeat="todo in todoList.todos"
 </code>
 Till Angular 1.2, ng-repeat was designed to work on a single DOM element. In other words, ng-repeat can repeat only the DOM element on which it is added. Therefore, some of the situations &mdash; see below &mdash; lead Angular community to think about modifying ng-repeat in version 1.2. In the next section, we&rsquo;ll see the problem with ng-repeat and the solutions introduced.</p>
-
-<!-- more -->
-
 
 <h3>What was the issue ?</h3>
 

@@ -4,7 +4,7 @@
   <title><![CDATA[Category: javascript | Undefined NULL]]></title>
   <link href="https://www.undefinednull.com/blog/categories/javascript/atom.xml" rel="self"/>
   <link href="https://www.undefinednull.com/"/>
-  <updated>2016-08-06T11:09:21+04:00</updated>
+  <updated>2016-08-27T20:07:51+04:00</updated>
   <id>https://www.undefinednull.com/</id>
   <author>
     <name><![CDATA[Shidhin]]></name>
@@ -22,10 +22,10 @@
 
 <p>First, I admit the title looks bit weird. I know this topic has been explained a thousand times in many JavaScript blogs, and I don&rsquo;t want to repeat the same here too. So I am gonna explain this through a person &lsquo;<strong>Dave</strong>&rsquo;.</p>
 
-<p>Yesterday I got a chance to explain the call and apply methods in JavaScript to some of my friends. I had to pick a real world scenario to make them properly understand how it works. Here I am going to explain the same. Excuse me if this is going to be dumb story.</p>
-
 <!--more-->
 
+
+<p>Yesterday I got a chance to explain the call and apply methods in JavaScript to some of my friends. I had to pick a real world scenario to make them properly understand how it works. Here I am going to explain the same. Excuse me if this is going to be dumb story.</p>
 
 <h3>Real world scenario</h3>
 
@@ -122,7 +122,7 @@ var You = {</p>
 <pre><code>name: 'You',
 age:    '29',
 getIdNumber: function(){
-    return 'your id number';    } }
+    return 'your id number';    }}
 </code></pre>
 
 <p>```</p>

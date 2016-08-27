@@ -4,7 +4,7 @@
   <title><![CDATA[Category: weinre | Undefined NULL]]></title>
   <link href="https://www.undefinednull.com/blog/categories/weinre/atom.xml" rel="self"/>
   <link href="https://www.undefinednull.com/"/>
-  <updated>2016-08-06T11:09:21+04:00</updated>
+  <updated>2016-08-27T20:07:51+04:00</updated>
   <id>https://www.undefinednull.com/</id>
   <author>
     <name><![CDATA[Shidhin]]></name>
@@ -20,12 +20,12 @@
     <id>https://www.undefinednull.com/2015/03/17/remote-debugging-localhost-with-weinre</id>
     <content type="html"><![CDATA[<p>Debugging mobile websites/applications is a real pain. No debuggers for Javascript, no console logs, cannot inspect html/css, and so on.</p>
 
+<!--more-->
+
+
 <p>Sometimes I think that I am debugging like the old IE6 days where I had to put <code>alert</code> in every line of the code to find out where the actual issue is. If you also came across the same, you know the pain.</p>
 
 <p>Lately, Google chrome came for the rescue. They relieved this pain by introducing remote debugging support in chrome mobile. Chrome remote debugging was a real life saver, where we get the same chrome devtools connected to the webpage in mobile browser. And, We can debug like the way we do it in desktop browsers.</p>
-
-<!--more-->
-
 
 <blockquote><p>That is Awesome!</p></blockquote>
 

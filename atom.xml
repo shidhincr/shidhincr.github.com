@@ -4,7 +4,7 @@
   <title><![CDATA[Undefined NULL]]></title>
   <link href="https://www.undefinednull.com/atom.xml" rel="self"/>
   <link href="https://www.undefinednull.com/"/>
-  <updated>2016-08-06T11:09:21+04:00</updated>
+  <updated>2016-08-27T20:07:51+04:00</updated>
   <id>https://www.undefinednull.com/</id>
   <author>
     <name><![CDATA[Shidhin]]></name>
@@ -427,6 +427,9 @@
     <id>https://www.undefinednull.com/2015/07/31/iterm-tips-and-zsh-plugins-for-better-development-environment</id>
     <content type="html"><![CDATA[<p>This post is about the two tools I use regularly in my development environment:  <strong>iTerm</strong> and <strong>oh-my-zsh</strong>. <a href="https://www.iterm2.com/">iTerm</a> is a mac terminal replacement and zsh + <a href="https://github.com/robbyrussell/oh-my-zsh">oh-my-zsh</a> is an excellent combo to replace the bash shell with some cool stuffs.</p>
 
+<!--more-->
+
+
 <p><img src="https://lh3.googleusercontent.com/-Ccq2BJHbMmI/Vb8hLcwrnbI/AAAAAAAAk3Y/4Jx8wKfWBSk/s600/iterm-ohmyzsh.png" title="iterm-ohmyzsh.png" alt="iTerm and Oh-my-zsh" /></p>
 
 <p>Here, we&rsquo;ll see how to achieve some productivity improvements by effectively using these tools.</p>
@@ -438,9 +441,6 @@
 <p><strong>Multiple tabs and split screens</strong></p>
 
 <p>Often we have to work with multiple terminals. iTerm support splitting the current terminal panes vertically/horizontally and adding any number of tabs. The shortcuts for splitting the terminal is <code>CMD+D</code> ( for vertical ) and <code>CMD+SHIFT+D</code> ( for horizontal ).</p>
-
-<!--more-->
-
 
 <p>For adding a new tab, the shortcut is <code>CMD + T</code> ( same like your browser ).</p>
 
@@ -563,7 +563,12 @@ plugins=(git bundler foobar)</p></blockquote>
     <link href="https://www.undefinednull.com/2015/05/03/react-tdd-example-unit-testing-and-building-a-react-component-with-jest-gulp-and-react-test-utils/"/>
     <updated>2015-05-03T10:32:01+04:00</updated>
     <id>https://www.undefinednull.com/2015/05/03/react-tdd-example-unit-testing-and-building-a-react-component-with-jest-gulp-and-react-test-utils</id>
-    <content type="html"><![CDATA[<div class="info">
+    <content type="html"><![CDATA[<p>ReactJs has attained lot of momentum since its initial release in 2013, and became the best JavaScript library for developing rich UI interface. React also popularized different concepts like Virtual DOM, Uni-directional data flow and Componentization in the front-end community. As of today, React has more than 20,000 stars in <a href="https://github.com/facebook/react">Github repo</a>, and actively maintained by the Facebook team.</p>
+
+<!-- more -->
+
+
+<div class="info">
   <strong>Update Feb 9 2016</strong> : The ReactJS version is bumped to 0.14 in the seed project and updated the article accordingly.
 </div>
 
@@ -573,14 +578,9 @@ plugins=(git bundler foobar)</p></blockquote>
 
 <p><img src="https://lh4.googleusercontent.com/-qJ1PeOhFiBM/VVBaO3ZI6qI/AAAAAAAAhpw/l-WLLtdZuxM/w640-h480-no/react-jest.jpg" alt="React and Jest for TDD" /></p>
 
-<p>ReactJs has attained lot of momentum since its initial release in 2013, and became the best JavaScript library for developing rich UI interface. React also popularised different concepts like Virtual DOM, Uni-directional data flow and Componentization in the front-end community. As of today, React has more than 20,000 stars in <a href="https://github.com/facebook/react">Github repo</a>, and actively maintained by the Facebook team.</p>
-
 <p>As I said already, React is a solid piece of work from Facebook. Any solid software will be built with testability in mind; And React is not an exception to that. Facebook built React with complete testing support &mdash; They even released their own testing framework named &ldquo;<strong>Jest</strong>&rdquo; and <strong>React Test Utils</strong> for unit testing React components.</p>
 
 <p>Here in this post, we&rsquo;ll see how to build a react component in TDD approach.</p>
-
-<!--more-->
-
 
 <h2>What we&rsquo;re going to build ?</h2>
 
@@ -1041,8 +1041,7 @@ Note: By using <strong>jest.dontMock</strong>, we get the original react compone
 </span></code></pre></td></tr></table></div></figure>
 
 
-<p>
-This is the beauty of TDD; designing the component step by step. By now, we made our component configurable also.</p>
+<p>This is the beauty of TDD; designing the component step by step. By now, we made our component configurable also.</p>
 
 <p><strong>Test Case 4:</strong></p>
 
@@ -1566,15 +1565,15 @@ This is the beauty of TDD; designing the component step by step. By now, we made
     <id>https://www.undefinednull.com/2015/04/10/repeating-multiple-elements-using-ng-repeat-start-and-ng-repeat-end-in-angularjs</id>
     <content type="html"><![CDATA[<p>When the AngularJS <a href="http://www.angularjs.org">website</a> is released, the TODO example in their website was one of the main attractions. The example was simple and just below 30 lines of code ( Here is the <a href="https://jsfiddle.net/1waxcf9x/">link</a>  if you want to check ). The whole trick behind the scene was done by a directive named <strong>ng-repeat</strong>, as shown below:</p>
 
+<!-- more -->
+
+
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 </pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nx">ng</span><span class="o">-</span><span class="nx">repeat</span><span class="o">=</span><span class="s2">&quot;todo in todoList.todos&quot;</span>
 </span></code></pre></td></tr></table></div></figure>
 
 
 <p>Till Angular 1.2, ng-repeat was designed to work on a single DOM element. In other words, ng-repeat can repeat only the DOM element on which it is added. Therefore, some of the situations &mdash; see below &mdash; lead Angular community to think about modifying ng-repeat in version 1.2. In the next section, we&rsquo;ll see the problem with ng-repeat and the solutions introduced.</p>
-
-<!-- more -->
-
 
 <h3>What was the issue ?</h3>
 
@@ -1679,9 +1678,12 @@ This is the beauty of TDD; designing the component step by step. By now, we made
     <link href="https://www.undefinednull.com/2015/03/19/implementing-a-curry-function-in-javascript-using-tdd/"/>
     <updated>2015-03-19T18:51:27+04:00</updated>
     <id>https://www.undefinednull.com/2015/03/19/implementing-a-curry-function-in-javascript-using-tdd</id>
-    <content type="html"><![CDATA[<p><img src="https://lh3.googleusercontent.com/dtPfB5V-ew-rm3aApkXHTA8jFVwsFzoNNepbn9wU=w264-h207-p-no" alt="TDD" /></p>
+    <content type="html"><![CDATA[<p>TDD stands for Test Driven Development. To those who don&rsquo;t know what TDD means: In a typical TDD Environment, a developer start with a basic test case describing the minimal requirement for implementing the module. Then he writes the actual implementation code for making the test case pass.</p>
 
-<p>TDD stands for Test Driven Development. To those who don&rsquo;t know what TDD means: In a typical TDD Environment, a developer start with a basic test case describing the minimal requirement for implementing the module. Then he writes the actual implementation code for making the test case pass.</p>
+<!--more-->
+
+
+<p><img src="https://lh3.googleusercontent.com/dtPfB5V-ew-rm3aApkXHTA8jFVwsFzoNNepbn9wU=w264-h207-p-no" alt="TDD" /></p>
 
 <p>Next, another test case is written for a different expectation for the module, followed by writing the implementation to make the test pass. This process goes on till the all the expectations for the actual module is implemented.</p>
 
@@ -1690,9 +1692,6 @@ This is the beauty of TDD; designing the component step by step. By now, we made
 <h3>Setting up the tools</h3>
 
 <p>Here we&rsquo;re going to use <a href="http://mochajs.org">Mocha</a> as the unit testing framework. For running the tests, we will be using <a href="https://github.com/airportyh/testem">Testem</a>.</p>
-
-<!--more-->
-
 
 <p>We&rsquo;ll be using BDD ( Behaviour Driven Development, which is similar to TDD, but instead of <code>assertions</code> we use <code>expectaions</code>) style syntax. For that purpose let&rsquo;s use the excellent <a href="http://chaijs.com/">Chai.js</a> library.</p>
 
@@ -2055,7 +2054,7 @@ This is the beauty of TDD; designing the component step by step. By now, we made
 </span><span class='line'><span class="p">};</span>
 </span><span class='line'><span class="kd">var</span> <span class="nx">curryA</span> <span class="o">=</span> <span class="nx">makeCurry</span><span class="p">(</span><span class="nx">add</span><span class="p">);</span>
 </span><span class='line'><span class="kd">var</span> <span class="nx">curryB</span> <span class="o">=</span> <span class="nx">makeCurry</span><span class="p">(</span><span class="nx">add</span><span class="p">);</span>
-</span><span class='line'>      
+</span><span class='line'>
 </span><span class='line'><span class="nx">curryA</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">)(</span><span class="mi">3</span><span class="p">)</span> <span class="c1">// return 6</span>
 </span><span class='line'><span class="nx">curryB</span><span class="p">(</span><span class="mi">1</span><span class="p">)(</span><span class="mi">2</span><span class="p">)(</span><span class="mi">3</span><span class="p">)</span> <span class="c1">// return 6</span>
 </span></code></pre></td></tr></table></div></figure>
@@ -2488,12 +2487,12 @@ This is the beauty of TDD; designing the component step by step. By now, we made
     <id>https://www.undefinednull.com/2015/03/17/remote-debugging-localhost-with-weinre</id>
     <content type="html"><![CDATA[<p>Debugging mobile websites/applications is a real pain. No debuggers for Javascript, no console logs, cannot inspect html/css, and so on.</p>
 
+<!--more-->
+
+
 <p>Sometimes I think that I am debugging like the old IE6 days where I had to put <code>alert</code> in every line of the code to find out where the actual issue is. If you also came across the same, you know the pain.</p>
 
 <p>Lately, Google chrome came for the rescue. They relieved this pain by introducing remote debugging support in chrome mobile. Chrome remote debugging was a real life saver, where we get the same chrome devtools connected to the webpage in mobile browser. And, We can debug like the way we do it in desktop browsers.</p>
-
-<!--more-->
-
 
 <blockquote><p>That is Awesome!</p></blockquote>
 
@@ -3052,17 +3051,15 @@ For object data sources, the default model bound to the select box is the value,
     <id>https://www.undefinednull.com/2014/07/07/practical-guide-to-prelink-postlink-and-controller-methods-of-angular-directives</id>
     <content type="html"><![CDATA[<p>I have discussed about the scope of a directive in my previous <a href="http://www.undefinednull.com/2014/02/11/mastering-the-scope-of-a-directive-in-angularjs/">article</a>. Here we&rsquo;re going to see how to use the link and controller functions of an AngularJs directive.</p>
 
+<!--more-->
+
+
 <h2>Link function of an Angular Directive</h2>
 
 <p>As the name implicates, the link function has the duty of linking the model to the templates. Link function is the place where AngularJs does the data binding to the compiled templates. Let&rsquo;s take a look at the signature of a link function.</p>
 
-<!--more-->
-
-
-
-
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nx">link</span><span class="o">:</span> <span class="kd">function</span> <span class="nx">LinkFn</span><span class="p">(</span><span class="nx">scope</span><span class="p">,</span> <span class="nx">elem</span><span class="p">,</span> <span class="nx">attr</span><span class="p">,</span> <span class="nx">ctrl</span><span class="p">){}</span> 
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nx">link</span><span class="o">:</span> <span class="kd">function</span> <span class="nx">LinkFn</span><span class="p">(</span><span class="nx">scope</span><span class="p">,</span> <span class="nx">elem</span><span class="p">,</span> <span class="nx">attr</span><span class="p">,</span> <span class="nx">ctrl</span><span class="p">){}</span>
 </span></code></pre></td></tr></table></div></figure>
 
 
@@ -3146,7 +3143,7 @@ For object data sources, the default model bound to the select box is the value,
 </span><span class='line'>          <span class="nx">post</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">scope</span><span class="p">,</span><span class="nx">elem</span><span class="p">,</span><span class="nx">attr</span><span class="p">){</span>
 </span><span class='line'>              <span class="nx">scope</span><span class="p">.</span><span class="nx">name</span> <span class="o">=</span> <span class="s1">&#39;Paul&#39;</span><span class="p">;</span>
 </span><span class='line'>              <span class="nx">scope</span><span class="p">.</span><span class="nx">greeting</span> <span class="o">=</span> <span class="s1">&#39;Hey, I am &#39;</span><span class="p">;</span>
-</span><span class='line'>          <span class="p">}</span>    
+</span><span class='line'>          <span class="p">}</span>
 </span><span class='line'>        <span class="p">}</span>
 </span><span class='line'>    <span class="p">};</span>
 </span><span class='line'><span class="p">});</span>
@@ -3259,10 +3256,10 @@ Used for defining a proper API to the directive. Using controller, directives ca
 
 <p>First, I admit the title looks bit weird. I know this topic has been explained a thousand times in many JavaScript blogs, and I don&rsquo;t want to repeat the same here too. So I am gonna explain this through a person &lsquo;<strong>Dave</strong>&rsquo;.</p>
 
-<p>Yesterday I got a chance to explain the call and apply methods in JavaScript to some of my friends. I had to pick a real world scenario to make them properly understand how it works. Here I am going to explain the same. Excuse me if this is going to be dumb story.</p>
-
 <!--more-->
 
+
+<p>Yesterday I got a chance to explain the call and apply methods in JavaScript to some of my friends. I had to pick a real world scenario to make them properly understand how it works. Here I am going to explain the same. Excuse me if this is going to be dumb story.</p>
 
 <h3>Real world scenario</h3>
 
