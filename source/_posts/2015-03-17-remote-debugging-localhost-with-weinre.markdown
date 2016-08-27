@@ -6,12 +6,12 @@ comments: true
 categories: [localhost, testing, weinre]
 ---
 
-Debugging mobile websites/applications is a real pain. No debuggers for Javascript, no console logs, cannot inspect html/css, and so on. 
-
+Debugging mobile websites/applications is a real pain. No debuggers for Javascript, no console logs, cannot inspect html/css, and so on.
+<!--more-->
 Sometimes I think that I am debugging like the old IE6 days where I had to put `alert` in every line of the code to find out where the actual issue is. If you also came across the same, you know the pain.
 
-Lately, Google chrome came for the rescue. They relieved this pain by introducing remote debugging support in chrome mobile. Chrome remote debugging was a real life saver, where we get the same chrome devtools connected to the webpage in mobile browser. And, We can debug like the way we do it in desktop browsers. 
-<!--more-->
+Lately, Google chrome came for the rescue. They relieved this pain by introducing remote debugging support in chrome mobile. Chrome remote debugging was a real life saver, where we get the same chrome devtools connected to the webpage in mobile browser. And, We can debug like the way we do it in desktop browsers.
+
 > That is Awesome!
 
 But still the problem of Android browser debugging remains the same. Chrome remote debugging can be connected to the webpages loaded inside Chrome browser ( mobile ) only. If we need to debug default browsers, we have to use any other debugging tool. Here, in this post, we'll discuss about another wonderful remote debugging tool known as **Weinre**.
@@ -48,9 +48,9 @@ To run weinre in default configurations, use the command `weinre -all-`.
 
 The easiest way of accessing the dev machine is by using the IP address and port. Let's say the application is running on port 9002. To open it in the browser, first, we have to find out the IP address of the system where the application is running. Use the command `ifconfig` in OSX/Linux and `ipconfig` in Windows to find out the IP address. Now navigate to the browser window and use the **IP_ADDRESS:PORT** to see the running application.
 
-There are situations where we need to access the application using local hostname. These includes host header validation, solving cross domain request from JavaScript..etc. Normally these things are restricted when using the **IP_ADDRESS:PORT** combination. 
+There are situations where we need to access the application using local hostname. These includes host header validation, solving cross domain request from JavaScript..etc. Normally these things are restricted when using the **IP_ADDRESS:PORT** combination.
 
-Accessing the local hostname in mobile devices is our first hurdle. I have found an excellent article about how to solve this issue. I don't want to explain all of those here, so let's follow this link: 
+Accessing the local hostname in mobile devices is our first hurdle. I have found an excellent article about how to solve this issue. I don't want to explain all of those here, so let's follow this link:
 
 [http://egalo.com/2012/05/29/testing-mac-web-site-using-local-hostname-on-mobile-device/](http://egalo.com/2012/05/29/testing-mac-web-site-using-local-hostname-on-mobile-device/)
 
@@ -151,7 +151,6 @@ Now you can use weinre in https pages.
 
 ## Summary
 
-Weinre is really a powerful tool for remote debugging. Here in this guide, we saw how to configure and use weinre to debug local websites. I hope this will help someone who would be struggling to work with Android browsers. I would like also mention that there is an online hosted weinre server available. You can check it out [http://debug.build.phonegap.com/](http://debug.build.phonegap.com/). The only drawback is that it will not support https pages. 
+Weinre is really a powerful tool for remote debugging. Here in this guide, we saw how to configure and use weinre to debug local websites. I hope this will help someone who would be struggling to work with Android browsers. I would like also mention that there is an online hosted weinre server available. You can check it out [http://debug.build.phonegap.com/](http://debug.build.phonegap.com/). The only drawback is that it will not support https pages.
 
 Thanks for reading. Let me know the feedback and any comments.
-

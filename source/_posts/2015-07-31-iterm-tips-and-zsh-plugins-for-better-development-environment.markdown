@@ -5,14 +5,14 @@ date: 2015-07-31 13:31:07 +0400
 comments: true
 published: true
 author: Shidhin
-categories: 
+categories:
 - iTerm
 - ZSH
 - productivity
 ---
 
 This post is about the two tools I use regularly in my development environment:  **iTerm** and **oh-my-zsh**. [iTerm](https://www.iterm2.com/) is a mac terminal replacement and zsh + [oh-my-zsh](https://github.com/robbyrussell/oh-my-zsh) is an excellent combo to replace the bash shell with some cool stuffs.
-
+<!--more-->
 ![iTerm and Oh-my-zsh](https://lh3.googleusercontent.com/-Ccq2BJHbMmI/Vb8hLcwrnbI/AAAAAAAAk3Y/4Jx8wKfWBSk/s600/iterm-ohmyzsh.png "iterm-ohmyzsh.png")
 
 Here, we'll see how to achieve some productivity improvements by effectively using these tools.
@@ -23,8 +23,8 @@ As I said already, iTerm is a mac terminal replacement. It comes with ton of fea
 
 **Multiple tabs and split screens**
 
-Often we have to work with multiple terminals. iTerm support splitting the current terminal panes vertically/horizontally and adding any number of tabs. The shortcuts for splitting the terminal is `CMD+D` ( for vertical ) and `CMD+SHIFT+D` ( for horizontal ). 
-<!--more-->
+Often we have to work with multiple terminals. iTerm support splitting the current terminal panes vertically/horizontally and adding any number of tabs. The shortcuts for splitting the terminal is `CMD+D` ( for vertical ) and `CMD+SHIFT+D` ( for horizontal ).
+
 For adding a new tab, the shortcut is `CMD + T` ( same like your browser ).
 
 ![iTerm tabs split terminal](https://lh3.googleusercontent.com/1VEt46R1AIZWg9W1Pj5He78A7ptDUxnk6VKyuxoks-LZ=s1200 "Screen Shot 2015-07-31 at 11.11.25 AM.png")
@@ -97,13 +97,13 @@ I am sure that once you start using this plugin, you won't look back. You can fi
 
 **Zsh syntax highlighting plugin**
 
-Fish shell like syntax highlighting in your zsh shell. See any of the GIF images, you can observe that the command syntax color changes as when I type. 
+Fish shell like syntax highlighting in your zsh shell. See any of the GIF images, you can observe that the command syntax color changes as when I type.
 
 Read more : https://github.com/zsh-users/zsh-syntax-highlighting
 
 **Open PR from command line**
 
-I haven't played around with this plugin much. I included this because I think this might be useful to some of you. 
+I haven't played around with this plugin much. I included this because I think this might be useful to some of you.
 
 https://github.com/caarlos0/zsh-open-pr
 >Basically, when you call open-pr, the function will verify if you are working on a fork (by convention, you have an upstream remote), then, it will open your browser in the correct URL so you can just hit the Create Pull Request button.
@@ -111,10 +111,10 @@ https://github.com/caarlos0/zsh-open-pr
 **The `take` command**
 
 One of my  favourite shortcut command provided by Oh-my-zsh. Basically, what the `take` command does is  to create a directory and change the path to it. So instead of doing the following:
-	
+
 	md someDirectory && cd someDirectory
 
-I could just do: 
+I could just do:
 
 	take someDirectory
 
@@ -124,7 +124,7 @@ Everything else: https://github.com/unixorn/awesome-zsh-plugins
 
 ## Antigen for ZSH
 
-Antigen is a simple tool to manage the zsh environment. I recently started using Antigen and it seems a better option for installing plugins and all. 
+Antigen is a simple tool to manage the zsh environment. I recently started using Antigen and it seems a better option for installing plugins and all.
 > Antigen is a small set of functions that help you easily manage your shell (zsh) plugins, called bundles. The concept is pretty much the same as bundles in a typical vim+pathogen setup. Antigen is to zsh, what Vundle is to vim.
 
 Find more about Antigen here: https://github.com/zsh-users/antigen.
@@ -132,5 +132,3 @@ Find more about Antigen here: https://github.com/zsh-users/antigen.
 ## Summary
 
 Effectively using tools saves a lot of time and improves productivity. I hope these tips are useful to you. Feedbacks are welcome.
-
-

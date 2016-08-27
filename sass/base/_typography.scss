@@ -1,8 +1,8 @@
 $blockquote: $type-border !default;
-$sans: Kreon, "PT Sans", "Helvetica Neue", Arial, sans-serif !default;
-$serif: Kreon, "PT Serif", Georgia, Times, "Times New Roman", serif !default;
+$sans: $customFontFamily, "PT Sans", "Helvetica Neue", Arial, sans-serif !default;
+$serif: $customFontFamily, "PT Serif", Georgia, Times, "Times New Roman", serif !default;
 $mono: Menlo, Monaco, "Andale Mono", "lucida console", "Courier New", monospace !default;
-$heading-font-family: Kreon, "PT Serif", "Georgia", "Helvetica Neue", Arial, sans-serif !default;
+$heading-font-family: $customFontFamily, "PT Serif", "Georgia", "Helvetica Neue", Arial, sans-serif !default;
 $header-title-font-family: $heading-font-family !default;
 $header-subtitle-font-family: $heading-font-family !default;
 
@@ -38,7 +38,7 @@ h1 {
 
 @media only screen and (min-width: 992px) {
   body { font-size: 1.15em; }
-  h1 { font-size: 2.6em; line-height: 1.2em; }
+  h1 { font-size: $customFontH1Size; line-height: 1.2em; }
 }
 
 #{headings()}{
@@ -161,4 +161,3 @@ article blockquote {
   white-space: pre-wrap;
   word-wrap: break-word;
 }
-

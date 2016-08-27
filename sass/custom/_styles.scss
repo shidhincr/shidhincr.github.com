@@ -3,7 +3,7 @@
 
 html {
 	background-color: rgba(241,241,241,0.6);
-  background-image: image-url('background-image.jpg'); 
+  background-image: image-url('background-image.jpg');
   font-weight: 300;
 }
 body {
@@ -46,8 +46,8 @@ a:hover,article header h1 a:hover {
     // font-size: 1.05em;
     // line-height: 1.8em;
     font-family:sans-serif, serif;
-    font-size: 24px;
-    line-height: 1.9em;
+    font-size: $customFontContentSize;
+    line-height: $customFontLineHeight;
     font-weight: 300;
     text-rendering: optimizelegibility;
 
@@ -62,7 +62,7 @@ a:hover,article header h1 a:hover {
     }
   }
   .blog-index a[rel=full-article] {
-    border:1px dashed; 
+    border:1px dashed;
   }
   p code, li code {
     background-color: #fff;
@@ -104,10 +104,10 @@ a:hover,article header h1 a:hover {
 .fonts-loaded {
   #content {
     .entry-title {
-      font-family: Kreon, sans-serif, PT Serif, 'Droid serif',serif;
+      font-family: $customFontFamily, sans-serif, PT Serif, 'Droid serif',serif;
     }
     .entry-content {
-      font-family: Kreon, sans-serif, PT Serif, 'Droid serif',serif;
+      font-family: $customFontFamily, sans-serif, PT Serif, 'Droid serif',serif;
     }
   }
 }
@@ -194,10 +194,10 @@ li.related {
 
 /***** End: Fixing Gist default styling issues ***/
 
-/* Some syntax highlighter CSS fixes */ 
+/* Some syntax highlighter CSS fixes */
 .highlight .line-numbers, html .gist .gist-file .gist-syntax .highlight .line_numbers {
   background-color: #FDFDFD !important;
-  text-shadow: none; 
+  text-shadow: none;
 }
 .highlight, html .gist .gist-file .gist-syntax .gist-highlight {
   border: none !important;

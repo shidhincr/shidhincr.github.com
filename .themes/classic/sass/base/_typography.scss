@@ -38,7 +38,7 @@ h1 {
 
 @media only screen and (min-width: 992px) {
   body { font-size: 1.15em; }
-  h1 { font-size: 2.6em; line-height: 1.2em; }
+  h1 { font-size: $customFontH1Size; line-height: 1.2em; }
 }
 
 #{headings()}{
@@ -161,4 +161,3 @@ article blockquote {
   white-space: pre-wrap;
   word-wrap: break-word;
 }
-

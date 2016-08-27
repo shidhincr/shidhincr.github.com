@@ -3,23 +3,23 @@ layout: post
 title: Practical Guide to PreLink, PostLink and Controller Methods of Angular Directives
 date: "2014-07-07 14:20:58 +0400"
 comments: true
-categories: 
+categories:
   - angularjs
   - directives
 published: true
 ---
- 
-I have discussed about the scope of a directive in my previous [article](http://www.undefinednull.com/2014/02/11/mastering-the-scope-of-a-directive-in-angularjs/). Here we're going to see how to use the link and controller functions of an AngularJs directive.
 
+I have discussed about the scope of a directive in my previous [article](http://www.undefinednull.com/2014/02/11/mastering-the-scope-of-a-directive-in-angularjs/). Here we're going to see how to use the link and controller functions of an AngularJs directive.
+<!--more-->
 ## Link function of an Angular Directive
 
 As the name implicates, the link function has the duty of linking the model to the templates. Link function is the place where AngularJs does the data binding to the compiled templates. Let's take a look at the signature of a link function.
-<!--more-->
+
 
 ```javascript
-	link: function LinkFn(scope, elem, attr, ctrl){}	
+	link: function LinkFn(scope, elem, attr, ctrl){}
 ```
-There are 4 parameters available to the link function. 
+There are 4 parameters available to the link function.
 
 1. **scope** : 	The `scope` of the directive
 2. **elem** : 	Dom element where the directive is applied
@@ -30,7 +30,7 @@ Now let's create a simple directive to see how the data binding works. See the J
 
 {% jsfiddle shidhincr/Bpxn2%}
 
-The `name` and `greeting` properties attached to the scope are linked to the template once the link function is executed. And, the browser will show **"Hey, I am Paul"** in the view. 
+The `name` and `greeting` properties attached to the scope are linked to the template once the link function is executed. And, the browser will show **"Hey, I am Paul"** in the view.
 
 The above is the usual way to create a link function inside a directive. However, AngularJs  allows to set the `link` property to an object also. Advantage of having an object is, we can split the link function into two separate methods called, `pre-link` and `post-link`. In the following sections, we'll see how to use these link functions.
 
@@ -68,7 +68,7 @@ app.directive('dad', function () {
         	post: function(scope,elem,attr){
 	            scope.name = 'Paul';
 	            scope.greeting = 'Hey, I am ';
-	        }	
+	        }
         }
     };
 });
@@ -91,10 +91,10 @@ Let's create a new directive called `<son>` and place inside the template of `<d
 {% jsfiddle shidhincr/Bpxn2/1/ %}
 
 We created a **son** directive and placed inside the **dad** directive's template. Since there is no scope specified for the **son** directive, we assume that all parent directive scope should be available to it. Let's look at the output tab of the jsFiddle, we can see that the **son** directive prints like this:
-	
+
 	Hey, I am son, and my dad is undefined
 
-Notice that the dad's name is *undefined* ? 
+Notice that the dad's name is *undefined* ?
 
 Now let's analyse what happened. Here, both the **dad** and **son** directives have link functions, and both these link functions are post-links. When a directive contains multiple child directives, all of the child directive's link functions executed first then the parent directive link function. So, in this case, when  **son** directive's link function executes, the **dad** directive is still not linked the data to the template. That's why the **son** directive outputs the dad's name as **undefined**.
 
@@ -143,10 +143,3 @@ Used for defining a proper API to the directive. Using controller, directives ca
 
 - Set the data required to other directives.
 - Never access DOM element inside the controller; it's against Angular's philosophy and make testing hard.
-
-
-
-
-
-
-

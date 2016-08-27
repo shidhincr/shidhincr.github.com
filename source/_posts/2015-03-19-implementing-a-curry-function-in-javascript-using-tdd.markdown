@@ -3,16 +3,16 @@ layout: post
 title: "Implementing a curry function in JavaScript using TDD"
 date: 2015-03-19 18:51:27 +0400
 comments: true
-categories: 
+categories:
 - TDD
 - JavaScript
 - Testem
 - Curry
 ---
 
+TDD stands for Test Driven Development. To those who don't know what TDD means: In a typical TDD Environment, a developer start with a basic test case describing the minimal requirement for implementing the module. Then he writes the actual implementation code for making the test case pass.
+<!--more-->
 ![TDD](https://lh3.googleusercontent.com/dtPfB5V-ew-rm3aApkXHTA8jFVwsFzoNNepbn9wU=w264-h207-p-no)
-
-TDD stands for Test Driven Development. To those who don't know what TDD means: In a typical TDD Environment, a developer start with a basic test case describing the minimal requirement for implementing the module. Then he writes the actual implementation code for making the test case pass. 
 
 Next, another test case is written for a different expectation for the module, followed by writing the implementation to make the test pass. This process goes on till the all the expectations for the actual module is implemented.
 
@@ -21,7 +21,7 @@ This way of development ( driven by series of test cases ) is called TDD.
 ### Setting up the tools
 
 Here we're going to use [Mocha](http://mochajs.org) as the unit testing framework. For running the tests, we will be using [Testem](https://github.com/airportyh/testem).
-<!--more-->
+
 We'll be using BDD ( Behaviour Driven Development, which is similar to TDD, but instead of `assertions` we use `expectaions`) style syntax. For that purpose let's use the excellent [Chai.js](http://chaijs.com/) library.
 
 First install Testem:
@@ -127,7 +127,7 @@ So, what we're going to implement now is a function that can create a curried fu
 
 ### Writing the first test case
 
-Let's start with the curry function generator. We'll name it as `makeCurry`. Its behaviour is to transform any function into a curried function. 
+Let's start with the curry function generator. We'll name it as `makeCurry`. Its behaviour is to transform any function into a curried function.
 
 Edit the **curry-spec.js** and remove the test code we already added. Start with a new `describe` block. The **curry-spec.js** should be like this now:
 
@@ -174,13 +174,13 @@ var makeCurry = function(){
     return function(){};
 };
 ```
-Our first test should pass now. By far, we have implemented the test case for the simple `makeCurry` function and implemented the `makeCurry` function. 
+Our first test should pass now. By far, we have implemented the test case for the simple `makeCurry` function and implemented the `makeCurry` function.
 
 This is how the TDD works. In the next section, we'll see how the whole unit implementation is evolved in series of test cases and the code to make them pass.
 
 ## Evolving the Final Code
 
-For now, we have only one test case for the `makeCurry` function. Let's think about different scenarios for our curry function. 
+For now, we have only one test case for the `makeCurry` function. Let's think about different scenarios for our curry function.
 
 1. Our curry function should always accept one function as parameter, if there is no function provided, it should throw an error.
 
@@ -215,7 +215,7 @@ var makeCurry = function(fn){
     return function(){};
 };
 ```
-Now we're getting into the rhythm of TDD. For now, we're done with the expectations for the `makeCurry` function. Let's implement the real `curry` function logic. 
+Now we're getting into the rhythm of TDD. For now, we're done with the expectations for the `makeCurry` function. Let's implement the real `curry` function logic.
 
 We are going to add a new describe block for the expectations for curry function. Here, the curry function is the one `makeCurry` returns. I am going to list down all the expectations for the `curry` function here. We'll take one by one from the list and add to the test and implement the logic.
 
@@ -252,11 +252,11 @@ var add = function(a,b,c){
 };
 var curryA = makeCurry(add);
 var curryB = makeCurry(add);
-		
+
 curryA(1,2)(3) // return 6
 curryB(1)(2)(3) // return 6
 ```
-    
+
 We came up with all the test scenarios for our curry function. Let's pick one by one and implement the logic. Add the first test case inside the new `describe` block.
 
 ```js curry-spec.js
@@ -331,7 +331,7 @@ it('should return a function when arguments count is less than the original numb
 });
 ```
 
-Tests are failing now. Time to make them pass. 
+Tests are failing now. Time to make them pass.
 
 Now we need to verify that the number of arguments passed is less than the original number of arguments. If it lesser, the tests are expecting a function to be returned ( than executing the original function ). Let's implement this:
 
@@ -344,11 +344,11 @@ var makeCurry = function(fn){
     var slice = [].slice;
     return function curriedFn(){
       var args = slice.call(arguments);
-      
+
       if(args.length < fn.length){
         return curriedFn;
       }
-      
+
       return fn.apply(null, args);
     };
 };
@@ -379,7 +379,7 @@ var makeCurry = function(fn){
     var slice = [].slice;
     return function curriedFn(){
       var args = slice.call(arguments);
-      
+
       if(args.length < fn.length){
         return function(){
           return curriedFn.apply(null, args.concat( slice.call(arguments) ));
@@ -391,23 +391,23 @@ var makeCurry = function(fn){
 };
 ```
 
-Now, we're going to add our last test case. 
+Now, we're going to add our last test case.
 
 ```js
 it('should support creating multple curry functions', function(){
     var curryA = makeCurry(add);
     var curryB = makeCurry(add);
-                
+
     expect( curryA(1,2)(3) ).to.eq(6);
     expect( curryA(1,2) ).to.be.a('function');
-        
+
     expect( curryB(1)(2)(3) ).to.eq(6);
     expect( curryB(1)(2) ).to.be.a('function');
 });
 ```
 
 And this time, Testem reports that all tests are passing. Voila!, it means we're done with our curry function implementation.
- 
+
 ## Final code
 
 Here is the final code for **curry-spec.js** and the **curry.js**.
@@ -453,14 +453,14 @@ describe('Curry function', function(){
         expect( curriedAdd(1)(2,3) ).to.eq(6);
         expect( curriedAdd(1,2)(3,4,5,6,7) ).to.eq(6);
     });
-    
+
     it('should support creating multple curry functions', function(){
         var curryA = makeCurry(add);
         var curryB = makeCurry(add);
-                
+
         expect( curryA(1,2)(3) ).to.eq(6);
         expect( curryA(1,2) ).to.be.a('function');
-        
+
         expect( curryB(1)(2)(3) ).to.eq(6);
         expect( curryB(1)(2) ).to.be.a('function');
     });
@@ -494,4 +494,3 @@ var makeCurry = function(fn){
 I wouldn't say TDD is nice and simple. Writing all the code in TDD way is tough and frustrating for beginners. But if you keep practicing TDD, eventually you are going to love it. TDD will help you to concentrate on a small part of your code and complete it with perfection. Finally, that will lead to implement a better design for your actual module. So my point is, TDD is useful for better architecture of your code and the code will be less error prone.
 
 Thanks for reading. I hope this will help for implementing TDD for your next project. Feedbacks are welcome.
-    

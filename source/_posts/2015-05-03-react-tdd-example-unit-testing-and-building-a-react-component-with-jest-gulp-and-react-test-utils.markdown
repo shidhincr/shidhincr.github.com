@@ -5,38 +5,37 @@ date: 2015-05-03 10:32:01 +0400
 comments: true
 published: true
 author: Shidhin
-categories: 
+categories:
 - React
 - Jest
 - TDD
 ---
 
+ReactJs has attained lot of momentum since its initial release in 2013, and became the best JavaScript library for developing rich UI interface. React also popularized different concepts like Virtual DOM, Uni-directional data flow and Componentization in the front-end community. As of today, React has more than 20,000 stars in [Github repo](https://github.com/facebook/react), and actively maintained by the Facebook team.
+<!-- more -->
 <div class="info">
   <strong>Update Feb 9 2016</strong> : The ReactJS version is bumped to 0.14 in the seed project and updated the article accordingly.
 </div><br/>
 
 ![React and Jest for TDD](https://lh4.googleusercontent.com/-qJ1PeOhFiBM/VVBaO3ZI6qI/AAAAAAAAhpw/l-WLLtdZuxM/w640-h480-no/react-jest.jpg)
 
-ReactJs has attained lot of momentum since its initial release in 2013, and became the best JavaScript library for developing rich UI interface. React also popularised different concepts like Virtual DOM, Uni-directional data flow and Componentization in the front-end community. As of today, React has more than 20,000 stars in [Github repo](https://github.com/facebook/react), and actively maintained by the Facebook team. 
-
 As I said already, React is a solid piece of work from Facebook. Any solid software will be built with testability in mind; And React is not an exception to that. Facebook built React with complete testing support -- They even released their own testing framework named "**Jest**" and **React Test Utils** for unit testing React components.
 
 Here in this post, we'll see how to build a react component in TDD approach.
-<!--more-->
 
 ## What we're going to build ?
 
 We will build a simple Accordion component in React. If you're not sure what an Accordion is, have a look at the twitter bootstrap page:
 
-[Accordion  Widget](http://getbootstrap.com/2.3.2/javascript.html#collapse) 
-Or,  see 
+[Accordion  Widget](http://getbootstrap.com/2.3.2/javascript.html#collapse)
+Or,  see
 [jQuery UI Accordion](https://jqueryui.com/accordion/)
 
 We'll be creating a simple Accordion component in React.
 
 ## Setting up the tools
 
-We're going to build our component in TDD fashion. Hence, we need to set up our environment with a test runner (for running unit tests), and local server ( with automatic reloading enabled ). 
+We're going to build our component in TDD fashion. Hence, we need to set up our environment with a test runner (for running unit tests), and local server ( with automatic reloading enabled ).
 
 These are the tools I am going to use:
 
@@ -50,7 +49,7 @@ Setting up all these takes time. Therefore, I have created a  [seed project](htt
 
 ```sh
 git clone git@github.com:shidhincr/react-jest-gulp-jspm-seed.git react-seed
-cd react-seed 
+cd react-seed
 npm install
 ```
 Once you download the seed and install the node modules, we're good to start.
@@ -82,7 +81,7 @@ describe('Accordion', function() {
   var React = require('react');
   var ReactDOM = require('react-dom');
   var TestUtils = require('react-addons-test-utils');
-  
+
   var Accordion;
 
   beforeEach(function() {
@@ -110,11 +109,11 @@ var React = require('react');
 
 var Accordion = React.createClass({
   render: function(){
-    return ( 
+    return (
       <div>Accordion component</div>
     );
   }
-}); 
+});
 
 module.exports = Accordion;
 ```
@@ -135,7 +134,7 @@ If it works, proceed to next test case.
 
 > Accordion should build the layout from an array of objects passed as prop.
 
-This time let's make our component configurable. We have to pass an array data to the component, and expect it to build the layout for the Accordion. 
+This time let's make our component configurable. We have to pass an array data to the component, and expect it to build the layout for the Accordion.
 
 ```js
 it('should build the layout from an array of objects passed as prop', function() {
@@ -226,7 +225,7 @@ You should be able to see that our Accordion component renders the new layout.
 
 Add the following test case:
 
-```js 
+```js
 it('should hide all the contents by default unless specified by a flag', function(){
     var input = [{
       name: 'Title 1',
@@ -236,7 +235,7 @@ it('should hide all the contents by default unless specified by a flag', functio
       content: 'Content belongs to title 2',
       showOnLoad: true
     }];
-    
+
     var accordion = TestUtils.renderIntoDocument( <Accordion data={input}/> );
     var contents = TestUtils.scryRenderedDOMComponentsWithClass(accordion, 'accordion-content');
     expect(contents.length).toEqual(1);
@@ -285,7 +284,7 @@ var Accordion = React.createClass({
 module.exports = Accordion;
 ```
 
-This code will make the above test case pass, but you can see that it makes the previous test case ( Test case 2 ) fail. 
+This code will make the above test case pass, but you can see that it makes the previous test case ( Test case 2 ) fail.
 
 This is not a problem at all, because in TDD this is what we expect. We need to continuously refactor both source and test codes while we build the component. Let's modify the `input` in the previous test case to make the tests pass.
 
@@ -299,7 +298,7 @@ var input = [{
    content: 'Content belongs to title 2',
    showOnLoad: true
  }];
-``` 
+```
 This is the beauty of TDD; designing the component step by step. By now, we made our component configurable also.
 
 **Test Case 4:**
@@ -397,7 +396,7 @@ var Accordion = React.createClass({
 
 module.exports = Accordion;
 ```
-All tests are <span style="color: green">GREEN</span> now ! If you check your browser window ( where the server is running ), you can see that our Accordion component is functional. 
+All tests are <span style="color: green">GREEN</span> now ! If you check your browser window ( where the server is running ), you can see that our Accordion component is functional.
 
 Before we summarise, see the final source code and tests:
 
