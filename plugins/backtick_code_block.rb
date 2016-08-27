@@ -25,19 +25,21 @@ module BacktickCodeBlock
       if str.match(/\A( {4}|\t)/)
         str = str.gsub(/^( {4}|\t)/, '')
       end
-      if @lang.nil? || @lang == 'plain'
-        code = tableize_code(str.gsub('<','&lt;').gsub('>','&gt;'))
-        "<figure class='code'>#{@caption}#{code}</figure>"
-      else
-        if @lang.include? "-raw"
-          raw = "``` #{@options.sub('-raw', '')}\n"
-          raw += str
-          raw += "\n```\n"
-        else
-          code = highlight(str, @lang)
-          "<figure class='code'>#{@caption}#{code}</figure>"
-        end
-      end
+      code = highlight(str, @lang)
+      code = "<figure class='code'>#{@caption}#{code}</figure>"
+      # if @lang.nil? || @lang == 'plain'
+      #   code = tableize_code(str.gsub('<','&lt;').gsub('>','&gt;'))
+      #   "<figure class='code'>#{@caption}#{code}</figure>"
+      # else
+      #   if @lang.include? "-raw"
+      #     raw = "``` #{@options.sub('-raw', '')}\n"
+      #     raw += str
+      #     raw += "\n```\n"
+      #   else
+      #     code = highlight(str, @lang)
+      #     "<figure class='code'>#{@caption}#{code}</figure>"
+      #   end
+      # end
     end
   end
 end

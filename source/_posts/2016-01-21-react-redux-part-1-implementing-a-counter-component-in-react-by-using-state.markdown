@@ -5,7 +5,7 @@ date: 2016-01-21 23:07:48 +0400
 comments: true
 author: Shidhin
 published: true
-categories: 
+categories:
 - ReactJS
 - Redux
 - Flux
@@ -35,7 +35,7 @@ In our first section, we're going to build a simple `Counter` component with Rea
 
 Let's build the react Counter component and add a state to save the `number`. The code is given below:
 
-```js
+```jsx
 'use strict';
 
 import React from 'react';

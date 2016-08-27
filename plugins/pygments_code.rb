@@ -1,6 +1,7 @@
 require 'pygments'
 require 'fileutils'
 require 'digest/md5'
+require 'htmlentities'
 
 PYGMENTS_CACHE_DIR = File.expand_path('../../.pygments-cache', __FILE__)
 FileUtils.mkdir_p(PYGMENTS_CACHE_DIR)
@@ -11,8 +12,12 @@ module HighlightCode
     lang = 'objc' if lang == 'm'
     lang = 'perl' if lang == 'pl'
     lang = 'yaml' if lang == 'yml'
-    str = pygments(str, lang).match(/<pre>(.+)<\/pre>/m)[1].to_s.gsub(/ *$/, '') #strip out divs <div class="highlight">
-    tableize_code(str, lang)
+    lang = 'javascript' if lang == 'js'
+    lang = 'bash' if not lang
+    # str = pygments(str, lang).match(/<pre>(.+)<\/pre>/m)[1].to_s.gsub(/ *$/, '') #strip out divs <div class="highlight">
+    # tableize_code(str, lang)
+    coder = HTMLEntities.new
+    highlightedCode = "<pre><code class='language-#{lang}'>#{coder.encode(str)}</code></pre>"
   end
 
   def pygments(code, lang)
@@ -22,14 +27,14 @@ module HighlightCode
         highlighted_code = File.read(path)
       else
         begin
-          highlighted_code = Pygments.highlight(code, :lexer => lang, :formatter => 'html', :options => {:encoding => 'utf-8', :startinline => true})
+          highlighted_code = Pygments.highlight(code, :lexer => lang, :formatter => 'html', :options => {:encoding => 'utf-8'})
         rescue MentosError
           raise "Pygments can't parse unknown language: #{lang}."
         end
         File.open(path, 'w') {|f| f.print(highlighted_code) }
       end
     else
-      highlighted_code = Pygments.highlight(code, :lexer => lang, :formatter => 'html', :options => {:encoding => 'utf-8', :startinline => true})
+      highlighted_code = Pygments.highlight(code, :lexer => lang, :formatter => 'html', :options => {:encoding => 'utf-8'})
     end
     highlighted_code
   end

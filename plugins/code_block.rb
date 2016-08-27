@@ -78,11 +78,12 @@ module Jekyll
       code = super
       source = "<figure class='code'>"
       source += @caption if @caption
-      if @filetype
-        source += "#{highlight(code, @filetype)}</figure>"
-      else
-        source += "#{tableize_code(code.lstrip.rstrip.gsub(/</,'&lt;'))}</figure>"
-      end
+      # if @filetype
+      #   source += " #{highlight(code, @filetype)}</figure>"
+      # else
+      #   source += "#{tableize_code(code.lstrip.rstrip.gsub(/</,'&lt;'))}</figure>"
+      # end
+      source += " #{highlight(code, @filetype)}</figure>"
       source = safe_wrap(source)
       source = context['pygments_prefix'] + source if context['pygments_prefix']
       source = source + context['pygments_suffix'] if context['pygments_suffix']
