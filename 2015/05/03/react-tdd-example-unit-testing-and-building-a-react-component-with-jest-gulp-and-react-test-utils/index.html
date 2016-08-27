@@ -20,6 +20,7 @@
   
   <link rel="canonical" href="https://www.undefinednull.com/2015/05/03/react-tdd-example-unit-testing-and-building-a-react-component-with-jest-gulp-and-react-test-utils">
   <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/prism.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="http://feeds.feedburner.com/undefinednull/com" rel="alternate" title="Undefined NULL" type="application/atom+xml">
   <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
@@ -44,21 +45,6 @@
   }
 </style>
  -->
-
-  <script src="/javascripts/modernizr-2.0.js" async></script>
-  <script src="/javascripts/libs/jquery.min.js" async></script>
-  <script src="/javascripts/octopress.js" type="text/javascript" async></script>
-  
-  <script type="text/javascript">
-    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-ga('create', 'UA-10379928-17', 'auto');
-ga('require', 'displayfeatures');
-ga('send', 'pageview');
-  </script>
-
 
 </head>
 
@@ -167,13 +153,9 @@ Or,  see
 
 <p>Setting up all these takes time. Therefore, I have created a  <a href="https://github.com/shidhincr/react-jest-gulp-jspm-seed">seed project</a> for bootstrapping the set-up and the initial boiler plate code. So, as the first step, clone the seed project to your system:</p>
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class='sh'><span class='line'>git clone git@github.com:shidhincr/react-jest-gulp-jspm-seed.git react-seed
-</span><span class='line'><span class="nb">cd </span>react-seed
-</span><span class='line'>npm install
-</span></code></pre></td></tr></table></div></figure>
+<figure class='code'><figcaption><span></span></figcaption><pre><code class='language-sh'>git clone git@github.com:shidhincr/react-jest-gulp-jspm-seed.git react-seed
+cd react-seed
+npm install</code></pre></figure>
 
 
 <p>Once you download the seed and install the node modules, we&rsquo;re good to start.</p>
@@ -198,45 +180,25 @@ Or,  see
 
 <p>Write the first test case in <strong>accordionComponent-spec.js</strong></p>
 
-<figure class='code'><figcaption><span>accordionComponent-spec.js</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-</pre></td><td class='code'><pre><code class='js'><span class='line'><span class="nx">jest</span><span class="p">.</span><span class="nx">dontMock</span><span class="p">(</span><span class="s1">&#39;../scripts/accordionComponent.js&#39;</span><span class="p">);</span>
-</span><span class='line'>
-</span><span class='line'><span class="nx">describe</span><span class="p">(</span><span class="s1">&#39;Accordion&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-</span><span class='line'>  <span class="kd">var</span> <span class="nx">React</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;react&#39;</span><span class="p">);</span>
-</span><span class='line'>  <span class="kd">var</span> <span class="nx">ReactDOM</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;react-dom&#39;</span><span class="p">);</span>
-</span><span class='line'>  <span class="kd">var</span> <span class="nx">TestUtils</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;react-addons-test-utils&#39;</span><span class="p">);</span>
-</span><span class='line'>
-</span><span class='line'>  <span class="kd">var</span> <span class="nx">Accordion</span><span class="p">;</span>
-</span><span class='line'>
-</span><span class='line'>  <span class="nx">beforeEach</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-</span><span class='line'>    <span class="nx">Accordion</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;../scripts/accordionComponent&#39;</span><span class="p">);</span>
-</span><span class='line'>  <span class="p">});</span>
-</span><span class='line'>
-</span><span class='line'>  <span class="nx">it</span><span class="p">(</span><span class="s1">&#39;should exists&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-</span><span class='line'>    <span class="c1">// Render into document</span>
-</span><span class='line'>    <span class="kd">var</span> <span class="nx">accordion</span> <span class="o">=</span> <span class="nx">TestUtils</span><span class="p">.</span><span class="nx">renderIntoDocument</span><span class="p">(</span> <span class="o">&lt;</span><span class="nx">Accordion</span> <span class="o">/&gt;</span> <span class="p">);</span>
-</span><span class='line'>    <span class="nx">expect</span><span class="p">(</span><span class="nx">TestUtils</span><span class="p">.</span><span class="nx">isCompositeComponent</span><span class="p">(</span><span class="nx">accordion</span><span class="p">)).</span><span class="nx">toBeTruthy</span><span class="p">();</span>
-</span><span class='line'>  <span class="p">});</span>
-</span><span class='line'><span class="p">});</span>
-</span></code></pre></td></tr></table></div></figure>
+<figure class='code'><figcaption><span>accordionComponent-spec.js</span></figcaption><pre><code class='language-javascript'>jest.dontMock(&apos;../scripts/accordionComponent.js&apos;);
+
+describe(&apos;Accordion&apos;, function() {
+  var React = require(&apos;react&apos;);
+  var ReactDOM = require(&apos;react-dom&apos;);
+  var TestUtils = require(&apos;react-addons-test-utils&apos;);
+
+  var Accordion;
+
+  beforeEach(function() {
+    Accordion = require(&apos;../scripts/accordionComponent&apos;);
+  });
+
+  it(&apos;should exists&apos;, function() {
+    // Render into document
+    var accordion = TestUtils.renderIntoDocument( &lt;Accordion /&gt; );
+    expect(TestUtils.isCompositeComponent(accordion)).toBeTruthy();
+  });
+});</code></pre></figure>
 
 
 
@@ -251,50 +213,29 @@ Note: By using <strong>jest.dontMock</strong>, we get the original react compone
 
 <p>Let&rsquo;s make the test pass:</p>
 
-<figure class='code'><figcaption><span>accordionComponent.js</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-</pre></td><td class='code'><pre><code class='js'><span class='line'><span class="s1">&#39;use strict&#39;</span><span class="p">;</span>
-</span><span class='line'>
-</span><span class='line'><span class="kd">var</span> <span class="nx">React</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;react&#39;</span><span class="p">);</span>
-</span><span class='line'>
-</span><span class='line'><span class="kd">var</span> <span class="nx">Accordion</span> <span class="o">=</span> <span class="nx">React</span><span class="p">.</span><span class="nx">createClass</span><span class="p">({</span>
-</span><span class='line'>  <span class="nx">render</span><span class="o">:</span> <span class="kd">function</span><span class="p">(){</span>
-</span><span class='line'>    <span class="k">return</span> <span class="p">(</span>
-</span><span class='line'>      <span class="o">&lt;</span><span class="nx">div</span><span class="o">&gt;</span><span class="nx">Accordion</span> <span class="nx">component</span><span class="o">&lt;</span><span class="err">/div&gt;</span>
-</span><span class='line'>    <span class="p">);</span>
-</span><span class='line'>  <span class="p">}</span>
-</span><span class='line'><span class="p">});</span>
-</span><span class='line'>
-</span><span class='line'><span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="nx">Accordion</span><span class="p">;</span>
-</span></code></pre></td></tr></table></div></figure>
+<figure class='code'><figcaption><span>accordionComponent.js</span></figcaption><pre><code class='language-javascript'>&apos;use strict&apos;;
+
+var React = require(&apos;react&apos;);
+
+var Accordion = React.createClass({
+  render: function(){
+    return (
+      &lt;div&gt;Accordion component&lt;/div&gt;
+    );
+  }
+});
+
+module.exports = Accordion;</code></pre></figure>
 
 
 <p>Okay, the tests are passing now. Let&rsquo;s also make sure that our component renders properly in the browser. Modify the <strong>app.js</strong> to render the <strong>accordionComponent</strong>.</p>
 
-<figure class='code'><figcaption><span>app.js</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-</pre></td><td class='code'><pre><code class='js'><span class='line'><span class="s1">&#39;use strict&#39;</span><span class="p">;</span>
-</span><span class='line'>
-</span><span class='line'><span class="kd">var</span> <span class="nx">React</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;react&#39;</span><span class="p">);</span>
-</span><span class='line'><span class="kd">var</span> <span class="nx">ReactDOM</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;react-dom&#39;</span><span class="p">);</span>
-</span><span class='line'><span class="kd">var</span> <span class="nx">Accordion</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;components/accordionComponent&#39;</span><span class="p">);</span>
-</span><span class='line'><span class="nx">ReactDOM</span><span class="p">.</span><span class="nx">render</span><span class="p">(</span><span class="o">&lt;</span><span class="nx">Accordion</span><span class="o">/&gt;</span><span class="p">,</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;view&#39;</span><span class="p">));</span>
-</span></code></pre></td></tr></table></div></figure>
+<figure class='code'><figcaption><span>app.js</span></figcaption><pre><code class='language-javascript'>&apos;use strict&apos;;
+
+var React = require(&apos;react&apos;);
+var ReactDOM = require(&apos;react-dom&apos;);
+var Accordion = require(&apos;components/accordionComponent&apos;);
+ReactDOM.render(&lt;Accordion/&gt;, document.getElementById(&apos;view&apos;));</code></pre></figure>
 
 
 <p>If it works, proceed to next test case.</p>
@@ -305,153 +246,82 @@ Note: By using <strong>jest.dontMock</strong>, we get the original react compone
 
 <p>This time let&rsquo;s make our component configurable. We have to pass an array data to the component, and expect it to build the layout for the Accordion.</p>
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-<span class='line-number'>21</span>
-<span class='line-number'>22</span>
-<span class='line-number'>23</span>
-</pre></td><td class='code'><pre><code class='js'><span class='line'><span class="nx">it</span><span class="p">(</span><span class="s1">&#39;should build the layout from an array of objects passed as prop&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-</span><span class='line'>
-</span><span class='line'>    <span class="kd">var</span> <span class="nx">input</span> <span class="o">=</span> <span class="p">[{</span>
-</span><span class='line'>      <span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;Title 1&#39;</span><span class="p">,</span>
-</span><span class='line'>      <span class="nx">content</span><span class="o">:</span> <span class="s1">&#39;Content belongs to title 1&#39;</span>
-</span><span class='line'>    <span class="p">},{</span>
-</span><span class='line'>      <span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;Title 2&#39;</span><span class="p">,</span>
-</span><span class='line'>      <span class="nx">content</span><span class="o">:</span> <span class="s1">&#39;Content belongs to title 2&#39;</span>
-</span><span class='line'>    <span class="p">}];</span>
-</span><span class='line'>
-</span><span class='line'>    <span class="kd">var</span> <span class="nx">accordion</span> <span class="o">=</span> <span class="nx">TestUtils</span><span class="p">.</span><span class="nx">renderIntoDocument</span><span class="p">(</span> <span class="o">&lt;</span><span class="nx">Accordion</span> <span class="nx">data</span><span class="o">=</span><span class="p">{</span><span class="nx">input</span><span class="p">}</span><span class="o">/&gt;</span> <span class="p">);</span>
-</span><span class='line'>    <span class="kd">var</span> <span class="nx">headers</span> <span class="o">=</span> <span class="nx">TestUtils</span><span class="p">.</span><span class="nx">scryRenderedDOMComponentsWithClass</span><span class="p">(</span><span class="nx">accordion</span><span class="p">,</span> <span class="s1">&#39;accordion-header&#39;</span><span class="p">);</span>
-</span><span class='line'>    <span class="kd">var</span> <span class="nx">contents</span> <span class="o">=</span> <span class="nx">TestUtils</span><span class="p">.</span><span class="nx">scryRenderedDOMComponentsWithClass</span><span class="p">(</span><span class="nx">accordion</span><span class="p">,</span> <span class="s1">&#39;accordion-content&#39;</span><span class="p">);</span>
-</span><span class='line'>
-</span><span class='line'>    <span class="nx">expect</span><span class="p">(</span><span class="nx">headers</span><span class="p">.</span><span class="nx">length</span><span class="p">).</span><span class="nx">toEqual</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
-</span><span class='line'>    <span class="nx">expect</span><span class="p">(</span><span class="nx">contents</span><span class="p">.</span><span class="nx">length</span><span class="p">).</span><span class="nx">toEqual</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
-</span><span class='line'>
-</span><span class='line'>    <span class="nx">expect</span><span class="p">(</span><span class="nx">headers</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="nx">textContent</span><span class="p">).</span><span class="nx">toEqual</span><span class="p">(</span><span class="s1">&#39;Title 1&#39;</span><span class="p">);</span>
-</span><span class='line'>    <span class="nx">expect</span><span class="p">(</span><span class="nx">headers</span><span class="p">[</span><span class="mi">1</span><span class="p">].</span><span class="nx">textContent</span><span class="p">).</span><span class="nx">toEqual</span><span class="p">(</span><span class="s1">&#39;Title 2&#39;</span><span class="p">);</span>
-</span><span class='line'>
-</span><span class='line'>    <span class="nx">expect</span><span class="p">(</span><span class="nx">contents</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="nx">textContent</span><span class="p">).</span><span class="nx">toEqual</span><span class="p">(</span><span class="s1">&#39;Content belongs to title 1&#39;</span><span class="p">);</span>
-</span><span class='line'>    <span class="nx">expect</span><span class="p">(</span><span class="nx">contents</span><span class="p">[</span><span class="mi">1</span><span class="p">].</span><span class="nx">textContent</span><span class="p">).</span><span class="nx">toEqual</span><span class="p">(</span><span class="s1">&#39;Content belongs to title 2&#39;</span><span class="p">);</span>
-</span><span class='line'>  <span class="p">});</span>
-</span></code></pre></td></tr></table></div></figure>
+<figure class='code'><figcaption><span></span></figcaption><pre><code class='language-javascript'>it(&apos;should build the layout from an array of objects passed as prop&apos;, function() {
+
+    var input = [{
+      name: &apos;Title 1&apos;,
+      content: &apos;Content belongs to title 1&apos;
+    },{
+      name: &apos;Title 2&apos;,
+      content: &apos;Content belongs to title 2&apos;
+    }];
+
+    var accordion = TestUtils.renderIntoDocument( &lt;Accordion data={input}/&gt; );
+    var headers = TestUtils.scryRenderedDOMComponentsWithClass(accordion, &apos;accordion-header&apos;);
+    var contents = TestUtils.scryRenderedDOMComponentsWithClass(accordion, &apos;accordion-content&apos;);
+
+    expect(headers.length).toEqual(2);
+    expect(contents.length).toEqual(2);
+
+    expect(headers[0].textContent).toEqual(&apos;Title 1&apos;);
+    expect(headers[1].textContent).toEqual(&apos;Title 2&apos;);
+
+    expect(contents[0].textContent).toEqual(&apos;Content belongs to title 1&apos;);
+    expect(contents[1].textContent).toEqual(&apos;Content belongs to title 2&apos;);
+  });</code></pre></figure>
 
 
 <p>To make everything green:</p>
 
-<figure class='code'><figcaption><span>accordionComponent.js</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-<span class='line-number'>21</span>
-<span class='line-number'>22</span>
-<span class='line-number'>23</span>
-<span class='line-number'>24</span>
-<span class='line-number'>25</span>
-<span class='line-number'>26</span>
-<span class='line-number'>27</span>
-<span class='line-number'>28</span>
-<span class='line-number'>29</span>
-<span class='line-number'>30</span>
-<span class='line-number'>31</span>
-</pre></td><td class='code'><pre><code class='js'><span class='line'><span class="s1">&#39;use strict&#39;</span><span class="p">;</span>
-</span><span class='line'>
-</span><span class='line'><span class="kd">var</span> <span class="nx">React</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;react&#39;</span><span class="p">);</span>
-</span><span class='line'>
-</span><span class='line'><span class="kd">var</span> <span class="nx">Accordion</span> <span class="o">=</span> <span class="nx">React</span><span class="p">.</span><span class="nx">createClass</span><span class="p">({</span>
-</span><span class='line'>  <span class="nx">render</span><span class="o">:</span> <span class="kd">function</span><span class="p">(){</span>
-</span><span class='line'>    <span class="kd">var</span> <span class="nx">panes</span> <span class="o">=</span> <span class="p">[];</span>
-</span><span class='line'>    <span class="kd">var</span> <span class="nx">data</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">props</span><span class="p">.</span><span class="nx">data</span> <span class="o">||</span> <span class="p">[];</span>
-</span><span class='line'>
-</span><span class='line'>    <span class="nx">data</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">item</span><span class="p">,</span> <span class="nx">index</span><span class="p">){</span>
-</span><span class='line'>      <span class="nx">panes</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span>
-</span><span class='line'>        <span class="o">&lt;</span><span class="nx">div</span> <span class="nx">key</span><span class="o">=</span><span class="p">{</span><span class="nx">index</span><span class="p">}</span><span class="o">&gt;</span>
-</span><span class='line'>          <span class="o">&lt;</span><span class="nx">div</span> <span class="nx">className</span><span class="o">=</span><span class="s2">&quot;accordion-header&quot;</span><span class="o">&gt;</span>
-</span><span class='line'>            <span class="p">{</span><span class="nx">item</span><span class="p">.</span><span class="nx">name</span><span class="p">}</span>
-</span><span class='line'>          <span class="o">&lt;</span><span class="err">/div&gt;</span>
-</span><span class='line'>          <span class="o">&lt;</span><span class="nx">div</span> <span class="nx">className</span><span class="o">=</span><span class="s2">&quot;accordion-content&quot;</span><span class="o">&gt;</span>
-</span><span class='line'>            <span class="p">{</span><span class="nx">item</span><span class="p">.</span><span class="nx">content</span><span class="p">}</span>
-</span><span class='line'>          <span class="o">&lt;</span><span class="err">/div&gt;</span>
-</span><span class='line'>        <span class="o">&lt;</span><span class="err">/div&gt;</span>
-</span><span class='line'>      <span class="p">);</span>
-</span><span class='line'>    <span class="p">});</span>
-</span><span class='line'>
-</span><span class='line'>    <span class="k">return</span> <span class="p">(</span>
-</span><span class='line'>      <span class="o">&lt;</span><span class="nx">div</span> <span class="nx">className</span><span class="o">=</span><span class="s2">&quot;accordion&quot;</span><span class="o">&gt;</span>
-</span><span class='line'>        <span class="p">{</span><span class="nx">panes</span><span class="p">}</span>
-</span><span class='line'>      <span class="o">&lt;</span><span class="err">/div&gt;</span>
-</span><span class='line'>    <span class="p">);</span>
-</span><span class='line'>  <span class="p">}</span>
-</span><span class='line'><span class="p">});</span>
-</span><span class='line'>
-</span><span class='line'><span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="nx">Accordion</span><span class="p">;</span>
-</span></code></pre></td></tr></table></div></figure>
+<figure class='code'><figcaption><span>accordionComponent.js</span></figcaption><pre><code class='language-javascript'>&apos;use strict&apos;;
+
+var React = require(&apos;react&apos;);
+
+var Accordion = React.createClass({
+  render: function(){
+    var panes = [];
+    var data = this.props.data || [];
+
+    data.forEach(function(item, index){
+      panes.push(
+        &lt;div key={index}&gt;
+          &lt;div className=&quot;accordion-header&quot;&gt;
+            {item.name}
+          &lt;/div&gt;
+          &lt;div className=&quot;accordion-content&quot;&gt;
+            {item.content}
+          &lt;/div&gt;
+        &lt;/div&gt;
+      );
+    });
+
+    return (
+      &lt;div className=&quot;accordion&quot;&gt;
+        {panes}
+      &lt;/div&gt;
+    );
+  }
+});
+
+module.exports = Accordion;</code></pre></figure>
 
 
 <p>All the tests pass now. To see the component works in browser, edit the <code>app.js</code> and pass the configuration:</p>
 
-<figure class='code'><figcaption><span>app.js</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-</pre></td><td class='code'><pre><code class='js'><span class='line'><span class="s1">&#39;use strict&#39;</span><span class="p">;</span>
-</span><span class='line'>
-</span><span class='line'><span class="kd">var</span> <span class="nx">React</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;react&#39;</span><span class="p">);</span>
-</span><span class='line'><span class="kd">var</span> <span class="nx">ReactDOM</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;react-dom&#39;</span><span class="p">);</span>
-</span><span class='line'><span class="kd">var</span> <span class="nx">Accordion</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;components/accordionComponent&#39;</span><span class="p">);</span>
-</span><span class='line'><span class="kd">var</span> <span class="nx">input</span> <span class="o">=</span> <span class="p">[{</span>
-</span><span class='line'>  <span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;Title 1&#39;</span><span class="p">,</span>
-</span><span class='line'>  <span class="nx">content</span><span class="o">:</span> <span class="s1">&#39;Content belongs to title 1&#39;</span>
-</span><span class='line'><span class="p">},{</span>
-</span><span class='line'>  <span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;Title 2&#39;</span><span class="p">,</span>
-</span><span class='line'>  <span class="nx">content</span><span class="o">:</span> <span class="s1">&#39;Content belongs to title 2&#39;</span>
-</span><span class='line'><span class="p">}];</span>
-</span><span class='line'>
-</span><span class='line'><span class="nx">ReactDOM</span><span class="p">.</span><span class="nx">render</span><span class="p">(</span><span class="o">&lt;</span><span class="nx">Accordion</span> <span class="nx">data</span><span class="o">=</span><span class="p">{</span><span class="nx">input</span><span class="p">}</span><span class="o">/&gt;</span><span class="p">,</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;view&#39;</span><span class="p">));</span>
-</span></code></pre></td></tr></table></div></figure>
+<figure class='code'><figcaption><span>app.js</span></figcaption><pre><code class='language-javascript'>&apos;use strict&apos;;
+
+var React = require(&apos;react&apos;);
+var ReactDOM = require(&apos;react-dom&apos;);
+var Accordion = require(&apos;components/accordionComponent&apos;);
+var input = [{
+  name: &apos;Title 1&apos;,
+  content: &apos;Content belongs to title 1&apos;
+},{
+  name: &apos;Title 2&apos;,
+  content: &apos;Content belongs to title 2&apos;
+}];
+
+ReactDOM.render(&lt;Accordion data={input}/&gt;, document.getElementById(&apos;view&apos;));</code></pre></figure>
 
 
 <p>You should be able to see that our Accordion component renders the new layout.</p>
@@ -462,141 +332,77 @@ Note: By using <strong>jest.dontMock</strong>, we get the original react compone
 
 <p>Add the following test case:</p>
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-</pre></td><td class='code'><pre><code class='js'><span class='line'><span class="nx">it</span><span class="p">(</span><span class="s1">&#39;should hide all the contents by default unless specified by a flag&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(){</span>
-</span><span class='line'>    <span class="kd">var</span> <span class="nx">input</span> <span class="o">=</span> <span class="p">[{</span>
-</span><span class='line'>      <span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;Title 1&#39;</span><span class="p">,</span>
-</span><span class='line'>      <span class="nx">content</span><span class="o">:</span> <span class="s1">&#39;Content belongs to title 1&#39;</span>
-</span><span class='line'>    <span class="p">},{</span>
-</span><span class='line'>      <span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;Title 2&#39;</span><span class="p">,</span>
-</span><span class='line'>      <span class="nx">content</span><span class="o">:</span> <span class="s1">&#39;Content belongs to title 2&#39;</span><span class="p">,</span>
-</span><span class='line'>      <span class="nx">showOnLoad</span><span class="o">:</span> <span class="kc">true</span>
-</span><span class='line'>    <span class="p">}];</span>
-</span><span class='line'>
-</span><span class='line'>    <span class="kd">var</span> <span class="nx">accordion</span> <span class="o">=</span> <span class="nx">TestUtils</span><span class="p">.</span><span class="nx">renderIntoDocument</span><span class="p">(</span> <span class="o">&lt;</span><span class="nx">Accordion</span> <span class="nx">data</span><span class="o">=</span><span class="p">{</span><span class="nx">input</span><span class="p">}</span><span class="o">/&gt;</span> <span class="p">);</span>
-</span><span class='line'>    <span class="kd">var</span> <span class="nx">contents</span> <span class="o">=</span> <span class="nx">TestUtils</span><span class="p">.</span><span class="nx">scryRenderedDOMComponentsWithClass</span><span class="p">(</span><span class="nx">accordion</span><span class="p">,</span> <span class="s1">&#39;accordion-content&#39;</span><span class="p">);</span>
-</span><span class='line'>    <span class="nx">expect</span><span class="p">(</span><span class="nx">contents</span><span class="p">.</span><span class="nx">length</span><span class="p">).</span><span class="nx">toEqual</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
-</span><span class='line'>    <span class="nx">expect</span><span class="p">(</span><span class="nx">contents</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="nx">textContent</span><span class="p">).</span><span class="nx">toEqual</span><span class="p">(</span><span class="s1">&#39;Content belongs to title 2&#39;</span><span class="p">);</span>
-</span><span class='line'>  <span class="p">});</span>
-</span></code></pre></td></tr></table></div></figure>
+<figure class='code'><figcaption><span></span></figcaption><pre><code class='language-javascript'>it(&apos;should hide all the contents by default unless specified by a flag&apos;, function(){
+    var input = [{
+      name: &apos;Title 1&apos;,
+      content: &apos;Content belongs to title 1&apos;
+    },{
+      name: &apos;Title 2&apos;,
+      content: &apos;Content belongs to title 2&apos;,
+      showOnLoad: true
+    }];
+
+    var accordion = TestUtils.renderIntoDocument( &lt;Accordion data={input}/&gt; );
+    var contents = TestUtils.scryRenderedDOMComponentsWithClass(accordion, &apos;accordion-content&apos;);
+    expect(contents.length).toEqual(1);
+    expect(contents[0].textContent).toEqual(&apos;Content belongs to title 2&apos;);
+  });</code></pre></figure>
 
 
 <p>And make it pass:</p>
 
-<figure class='code'><figcaption><span>accordionComponent.js</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-<span class='line-number'>21</span>
-<span class='line-number'>22</span>
-<span class='line-number'>23</span>
-<span class='line-number'>24</span>
-<span class='line-number'>25</span>
-<span class='line-number'>26</span>
-<span class='line-number'>27</span>
-<span class='line-number'>28</span>
-<span class='line-number'>29</span>
-<span class='line-number'>30</span>
-<span class='line-number'>31</span>
-<span class='line-number'>32</span>
-<span class='line-number'>33</span>
-<span class='line-number'>34</span>
-<span class='line-number'>35</span>
-<span class='line-number'>36</span>
-<span class='line-number'>37</span>
-</pre></td><td class='code'><pre><code class='js'><span class='line'><span class="s1">&#39;use strict&#39;</span><span class="p">;</span>
-</span><span class='line'>
-</span><span class='line'><span class="kd">var</span> <span class="nx">React</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;react&#39;</span><span class="p">);</span>
-</span><span class='line'>
-</span><span class='line'><span class="kd">var</span> <span class="nx">Accordion</span> <span class="o">=</span> <span class="nx">React</span><span class="p">.</span><span class="nx">createClass</span><span class="p">({</span>
-</span><span class='line'>  <span class="nx">render</span><span class="o">:</span> <span class="kd">function</span><span class="p">(){</span>
-</span><span class='line'>    <span class="kd">var</span> <span class="nx">panes</span> <span class="o">=</span> <span class="p">[];</span>
-</span><span class='line'>    <span class="kd">var</span> <span class="nx">data</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">props</span><span class="p">.</span><span class="nx">data</span> <span class="o">||</span> <span class="p">[];</span>
-</span><span class='line'>
-</span><span class='line'>    <span class="kd">var</span> <span class="nx">getContent</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">item</span><span class="p">){</span>
-</span><span class='line'>      <span class="k">return</span> <span class="o">!</span><span class="nx">item</span><span class="p">.</span><span class="nx">showOnLoad</span> <span class="o">?</span> <span class="s1">&#39;&#39;</span><span class="o">:</span> <span class="p">(</span>
-</span><span class='line'>        <span class="o">&lt;</span><span class="nx">div</span> <span class="nx">className</span><span class="o">=</span><span class="s2">&quot;accordion-content&quot;</span><span class="o">&gt;</span>
-</span><span class='line'>          <span class="p">{</span><span class="nx">item</span><span class="p">.</span><span class="nx">content</span><span class="p">}</span>
-</span><span class='line'>        <span class="o">&lt;</span><span class="err">/div&gt;</span>
-</span><span class='line'>      <span class="p">);</span>
-</span><span class='line'>    <span class="p">};</span>
-</span><span class='line'>
-</span><span class='line'>    <span class="nx">data</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">item</span><span class="p">,</span> <span class="nx">index</span><span class="p">){</span>
-</span><span class='line'>      <span class="nx">panes</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span>
-</span><span class='line'>        <span class="o">&lt;</span><span class="nx">div</span> <span class="nx">key</span><span class="o">=</span><span class="p">{</span><span class="nx">index</span><span class="p">}</span><span class="o">&gt;</span>
-</span><span class='line'>          <span class="o">&lt;</span><span class="nx">div</span> <span class="nx">className</span><span class="o">=</span><span class="s2">&quot;accordion-header&quot;</span><span class="o">&gt;</span>
-</span><span class='line'>            <span class="p">{</span><span class="nx">item</span><span class="p">.</span><span class="nx">name</span><span class="p">}</span>
-</span><span class='line'>          <span class="o">&lt;</span><span class="err">/div&gt;</span>
-</span><span class='line'>          <span class="p">{</span> <span class="nx">getContent</span><span class="p">(</span><span class="nx">item</span><span class="p">)</span> <span class="p">}</span>
-</span><span class='line'>        <span class="o">&lt;</span><span class="err">/div&gt;</span>
-</span><span class='line'>      <span class="p">);</span>
-</span><span class='line'>    <span class="p">});</span>
-</span><span class='line'>
-</span><span class='line'>    <span class="k">return</span> <span class="p">(</span>
-</span><span class='line'>      <span class="o">&lt;</span><span class="nx">div</span> <span class="nx">className</span><span class="o">=</span><span class="s2">&quot;accordion&quot;</span><span class="o">&gt;</span>
-</span><span class='line'>        <span class="p">{</span><span class="nx">panes</span><span class="p">}</span>
-</span><span class='line'>      <span class="o">&lt;</span><span class="err">/div&gt;</span>
-</span><span class='line'>    <span class="p">);</span>
-</span><span class='line'>  <span class="p">}</span>
-</span><span class='line'><span class="p">});</span>
-</span><span class='line'>
-</span><span class='line'><span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="nx">Accordion</span><span class="p">;</span>
-</span></code></pre></td></tr></table></div></figure>
+<figure class='code'><figcaption><span>accordionComponent.js</span></figcaption><pre><code class='language-javascript'>&apos;use strict&apos;;
+
+var React = require(&apos;react&apos;);
+
+var Accordion = React.createClass({
+  render: function(){
+    var panes = [];
+    var data = this.props.data || [];
+
+    var getContent = function(item){
+      return !item.showOnLoad ? &apos;&apos;: (
+        &lt;div className=&quot;accordion-content&quot;&gt;
+          {item.content}
+        &lt;/div&gt;
+      );
+    };
+
+    data.forEach(function(item, index){
+      panes.push(
+        &lt;div key={index}&gt;
+          &lt;div className=&quot;accordion-header&quot;&gt;
+            {item.name}
+          &lt;/div&gt;
+          { getContent(item) }
+        &lt;/div&gt;
+      );
+    });
+
+    return (
+      &lt;div className=&quot;accordion&quot;&gt;
+        {panes}
+      &lt;/div&gt;
+    );
+  }
+});
+
+module.exports = Accordion;</code></pre></figure>
 
 
 <p>This code will make the above test case pass, but you can see that it makes the previous test case ( Test case 2 ) fail.</p>
 
 <p>This is not a problem at all, because in TDD this is what we expect. We need to continuously refactor both source and test codes while we build the component. Let&rsquo;s modify the <code>input</code> in the previous test case to make the tests pass.</p>
 
-<figure class='code'><figcaption><span>TestCase2</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-</pre></td><td class='code'><pre><code class='js'><span class='line'><span class="kd">var</span> <span class="nx">input</span> <span class="o">=</span> <span class="p">[{</span>
-</span><span class='line'>   <span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;Title 1&#39;</span><span class="p">,</span>
-</span><span class='line'>   <span class="nx">content</span><span class="o">:</span> <span class="s1">&#39;Content belongs to title 1&#39;</span><span class="p">,</span>
-</span><span class='line'>   <span class="nx">showOnLoad</span><span class="o">:</span> <span class="kc">true</span>
-</span><span class='line'> <span class="p">},{</span>
-</span><span class='line'>   <span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;Title 2&#39;</span><span class="p">,</span>
-</span><span class='line'>   <span class="nx">content</span><span class="o">:</span> <span class="s1">&#39;Content belongs to title 2&#39;</span><span class="p">,</span>
-</span><span class='line'>   <span class="nx">showOnLoad</span><span class="o">:</span> <span class="kc">true</span>
-</span><span class='line'> <span class="p">}];</span>
-</span></code></pre></td></tr></table></div></figure>
+<figure class='code'><figcaption><span>TestCase2</span></figcaption><pre><code class='language-javascript'>var input = [{
+   name: &apos;Title 1&apos;,
+   content: &apos;Content belongs to title 1&apos;,
+   showOnLoad: true
+ },{
+   name: &apos;Title 2&apos;,
+   content: &apos;Content belongs to title 2&apos;,
+   showOnLoad: true
+ }];</code></pre></figure>
 
 
 <p>This is the beauty of TDD; designing the component step by step. By now, we made our component configurable also.</p>
@@ -605,51 +411,28 @@ Note: By using <strong>jest.dontMock</strong>, we get the original react compone
 
 <blockquote><p>It should be able to toggle the content by clicking on the respective title.</p></blockquote>
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-<span class='line-number'>21</span>
-<span class='line-number'>22</span>
-</pre></td><td class='code'><pre><code class='js'><span class='line'><span class="nx">it</span><span class="p">(</span><span class="s1">&#39;should be able to toggle the content by clicking on the respective title.&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(){</span>
-</span><span class='line'>    <span class="kd">var</span> <span class="nx">input</span> <span class="o">=</span> <span class="p">[{</span>
-</span><span class='line'>      <span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;Title 1&#39;</span><span class="p">,</span>
-</span><span class='line'>      <span class="nx">content</span><span class="o">:</span> <span class="s1">&#39;Content belongs to title 1&#39;</span>
-</span><span class='line'>    <span class="p">},{</span>
-</span><span class='line'>      <span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;Title 2&#39;</span><span class="p">,</span>
-</span><span class='line'>      <span class="nx">content</span><span class="o">:</span> <span class="s1">&#39;Content belongs to title 2&#39;</span>
-</span><span class='line'>    <span class="p">}];</span>
-</span><span class='line'>
-</span><span class='line'>    <span class="kd">var</span> <span class="nx">accordion</span> <span class="o">=</span> <span class="nx">TestUtils</span><span class="p">.</span><span class="nx">renderIntoDocument</span><span class="p">(</span> <span class="o">&lt;</span><span class="nx">Accordion</span> <span class="nx">data</span><span class="o">=</span><span class="p">{</span><span class="nx">input</span><span class="p">}</span><span class="o">/&gt;</span> <span class="p">);</span>
-</span><span class='line'>    <span class="kd">var</span> <span class="nx">headers</span> <span class="o">=</span> <span class="nx">TestUtils</span><span class="p">.</span><span class="nx">scryRenderedDOMComponentsWithClass</span><span class="p">(</span><span class="nx">accordion</span><span class="p">,</span> <span class="s1">&#39;accordion-header&#39;</span><span class="p">);</span>
-</span><span class='line'>    <span class="kd">var</span> <span class="nx">contents</span> <span class="o">=</span> <span class="nx">TestUtils</span><span class="p">.</span><span class="nx">scryRenderedDOMComponentsWithClass</span><span class="p">(</span><span class="nx">accordion</span><span class="p">,</span> <span class="s1">&#39;accordion-content&#39;</span><span class="p">);</span>
-</span><span class='line'>
-</span><span class='line'>    <span class="nx">expect</span><span class="p">(</span><span class="nx">contents</span><span class="p">.</span><span class="nx">length</span><span class="p">).</span><span class="nx">toEqual</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
-</span><span class='line'>    <span class="nx">TestUtils</span><span class="p">.</span><span class="nx">Simulate</span><span class="p">.</span><span class="nx">click</span><span class="p">(</span><span class="nx">headers</span><span class="p">[</span><span class="mi">0</span><span class="p">]);</span>
-</span><span class='line'>    <span class="nx">contents</span> <span class="o">=</span> <span class="nx">TestUtils</span><span class="p">.</span><span class="nx">scryRenderedDOMComponentsWithClass</span><span class="p">(</span><span class="nx">accordion</span><span class="p">,</span> <span class="s1">&#39;accordion-content&#39;</span><span class="p">);</span>
-</span><span class='line'>    <span class="nx">expect</span><span class="p">(</span><span class="nx">contents</span><span class="p">.</span><span class="nx">length</span><span class="p">).</span><span class="nx">toEqual</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
-</span><span class='line'>    <span class="nx">expect</span><span class="p">(</span><span class="nx">contents</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="nx">textContent</span><span class="p">).</span><span class="nx">toEqual</span><span class="p">(</span><span class="s1">&#39;Content belongs to title 1&#39;</span><span class="p">);</span>
-</span><span class='line'>    <span class="nx">TestUtils</span><span class="p">.</span><span class="nx">Simulate</span><span class="p">.</span><span class="nx">click</span><span class="p">(</span><span class="nx">headers</span><span class="p">[</span><span class="mi">0</span><span class="p">]);</span>
-</span><span class='line'>    <span class="nx">contents</span> <span class="o">=</span> <span class="nx">TestUtils</span><span class="p">.</span><span class="nx">scryRenderedDOMComponentsWithClass</span><span class="p">(</span><span class="nx">accordion</span><span class="p">,</span> <span class="s1">&#39;accordion-content&#39;</span><span class="p">);</span>
-</span><span class='line'>    <span class="nx">expect</span><span class="p">(</span><span class="nx">contents</span><span class="p">.</span><span class="nx">length</span><span class="p">).</span><span class="nx">toEqual</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
-</span><span class='line'>  <span class="p">});</span>
-</span></code></pre></td></tr></table></div></figure>
+<figure class='code'><figcaption><span></span></figcaption><pre><code class='language-javascript'>it(&apos;should be able to toggle the content by clicking on the respective title.&apos;, function(){
+    var input = [{
+      name: &apos;Title 1&apos;,
+      content: &apos;Content belongs to title 1&apos;
+    },{
+      name: &apos;Title 2&apos;,
+      content: &apos;Content belongs to title 2&apos;
+    }];
+
+    var accordion = TestUtils.renderIntoDocument( &lt;Accordion data={input}/&gt; );
+    var headers = TestUtils.scryRenderedDOMComponentsWithClass(accordion, &apos;accordion-header&apos;);
+    var contents = TestUtils.scryRenderedDOMComponentsWithClass(accordion, &apos;accordion-content&apos;);
+
+    expect(contents.length).toEqual(0);
+    TestUtils.Simulate.click(headers[0]);
+    contents = TestUtils.scryRenderedDOMComponentsWithClass(accordion, &apos;accordion-content&apos;);
+    expect(contents.length).toEqual(1);
+    expect(contents[0].textContent).toEqual(&apos;Content belongs to title 1&apos;);
+    TestUtils.Simulate.click(headers[0]);
+    contents = TestUtils.scryRenderedDOMComponentsWithClass(accordion, &apos;accordion-content&apos;);
+    expect(contents.length).toEqual(0);
+  });</code></pre></figure>
 
 
 <p>The tests are <span style="color:red">RED</span> again. Before we move on, it&rsquo;s time to think about the code design again. If you obeserve, we have a stateful component now. It means, each of the <em>pane</em> in the Accordion can have its own closed or open states.</p>
@@ -658,454 +441,235 @@ Note: By using <strong>jest.dontMock</strong>, we get the original react compone
 
 <p>See the code below:</p>
 
-<figure class='code'><figcaption><span>accordionComponent.js</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-<span class='line-number'>21</span>
-<span class='line-number'>22</span>
-<span class='line-number'>23</span>
-<span class='line-number'>24</span>
-<span class='line-number'>25</span>
-<span class='line-number'>26</span>
-<span class='line-number'>27</span>
-<span class='line-number'>28</span>
-<span class='line-number'>29</span>
-<span class='line-number'>30</span>
-<span class='line-number'>31</span>
-<span class='line-number'>32</span>
-<span class='line-number'>33</span>
-<span class='line-number'>34</span>
-<span class='line-number'>35</span>
-<span class='line-number'>36</span>
-<span class='line-number'>37</span>
-<span class='line-number'>38</span>
-<span class='line-number'>39</span>
-<span class='line-number'>40</span>
-<span class='line-number'>41</span>
-<span class='line-number'>42</span>
-<span class='line-number'>43</span>
-<span class='line-number'>44</span>
-<span class='line-number'>45</span>
-<span class='line-number'>46</span>
-<span class='line-number'>47</span>
-<span class='line-number'>48</span>
-<span class='line-number'>49</span>
-<span class='line-number'>50</span>
-<span class='line-number'>51</span>
-<span class='line-number'>52</span>
-<span class='line-number'>53</span>
-<span class='line-number'>54</span>
-<span class='line-number'>55</span>
-<span class='line-number'>56</span>
-<span class='line-number'>57</span>
-<span class='line-number'>58</span>
-<span class='line-number'>59</span>
-</pre></td><td class='code'><pre><code class='js'><span class='line'><span class="s1">&#39;use strict&#39;</span><span class="p">;</span>
-</span><span class='line'>
-</span><span class='line'><span class="kd">var</span> <span class="nx">React</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;react&#39;</span><span class="p">);</span>
-</span><span class='line'>
-</span><span class='line'><span class="kd">var</span> <span class="nx">Pane</span> <span class="o">=</span> <span class="nx">React</span><span class="p">.</span><span class="nx">createClass</span><span class="p">({</span>
-</span><span class='line'>  <span class="nx">getInitialState</span><span class="o">:</span> <span class="kd">function</span><span class="p">(){</span>
-</span><span class='line'>    <span class="k">return</span> <span class="p">{</span>
-</span><span class='line'>      <span class="nx">show</span><span class="o">:</span> <span class="k">this</span><span class="p">.</span><span class="nx">props</span><span class="p">.</span><span class="nx">data</span><span class="p">.</span><span class="nx">showOnLoad</span>
-</span><span class='line'>    <span class="p">};</span>
-</span><span class='line'>  <span class="p">},</span>
-</span><span class='line'>
-</span><span class='line'>  <span class="nx">toggle</span><span class="o">:</span> <span class="kd">function</span><span class="p">(){</span>
-</span><span class='line'>    <span class="k">this</span><span class="p">.</span><span class="nx">setState</span><span class="p">({</span>
-</span><span class='line'>      <span class="nx">show</span><span class="o">:</span> <span class="o">!</span><span class="k">this</span><span class="p">.</span><span class="nx">state</span><span class="p">.</span><span class="nx">show</span>
-</span><span class='line'>    <span class="p">});</span>
-</span><span class='line'>  <span class="p">},</span>
-</span><span class='line'>
-</span><span class='line'>  <span class="nx">render</span><span class="o">:</span> <span class="kd">function</span><span class="p">(){</span>
-</span><span class='line'>    <span class="kd">var</span> <span class="nx">getContent</span> <span class="o">=</span> <span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">item</span><span class="p">){</span>
-</span><span class='line'>      <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">state</span><span class="p">.</span><span class="nx">show</span> <span class="o">?</span> <span class="p">(</span>
-</span><span class='line'>        <span class="o">&lt;</span><span class="nx">div</span> <span class="nx">className</span><span class="o">=</span><span class="s2">&quot;accordion-content&quot;</span><span class="o">&gt;</span>
-</span><span class='line'>          <span class="p">{</span><span class="nx">item</span><span class="p">.</span><span class="nx">content</span><span class="p">}</span>
-</span><span class='line'>        <span class="o">&lt;</span><span class="err">/div&gt;</span>
-</span><span class='line'>      <span class="p">)</span> <span class="o">:</span> <span class="s1">&#39;&#39;</span><span class="p">;</span>
-</span><span class='line'>    <span class="p">}).</span><span class="nx">bind</span><span class="p">(</span><span class="k">this</span><span class="p">);</span>
-</span><span class='line'>
-</span><span class='line'>    <span class="kd">var</span> <span class="nx">item</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">props</span><span class="p">.</span><span class="nx">data</span><span class="p">;</span>
-</span><span class='line'>
-</span><span class='line'>    <span class="k">return</span> <span class="p">(</span>
-</span><span class='line'>      <span class="o">&lt;</span><span class="nx">div</span><span class="o">&gt;</span>
-</span><span class='line'>        <span class="o">&lt;</span><span class="nx">div</span> <span class="nx">className</span><span class="o">=</span><span class="s2">&quot;accordion-header&quot;</span> <span class="nx">onClick</span><span class="o">=</span><span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">toggle</span><span class="p">}</span><span class="o">&gt;</span>
-</span><span class='line'>          <span class="p">{</span><span class="nx">item</span><span class="p">.</span><span class="nx">name</span><span class="p">}</span>
-</span><span class='line'>        <span class="o">&lt;</span><span class="err">/div&gt;</span>
-</span><span class='line'>        <span class="p">{</span> <span class="nx">getContent</span><span class="p">(</span><span class="nx">item</span><span class="p">)</span> <span class="p">}</span>
-</span><span class='line'>      <span class="o">&lt;</span><span class="err">/div&gt;</span>
-</span><span class='line'>    <span class="p">);</span>
-</span><span class='line'>  <span class="p">}</span>
-</span><span class='line'><span class="p">});</span>
-</span><span class='line'>
-</span><span class='line'><span class="kd">var</span> <span class="nx">Accordion</span> <span class="o">=</span> <span class="nx">React</span><span class="p">.</span><span class="nx">createClass</span><span class="p">({</span>
-</span><span class='line'>  <span class="nx">render</span><span class="o">:</span> <span class="kd">function</span><span class="p">(){</span>
-</span><span class='line'>    <span class="kd">var</span> <span class="nx">panes</span> <span class="o">=</span> <span class="p">[];</span>
-</span><span class='line'>    <span class="kd">var</span> <span class="nx">data</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">props</span><span class="p">.</span><span class="nx">data</span> <span class="o">||</span> <span class="p">[];</span>
-</span><span class='line'>
-</span><span class='line'>    <span class="nx">data</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">item</span><span class="p">,</span> <span class="nx">index</span><span class="p">){</span>
-</span><span class='line'>      <span class="nx">panes</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span>
-</span><span class='line'>        <span class="o">&lt;</span><span class="nx">Pane</span> <span class="nx">data</span><span class="o">=</span><span class="p">{</span><span class="nx">item</span><span class="p">}</span> <span class="nx">key</span><span class="o">=</span><span class="p">{</span><span class="nx">index</span><span class="p">}</span><span class="o">/&gt;</span>
-</span><span class='line'>      <span class="p">);</span>
-</span><span class='line'>    <span class="p">});</span>
-</span><span class='line'>
-</span><span class='line'>    <span class="k">return</span> <span class="p">(</span>
-</span><span class='line'>      <span class="o">&lt;</span><span class="nx">div</span> <span class="nx">className</span><span class="o">=</span><span class="s2">&quot;accordion&quot;</span><span class="o">&gt;</span>
-</span><span class='line'>        <span class="p">{</span><span class="nx">panes</span><span class="p">}</span>
-</span><span class='line'>      <span class="o">&lt;</span><span class="err">/div&gt;</span>
-</span><span class='line'>    <span class="p">);</span>
-</span><span class='line'>  <span class="p">}</span>
-</span><span class='line'><span class="p">});</span>
-</span><span class='line'>
-</span><span class='line'><span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="nx">Accordion</span><span class="p">;</span>
-</span></code></pre></td></tr></table></div></figure>
+<figure class='code'><figcaption><span>accordionComponent.js</span></figcaption><pre><code class='language-javascript'>&apos;use strict&apos;;
+
+var React = require(&apos;react&apos;);
+
+var Pane = React.createClass({
+  getInitialState: function(){
+    return {
+      show: this.props.data.showOnLoad
+    };
+  },
+
+  toggle: function(){
+    this.setState({
+      show: !this.state.show
+    });
+  },
+
+  render: function(){
+    var getContent = (function(item){
+      return this.state.show ? (
+        &lt;div className=&quot;accordion-content&quot;&gt;
+          {item.content}
+        &lt;/div&gt;
+      ) : &apos;&apos;;
+    }).bind(this);
+
+    var item = this.props.data;
+
+    return (
+      &lt;div&gt;
+        &lt;div className=&quot;accordion-header&quot; onClick={this.toggle}&gt;
+          {item.name}
+        &lt;/div&gt;
+        { getContent(item) }
+      &lt;/div&gt;
+    );
+  }
+});
+
+var Accordion = React.createClass({
+  render: function(){
+    var panes = [];
+    var data = this.props.data || [];
+
+    data.forEach(function(item, index){
+      panes.push(
+        &lt;Pane data={item} key={index}/&gt;
+      );
+    });
+
+    return (
+      &lt;div className=&quot;accordion&quot;&gt;
+        {panes}
+      &lt;/div&gt;
+    );
+  }
+});
+
+module.exports = Accordion;</code></pre></figure>
 
 
 <p>All tests are <span style="color: green">GREEN</span> now ! If you check your browser window ( where the server is running ), you can see that our Accordion component is functional.</p>
 
 <p>Before we summarise, see the final source code and tests:</p>
 
-<figure class='code'><figcaption><span>accordionComponent-spec.js</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-<span class='line-number'>21</span>
-<span class='line-number'>22</span>
-<span class='line-number'>23</span>
-<span class='line-number'>24</span>
-<span class='line-number'>25</span>
-<span class='line-number'>26</span>
-<span class='line-number'>27</span>
-<span class='line-number'>28</span>
-<span class='line-number'>29</span>
-<span class='line-number'>30</span>
-<span class='line-number'>31</span>
-<span class='line-number'>32</span>
-<span class='line-number'>33</span>
-<span class='line-number'>34</span>
-<span class='line-number'>35</span>
-<span class='line-number'>36</span>
-<span class='line-number'>37</span>
-<span class='line-number'>38</span>
-<span class='line-number'>39</span>
-<span class='line-number'>40</span>
-<span class='line-number'>41</span>
-<span class='line-number'>42</span>
-<span class='line-number'>43</span>
-<span class='line-number'>44</span>
-<span class='line-number'>45</span>
-<span class='line-number'>46</span>
-<span class='line-number'>47</span>
-<span class='line-number'>48</span>
-<span class='line-number'>49</span>
-<span class='line-number'>50</span>
-<span class='line-number'>51</span>
-<span class='line-number'>52</span>
-<span class='line-number'>53</span>
-<span class='line-number'>54</span>
-<span class='line-number'>55</span>
-<span class='line-number'>56</span>
-<span class='line-number'>57</span>
-<span class='line-number'>58</span>
-<span class='line-number'>59</span>
-<span class='line-number'>60</span>
-<span class='line-number'>61</span>
-<span class='line-number'>62</span>
-<span class='line-number'>63</span>
-<span class='line-number'>64</span>
-<span class='line-number'>65</span>
-<span class='line-number'>66</span>
-<span class='line-number'>67</span>
-<span class='line-number'>68</span>
-<span class='line-number'>69</span>
-<span class='line-number'>70</span>
-<span class='line-number'>71</span>
-<span class='line-number'>72</span>
-<span class='line-number'>73</span>
-<span class='line-number'>74</span>
-<span class='line-number'>75</span>
-<span class='line-number'>76</span>
-<span class='line-number'>77</span>
-<span class='line-number'>78</span>
-<span class='line-number'>79</span>
-<span class='line-number'>80</span>
-<span class='line-number'>81</span>
-<span class='line-number'>82</span>
-<span class='line-number'>83</span>
-</pre></td><td class='code'><pre><code class='js'><span class='line'><span class="nx">jest</span><span class="p">.</span><span class="nx">dontMock</span><span class="p">(</span><span class="s1">&#39;../scripts/accordionComponent.js&#39;</span><span class="p">);</span>
-</span><span class='line'>
-</span><span class='line'><span class="nx">describe</span><span class="p">(</span><span class="s1">&#39;Accordion&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-</span><span class='line'>  <span class="kd">var</span> <span class="nx">React</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;react&#39;</span><span class="p">);</span>
-</span><span class='line'>  <span class="kd">var</span> <span class="nx">TestUtils</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;react-addons-test-utils&#39;</span><span class="p">);</span>
-</span><span class='line'>  <span class="kd">var</span> <span class="nx">Accordion</span><span class="p">;</span>
-</span><span class='line'>
-</span><span class='line'>  <span class="nx">beforeEach</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-</span><span class='line'>    <span class="nx">Accordion</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;../scripts/accordionComponent&#39;</span><span class="p">);</span>
-</span><span class='line'>  <span class="p">});</span>
-</span><span class='line'>
-</span><span class='line'>  <span class="nx">it</span><span class="p">(</span><span class="s1">&#39;should exists&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-</span><span class='line'>    <span class="c1">// Render into document</span>
-</span><span class='line'>    <span class="kd">var</span> <span class="nx">accordion</span> <span class="o">=</span> <span class="nx">TestUtils</span><span class="p">.</span><span class="nx">renderIntoDocument</span><span class="p">(</span> <span class="o">&lt;</span><span class="nx">Accordion</span> <span class="o">/&gt;</span> <span class="p">);</span>
-</span><span class='line'>    <span class="nx">expect</span><span class="p">(</span><span class="nx">TestUtils</span><span class="p">.</span><span class="nx">isCompositeComponent</span><span class="p">(</span><span class="nx">accordion</span><span class="p">)).</span><span class="nx">toBeTruthy</span><span class="p">();</span>
-</span><span class='line'>  <span class="p">});</span>
-</span><span class='line'>
-</span><span class='line'>  <span class="nx">it</span><span class="p">(</span><span class="s1">&#39;should build the layout from an array of objects passed as prop&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-</span><span class='line'>
-</span><span class='line'>    <span class="kd">var</span> <span class="nx">input</span> <span class="o">=</span> <span class="p">[{</span>
-</span><span class='line'>      <span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;Title 1&#39;</span><span class="p">,</span>
-</span><span class='line'>      <span class="nx">content</span><span class="o">:</span> <span class="s1">&#39;Content belongs to title 1&#39;</span><span class="p">,</span>
-</span><span class='line'>      <span class="nx">showOnLoad</span><span class="o">:</span> <span class="kc">true</span>
-</span><span class='line'>    <span class="p">},{</span>
-</span><span class='line'>      <span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;Title 2&#39;</span><span class="p">,</span>
-</span><span class='line'>      <span class="nx">content</span><span class="o">:</span> <span class="s1">&#39;Content belongs to title 2&#39;</span><span class="p">,</span>
-</span><span class='line'>      <span class="nx">showOnLoad</span><span class="o">:</span> <span class="kc">true</span>
-</span><span class='line'>    <span class="p">}];</span>
-</span><span class='line'>
-</span><span class='line'>    <span class="kd">var</span> <span class="nx">accordion</span> <span class="o">=</span> <span class="nx">TestUtils</span><span class="p">.</span><span class="nx">renderIntoDocument</span><span class="p">(</span> <span class="o">&lt;</span><span class="nx">Accordion</span> <span class="nx">data</span><span class="o">=</span><span class="p">{</span><span class="nx">input</span><span class="p">}</span><span class="o">/&gt;</span> <span class="p">);</span>
-</span><span class='line'>    <span class="kd">var</span> <span class="nx">headers</span> <span class="o">=</span> <span class="nx">TestUtils</span><span class="p">.</span><span class="nx">scryRenderedDOMComponentsWithClass</span><span class="p">(</span><span class="nx">accordion</span><span class="p">,</span> <span class="s1">&#39;accordion-header&#39;</span><span class="p">);</span>
-</span><span class='line'>    <span class="kd">var</span> <span class="nx">contents</span> <span class="o">=</span> <span class="nx">TestUtils</span><span class="p">.</span><span class="nx">scryRenderedDOMComponentsWithClass</span><span class="p">(</span><span class="nx">accordion</span><span class="p">,</span> <span class="s1">&#39;accordion-content&#39;</span><span class="p">);</span>
-</span><span class='line'>
-</span><span class='line'>    <span class="nx">expect</span><span class="p">(</span><span class="nx">headers</span><span class="p">.</span><span class="nx">length</span><span class="p">).</span><span class="nx">toEqual</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
-</span><span class='line'>    <span class="nx">expect</span><span class="p">(</span><span class="nx">contents</span><span class="p">.</span><span class="nx">length</span><span class="p">).</span><span class="nx">toEqual</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
-</span><span class='line'>
-</span><span class='line'>    <span class="nx">expect</span><span class="p">(</span><span class="nx">headers</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="nx">textContent</span><span class="p">).</span><span class="nx">toEqual</span><span class="p">(</span><span class="s1">&#39;Title 1&#39;</span><span class="p">);</span>
-</span><span class='line'>    <span class="nx">expect</span><span class="p">(</span><span class="nx">headers</span><span class="p">[</span><span class="mi">1</span><span class="p">].</span><span class="nx">textContent</span><span class="p">).</span><span class="nx">toEqual</span><span class="p">(</span><span class="s1">&#39;Title 2&#39;</span><span class="p">);</span>
-</span><span class='line'>
-</span><span class='line'>    <span class="nx">expect</span><span class="p">(</span><span class="nx">contents</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="nx">textContent</span><span class="p">).</span><span class="nx">toEqual</span><span class="p">(</span><span class="s1">&#39;Content belongs to title 1&#39;</span><span class="p">);</span>
-</span><span class='line'>    <span class="nx">expect</span><span class="p">(</span><span class="nx">contents</span><span class="p">[</span><span class="mi">1</span><span class="p">].</span><span class="nx">textContent</span><span class="p">).</span><span class="nx">toEqual</span><span class="p">(</span><span class="s1">&#39;Content belongs to title 2&#39;</span><span class="p">);</span>
-</span><span class='line'>  <span class="p">});</span>
-</span><span class='line'>
-</span><span class='line'>  <span class="nx">it</span><span class="p">(</span><span class="s1">&#39;should hide all the contents by default unless specified by a flag&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(){</span>
-</span><span class='line'>    <span class="kd">var</span> <span class="nx">input</span> <span class="o">=</span> <span class="p">[{</span>
-</span><span class='line'>      <span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;Title 1&#39;</span><span class="p">,</span>
-</span><span class='line'>      <span class="nx">content</span><span class="o">:</span> <span class="s1">&#39;Content belongs to title 1&#39;</span>
-</span><span class='line'>    <span class="p">},{</span>
-</span><span class='line'>      <span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;Title 2&#39;</span><span class="p">,</span>
-</span><span class='line'>      <span class="nx">content</span><span class="o">:</span> <span class="s1">&#39;Content belongs to title 2&#39;</span><span class="p">,</span>
-</span><span class='line'>      <span class="nx">showOnLoad</span><span class="o">:</span> <span class="kc">true</span>
-</span><span class='line'>    <span class="p">}];</span>
-</span><span class='line'>
-</span><span class='line'>    <span class="kd">var</span> <span class="nx">accordion</span> <span class="o">=</span> <span class="nx">TestUtils</span><span class="p">.</span><span class="nx">renderIntoDocument</span><span class="p">(</span> <span class="o">&lt;</span><span class="nx">Accordion</span> <span class="nx">data</span><span class="o">=</span><span class="p">{</span><span class="nx">input</span><span class="p">}</span><span class="o">/&gt;</span> <span class="p">);</span>
-</span><span class='line'>    <span class="kd">var</span> <span class="nx">contents</span> <span class="o">=</span> <span class="nx">TestUtils</span><span class="p">.</span><span class="nx">scryRenderedDOMComponentsWithClass</span><span class="p">(</span><span class="nx">accordion</span><span class="p">,</span> <span class="s1">&#39;accordion-content&#39;</span><span class="p">);</span>
-</span><span class='line'>    <span class="nx">expect</span><span class="p">(</span><span class="nx">contents</span><span class="p">.</span><span class="nx">length</span><span class="p">).</span><span class="nx">toEqual</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
-</span><span class='line'>    <span class="nx">expect</span><span class="p">(</span><span class="nx">contents</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="nx">textContent</span><span class="p">).</span><span class="nx">toEqual</span><span class="p">(</span><span class="s1">&#39;Content belongs to title 2&#39;</span><span class="p">);</span>
-</span><span class='line'>  <span class="p">});</span>
-</span><span class='line'>
-</span><span class='line'>  <span class="nx">it</span><span class="p">(</span><span class="s1">&#39;should be able to toggle the content by clicking on the respective title.&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(){</span>
-</span><span class='line'>    <span class="kd">var</span> <span class="nx">input</span> <span class="o">=</span> <span class="p">[{</span>
-</span><span class='line'>      <span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;Title 1&#39;</span><span class="p">,</span>
-</span><span class='line'>      <span class="nx">content</span><span class="o">:</span> <span class="s1">&#39;Content belongs to title 1&#39;</span>
-</span><span class='line'>    <span class="p">},{</span>
-</span><span class='line'>      <span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;Title 2&#39;</span><span class="p">,</span>
-</span><span class='line'>      <span class="nx">content</span><span class="o">:</span> <span class="s1">&#39;Content belongs to title 2&#39;</span>
-</span><span class='line'>    <span class="p">}];</span>
-</span><span class='line'>
-</span><span class='line'>    <span class="kd">var</span> <span class="nx">accordion</span> <span class="o">=</span> <span class="nx">TestUtils</span><span class="p">.</span><span class="nx">renderIntoDocument</span><span class="p">(</span> <span class="o">&lt;</span><span class="nx">Accordion</span> <span class="nx">data</span><span class="o">=</span><span class="p">{</span><span class="nx">input</span><span class="p">}</span><span class="o">/&gt;</span> <span class="p">);</span>
-</span><span class='line'>    <span class="kd">var</span> <span class="nx">headers</span> <span class="o">=</span> <span class="nx">TestUtils</span><span class="p">.</span><span class="nx">scryRenderedDOMComponentsWithClass</span><span class="p">(</span><span class="nx">accordion</span><span class="p">,</span> <span class="s1">&#39;accordion-header&#39;</span><span class="p">);</span>
-</span><span class='line'>    <span class="kd">var</span> <span class="nx">contents</span> <span class="o">=</span> <span class="nx">TestUtils</span><span class="p">.</span><span class="nx">scryRenderedDOMComponentsWithClass</span><span class="p">(</span><span class="nx">accordion</span><span class="p">,</span> <span class="s1">&#39;accordion-content&#39;</span><span class="p">);</span>
-</span><span class='line'>
-</span><span class='line'>    <span class="nx">expect</span><span class="p">(</span><span class="nx">contents</span><span class="p">.</span><span class="nx">length</span><span class="p">).</span><span class="nx">toEqual</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
-</span><span class='line'>    <span class="nx">TestUtils</span><span class="p">.</span><span class="nx">Simulate</span><span class="p">.</span><span class="nx">click</span><span class="p">(</span><span class="nx">headers</span><span class="p">[</span><span class="mi">0</span><span class="p">]);</span>
-</span><span class='line'>    <span class="nx">contents</span> <span class="o">=</span> <span class="nx">TestUtils</span><span class="p">.</span><span class="nx">scryRenderedDOMComponentsWithClass</span><span class="p">(</span><span class="nx">accordion</span><span class="p">,</span> <span class="s1">&#39;accordion-content&#39;</span><span class="p">);</span>
-</span><span class='line'>    <span class="nx">expect</span><span class="p">(</span><span class="nx">contents</span><span class="p">.</span><span class="nx">length</span><span class="p">).</span><span class="nx">toEqual</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
-</span><span class='line'>    <span class="nx">expect</span><span class="p">(</span><span class="nx">contents</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="nx">textContent</span><span class="p">).</span><span class="nx">toEqual</span><span class="p">(</span><span class="s1">&#39;Content belongs to title 1&#39;</span><span class="p">);</span>
-</span><span class='line'>    <span class="nx">TestUtils</span><span class="p">.</span><span class="nx">Simulate</span><span class="p">.</span><span class="nx">click</span><span class="p">(</span><span class="nx">headers</span><span class="p">[</span><span class="mi">0</span><span class="p">]);</span>
-</span><span class='line'>    <span class="nx">contents</span> <span class="o">=</span> <span class="nx">TestUtils</span><span class="p">.</span><span class="nx">scryRenderedDOMComponentsWithClass</span><span class="p">(</span><span class="nx">accordion</span><span class="p">,</span> <span class="s1">&#39;accordion-content&#39;</span><span class="p">);</span>
-</span><span class='line'>    <span class="nx">expect</span><span class="p">(</span><span class="nx">contents</span><span class="p">.</span><span class="nx">length</span><span class="p">).</span><span class="nx">toEqual</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
-</span><span class='line'>  <span class="p">});</span>
-</span><span class='line'>
-</span><span class='line'><span class="p">});</span>
-</span></code></pre></td></tr></table></div></figure>
+<figure class='code'><figcaption><span>accordionComponent-spec.js</span></figcaption><pre><code class='language-javascript'>jest.dontMock(&apos;../scripts/accordionComponent.js&apos;);
+
+describe(&apos;Accordion&apos;, function() {
+  var React = require(&apos;react&apos;);
+  var TestUtils = require(&apos;react-addons-test-utils&apos;);
+  var Accordion;
+
+  beforeEach(function() {
+    Accordion = require(&apos;../scripts/accordionComponent&apos;);
+  });
+
+  it(&apos;should exists&apos;, function() {
+    // Render into document
+    var accordion = TestUtils.renderIntoDocument( &lt;Accordion /&gt; );
+    expect(TestUtils.isCompositeComponent(accordion)).toBeTruthy();
+  });
+
+  it(&apos;should build the layout from an array of objects passed as prop&apos;, function() {
+
+    var input = [{
+      name: &apos;Title 1&apos;,
+      content: &apos;Content belongs to title 1&apos;,
+      showOnLoad: true
+    },{
+      name: &apos;Title 2&apos;,
+      content: &apos;Content belongs to title 2&apos;,
+      showOnLoad: true
+    }];
+
+    var accordion = TestUtils.renderIntoDocument( &lt;Accordion data={input}/&gt; );
+    var headers = TestUtils.scryRenderedDOMComponentsWithClass(accordion, &apos;accordion-header&apos;);
+    var contents = TestUtils.scryRenderedDOMComponentsWithClass(accordion, &apos;accordion-content&apos;);
+
+    expect(headers.length).toEqual(2);
+    expect(contents.length).toEqual(2);
+
+    expect(headers[0].textContent).toEqual(&apos;Title 1&apos;);
+    expect(headers[1].textContent).toEqual(&apos;Title 2&apos;);
+
+    expect(contents[0].textContent).toEqual(&apos;Content belongs to title 1&apos;);
+    expect(contents[1].textContent).toEqual(&apos;Content belongs to title 2&apos;);
+  });
+
+  it(&apos;should hide all the contents by default unless specified by a flag&apos;, function(){
+    var input = [{
+      name: &apos;Title 1&apos;,
+      content: &apos;Content belongs to title 1&apos;
+    },{
+      name: &apos;Title 2&apos;,
+      content: &apos;Content belongs to title 2&apos;,
+      showOnLoad: true
+    }];
+
+    var accordion = TestUtils.renderIntoDocument( &lt;Accordion data={input}/&gt; );
+    var contents = TestUtils.scryRenderedDOMComponentsWithClass(accordion, &apos;accordion-content&apos;);
+    expect(contents.length).toEqual(1);
+    expect(contents[0].textContent).toEqual(&apos;Content belongs to title 2&apos;);
+  });
+
+  it(&apos;should be able to toggle the content by clicking on the respective title.&apos;, function(){
+    var input = [{
+      name: &apos;Title 1&apos;,
+      content: &apos;Content belongs to title 1&apos;
+    },{
+      name: &apos;Title 2&apos;,
+      content: &apos;Content belongs to title 2&apos;
+    }];
+
+    var accordion = TestUtils.renderIntoDocument( &lt;Accordion data={input}/&gt; );
+    var headers = TestUtils.scryRenderedDOMComponentsWithClass(accordion, &apos;accordion-header&apos;);
+    var contents = TestUtils.scryRenderedDOMComponentsWithClass(accordion, &apos;accordion-content&apos;);
+
+    expect(contents.length).toEqual(0);
+    TestUtils.Simulate.click(headers[0]);
+    contents = TestUtils.scryRenderedDOMComponentsWithClass(accordion, &apos;accordion-content&apos;);
+    expect(contents.length).toEqual(1);
+    expect(contents[0].textContent).toEqual(&apos;Content belongs to title 1&apos;);
+    TestUtils.Simulate.click(headers[0]);
+    contents = TestUtils.scryRenderedDOMComponentsWithClass(accordion, &apos;accordion-content&apos;);
+    expect(contents.length).toEqual(0);
+  });
+
+});</code></pre></figure>
 
 
 
 
-<figure class='code'><figcaption><span>accordionComponent.js</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-<span class='line-number'>21</span>
-<span class='line-number'>22</span>
-<span class='line-number'>23</span>
-<span class='line-number'>24</span>
-<span class='line-number'>25</span>
-<span class='line-number'>26</span>
-<span class='line-number'>27</span>
-<span class='line-number'>28</span>
-<span class='line-number'>29</span>
-<span class='line-number'>30</span>
-<span class='line-number'>31</span>
-<span class='line-number'>32</span>
-<span class='line-number'>33</span>
-<span class='line-number'>34</span>
-<span class='line-number'>35</span>
-<span class='line-number'>36</span>
-<span class='line-number'>37</span>
-<span class='line-number'>38</span>
-<span class='line-number'>39</span>
-<span class='line-number'>40</span>
-<span class='line-number'>41</span>
-<span class='line-number'>42</span>
-<span class='line-number'>43</span>
-<span class='line-number'>44</span>
-<span class='line-number'>45</span>
-<span class='line-number'>46</span>
-<span class='line-number'>47</span>
-<span class='line-number'>48</span>
-<span class='line-number'>49</span>
-<span class='line-number'>50</span>
-<span class='line-number'>51</span>
-<span class='line-number'>52</span>
-<span class='line-number'>53</span>
-<span class='line-number'>54</span>
-<span class='line-number'>55</span>
-<span class='line-number'>56</span>
-<span class='line-number'>57</span>
-<span class='line-number'>58</span>
-<span class='line-number'>59</span>
-</pre></td><td class='code'><pre><code class='js'><span class='line'><span class="s1">&#39;use strict&#39;</span><span class="p">;</span>
-</span><span class='line'>
-</span><span class='line'><span class="kd">var</span> <span class="nx">React</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;react&#39;</span><span class="p">);</span>
-</span><span class='line'>
-</span><span class='line'><span class="kd">var</span> <span class="nx">Pane</span> <span class="o">=</span> <span class="nx">React</span><span class="p">.</span><span class="nx">createClass</span><span class="p">({</span>
-</span><span class='line'>  <span class="nx">getInitialState</span><span class="o">:</span> <span class="kd">function</span><span class="p">(){</span>
-</span><span class='line'>    <span class="k">return</span> <span class="p">{</span>
-</span><span class='line'>      <span class="nx">show</span><span class="o">:</span> <span class="k">this</span><span class="p">.</span><span class="nx">props</span><span class="p">.</span><span class="nx">data</span><span class="p">.</span><span class="nx">showOnLoad</span>
-</span><span class='line'>    <span class="p">};</span>
-</span><span class='line'>  <span class="p">},</span>
-</span><span class='line'>
-</span><span class='line'>  <span class="nx">toggle</span><span class="o">:</span> <span class="kd">function</span><span class="p">(){</span>
-</span><span class='line'>    <span class="k">this</span><span class="p">.</span><span class="nx">setState</span><span class="p">({</span>
-</span><span class='line'>      <span class="nx">show</span><span class="o">:</span> <span class="o">!</span><span class="k">this</span><span class="p">.</span><span class="nx">state</span><span class="p">.</span><span class="nx">show</span>
-</span><span class='line'>    <span class="p">});</span>
-</span><span class='line'>  <span class="p">},</span>
-</span><span class='line'>
-</span><span class='line'>  <span class="nx">render</span><span class="o">:</span> <span class="kd">function</span><span class="p">(){</span>
-</span><span class='line'>    <span class="kd">var</span> <span class="nx">getContent</span> <span class="o">=</span> <span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">item</span><span class="p">){</span>
-</span><span class='line'>      <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">state</span><span class="p">.</span><span class="nx">show</span> <span class="o">?</span> <span class="p">(</span>
-</span><span class='line'>        <span class="o">&lt;</span><span class="nx">div</span> <span class="nx">className</span><span class="o">=</span><span class="s2">&quot;accordion-content&quot;</span><span class="o">&gt;</span>
-</span><span class='line'>          <span class="p">{</span><span class="nx">item</span><span class="p">.</span><span class="nx">content</span><span class="p">}</span>
-</span><span class='line'>        <span class="o">&lt;</span><span class="err">/div&gt;</span>
-</span><span class='line'>      <span class="p">)</span> <span class="o">:</span> <span class="s1">&#39;&#39;</span><span class="p">;</span>
-</span><span class='line'>    <span class="p">}).</span><span class="nx">bind</span><span class="p">(</span><span class="k">this</span><span class="p">);</span>
-</span><span class='line'>
-</span><span class='line'>    <span class="kd">var</span> <span class="nx">item</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">props</span><span class="p">.</span><span class="nx">data</span><span class="p">;</span>
-</span><span class='line'>
-</span><span class='line'>    <span class="k">return</span> <span class="p">(</span>
-</span><span class='line'>      <span class="o">&lt;</span><span class="nx">div</span><span class="o">&gt;</span>
-</span><span class='line'>        <span class="o">&lt;</span><span class="nx">div</span> <span class="nx">className</span><span class="o">=</span><span class="s2">&quot;accordion-header&quot;</span> <span class="nx">onClick</span><span class="o">=</span><span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">toggle</span><span class="p">}</span><span class="o">&gt;</span>
-</span><span class='line'>          <span class="p">{</span><span class="nx">item</span><span class="p">.</span><span class="nx">name</span><span class="p">}</span>
-</span><span class='line'>        <span class="o">&lt;</span><span class="err">/div&gt;</span>
-</span><span class='line'>        <span class="p">{</span> <span class="nx">getContent</span><span class="p">(</span><span class="nx">item</span><span class="p">)</span> <span class="p">}</span>
-</span><span class='line'>      <span class="o">&lt;</span><span class="err">/div&gt;</span>
-</span><span class='line'>    <span class="p">);</span>
-</span><span class='line'>  <span class="p">}</span>
-</span><span class='line'><span class="p">});</span>
-</span><span class='line'>
-</span><span class='line'><span class="kd">var</span> <span class="nx">Accordion</span> <span class="o">=</span> <span class="nx">React</span><span class="p">.</span><span class="nx">createClass</span><span class="p">({</span>
-</span><span class='line'>  <span class="nx">render</span><span class="o">:</span> <span class="kd">function</span><span class="p">(){</span>
-</span><span class='line'>    <span class="kd">var</span> <span class="nx">panes</span> <span class="o">=</span> <span class="p">[];</span>
-</span><span class='line'>    <span class="kd">var</span> <span class="nx">data</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">props</span><span class="p">.</span><span class="nx">data</span> <span class="o">||</span> <span class="p">[];</span>
-</span><span class='line'>
-</span><span class='line'>    <span class="nx">data</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">item</span><span class="p">,</span> <span class="nx">index</span><span class="p">){</span>
-</span><span class='line'>      <span class="nx">panes</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span>
-</span><span class='line'>        <span class="o">&lt;</span><span class="nx">Pane</span> <span class="nx">data</span><span class="o">=</span><span class="p">{</span><span class="nx">item</span><span class="p">}</span> <span class="nx">key</span><span class="o">=</span><span class="p">{</span><span class="nx">index</span><span class="p">}</span><span class="o">/&gt;</span>
-</span><span class='line'>      <span class="p">);</span>
-</span><span class='line'>    <span class="p">});</span>
-</span><span class='line'>
-</span><span class='line'>    <span class="k">return</span> <span class="p">(</span>
-</span><span class='line'>      <span class="o">&lt;</span><span class="nx">div</span> <span class="nx">className</span><span class="o">=</span><span class="s2">&quot;accordion&quot;</span><span class="o">&gt;</span>
-</span><span class='line'>        <span class="p">{</span><span class="nx">panes</span><span class="p">}</span>
-</span><span class='line'>      <span class="o">&lt;</span><span class="err">/div&gt;</span>
-</span><span class='line'>    <span class="p">);</span>
-</span><span class='line'>  <span class="p">}</span>
-</span><span class='line'><span class="p">});</span>
-</span><span class='line'>
-</span><span class='line'><span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="nx">Accordion</span><span class="p">;</span>
-</span></code></pre></td></tr></table></div></figure>
+<figure class='code'><figcaption><span>accordionComponent.js</span></figcaption><pre><code class='language-javascript'>&apos;use strict&apos;;
+
+var React = require(&apos;react&apos;);
+
+var Pane = React.createClass({
+  getInitialState: function(){
+    return {
+      show: this.props.data.showOnLoad
+    };
+  },
+
+  toggle: function(){
+    this.setState({
+      show: !this.state.show
+    });
+  },
+
+  render: function(){
+    var getContent = (function(item){
+      return this.state.show ? (
+        &lt;div className=&quot;accordion-content&quot;&gt;
+          {item.content}
+        &lt;/div&gt;
+      ) : &apos;&apos;;
+    }).bind(this);
+
+    var item = this.props.data;
+
+    return (
+      &lt;div&gt;
+        &lt;div className=&quot;accordion-header&quot; onClick={this.toggle}&gt;
+          {item.name}
+        &lt;/div&gt;
+        { getContent(item) }
+      &lt;/div&gt;
+    );
+  }
+});
+
+var Accordion = React.createClass({
+  render: function(){
+    var panes = [];
+    var data = this.props.data || [];
+
+    data.forEach(function(item, index){
+      panes.push(
+        &lt;Pane data={item} key={index}/&gt;
+      );
+    });
+
+    return (
+      &lt;div className=&quot;accordion&quot;&gt;
+        {panes}
+      &lt;/div&gt;
+    );
+  }
+});
+
+module.exports = Accordion;</code></pre></figure>
 
 
 
 
-<figure class='code'><figcaption><span>app.js</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-</pre></td><td class='code'><pre><code class='js'><span class='line'><span class="s1">&#39;use strict&#39;</span><span class="p">;</span>
-</span><span class='line'>
-</span><span class='line'><span class="kd">var</span> <span class="nx">React</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;react&#39;</span><span class="p">);</span>
-</span><span class='line'><span class="kd">var</span> <span class="nx">ReactDOM</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;react-dom&#39;</span><span class="p">);</span>
-</span><span class='line'><span class="kd">var</span> <span class="nx">Accordion</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;components/accordionComponent&#39;</span><span class="p">);</span>
-</span><span class='line'><span class="kd">var</span> <span class="nx">input</span> <span class="o">=</span> <span class="p">[{</span>
-</span><span class='line'>  <span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;Title 1&#39;</span><span class="p">,</span>
-</span><span class='line'>  <span class="nx">content</span><span class="o">:</span> <span class="s1">&#39;Content belongs to title 1&#39;</span>
-</span><span class='line'><span class="p">},{</span>
-</span><span class='line'>  <span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;Title 2&#39;</span><span class="p">,</span>
-</span><span class='line'>  <span class="nx">content</span><span class="o">:</span> <span class="s1">&#39;Content belongs to title 2&#39;</span>
-</span><span class='line'><span class="p">}];</span>
-</span><span class='line'>
-</span><span class='line'><span class="nx">ReactDOM</span><span class="p">.</span><span class="nx">render</span><span class="p">(</span><span class="o">&lt;</span><span class="nx">Accordion</span> <span class="nx">data</span><span class="o">=</span><span class="p">{</span><span class="nx">input</span><span class="p">}</span><span class="o">/&gt;</span><span class="p">,</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;view&#39;</span><span class="p">));</span>
-</span></code></pre></td></tr></table></div></figure>
+<figure class='code'><figcaption><span>app.js</span></figcaption><pre><code class='language-javascript'>&apos;use strict&apos;;
+
+var React = require(&apos;react&apos;);
+var ReactDOM = require(&apos;react-dom&apos;);
+var Accordion = require(&apos;components/accordionComponent&apos;);
+var input = [{
+  name: &apos;Title 1&apos;,
+  content: &apos;Content belongs to title 1&apos;
+},{
+  name: &apos;Title 2&apos;,
+  content: &apos;Content belongs to title 2&apos;
+}];
+
+ReactDOM.render(&lt;Accordion data={input}/&gt;, document.getElementById(&apos;view&apos;));</code></pre></figure>
 
 
 <h2>Summary</h2>
@@ -1416,6 +980,22 @@ Note: By using <strong>jest.dontMock</strong>, we get the original react compone
     console.log(e);
   });
 </script> -->
+
+  <script src="/javascripts/modernizr-2.0.js" async></script>
+  <script src="/javascripts/libs/jquery.min.js" async></script>
+  <script src="/javascripts/octopress.js" type="text/javascript" async></script>
+  <script src="/javascripts/prism.js" type="text/javascript" async></script>
+  
+  <script type="text/javascript">
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ga('create', 'UA-10379928-17', 'auto');
+ga('require', 'displayfeatures');
+ga('send', 'pageview');
+  </script>
+
 
 </body>
 </html>

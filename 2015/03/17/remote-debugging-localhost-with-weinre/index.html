@@ -20,6 +20,7 @@
   
   <link rel="canonical" href="https://www.undefinednull.com/2015/03/17/remote-debugging-localhost-with-weinre">
   <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/prism.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="http://feeds.feedburner.com/undefinednull/com" rel="alternate" title="Undefined NULL" type="application/atom+xml">
   <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
@@ -44,21 +45,6 @@
   }
 </style>
  -->
-
-  <script src="/javascripts/modernizr-2.0.js" async></script>
-  <script src="/javascripts/libs/jquery.min.js" async></script>
-  <script src="/javascripts/octopress.js" type="text/javascript" async></script>
-  
-  <script type="text/javascript">
-    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-ga('create', 'UA-10379928-17', 'auto');
-ga('require', 'displayfeatures');
-ga('send', 'pageview');
-  </script>
-
 
 </head>
 
@@ -144,33 +130,19 @@ ga('send', 'pageview');
 
 <p>Now run the command <code>weinre --help</code> to see all available options.</p>
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-</pre></td><td class='code'><pre><code class='sh'><span class='line'>usage:   weinre <span class="o">[</span>options<span class="o">]</span>
-</span><span class='line'>version: 2.0.0-pre-HH0SN197
-</span><span class='line'>
-</span><span class='line'>options:
-</span><span class='line'>    --httpPort     port to run the http server on        default: 8080
-</span><span class='line'>    --boundHost    ip address to <span class="nb">bind </span>the server to      default: localhost
-</span><span class='line'>    --verbose      print more diagnostics                default: <span class="nb">false</span>
-</span><span class='line'>    --debug        print even more diagnostics           default: <span class="nb">false</span>
-</span><span class='line'>    --readTimeout  seconds to <span class="nb">wait </span><span class="k">for </span>a client message  default: 5
-</span><span class='line'>    --deathTimeout seconds to <span class="nb">wait </span>to <span class="nb">kill </span>client        default: 3*readTimeout
-</span><span class='line'>
-</span><span class='line'>--boundHost can be an ip address, hostname, or -all-, where -all-
-</span><span class='line'>means binding to all ip address on the current machine
-</span></code></pre></td></tr></table></div></figure>
+<figure class='code'><figcaption><span></span></figcaption><pre><code class='language-sh'>usage:   weinre [options]
+version: 2.0.0-pre-HH0SN197
+
+options:
+    --httpPort     port to run the http server on        default: 8080
+    --boundHost    ip address to bind the server to      default: localhost
+    --verbose      print more diagnostics                default: false
+    --debug        print even more diagnostics           default: false
+    --readTimeout  seconds to wait for a client message  default: 5
+    --deathTimeout seconds to wait to kill client        default: 3*readTimeout
+
+--boundHost can be an ip address, hostname, or -all-, where -all-
+means binding to all ip address on the current machine</code></pre></figure>
 
 
 <p>To run weinre in default configurations, use the command <code>weinre -all-</code>.</p>
@@ -191,39 +163,25 @@ ga('send', 'pageview');
 
 <p>Let&rsquo;s run weinre using a custom port and your IP address.</p>
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='sh'><span class='line'>weinre --httpPort 1234 --boundHost 192.168.2.109
-</span></code></pre></td></tr></table></div></figure>
+<figure class='code'><figcaption><span></span></figcaption><pre><code class='language-sh'>weinre --httpPort 1234 --boundHost 192.168.2.109</code></pre></figure>
 
 
 <p>This will start the weinre server in port 1234.</p>
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='sh'><span class='line'>2015-02-19T13:56:42.520Z weinre: starting server at http://192.168.2.109:1234
-</span></code></pre></td></tr></table></div></figure>
+<figure class='code'><figcaption><span></span></figcaption><pre><code class='language-sh'>2015-02-19T13:56:42.520Z weinre: starting server at http://192.168.2.109:1234</code></pre></figure>
 
 
 <p>Open the link <code>http://192.168.2.109:1234</code> in your browser. We&rsquo;re mainly interested in the following links:</p>
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-</pre></td><td class='code'><pre><code class='sh'><span class='line'>Access Points
-</span><span class='line'>--------------
-</span><span class='line'>debug client user interface:    http://localhost:1234/client/#anonymous
-</span><span class='line'>documentation:  http://localhost:1234/doc/
-</span><span class='line'>
-</span><span class='line'>Target Script
-</span><span class='line'>--------------
-</span><span class='line'>You can use this script to inject the weinre target code into your web page.
-</span><span class='line'>http://localhost:1234/target/target-script-min.js#anonymous
-</span></code></pre></td></tr></table></div></figure>
+<figure class='code'><figcaption><span></span></figcaption><pre><code class='language-sh'>Access Points
+--------------
+debug client user interface:    http://localhost:1234/client/#anonymous
+documentation:  http://localhost:1234/doc/
+
+Target Script
+--------------
+You can use this script to inject the weinre target code into your web page.
+http://localhost:1234/target/target-script-min.js#anonymous</code></pre></figure>
 
 
 <p>Add the target script to which-ever page you need to inspect and use the debug client user interface link. The debug client is very similar to the Chrome dev tools.</p>
@@ -238,46 +196,30 @@ ga('send', 'pageview');
 
 <p><strong>Install ngrok</strong></p>
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='sh'><span class='line'>npm install -g ngrok
-</span></code></pre></td></tr></table></div></figure>
+<figure class='code'><figcaption><span></span></figcaption><pre><code class='language-sh'>npm install -g ngrok</code></pre></figure>
 
 
 <p><strong>Start the weinre server</strong></p>
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='sh'><span class='line'>weinre --httpPort 1234 --boundHost 192.168.2.109
-</span></code></pre></td></tr></table></div></figure>
+<figure class='code'><figcaption><span></span></figcaption><pre><code class='language-sh'>weinre --httpPort 1234 --boundHost 192.168.2.109</code></pre></figure>
 
 
 <p><strong>Run ngrok pointing to the weinre server</strong></p>
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='sh'><span class='line'>ngrok 192.168.2.109:1234
-</span></code></pre></td></tr></table></div></figure>
+<figure class='code'><figcaption><span></span></figcaption><pre><code class='language-sh'>ngrok 192.168.2.109:1234</code></pre></figure>
 
 
 <p>This will output like this:</p>
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-</pre></td><td class='code'><pre><code class='sh'><span class='line'>ngrok                                                                                            <span class="o">(</span>Ctrl+C to quit<span class="o">)</span>
-</span><span class='line'>
-</span><span class='line'>Tunnel Status                 online
-</span><span class='line'>Version                       1.7/1.7
-</span><span class='line'>Forwarding                    http://74bd4fb7.ngrok.com -&gt; 192.168.2.109:1234
-</span><span class='line'>Forwarding                    https://74bd4fb7.ngrok.com -&gt; 192.168.2.109:1234
-</span><span class='line'>Web Interface                 127.0.0.1:4040
-</span><span class='line'><span class="c"># Conn                        0</span>
-</span><span class='line'>Avg Conn Time                 0.00ms
-</span></code></pre></td></tr></table></div></figure>
+<figure class='code'><figcaption><span></span></figcaption><pre><code class='language-sh'>ngrok                                                                                            (Ctrl+C to quit)
+
+Tunnel Status                 online
+Version                       1.7/1.7
+Forwarding                    http://74bd4fb7.ngrok.com -&gt; 192.168.2.109:1234
+Forwarding                    https://74bd4fb7.ngrok.com -&gt; 192.168.2.109:1234
+Web Interface                 127.0.0.1:4040
+# Conn                        0
+Avg Conn Time                 0.00ms</code></pre></figure>
 
 
 <p>Now, <code>https://74bd4fb7.ngrok.com</code> is your https tunnel to weinre server. Open your browser and navigate to <code>192.168.2.109:1234</code>. Follow the set-up instructions given in that page after replacing <code>192.168.2.109</code> with <code>https://74bd4fb7.ngrok.com</code> for https support.</p>
@@ -286,25 +228,18 @@ ga('send', 'pageview');
 
 <p>If you&rsquo;re having any Javascript error in the target script, you might need to modify the <code>target-min-script.js</code>. To do that, find out the weinre path first:</p>
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class='sh'><span class='line'><span class="nb">cd</span> <span class="sb">`</span>which weinre<span class="sb">`</span>/../web/target
-</span><span class='line'>vi target-min-script.js
-</span></code></pre></td></tr></table></div></figure>
+<figure class='code'><figcaption><span></span></figcaption><pre><code class='language-sh'>cd `which weinre`/../web/target
+vi target-min-script.js</code></pre></figure>
 
 
 <p>Now in the editor, search for the following text</p>
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='js'><span class='line'><span class="nx">pattern</span> <span class="o">=</span> <span class="sr">/(http:\/\/(.*?)\/)/</span><span class="p">;</span>
-</span></code></pre></td></tr></table></div></figure>
+<figure class='code'><figcaption><span></span></figcaption><pre><code class='language-javascript'>pattern = /(http:\/\/(.*?)\/)/;</code></pre></figure>
 
 
 <p>Replace it with the below one and save.</p>
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='js'><span class='line'><span class="nx">pattern</span> <span class="o">=</span> <span class="sr">/(https?:\/\/(.*?)\/)/</span><span class="p">;</span>
-</span></code></pre></td></tr></table></div></figure>
+<figure class='code'><figcaption><span></span></figcaption><pre><code class='language-javascript'>pattern = /(https?:\/\/(.*?)\/)/;</code></pre></figure>
 
 
 <p>Now you can use weinre in https pages.</p>
@@ -617,6 +552,22 @@ ga('send', 'pageview');
     console.log(e);
   });
 </script> -->
+
+  <script src="/javascripts/modernizr-2.0.js" async></script>
+  <script src="/javascripts/libs/jquery.min.js" async></script>
+  <script src="/javascripts/octopress.js" type="text/javascript" async></script>
+  <script src="/javascripts/prism.js" type="text/javascript" async></script>
+  
+  <script type="text/javascript">
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ga('create', 'UA-10379928-17', 'auto');
+ga('require', 'displayfeatures');
+ga('send', 'pageview');
+  </script>
+
 
 </body>
 </html>

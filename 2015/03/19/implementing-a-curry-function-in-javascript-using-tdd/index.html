@@ -20,6 +20,7 @@
   
   <link rel="canonical" href="https://www.undefinednull.com/2015/03/19/implementing-a-curry-function-in-javascript-using-tdd">
   <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/prism.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="http://feeds.feedburner.com/undefinednull/com" rel="alternate" title="Undefined NULL" type="application/atom+xml">
   <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
@@ -44,21 +45,6 @@
   }
 </style>
  -->
-
-  <script src="/javascripts/modernizr-2.0.js" async></script>
-  <script src="/javascripts/libs/jquery.min.js" async></script>
-  <script src="/javascripts/octopress.js" type="text/javascript" async></script>
-  
-  <script type="text/javascript">
-    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-ga('create', 'UA-10379928-17', 'auto');
-ga('require', 'displayfeatures');
-ga('send', 'pageview');
-  </script>
-
 
 </head>
 
@@ -140,16 +126,12 @@ ga('send', 'pageview');
 
 <p>First install Testem:</p>
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='sh'><span class='line'>npm install -g testem
-</span></code></pre></td></tr></table></div></figure>
+<figure class='code'><figcaption><span></span></figcaption><pre><code class='language-sh'>npm install -g testem</code></pre></figure>
 
 
 <p>Now create a folder called <code>TDD</code> anywhere in your system. We&rsquo;re going to keep all our files in this folder.</p>
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='sh'><span class='line'>mkdir TDD <span class="o">&amp;&amp;</span> <span class="nb">cd </span>TDD
-</span></code></pre></td></tr></table></div></figure>
+<figure class='code'><figcaption><span></span></figcaption><pre><code class='language-sh'>mkdir TDD &amp;&amp; cd TDD</code></pre></figure>
 
 
 <p>Create the following files:</p>
@@ -165,13 +147,9 @@ ga('send', 'pageview');
 
 <p>Edit the <code>testem.yml</code> and set up the source files for running the tests.</p>
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class='yaml'><span class='line'><span class="l-Scalar-Plain">src_files</span><span class="p-Indicator">:</span>
-</span><span class='line'><span class="p-Indicator">-</span> <span class="l-Scalar-Plain">curry.js</span>
-</span><span class='line'><span class="p-Indicator">-</span> <span class="l-Scalar-Plain">curry-spec.js</span>
-</span></code></pre></td></tr></table></div></figure>
+<figure class='code'><figcaption><span></span></figcaption><pre><code class='language-yaml'>src_files:
+- curry.js
+- curry-spec.js</code></pre></figure>
 
 
 <p>Open Terminal and run the command <code>testem</code> from the TDD folder to verify testem is running.</p>
@@ -182,73 +160,46 @@ ga('send', 'pageview');
 
 <p>First install Chai.js from npm.</p>
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='sh'><span class='line'>npm install chai
-</span></code></pre></td></tr></table></div></figure>
+<figure class='code'><figcaption><span></span></figcaption><pre><code class='language-sh'>npm install chai</code></pre></figure>
 
 
 <p>Open the <code>testem.yml</code> in editor and modify like below.</p>
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-</pre></td><td class='code'><pre><code class='yaml'><span class='line'><span class="l-Scalar-Plain">framework</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">mocha</span>
-</span><span class='line'><span class="l-Scalar-Plain">src_files</span><span class="p-Indicator">:</span>
-</span><span class='line'><span class="p-Indicator">-</span> <span class="l-Scalar-Plain">node_modules/chai/chai.js</span>
-</span><span class='line'><span class="p-Indicator">-</span> <span class="l-Scalar-Plain">curry.js</span>
-</span><span class='line'><span class="p-Indicator">-</span> <span class="l-Scalar-Plain">curry-spec.js</span>
-</span></code></pre></td></tr></table></div></figure>
+<figure class='code'><figcaption><span></span></figcaption><pre><code class='language-yaml'>framework: mocha
+src_files:
+- node_modules/chai/chai.js
+- curry.js
+- curry-spec.js</code></pre></figure>
 
 
 <p>We also need to override the global <code>expect</code> in Testem with the <code>expect</code> method of Chai.js</p>
 
 <p>Create a <code>setup.js</code> file in TDD folder like below:</p>
 
-<figure class='code'><figcaption><span>setup.js</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='js'><span class='line'><span class="kd">var</span> <span class="nx">expect</span> <span class="o">=</span> <span class="nx">chai</span><span class="p">.</span><span class="nx">expect</span>
-</span></code></pre></td></tr></table></div></figure>
+<figure class='code'><figcaption><span>setup.js</span></figcaption><pre><code class='language-javascript'>var expect = chai.expect</code></pre></figure>
 
 
 <p>To make sure that everything works fine, edit the <strong>curry-spec.js</strong> with the following code and run the <code>testem</code> command from terminal.</p>
 
-<figure class='code'><figcaption><span>curry-spec.js</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-</pre></td><td class='code'><pre><code class='js'><span class='line'><span class="nx">describe</span><span class="p">(</span><span class="s1">&#39;Testem setup&#39;</span><span class="p">,</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
-</span><span class='line'>    <span class="nx">it</span><span class="p">(</span><span class="s1">&#39;should verify the tests are passing&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(){</span>
-</span><span class='line'>        <span class="nx">expect</span><span class="p">(</span><span class="mi">1</span><span class="p">).</span><span class="nx">to</span><span class="p">.</span><span class="nx">eq</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
-</span><span class='line'>    <span class="p">})</span>
-</span><span class='line'><span class="p">});</span>
-</span></code></pre></td></tr></table></div></figure>
+<figure class='code'><figcaption><span>curry-spec.js</span></figcaption><pre><code class='language-javascript'>describe(&apos;Testem setup&apos;, function () {
+    it(&apos;should verify the tests are passing&apos;, function(){
+        expect(1).to.eq(1);
+    })
+});</code></pre></figure>
 
 
 <p>Open the link in the terminal to start capture the browser and run the tests. Once the tests ran, you should be able to see an output like this:</p>
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-</pre></td><td class='code'><pre><code class='sh'><span class='line'>TEST<span class="s1">&#39;EM &#39;</span>SCRIPTS!
-</span><span class='line'>Open the URL below in a browser to connect.
-</span><span class='line'>http://localhost:7357/
-</span><span class='line'>━━━━━━━━━━━━━━┓
-</span><span class='line'>  Chrome 40.0 ┃
-</span><span class='line'>    1/1 ✔     ┃
-</span><span class='line'>              ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-</span><span class='line'>
-</span><span class='line'>✔ 1 tests complete.
-</span><span class='line'><span class="o">[</span>Press ENTER to run tests; q to quit; p to pause<span class="o">]</span>
-</span></code></pre></td></tr></table></div></figure>
+<figure class='code'><figcaption><span></span></figcaption><pre><code class='language-sh'>TEST&apos;EM &apos;SCRIPTS!
+Open the URL below in a browser to connect.
+http://localhost:7357/
+━━━━━━━━━━━━━━┓
+  Chrome 40.0 ┃
+    1/1 ✔     ┃
+              ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+✔ 1 tests complete.
+[Press ENTER to run tests; q to quit; p to pause]</code></pre></figure>
 
 
 <h2>Thinking about Behaviours of the Module</h2>
@@ -265,21 +216,13 @@ ga('send', 'pageview');
 
 <p>So by definition, a function <code>add(a,b,c)</code> is a curried function if the <code>add</code> function supports following:</p>
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-</pre></td><td class='code'><pre><code class='js'><span class='line'><span class="nx">add</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span> <span class="c1">// should return 6</span>
-</span><span class='line'><span class="nx">add</span><span class="p">(</span><span class="mi">1</span><span class="p">)(</span><span class="mi">2</span><span class="p">)(</span><span class="mi">3</span><span class="p">)</span> <span class="c1">// should return 6</span>
-</span><span class='line'><span class="nx">add</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">)(</span><span class="mi">3</span><span class="p">)</span> <span class="c1">// should return 6</span>
-</span><span class='line'><span class="nx">add</span><span class="p">(</span><span class="mi">1</span><span class="p">)(</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span> <span class="c1">// should return 6</span>
-</span><span class='line'>
-</span><span class='line'><span class="kd">var</span> <span class="nx">sumofTwoAndThree</span> <span class="o">=</span> <span class="nx">add</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span> <span class="c1">// sumofTwoAndThree should be a function</span>
-</span><span class='line'><span class="nx">sumofTwoAndThree</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="c1">// should return 6</span>
-</span></code></pre></td></tr></table></div></figure>
+<figure class='code'><figcaption><span></span></figcaption><pre><code class='language-javascript'>add(1,2,3) // should return 6
+add(1)(2)(3) // should return 6
+add(1,2)(3) // should return 6
+add(1)(2,3) // should return 6
+
+var sumofTwoAndThree = add(1,2) // sumofTwoAndThree should be a function
+sumofTwoAndThree(3) // should return 6</code></pre></figure>
 
 
 <p>So, what we&rsquo;re going to implement now is a function that can create a curried function from any other function. We&rsquo;ll divide our test cases into two groups: one for curry function generator and another one for the actual curry function.</p>
@@ -290,75 +233,46 @@ ga('send', 'pageview');
 
 <p>Edit the <strong>curry-spec.js</strong> and remove the test code we already added. Start with a new <code>describe</code> block. The <strong>curry-spec.js</strong> should be like this now:</p>
 
-<figure class='code'><figcaption><span>curry-spec.js</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-</pre></td><td class='code'><pre><code class='js'><span class='line'><span class="nx">describe</span><span class="p">(</span><span class="s1">&#39;Curry function generator&#39;</span><span class="p">,</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
-</span><span class='line'>    <span class="nx">it</span><span class="p">(</span><span class="s1">&#39;should return a function&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(){</span>
-</span><span class='line'>        <span class="kd">var</span> <span class="nx">add</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(){}</span>
-</span><span class='line'>        <span class="nx">expect</span><span class="p">(</span><span class="nx">makeCurry</span><span class="p">(</span><span class="nx">add</span><span class="p">)).</span><span class="nx">to</span><span class="p">.</span><span class="nx">be</span><span class="p">.</span><span class="nx">a</span><span class="p">(</span><span class="s1">&#39;function&#39;</span><span class="p">);</span>
-</span><span class='line'>    <span class="p">});</span>
-</span><span class='line'><span class="p">});</span>
-</span></code></pre></td></tr></table></div></figure>
+<figure class='code'><figcaption><span>curry-spec.js</span></figcaption><pre><code class='language-javascript'>describe(&apos;Curry function generator&apos;, function () {
+    it(&apos;should return a function&apos;, function(){
+        var add = function(){}
+        expect(makeCurry(add)).to.be.a(&apos;function&apos;);
+    });
+});</code></pre></figure>
 
 
 <p>Run the <code>testem</code> command ( if it&rsquo;s already running, you can see the following output in the browser captured )</p>
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-</pre></td><td class='code'><pre><code class='sh'><span class='line'>ReferenceError: makeCurry is not defined
-</span><span class='line'>    at Context.&lt;anonymous&gt; <span class="o">(</span>http://localhost:7357/curry-spec.js:4:16<span class="o">)</span>
-</span><span class='line'>    at callFn <span class="o">(</span>http://localhost:7357/testem/mocha.js:4338:21<span class="o">)</span>
-</span><span class='line'>    at Test.Runnable.run <span class="o">(</span>http://localhost:7357/testem/mocha.js:4331:7<span class="o">)</span>
-</span><span class='line'>    at Runner.runTest <span class="o">(</span>http://localhost:7357/testem/mocha.js:4728:10<span class="o">)</span>
-</span><span class='line'>    at http://localhost:7357/testem/mocha.js:4806:12
-</span><span class='line'>    at next <span class="o">(</span>http://localhost:7357/testem/mocha.js:4653:14<span class="o">)</span>
-</span><span class='line'>    at http://localhost:7357/testem/mocha.js:4663:7
-</span><span class='line'>    at next <span class="o">(</span>http://localhost:7357/testem/mocha.js:4601:23<span class="o">)</span>
-</span><span class='line'>    at http://localhost:7357/testem/mocha.js:4630:5
-</span><span class='line'>    at timeslice <span class="o">(</span>http://localhost:7357/testem/mocha.js:5761:27<span class="o">)</span>
-</span></code></pre></td></tr></table></div></figure>
+<figure class='code'><figcaption><span></span></figcaption><pre><code class='language-sh'>ReferenceError: makeCurry is not defined
+    at Context.&lt;anonymous&gt; (http://localhost:7357/curry-spec.js:4:16)
+    at callFn (http://localhost:7357/testem/mocha.js:4338:21)
+    at Test.Runnable.run (http://localhost:7357/testem/mocha.js:4331:7)
+    at Runner.runTest (http://localhost:7357/testem/mocha.js:4728:10)
+    at http://localhost:7357/testem/mocha.js:4806:12
+    at next (http://localhost:7357/testem/mocha.js:4653:14)
+    at http://localhost:7357/testem/mocha.js:4663:7
+    at next (http://localhost:7357/testem/mocha.js:4601:23)
+    at http://localhost:7357/testem/mocha.js:4630:5
+    at timeslice (http://localhost:7357/testem/mocha.js:5761:27)</code></pre></figure>
 
 
 <p>We can see that the test is failing. The whole TDD starts from a failing test, and by making it pass. So why waiting, let&rsquo;s implement the <code>makeCurry</code> function inside the <strong>curry.js</strong> file.</p>
 
-<figure class='code'><figcaption><span>curry.js</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class='js'><span class='line'><span class="kd">var</span> <span class="nx">makeCurry</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(){</span>
-</span><span class='line'>
-</span><span class='line'><span class="p">};</span>
-</span></code></pre></td></tr></table></div></figure>
+<figure class='code'><figcaption><span>curry.js</span></figcaption><pre><code class='language-javascript'>var makeCurry = function(){
+
+};</code></pre></figure>
 
 
 <p>Now in the testem window, we can see another failure:</p>
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='sh'><span class='line'>AssertionError: expected undefined to be a <span class="k">function</span>
-</span></code></pre></td></tr></table></div></figure>
+<figure class='code'><figcaption><span></span></figcaption><pre><code class='language-sh'>AssertionError: expected undefined to be a function</code></pre></figure>
 
 
 <p>Modify the <code>makeCurry</code> function to return a dummy function as its output.</p>
 
-<figure class='code'><figcaption><span>curry.js</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class='js'><span class='line'><span class="kd">var</span> <span class="nx">makeCurry</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(){</span>
-</span><span class='line'>    <span class="k">return</span> <span class="kd">function</span><span class="p">(){};</span>
-</span><span class='line'><span class="p">};</span>
-</span></code></pre></td></tr></table></div></figure>
+<figure class='code'><figcaption><span>curry.js</span></figcaption><pre><code class='language-javascript'>var makeCurry = function(){
+    return function(){};
+};</code></pre></figure>
 
 
 <p>Our first test should pass now. By far, we have implemented the test case for the simple <code>makeCurry</code> function and implemented the <code>makeCurry</code> function.</p>
@@ -376,55 +290,33 @@ ga('send', 'pageview');
 
 <p>Add the another test case inside the <code>curry-spec.js</code></p>
 
-<figure class='code'><figcaption><span>curry-spec.js</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-</pre></td><td class='code'><pre><code class='js'><span class='line'><span class="nx">describe</span><span class="p">(</span><span class="s1">&#39;Curry function generator&#39;</span><span class="p">,</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
-</span><span class='line'>    <span class="nx">it</span><span class="p">(</span><span class="s1">&#39;should return a function&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(){</span>
-</span><span class='line'>        <span class="kd">var</span> <span class="nx">add</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(){}</span>
-</span><span class='line'>        <span class="nx">expect</span><span class="p">(</span><span class="nx">makeCurry</span><span class="p">(</span><span class="nx">add</span><span class="p">)).</span><span class="nx">to</span><span class="p">.</span><span class="nx">be</span><span class="p">.</span><span class="nx">a</span><span class="p">(</span><span class="s1">&#39;function&#39;</span><span class="p">);</span>
-</span><span class='line'>    <span class="p">});</span>
-</span><span class='line'>
-</span><span class='line'>    <span class="nx">it</span><span class="p">(</span><span class="s1">&#39;should throw an error if there is no valid function provided as argument&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(){</span>
-</span><span class='line'>        <span class="nx">expect</span><span class="p">(</span><span class="kd">function</span><span class="p">(){</span>
-</span><span class='line'>            <span class="nx">makeCurry</span><span class="p">();</span>
-</span><span class='line'>        <span class="p">}).</span><span class="nx">to</span><span class="p">.</span><span class="k">throw</span><span class="p">(</span><span class="s1">&#39;No function provided&#39;</span><span class="p">);</span>
-</span><span class='line'>    <span class="p">});</span>
-</span><span class='line'><span class="p">});</span>
-</span></code></pre></td></tr></table></div></figure>
+<figure class='code'><figcaption><span>curry-spec.js</span></figcaption><pre><code class='language-javascript'>describe(&apos;Curry function generator&apos;, function () {
+    it(&apos;should return a function&apos;, function(){
+        var add = function(){}
+        expect(makeCurry(add)).to.be.a(&apos;function&apos;);
+    });
+
+    it(&apos;should throw an error if there is no valid function provided as argument&apos;, function(){
+        expect(function(){
+            makeCurry();
+        }).to.throw(&apos;No function provided&apos;);
+    });
+});</code></pre></figure>
 
 
 <p>Now we can see that our test case is failing:</p>
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='sh'><span class='line'>AssertionError: expected <span class="o">[</span>Function<span class="o">]</span> to throw an error
-</span></code></pre></td></tr></table></div></figure>
+<figure class='code'><figcaption><span></span></figcaption><pre><code class='language-sh'>AssertionError: expected [Function] to throw an error</code></pre></figure>
 
 
 <p>This is because we haven&rsquo;t added the code in our <code>makeCurry</code> function to validate the arguments for it. Let&rsquo;s implement this functionality now:</p>
 
-<figure class='code'><figcaption><span>curry.js</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-</pre></td><td class='code'><pre><code class='js'><span class='line'><span class="kd">var</span> <span class="nx">makeCurry</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">fn</span><span class="p">){</span>
-</span><span class='line'>    <span class="k">if</span><span class="p">(</span><span class="k">typeof</span> <span class="nx">fn</span><span class="o">!==</span><span class="s1">&#39;function&#39;</span><span class="p">){</span>
-</span><span class='line'>        <span class="k">throw</span> <span class="nb">Error</span><span class="p">(</span><span class="s1">&#39;No function provided&#39;</span><span class="p">);</span>
-</span><span class='line'>    <span class="p">}</span>
-</span><span class='line'>    <span class="k">return</span> <span class="kd">function</span><span class="p">(){};</span>
-</span><span class='line'><span class="p">};</span>
-</span></code></pre></td></tr></table></div></figure>
+<figure class='code'><figcaption><span>curry.js</span></figcaption><pre><code class='language-javascript'>var makeCurry = function(fn){
+    if(typeof fn!==&apos;function&apos;){
+        throw Error(&apos;No function provided&apos;);
+    }
+    return function(){};
+};</code></pre></figure>
 
 
 <p>Now we&rsquo;re getting into the rhythm of TDD. For now, we&rsquo;re done with the expectations for the <code>makeCurry</code> function. Let&rsquo;s implement the real <code>curry</code> function logic.</p>
@@ -438,17 +330,11 @@ ga('send', 'pageview');
 </ul>
 
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-</pre></td><td class='code'><pre><code class='js'><span class='line'><span class="kd">var</span> <span class="nx">add</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">a</span><span class="p">,</span><span class="nx">b</span><span class="p">,</span><span class="nx">c</span><span class="p">){</span>
-</span><span class='line'>  <span class="k">return</span> <span class="nx">a</span><span class="o">+</span><span class="nx">b</span><span class="o">+</span><span class="nx">c</span><span class="p">;</span>
-</span><span class='line'><span class="p">}</span>
-</span><span class='line'><span class="kd">var</span> <span class="nx">curriedAdd</span> <span class="o">=</span> <span class="nx">makeCurry</span><span class="p">(</span> <span class="nx">add</span> <span class="p">);</span>
-</span><span class='line'><span class="nx">curriedAdd</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span> <span class="c1">// should return 6.</span>
-</span></code></pre></td></tr></table></div></figure>
+<figure class='code'><figcaption><span></span></figcaption><pre><code class='language-javascript'>var add = function(a,b,c){
+    return a+b+c;
+}
+var curriedAdd = makeCurry( add );
+curriedAdd(1,2,3) // should return 6.</code></pre></figure>
 
 
 <ul>
@@ -456,11 +342,8 @@ ga('send', 'pageview');
 </ul>
 
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class='js'><span class='line'><span class="nx">curriedAdd</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="c1">// should return a function</span>
-</span><span class='line'><span class="nx">curriedAdd</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span> <span class="c1">// should return a function</span>
-</span></code></pre></td></tr></table></div></figure>
+<figure class='code'><figcaption><span></span></figcaption><pre><code class='language-javascript'>curriedAdd(1) // should return a function
+curriedAdd(1,2) // should return a function</code></pre></figure>
 
 
 <ul>
@@ -468,15 +351,10 @@ ga('send', 'pageview');
 </ul>
 
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-</pre></td><td class='code'><pre><code class='js'><span class='line'><span class="nx">curriedAdd</span><span class="p">(</span><span class="mi">1</span><span class="p">)(</span><span class="mi">2</span><span class="p">)(</span><span class="mi">3</span><span class="p">)</span> <span class="c1">// should return 6</span>
-</span><span class='line'><span class="nx">curriedAdd</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">)(</span><span class="mi">3</span><span class="p">)</span> <span class="c1">// should return 6</span>
-</span><span class='line'><span class="nx">curriedAdd</span><span class="p">(</span><span class="mi">1</span><span class="p">)(</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span> <span class="c1">// should return 6</span>
-</span><span class='line'><span class="nx">curriedAdd</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">)(</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">)</span> <span class="c1">// should return 6</span>
-</span></code></pre></td></tr></table></div></figure>
+<figure class='code'><figcaption><span></span></figcaption><pre><code class='language-javascript'>curriedAdd(1)(2)(3) // should return 6
+curriedAdd(1,2)(3) // should return 6
+curriedAdd(1)(2,3) // should return 6
+curriedAdd(1,2)(3,4,5,6) // should return 6</code></pre></figure>
 
 
 <ul>
@@ -484,281 +362,157 @@ ga('send', 'pageview');
 </ul>
 
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-</pre></td><td class='code'><pre><code class='js'><span class='line'><span class="kd">var</span> <span class="nx">add</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">a</span><span class="p">,</span><span class="nx">b</span><span class="p">,</span><span class="nx">c</span><span class="p">){</span>
-</span><span class='line'>  <span class="k">return</span> <span class="nx">a</span><span class="o">+</span><span class="nx">b</span><span class="o">+</span><span class="nx">c</span><span class="p">;</span>
-</span><span class='line'><span class="p">};</span>
-</span><span class='line'><span class="kd">var</span> <span class="nx">curryA</span> <span class="o">=</span> <span class="nx">makeCurry</span><span class="p">(</span><span class="nx">add</span><span class="p">);</span>
-</span><span class='line'><span class="kd">var</span> <span class="nx">curryB</span> <span class="o">=</span> <span class="nx">makeCurry</span><span class="p">(</span><span class="nx">add</span><span class="p">);</span>
-</span><span class='line'>
-</span><span class='line'><span class="nx">curryA</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">)(</span><span class="mi">3</span><span class="p">)</span> <span class="c1">// return 6</span>
-</span><span class='line'><span class="nx">curryB</span><span class="p">(</span><span class="mi">1</span><span class="p">)(</span><span class="mi">2</span><span class="p">)(</span><span class="mi">3</span><span class="p">)</span> <span class="c1">// return 6</span>
-</span></code></pre></td></tr></table></div></figure>
+<figure class='code'><figcaption><span></span></figcaption><pre><code class='language-javascript'>var add = function(a,b,c){
+    return a+b+c;
+};
+var curryA = makeCurry(add);
+var curryB = makeCurry(add);
+
+curryA(1,2)(3) // return 6
+curryB(1)(2)(3) // return 6</code></pre></figure>
 
 
 <p>We came up with all the test scenarios for our curry function. Let&rsquo;s pick one by one and implement the logic. Add the first test case inside the new <code>describe</code> block.</p>
 
-<figure class='code'><figcaption><span>curry-spec.js</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-<span class='line-number'>21</span>
-<span class='line-number'>22</span>
-<span class='line-number'>23</span>
-<span class='line-number'>24</span>
-<span class='line-number'>25</span>
-<span class='line-number'>26</span>
-<span class='line-number'>27</span>
-<span class='line-number'>28</span>
-</pre></td><td class='code'><pre><code class='js'><span class='line'><span class="nx">describe</span><span class="p">(</span><span class="s1">&#39;Curry function generator&#39;</span><span class="p">,</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
-</span><span class='line'>    <span class="nx">it</span><span class="p">(</span><span class="s1">&#39;should return a function&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(){</span>
-</span><span class='line'>        <span class="kd">var</span> <span class="nx">add</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(){}</span>
-</span><span class='line'>        <span class="nx">expect</span><span class="p">(</span><span class="nx">makeCurry</span><span class="p">(</span><span class="nx">add</span><span class="p">)).</span><span class="nx">to</span><span class="p">.</span><span class="nx">be</span><span class="p">.</span><span class="nx">a</span><span class="p">(</span><span class="s1">&#39;function&#39;</span><span class="p">);</span>
-</span><span class='line'>    <span class="p">});</span>
-</span><span class='line'>
-</span><span class='line'>    <span class="nx">it</span><span class="p">(</span><span class="s1">&#39;should throw an error if there is no valid function provided as argument&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(){</span>
-</span><span class='line'>        <span class="nx">expect</span><span class="p">(</span><span class="kd">function</span><span class="p">(){</span>
-</span><span class='line'>            <span class="nx">makeCurry</span><span class="p">();</span>
-</span><span class='line'>        <span class="p">}).</span><span class="nx">to</span><span class="p">.</span><span class="k">throw</span><span class="p">(</span><span class="s1">&#39;No function provided&#39;</span><span class="p">);</span>
-</span><span class='line'>    <span class="p">});</span>
-</span><span class='line'><span class="p">});</span>
-</span><span class='line'>
-</span><span class='line'><span class="nx">describe</span><span class="p">(</span><span class="s1">&#39;Curry function&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(){</span>
-</span><span class='line'>    <span class="kd">var</span> <span class="nx">add</span><span class="p">;</span>
-</span><span class='line'>
-</span><span class='line'>    <span class="nx">beforeEach</span><span class="p">(</span><span class="kd">function</span><span class="p">(){</span>
-</span><span class='line'>        <span class="nx">add</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">a</span><span class="p">,</span><span class="nx">b</span><span class="p">,</span><span class="nx">c</span><span class="p">){</span>
-</span><span class='line'>            <span class="k">return</span> <span class="nx">a</span> <span class="o">+</span> <span class="nx">b</span> <span class="o">+</span> <span class="nx">c</span><span class="p">;</span>
-</span><span class='line'>        <span class="p">};</span>
-</span><span class='line'>    <span class="p">});</span>
-</span><span class='line'>
-</span><span class='line'>    <span class="nx">it</span><span class="p">(</span><span class="s1">&#39;should return the proper result if called with original number of arguments&#39;</span><span class="p">,</span><span class="kd">function</span><span class="p">(){</span>
-</span><span class='line'>        <span class="kd">var</span> <span class="nx">curriedAdd</span> <span class="o">=</span> <span class="nx">makeCurry</span><span class="p">(</span> <span class="nx">add</span> <span class="p">);</span>
-</span><span class='line'>        <span class="nx">expect</span><span class="p">(</span> <span class="nx">curriedAdd</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span> <span class="p">).</span><span class="nx">to</span><span class="p">.</span><span class="nx">eq</span><span class="p">(</span><span class="mi">6</span><span class="p">);</span>
-</span><span class='line'>    <span class="p">});</span>
-</span><span class='line'>
-</span><span class='line'><span class="p">});</span>
-</span></code></pre></td></tr></table></div></figure>
+<figure class='code'><figcaption><span>curry-spec.js</span></figcaption><pre><code class='language-javascript'>describe(&apos;Curry function generator&apos;, function () {
+    it(&apos;should return a function&apos;, function(){
+        var add = function(){}
+        expect(makeCurry(add)).to.be.a(&apos;function&apos;);
+    });
+
+    it(&apos;should throw an error if there is no valid function provided as argument&apos;, function(){
+        expect(function(){
+            makeCurry();
+        }).to.throw(&apos;No function provided&apos;);
+    });
+});
+
+describe(&apos;Curry function&apos;, function(){
+    var add;
+
+    beforeEach(function(){
+        add = function(a,b,c){
+            return a + b + c;
+        };
+    });
+
+    it(&apos;should return the proper result if called with original number of arguments&apos;,function(){
+        var curriedAdd = makeCurry( add );
+        expect( curriedAdd(1,2,3) ).to.eq(6);
+    });
+
+});</code></pre></figure>
 
 
 <p>Testem output should be like this:</p>
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-</pre></td><td class='code'><pre><code class='sh'><span class='line'>Curry <span class="k">function </span>should <span class="k">return </span>the proper result <span class="k">if </span>called with original number of arguments
-</span><span class='line'>    ✘ expected undefined to equal 6
-</span><span class='line'>        AssertionError: expected undefined to equal 6
-</span><span class='line'>            at Context.&lt;anonymous&gt; <span class="o">(</span>http://localhost:7357/curry-spec.js:25:40<span class="o">)</span>
-</span><span class='line'>            at callFn <span class="o">(</span>http://localhost:7357/testem/mocha.js:4338:21<span class="o">)</span>
-</span><span class='line'>            at Test.Runnable.run <span class="o">(</span>http://localhost:7357/testem/mocha.js:4331:7<span class="o">)</span>
-</span><span class='line'>            at Runner.runTest <span class="o">(</span>http://localhost:7357/testem/mocha.js:4728:10<span class="o">)</span>
-</span><span class='line'>            at http://localhost:7357/testem/mocha.js:4806:12
-</span><span class='line'>            at next <span class="o">(</span>http://localhost:7357/testem/mocha.js:4653:14<span class="o">)</span>
-</span><span class='line'>            at http://localhost:7357/testem/mocha.js:4663:7
-</span><span class='line'>            at next <span class="o">(</span>http://localhost:7357/testem/mocha.js:4601:23<span class="o">)</span>
-</span><span class='line'>            at http://localhost:7357/testem/mocha.js:4625:7
-</span><span class='line'>            at <span class="k">done</span> <span class="o">(</span>http://localhost:7357/testem/mocha.js:4300:5<span class="o">)</span>
-</span></code></pre></td></tr></table></div></figure>
+<figure class='code'><figcaption><span></span></figcaption><pre><code class='language-sh'>Curry function should return the proper result if called with original number of arguments
+    ✘ expected undefined to equal 6
+        AssertionError: expected undefined to equal 6
+            at Context.&lt;anonymous&gt; (http://localhost:7357/curry-spec.js:25:40)
+            at callFn (http://localhost:7357/testem/mocha.js:4338:21)
+            at Test.Runnable.run (http://localhost:7357/testem/mocha.js:4331:7)
+            at Runner.runTest (http://localhost:7357/testem/mocha.js:4728:10)
+            at http://localhost:7357/testem/mocha.js:4806:12
+            at next (http://localhost:7357/testem/mocha.js:4653:14)
+            at http://localhost:7357/testem/mocha.js:4663:7
+            at next (http://localhost:7357/testem/mocha.js:4601:23)
+            at http://localhost:7357/testem/mocha.js:4625:7
+            at done (http://localhost:7357/testem/mocha.js:4300:5)</code></pre></figure>
 
 
 <p>Let&rsquo;s make the test pass by adding the implementation:</p>
 
-<figure class='code'><figcaption><span>curry.js</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-</pre></td><td class='code'><pre><code class='js'><span class='line'><span class="kd">var</span> <span class="nx">makeCurry</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">fn</span><span class="p">){</span>
-</span><span class='line'>    <span class="k">if</span><span class="p">(</span><span class="k">typeof</span> <span class="nx">fn</span><span class="o">!==</span><span class="s1">&#39;function&#39;</span><span class="p">){</span>
-</span><span class='line'>        <span class="k">throw</span> <span class="nb">Error</span><span class="p">(</span><span class="s1">&#39;No function provided&#39;</span><span class="p">);</span>
-</span><span class='line'>    <span class="p">}</span>
-</span><span class='line'>
-</span><span class='line'>    <span class="kd">var</span> <span class="nx">slice</span> <span class="o">=</span> <span class="p">[].</span><span class="nx">slice</span><span class="p">;</span>
-</span><span class='line'>    <span class="k">return</span> <span class="kd">function</span> <span class="nx">curriedFn</span><span class="p">(){</span>
-</span><span class='line'>      <span class="kd">var</span> <span class="nx">args</span> <span class="o">=</span> <span class="nx">slice</span><span class="p">.</span><span class="nx">call</span><span class="p">(</span><span class="nx">arguments</span><span class="p">);</span>
-</span><span class='line'>      <span class="k">return</span> <span class="nx">fn</span><span class="p">.</span><span class="nx">apply</span><span class="p">(</span><span class="kc">null</span><span class="p">,</span> <span class="nx">args</span><span class="p">);</span>
-</span><span class='line'>    <span class="p">};</span>
-</span><span class='line'><span class="p">};</span>
-</span></code></pre></td></tr></table></div></figure>
+<figure class='code'><figcaption><span>curry.js</span></figcaption><pre><code class='language-javascript'>var makeCurry = function(fn){
+    if(typeof fn!==&apos;function&apos;){
+        throw Error(&apos;No function provided&apos;);
+    }
+
+    var slice = [].slice;
+    return function curriedFn(){
+      var args = slice.call(arguments);
+      return fn.apply(null, args);
+    };
+};</code></pre></figure>
 
 
 <p>Okay now, tests are passing. Let&rsquo;s add the next test case inside the &ldquo;Curry function&rdquo; describe block:</p>
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-</pre></td><td class='code'><pre><code class='js'><span class='line'><span class="nx">it</span><span class="p">(</span><span class="s1">&#39;should return a function when arguments count is less than the original number of arguments&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(){</span>
-</span><span class='line'>    <span class="kd">var</span> <span class="nx">curriedAdd</span> <span class="o">=</span> <span class="nx">makeCurry</span><span class="p">(</span> <span class="nx">add</span> <span class="p">);</span>
-</span><span class='line'>    <span class="nx">expect</span><span class="p">(</span> <span class="nx">curriedAdd</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span> <span class="p">).</span><span class="nx">to</span><span class="p">.</span><span class="nx">be</span><span class="p">.</span><span class="nx">a</span><span class="p">(</span><span class="s1">&#39;function&#39;</span><span class="p">);</span>
-</span><span class='line'><span class="p">});</span>
-</span></code></pre></td></tr></table></div></figure>
+<figure class='code'><figcaption><span></span></figcaption><pre><code class='language-javascript'>it(&apos;should return a function when arguments count is less than the original number of arguments&apos;, function(){
+    var curriedAdd = makeCurry( add );
+    expect( curriedAdd(1,2) ).to.be.a(&apos;function&apos;);
+});</code></pre></figure>
 
 
 <p>Tests are failing now. Time to make them pass.</p>
 
 <p>Now we need to verify that the number of arguments passed is less than the original number of arguments. If it lesser, the tests are expecting a function to be returned ( than executing the original function ). Let&rsquo;s implement this:</p>
 
-<figure class='code'><figcaption><span>curry.js</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-</pre></td><td class='code'><pre><code class='js'><span class='line'><span class="kd">var</span> <span class="nx">makeCurry</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">fn</span><span class="p">){</span>
-</span><span class='line'>    <span class="k">if</span><span class="p">(</span><span class="k">typeof</span> <span class="nx">fn</span><span class="o">!==</span><span class="s1">&#39;function&#39;</span><span class="p">){</span>
-</span><span class='line'>        <span class="k">throw</span> <span class="nb">Error</span><span class="p">(</span><span class="s1">&#39;No function provided&#39;</span><span class="p">);</span>
-</span><span class='line'>    <span class="p">}</span>
-</span><span class='line'>
-</span><span class='line'>    <span class="kd">var</span> <span class="nx">slice</span> <span class="o">=</span> <span class="p">[].</span><span class="nx">slice</span><span class="p">;</span>
-</span><span class='line'>    <span class="k">return</span> <span class="kd">function</span> <span class="nx">curriedFn</span><span class="p">(){</span>
-</span><span class='line'>      <span class="kd">var</span> <span class="nx">args</span> <span class="o">=</span> <span class="nx">slice</span><span class="p">.</span><span class="nx">call</span><span class="p">(</span><span class="nx">arguments</span><span class="p">);</span>
-</span><span class='line'>
-</span><span class='line'>      <span class="k">if</span><span class="p">(</span><span class="nx">args</span><span class="p">.</span><span class="nx">length</span> <span class="o">&lt;</span> <span class="nx">fn</span><span class="p">.</span><span class="nx">length</span><span class="p">){</span>
-</span><span class='line'>        <span class="k">return</span> <span class="nx">curriedFn</span><span class="p">;</span>
-</span><span class='line'>      <span class="p">}</span>
-</span><span class='line'>
-</span><span class='line'>      <span class="k">return</span> <span class="nx">fn</span><span class="p">.</span><span class="nx">apply</span><span class="p">(</span><span class="kc">null</span><span class="p">,</span> <span class="nx">args</span><span class="p">);</span>
-</span><span class='line'>    <span class="p">};</span>
-</span><span class='line'><span class="p">};</span>
-</span></code></pre></td></tr></table></div></figure>
+<figure class='code'><figcaption><span>curry.js</span></figcaption><pre><code class='language-javascript'>var makeCurry = function(fn){
+    if(typeof fn!==&apos;function&apos;){
+        throw Error(&apos;No function provided&apos;);
+    }
+
+    var slice = [].slice;
+    return function curriedFn(){
+      var args = slice.call(arguments);
+
+      if(args.length &lt; fn.length){
+        return curriedFn;
+      }
+
+      return fn.apply(null, args);
+    };
+};</code></pre></figure>
 
 
 <p>All the tests are passing now. Let&rsquo;s pick the next test case.</p>
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-</pre></td><td class='code'><pre><code class='js'><span class='line'><span class="nx">it</span><span class="p">(</span><span class="s1">&#39;should return the result whenever the total number of arguments is greater than or equal to the original number of arguments&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(){</span>
-</span><span class='line'>    <span class="kd">var</span> <span class="nx">curriedAdd</span> <span class="o">=</span> <span class="nx">makeCurry</span><span class="p">(</span> <span class="nx">add</span> <span class="p">);</span>
-</span><span class='line'>    <span class="nx">expect</span><span class="p">(</span> <span class="nx">curriedAdd</span><span class="p">(</span><span class="mi">1</span><span class="p">)(</span><span class="mi">2</span><span class="p">)</span> <span class="p">).</span><span class="nx">to</span><span class="p">.</span><span class="nx">be</span><span class="p">.</span><span class="nx">a</span><span class="p">(</span><span class="s1">&#39;function&#39;</span><span class="p">);</span>
-</span><span class='line'>    <span class="nx">expect</span><span class="p">(</span> <span class="nx">curriedAdd</span><span class="p">(</span><span class="mi">1</span><span class="p">)(</span><span class="mi">2</span><span class="p">)(</span><span class="mi">3</span><span class="p">)</span> <span class="p">).</span><span class="nx">to</span><span class="p">.</span><span class="nx">eq</span><span class="p">(</span><span class="mi">6</span><span class="p">);</span>
-</span><span class='line'>    <span class="nx">expect</span><span class="p">(</span> <span class="nx">curriedAdd</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">)(</span><span class="mi">3</span><span class="p">)</span> <span class="p">).</span><span class="nx">to</span><span class="p">.</span><span class="nx">eq</span><span class="p">(</span><span class="mi">6</span><span class="p">);</span>
-</span><span class='line'>    <span class="nx">expect</span><span class="p">(</span> <span class="nx">curriedAdd</span><span class="p">(</span><span class="mi">1</span><span class="p">)(</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span> <span class="p">).</span><span class="nx">to</span><span class="p">.</span><span class="nx">eq</span><span class="p">(</span><span class="mi">6</span><span class="p">);</span>
-</span><span class='line'>    <span class="nx">expect</span><span class="p">(</span> <span class="nx">curriedAdd</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">)(</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">)</span> <span class="p">).</span><span class="nx">to</span><span class="p">.</span><span class="nx">eq</span><span class="p">(</span><span class="mi">6</span><span class="p">);</span>
-</span><span class='line'><span class="p">});</span>
-</span></code></pre></td></tr></table></div></figure>
+<figure class='code'><figcaption><span></span></figcaption><pre><code class='language-javascript'>it(&apos;should return the result whenever the total number of arguments is greater than or equal to the original number of arguments&apos;, function(){
+    var curriedAdd = makeCurry( add );
+    expect( curriedAdd(1)(2) ).to.be.a(&apos;function&apos;);
+    expect( curriedAdd(1)(2)(3) ).to.eq(6);
+    expect( curriedAdd(1,2)(3) ).to.eq(6);
+    expect( curriedAdd(1)(2,3) ).to.eq(6);
+    expect( curriedAdd(1,2)(3,4,5,6,7) ).to.eq(6);
+});</code></pre></figure>
 
 
 <p>And the implementation:</p>
 
-<figure class='code'><figcaption><span>curry.js</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-</pre></td><td class='code'><pre><code class='js'><span class='line'><span class="kd">var</span> <span class="nx">makeCurry</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">fn</span><span class="p">){</span>
-</span><span class='line'>    <span class="k">if</span><span class="p">(</span><span class="k">typeof</span> <span class="nx">fn</span><span class="o">!==</span><span class="s1">&#39;function&#39;</span><span class="p">){</span>
-</span><span class='line'>        <span class="k">throw</span> <span class="nb">Error</span><span class="p">(</span><span class="s1">&#39;No function provided&#39;</span><span class="p">);</span>
-</span><span class='line'>    <span class="p">}</span>
-</span><span class='line'>
-</span><span class='line'>    <span class="kd">var</span> <span class="nx">slice</span> <span class="o">=</span> <span class="p">[].</span><span class="nx">slice</span><span class="p">;</span>
-</span><span class='line'>    <span class="k">return</span> <span class="kd">function</span> <span class="nx">curriedFn</span><span class="p">(){</span>
-</span><span class='line'>      <span class="kd">var</span> <span class="nx">args</span> <span class="o">=</span> <span class="nx">slice</span><span class="p">.</span><span class="nx">call</span><span class="p">(</span><span class="nx">arguments</span><span class="p">);</span>
-</span><span class='line'>
-</span><span class='line'>      <span class="k">if</span><span class="p">(</span><span class="nx">args</span><span class="p">.</span><span class="nx">length</span> <span class="o">&lt;</span> <span class="nx">fn</span><span class="p">.</span><span class="nx">length</span><span class="p">){</span>
-</span><span class='line'>        <span class="k">return</span> <span class="kd">function</span><span class="p">(){</span>
-</span><span class='line'>          <span class="k">return</span> <span class="nx">curriedFn</span><span class="p">.</span><span class="nx">apply</span><span class="p">(</span><span class="kc">null</span><span class="p">,</span> <span class="nx">args</span><span class="p">.</span><span class="nx">concat</span><span class="p">(</span> <span class="nx">slice</span><span class="p">.</span><span class="nx">call</span><span class="p">(</span><span class="nx">arguments</span><span class="p">)</span> <span class="p">));</span>
-</span><span class='line'>        <span class="p">};</span>
-</span><span class='line'>      <span class="p">}</span>
-</span><span class='line'>
-</span><span class='line'>      <span class="k">return</span> <span class="nx">fn</span><span class="p">.</span><span class="nx">apply</span><span class="p">(</span><span class="kc">null</span><span class="p">,</span> <span class="nx">args</span><span class="p">);</span>
-</span><span class='line'>    <span class="p">};</span>
-</span><span class='line'><span class="p">};</span>
-</span></code></pre></td></tr></table></div></figure>
+<figure class='code'><figcaption><span>curry.js</span></figcaption><pre><code class='language-javascript'>
+var makeCurry = function(fn){
+    if(typeof fn!==&apos;function&apos;){
+        throw Error(&apos;No function provided&apos;);
+    }
+
+    var slice = [].slice;
+    return function curriedFn(){
+      var args = slice.call(arguments);
+
+      if(args.length &lt; fn.length){
+        return function(){
+          return curriedFn.apply(null, args.concat( slice.call(arguments) ));
+        };
+      }
+
+      return fn.apply(null, args);
+    };
+};</code></pre></figure>
 
 
 <p>Now, we&rsquo;re going to add our last test case.</p>
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-</pre></td><td class='code'><pre><code class='js'><span class='line'><span class="nx">it</span><span class="p">(</span><span class="s1">&#39;should support creating multple curry functions&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(){</span>
-</span><span class='line'>    <span class="kd">var</span> <span class="nx">curryA</span> <span class="o">=</span> <span class="nx">makeCurry</span><span class="p">(</span><span class="nx">add</span><span class="p">);</span>
-</span><span class='line'>    <span class="kd">var</span> <span class="nx">curryB</span> <span class="o">=</span> <span class="nx">makeCurry</span><span class="p">(</span><span class="nx">add</span><span class="p">);</span>
-</span><span class='line'>
-</span><span class='line'>    <span class="nx">expect</span><span class="p">(</span> <span class="nx">curryA</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">)(</span><span class="mi">3</span><span class="p">)</span> <span class="p">).</span><span class="nx">to</span><span class="p">.</span><span class="nx">eq</span><span class="p">(</span><span class="mi">6</span><span class="p">);</span>
-</span><span class='line'>    <span class="nx">expect</span><span class="p">(</span> <span class="nx">curryA</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span> <span class="p">).</span><span class="nx">to</span><span class="p">.</span><span class="nx">be</span><span class="p">.</span><span class="nx">a</span><span class="p">(</span><span class="s1">&#39;function&#39;</span><span class="p">);</span>
-</span><span class='line'>
-</span><span class='line'>    <span class="nx">expect</span><span class="p">(</span> <span class="nx">curryB</span><span class="p">(</span><span class="mi">1</span><span class="p">)(</span><span class="mi">2</span><span class="p">)(</span><span class="mi">3</span><span class="p">)</span> <span class="p">).</span><span class="nx">to</span><span class="p">.</span><span class="nx">eq</span><span class="p">(</span><span class="mi">6</span><span class="p">);</span>
-</span><span class='line'>    <span class="nx">expect</span><span class="p">(</span> <span class="nx">curryB</span><span class="p">(</span><span class="mi">1</span><span class="p">)(</span><span class="mi">2</span><span class="p">)</span> <span class="p">).</span><span class="nx">to</span><span class="p">.</span><span class="nx">be</span><span class="p">.</span><span class="nx">a</span><span class="p">(</span><span class="s1">&#39;function&#39;</span><span class="p">);</span>
-</span><span class='line'><span class="p">});</span>
-</span></code></pre></td></tr></table></div></figure>
+<figure class='code'><figcaption><span></span></figcaption><pre><code class='language-javascript'>it(&apos;should support creating multple curry functions&apos;, function(){
+    var curryA = makeCurry(add);
+    var curryB = makeCurry(add);
+
+    expect( curryA(1,2)(3) ).to.eq(6);
+    expect( curryA(1,2) ).to.be.a(&apos;function&apos;);
+
+    expect( curryB(1)(2)(3) ).to.eq(6);
+    expect( curryB(1)(2) ).to.be.a(&apos;function&apos;);
+});</code></pre></figure>
 
 
 <p>And this time, Testem reports that all tests are passing. Voila!, it means we&rsquo;re done with our curry function implementation.</p>
@@ -767,152 +521,81 @@ ga('send', 'pageview');
 
 <p>Here is the final code for <strong>curry-spec.js</strong> and the <strong>curry.js</strong>.</p>
 
-<figure class='code'><figcaption><span>curry-spec.js</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-<span class='line-number'>21</span>
-<span class='line-number'>22</span>
-<span class='line-number'>23</span>
-<span class='line-number'>24</span>
-<span class='line-number'>25</span>
-<span class='line-number'>26</span>
-<span class='line-number'>27</span>
-<span class='line-number'>28</span>
-<span class='line-number'>29</span>
-<span class='line-number'>30</span>
-<span class='line-number'>31</span>
-<span class='line-number'>32</span>
-<span class='line-number'>33</span>
-<span class='line-number'>34</span>
-<span class='line-number'>35</span>
-<span class='line-number'>36</span>
-<span class='line-number'>37</span>
-<span class='line-number'>38</span>
-<span class='line-number'>39</span>
-<span class='line-number'>40</span>
-<span class='line-number'>41</span>
-<span class='line-number'>42</span>
-<span class='line-number'>43</span>
-<span class='line-number'>44</span>
-<span class='line-number'>45</span>
-<span class='line-number'>46</span>
-<span class='line-number'>47</span>
-<span class='line-number'>48</span>
-<span class='line-number'>49</span>
-<span class='line-number'>50</span>
-<span class='line-number'>51</span>
-<span class='line-number'>52</span>
-<span class='line-number'>53</span>
-</pre></td><td class='code'><pre><code class='js'><span class='line'><span class="nx">describe</span><span class="p">(</span><span class="s1">&#39;Curry function generator&#39;</span><span class="p">,</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
-</span><span class='line'>    <span class="nx">it</span><span class="p">(</span><span class="s1">&#39;should return a function&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(){</span>
-</span><span class='line'>        <span class="kd">var</span> <span class="nx">add</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(){}</span>
-</span><span class='line'>        <span class="nx">expect</span><span class="p">(</span><span class="nx">makeCurry</span><span class="p">(</span><span class="nx">add</span><span class="p">)).</span><span class="nx">to</span><span class="p">.</span><span class="nx">be</span><span class="p">.</span><span class="nx">a</span><span class="p">(</span><span class="s1">&#39;function&#39;</span><span class="p">);</span>
-</span><span class='line'>    <span class="p">});</span>
-</span><span class='line'>
-</span><span class='line'>    <span class="nx">it</span><span class="p">(</span><span class="s1">&#39;should throw an error if there is no valid function provided as argument&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(){</span>
-</span><span class='line'>        <span class="nx">expect</span><span class="p">(</span><span class="kd">function</span><span class="p">(){</span>
-</span><span class='line'>            <span class="nx">makeCurry</span><span class="p">();</span>
-</span><span class='line'>        <span class="p">}).</span><span class="nx">to</span><span class="p">.</span><span class="k">throw</span><span class="p">(</span><span class="s1">&#39;No function provided&#39;</span><span class="p">);</span>
-</span><span class='line'>    <span class="p">});</span>
-</span><span class='line'><span class="p">});</span>
-</span><span class='line'>
-</span><span class='line'><span class="nx">describe</span><span class="p">(</span><span class="s1">&#39;Curry function&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(){</span>
-</span><span class='line'>    <span class="kd">var</span> <span class="nx">add</span><span class="p">;</span>
-</span><span class='line'>
-</span><span class='line'>    <span class="nx">beforeEach</span><span class="p">(</span><span class="kd">function</span><span class="p">(){</span>
-</span><span class='line'>        <span class="nx">add</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">a</span><span class="p">,</span><span class="nx">b</span><span class="p">,</span><span class="nx">c</span><span class="p">){</span>
-</span><span class='line'>            <span class="k">return</span> <span class="nx">a</span> <span class="o">+</span> <span class="nx">b</span> <span class="o">+</span> <span class="nx">c</span><span class="p">;</span>
-</span><span class='line'>        <span class="p">};</span>
-</span><span class='line'>    <span class="p">});</span>
-</span><span class='line'>
-</span><span class='line'>    <span class="nx">it</span><span class="p">(</span><span class="s1">&#39;should return the proper result if called with original number of arguments&#39;</span><span class="p">,</span><span class="kd">function</span><span class="p">(){</span>
-</span><span class='line'>        <span class="kd">var</span> <span class="nx">curriedAdd</span> <span class="o">=</span> <span class="nx">makeCurry</span><span class="p">(</span> <span class="nx">add</span> <span class="p">);</span>
-</span><span class='line'>        <span class="nx">expect</span><span class="p">(</span> <span class="nx">curriedAdd</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span> <span class="p">).</span><span class="nx">to</span><span class="p">.</span><span class="nx">eq</span><span class="p">(</span><span class="mi">6</span><span class="p">);</span>
-</span><span class='line'>    <span class="p">});</span>
-</span><span class='line'>
-</span><span class='line'>    <span class="nx">it</span><span class="p">(</span><span class="s1">&#39;should return the curried function when arguments count is less than the original number of arguments&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(){</span>
-</span><span class='line'>        <span class="kd">var</span> <span class="nx">curriedAdd</span> <span class="o">=</span> <span class="nx">makeCurry</span><span class="p">(</span> <span class="nx">add</span> <span class="p">);</span>
-</span><span class='line'>        <span class="nx">expect</span><span class="p">(</span> <span class="nx">curriedAdd</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span> <span class="p">).</span><span class="nx">to</span><span class="p">.</span><span class="nx">be</span><span class="p">.</span><span class="nx">a</span><span class="p">(</span><span class="s1">&#39;function&#39;</span><span class="p">);</span>
-</span><span class='line'>    <span class="p">});</span>
-</span><span class='line'>
-</span><span class='line'>    <span class="nx">it</span><span class="p">(</span><span class="s1">&#39;should return the result whenever the total number of arguments is greater than or equal to the original number of arguments&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(){</span>
-</span><span class='line'>        <span class="kd">var</span> <span class="nx">curriedAdd</span> <span class="o">=</span> <span class="nx">makeCurry</span><span class="p">(</span> <span class="nx">add</span> <span class="p">);</span>
-</span><span class='line'>        <span class="nx">expect</span><span class="p">(</span> <span class="nx">curriedAdd</span><span class="p">(</span><span class="mi">1</span><span class="p">)(</span><span class="mi">2</span><span class="p">)</span> <span class="p">).</span><span class="nx">to</span><span class="p">.</span><span class="nx">be</span><span class="p">.</span><span class="nx">a</span><span class="p">(</span><span class="s1">&#39;function&#39;</span><span class="p">);</span>
-</span><span class='line'>        <span class="nx">expect</span><span class="p">(</span> <span class="nx">curriedAdd</span><span class="p">(</span><span class="mi">1</span><span class="p">)(</span><span class="mi">2</span><span class="p">)(</span><span class="mi">3</span><span class="p">)</span> <span class="p">).</span><span class="nx">to</span><span class="p">.</span><span class="nx">eq</span><span class="p">(</span><span class="mi">6</span><span class="p">);</span>
-</span><span class='line'>        <span class="nx">expect</span><span class="p">(</span> <span class="nx">curriedAdd</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">)(</span><span class="mi">3</span><span class="p">)</span> <span class="p">).</span><span class="nx">to</span><span class="p">.</span><span class="nx">eq</span><span class="p">(</span><span class="mi">6</span><span class="p">);</span>
-</span><span class='line'>        <span class="nx">expect</span><span class="p">(</span> <span class="nx">curriedAdd</span><span class="p">(</span><span class="mi">1</span><span class="p">)(</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span> <span class="p">).</span><span class="nx">to</span><span class="p">.</span><span class="nx">eq</span><span class="p">(</span><span class="mi">6</span><span class="p">);</span>
-</span><span class='line'>        <span class="nx">expect</span><span class="p">(</span> <span class="nx">curriedAdd</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">)(</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">)</span> <span class="p">).</span><span class="nx">to</span><span class="p">.</span><span class="nx">eq</span><span class="p">(</span><span class="mi">6</span><span class="p">);</span>
-</span><span class='line'>    <span class="p">});</span>
-</span><span class='line'>
-</span><span class='line'>    <span class="nx">it</span><span class="p">(</span><span class="s1">&#39;should support creating multple curry functions&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(){</span>
-</span><span class='line'>        <span class="kd">var</span> <span class="nx">curryA</span> <span class="o">=</span> <span class="nx">makeCurry</span><span class="p">(</span><span class="nx">add</span><span class="p">);</span>
-</span><span class='line'>        <span class="kd">var</span> <span class="nx">curryB</span> <span class="o">=</span> <span class="nx">makeCurry</span><span class="p">(</span><span class="nx">add</span><span class="p">);</span>
-</span><span class='line'>
-</span><span class='line'>        <span class="nx">expect</span><span class="p">(</span> <span class="nx">curryA</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">)(</span><span class="mi">3</span><span class="p">)</span> <span class="p">).</span><span class="nx">to</span><span class="p">.</span><span class="nx">eq</span><span class="p">(</span><span class="mi">6</span><span class="p">);</span>
-</span><span class='line'>        <span class="nx">expect</span><span class="p">(</span> <span class="nx">curryA</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span> <span class="p">).</span><span class="nx">to</span><span class="p">.</span><span class="nx">be</span><span class="p">.</span><span class="nx">a</span><span class="p">(</span><span class="s1">&#39;function&#39;</span><span class="p">);</span>
-</span><span class='line'>
-</span><span class='line'>        <span class="nx">expect</span><span class="p">(</span> <span class="nx">curryB</span><span class="p">(</span><span class="mi">1</span><span class="p">)(</span><span class="mi">2</span><span class="p">)(</span><span class="mi">3</span><span class="p">)</span> <span class="p">).</span><span class="nx">to</span><span class="p">.</span><span class="nx">eq</span><span class="p">(</span><span class="mi">6</span><span class="p">);</span>
-</span><span class='line'>        <span class="nx">expect</span><span class="p">(</span> <span class="nx">curryB</span><span class="p">(</span><span class="mi">1</span><span class="p">)(</span><span class="mi">2</span><span class="p">)</span> <span class="p">).</span><span class="nx">to</span><span class="p">.</span><span class="nx">be</span><span class="p">.</span><span class="nx">a</span><span class="p">(</span><span class="s1">&#39;function&#39;</span><span class="p">);</span>
-</span><span class='line'>    <span class="p">});</span>
-</span><span class='line'>
-</span><span class='line'><span class="p">});</span>
-</span></code></pre></td></tr></table></div></figure>
+<figure class='code'><figcaption><span>curry-spec.js</span></figcaption><pre><code class='language-javascript'>describe(&apos;Curry function generator&apos;, function () {
+    it(&apos;should return a function&apos;, function(){
+        var add = function(){}
+        expect(makeCurry(add)).to.be.a(&apos;function&apos;);
+    });
+
+    it(&apos;should throw an error if there is no valid function provided as argument&apos;, function(){
+        expect(function(){
+            makeCurry();
+        }).to.throw(&apos;No function provided&apos;);
+    });
+});
+
+describe(&apos;Curry function&apos;, function(){
+    var add;
+
+    beforeEach(function(){
+        add = function(a,b,c){
+            return a + b + c;
+        };
+    });
+
+    it(&apos;should return the proper result if called with original number of arguments&apos;,function(){
+        var curriedAdd = makeCurry( add );
+        expect( curriedAdd(1,2,3) ).to.eq(6);
+    });
+
+    it(&apos;should return the curried function when arguments count is less than the original number of arguments&apos;, function(){
+        var curriedAdd = makeCurry( add );
+        expect( curriedAdd(1,2) ).to.be.a(&apos;function&apos;);
+    });
+
+    it(&apos;should return the result whenever the total number of arguments is greater than or equal to the original number of arguments&apos;, function(){
+        var curriedAdd = makeCurry( add );
+        expect( curriedAdd(1)(2) ).to.be.a(&apos;function&apos;);
+        expect( curriedAdd(1)(2)(3) ).to.eq(6);
+        expect( curriedAdd(1,2)(3) ).to.eq(6);
+        expect( curriedAdd(1)(2,3) ).to.eq(6);
+        expect( curriedAdd(1,2)(3,4,5,6,7) ).to.eq(6);
+    });
+
+    it(&apos;should support creating multple curry functions&apos;, function(){
+        var curryA = makeCurry(add);
+        var curryB = makeCurry(add);
+
+        expect( curryA(1,2)(3) ).to.eq(6);
+        expect( curryA(1,2) ).to.be.a(&apos;function&apos;);
+
+        expect( curryB(1)(2)(3) ).to.eq(6);
+        expect( curryB(1)(2) ).to.be.a(&apos;function&apos;);
+    });
+
+});</code></pre></figure>
 
 
 
 
-<figure class='code'><figcaption><span>curry.js</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-</pre></td><td class='code'><pre><code class='js'><span class='line'><span class="kd">var</span> <span class="nx">makeCurry</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">fn</span><span class="p">){</span>
-</span><span class='line'>    <span class="k">if</span><span class="p">(</span><span class="k">typeof</span> <span class="nx">fn</span><span class="o">!==</span><span class="s1">&#39;function&#39;</span><span class="p">){</span>
-</span><span class='line'>        <span class="k">throw</span> <span class="nb">Error</span><span class="p">(</span><span class="s1">&#39;No function provided&#39;</span><span class="p">);</span>
-</span><span class='line'>    <span class="p">}</span>
-</span><span class='line'>
-</span><span class='line'>    <span class="kd">var</span> <span class="nx">slice</span> <span class="o">=</span> <span class="p">[].</span><span class="nx">slice</span><span class="p">;</span>
-</span><span class='line'>    <span class="k">return</span> <span class="kd">function</span> <span class="nx">curriedFn</span><span class="p">(){</span>
-</span><span class='line'>      <span class="kd">var</span> <span class="nx">args</span> <span class="o">=</span> <span class="nx">slice</span><span class="p">.</span><span class="nx">call</span><span class="p">(</span><span class="nx">arguments</span><span class="p">);</span>
-</span><span class='line'>      <span class="k">if</span><span class="p">(</span><span class="nx">args</span><span class="p">.</span><span class="nx">length</span> <span class="o">&lt;</span> <span class="nx">fn</span><span class="p">.</span><span class="nx">length</span><span class="p">){</span>
-</span><span class='line'>        <span class="k">return</span> <span class="kd">function</span><span class="p">(){</span>
-</span><span class='line'>          <span class="k">return</span> <span class="nx">curriedFn</span><span class="p">.</span><span class="nx">apply</span><span class="p">(</span><span class="kc">null</span><span class="p">,</span> <span class="nx">args</span><span class="p">.</span><span class="nx">concat</span><span class="p">(</span> <span class="nx">slice</span><span class="p">.</span><span class="nx">call</span><span class="p">(</span><span class="nx">arguments</span><span class="p">)</span> <span class="p">));</span>
-</span><span class='line'>        <span class="p">};</span>
-</span><span class='line'>      <span class="p">}</span>
-</span><span class='line'>
-</span><span class='line'>      <span class="k">return</span> <span class="nx">fn</span><span class="p">.</span><span class="nx">apply</span><span class="p">(</span><span class="kc">null</span><span class="p">,</span> <span class="nx">args</span><span class="p">);</span>
-</span><span class='line'>    <span class="p">};</span>
-</span><span class='line'><span class="p">};</span>
-</span></code></pre></td></tr></table></div></figure>
+<figure class='code'><figcaption><span>curry.js</span></figcaption><pre><code class='language-javascript'>
+var makeCurry = function(fn){
+    if(typeof fn!==&apos;function&apos;){
+        throw Error(&apos;No function provided&apos;);
+    }
+
+    var slice = [].slice;
+    return function curriedFn(){
+      var args = slice.call(arguments);
+      if(args.length &lt; fn.length){
+        return function(){
+          return curriedFn.apply(null, args.concat( slice.call(arguments) ));
+        };
+      }
+
+      return fn.apply(null, args);
+    };
+};</code></pre></figure>
 
 
 <h2>Summary</h2>
@@ -1223,6 +906,22 @@ ga('send', 'pageview');
     console.log(e);
   });
 </script> -->
+
+  <script src="/javascripts/modernizr-2.0.js" async></script>
+  <script src="/javascripts/libs/jquery.min.js" async></script>
+  <script src="/javascripts/octopress.js" type="text/javascript" async></script>
+  <script src="/javascripts/prism.js" type="text/javascript" async></script>
+  
+  <script type="text/javascript">
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ga('create', 'UA-10379928-17', 'auto');
+ga('require', 'displayfeatures');
+ga('send', 'pageview');
+  </script>
+
 
 </body>
 </html>

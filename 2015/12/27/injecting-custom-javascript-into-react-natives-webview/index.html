@@ -20,6 +20,7 @@
   
   <link rel="canonical" href="https://www.undefinednull.com/2015/12/27/injecting-custom-javascript-into-react-natives-webview">
   <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/prism.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="http://feeds.feedburner.com/undefinednull/com" rel="alternate" title="Undefined NULL" type="application/atom+xml">
   <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
@@ -44,21 +45,6 @@
   }
 </style>
  -->
-
-  <script src="/javascripts/modernizr-2.0.js" async></script>
-  <script src="/javascripts/libs/jquery.min.js" async></script>
-  <script src="/javascripts/octopress.js" type="text/javascript" async></script>
-  
-  <script type="text/javascript">
-    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-ga('create', 'UA-10379928-17', 'auto');
-ga('require', 'displayfeatures');
-ga('send', 'pageview');
-  </script>
-
 
 </head>
 
@@ -134,105 +120,55 @@ ga('send', 'pageview');
 
 <p>Set up your react-native project as per their documentation. Now it&rsquo;s time to see some code:</p>
 
-<figure class='code'><figcaption><span>index.android.js</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-<span class='line-number'>21</span>
-<span class='line-number'>22</span>
-<span class='line-number'>23</span>
-<span class='line-number'>24</span>
-<span class='line-number'>25</span>
-<span class='line-number'>26</span>
-<span class='line-number'>27</span>
-<span class='line-number'>28</span>
-<span class='line-number'>29</span>
-<span class='line-number'>30</span>
-<span class='line-number'>31</span>
-<span class='line-number'>32</span>
-<span class='line-number'>33</span>
-<span class='line-number'>34</span>
-<span class='line-number'>35</span>
-<span class='line-number'>36</span>
-<span class='line-number'>37</span>
-<span class='line-number'>38</span>
-<span class='line-number'>39</span>
-<span class='line-number'>40</span>
-<span class='line-number'>41</span>
-<span class='line-number'>42</span>
-<span class='line-number'>43</span>
-<span class='line-number'>44</span>
-<span class='line-number'>45</span>
-<span class='line-number'>46</span>
-<span class='line-number'>47</span>
-<span class='line-number'>48</span>
-<span class='line-number'>49</span>
-</pre></td><td class='code'><pre><code class='js'><span class='line'><span class="cm">/**</span>
-</span><span class='line'><span class="cm"> * Sample React Native App</span>
-</span><span class='line'><span class="cm"> * https://github.com/facebook/react-native</span>
-</span><span class='line'><span class="cm"> */</span>
-</span><span class='line'><span class="s1">&#39;use strict&#39;</span><span class="p">;</span>
-</span><span class='line'>
-</span><span class='line'><span class="kr">import</span> <span class="nx">React</span> <span class="nx">from</span> <span class="s1">&#39;react-native&#39;</span><span class="p">;</span>
-</span><span class='line'><span class="kd">let</span> <span class="p">{</span> <span class="nx">AppRegistry</span><span class="p">,</span> <span class="nx">View</span><span class="p">,</span> <span class="nx">WebView</span><span class="p">,</span> <span class="nx">StyleSheet</span><span class="p">}</span> <span class="o">=</span> <span class="nx">React</span><span class="p">;</span>
-</span><span class='line'>
-</span><span class='line'><span class="kd">let</span> <span class="nx">MyApp</span> <span class="kr">extends</span> <span class="nx">React</span><span class="p">.</span><span class="nx">Component</span> <span class="p">{</span>
-</span><span class='line'><span class="nx">constructor</span><span class="p">(</span><span class="nx">props</span><span class="p">){</span>
-</span><span class='line'>  <span class="kr">super</span><span class="p">(</span><span class="nx">props</span><span class="p">);</span>
-</span><span class='line'><span class="p">}</span>
-</span><span class='line'><span class="nx">render</span><span class="p">()</span> <span class="p">{</span>
-</span><span class='line'>    <span class="kd">let</span> <span class="nx">html</span> <span class="o">=</span> <span class="err">`</span>
-</span><span class='line'>        <span class="o">&lt;</span><span class="nx">div</span> <span class="nx">id</span><span class="o">=</span><span class="s2">&quot;myContent&quot;</span><span class="o">&gt;</span>
-</span><span class='line'>            <span class="nx">This</span> <span class="nx">is</span> <span class="nx">my</span> <span class="nx">name</span>
-</span><span class='line'>        <span class="o">&lt;</span><span class="err">/div&gt;</span>
-</span><span class='line'>    <span class="err">`</span><span class="p">;</span>
-</span><span class='line'>    <span class="kd">let</span> <span class="nx">jsCode</span> <span class="o">=</span> <span class="err">`</span>
-</span><span class='line'>        <span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s1">&#39;#myContent&#39;</span><span class="p">).</span><span class="nx">style</span><span class="p">.</span><span class="nx">backgroundColor</span> <span class="o">=</span> <span class="s1">&#39;red&#39;</span><span class="p">;</span>
-</span><span class='line'>    <span class="err">`</span><span class="p">;</span>
-</span><span class='line'>    <span class="k">return</span> <span class="p">(</span>
-</span><span class='line'>        <span class="o">&lt;</span><span class="nx">View</span> <span class="nx">style</span><span class="o">=</span><span class="p">{</span><span class="nx">styles</span><span class="p">.</span><span class="nx">container</span><span class="p">}</span><span class="o">&gt;</span>
-</span><span class='line'>            <span class="o">&lt;</span><span class="nx">WebView</span>
-</span><span class='line'>                <span class="nx">style</span><span class="o">=</span><span class="p">{</span><span class="nx">styles</span><span class="p">.</span><span class="nx">webView</span><span class="p">}</span>
-</span><span class='line'>                <span class="nx">ref</span><span class="o">=</span><span class="s2">&quot;myWebView&quot;</span>
-</span><span class='line'>                <span class="nx">html</span><span class="o">=</span><span class="p">{</span><span class="nx">html</span><span class="p">}</span>
-</span><span class='line'>                <span class="nx">injectedJavaScript</span><span class="o">=</span><span class="p">{</span><span class="nx">jsCode</span><span class="p">}</span>
-</span><span class='line'>                <span class="nx">javaScriptEnabledAndroid</span><span class="o">=</span><span class="p">{</span><span class="kc">true</span><span class="p">}</span>
-</span><span class='line'>            <span class="o">&gt;</span>
-</span><span class='line'>            <span class="o">&lt;</span><span class="err">/WebView&gt;</span>
-</span><span class='line'>        <span class="o">&lt;</span><span class="err">/View&gt;</span>
-</span><span class='line'>    <span class="p">);</span>
-</span><span class='line'><span class="p">}</span>
-</span><span class='line'><span class="p">});</span>
-</span><span class='line'>
-</span><span class='line'><span class="kd">let</span> <span class="nx">styles</span> <span class="o">=</span> <span class="nx">StyleSheet</span><span class="p">.</span><span class="nx">create</span><span class="p">({</span>
-</span><span class='line'><span class="nx">container</span><span class="o">:</span> <span class="p">{</span>
-</span><span class='line'>    <span class="nx">flex</span><span class="o">:</span> <span class="mi">1</span><span class="p">,</span>
-</span><span class='line'>    <span class="nx">backgroundColor</span><span class="o">:</span> <span class="s1">&#39;#fff&#39;</span><span class="p">,</span>
-</span><span class='line'><span class="p">},</span>
-</span><span class='line'><span class="nx">webView</span><span class="o">:</span> <span class="p">{</span>
-</span><span class='line'>    <span class="nx">backgroundColor</span><span class="o">:</span> <span class="s1">&#39;#fff&#39;</span><span class="p">,</span>
-</span><span class='line'>    <span class="nx">height</span><span class="o">:</span> <span class="mi">350</span><span class="p">,</span>
-</span><span class='line'><span class="p">}</span>
-</span><span class='line'><span class="p">});</span>
-</span><span class='line'>
-</span><span class='line'><span class="nx">AppRegistry</span><span class="p">.</span><span class="nx">registerComponent</span><span class="p">(</span><span class="s1">&#39;MyApp&#39;</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="nx">MyApp</span><span class="p">);</span>
-</span></code></pre></td></tr></table></div></figure>
+<figure class='code'><figcaption><span>index.android.js</span></figcaption><pre><code class='language-javascript'>/**
+ * Sample React Native App
+ * https://github.com/facebook/react-native
+ */
+&apos;use strict&apos;;
+
+import React from &apos;react-native&apos;;
+let { AppRegistry, View, WebView, StyleSheet} = React;
+
+let MyApp extends React.Component {
+constructor(props){
+  super(props);
+}
+render() {
+    let html = `
+        &lt;div id=&quot;myContent&quot;&gt;
+            This is my name
+        &lt;/div&gt;
+    `;
+    let jsCode = `
+        document.querySelector(&apos;#myContent&apos;).style.backgroundColor = &apos;red&apos;;
+    `;
+    return (
+        &lt;View style={styles.container}&gt;
+            &lt;WebView
+                style={styles.webView}
+                ref=&quot;myWebView&quot;
+                html={html}
+                injectedJavaScript={jsCode}
+                javaScriptEnabledAndroid={true}
+            &gt;
+            &lt;/WebView&gt;
+        &lt;/View&gt;
+    );
+}
+});
+
+let styles = StyleSheet.create({
+container: {
+    flex: 1,
+    backgroundColor: &apos;#fff&apos;,
+},
+webView: {
+    backgroundColor: &apos;#fff&apos;,
+    height: 350,
+}
+});
+
+AppRegistry.registerComponent(&apos;MyApp&apos;, () =&gt; MyApp);</code></pre></figure>
 
 
 <p>You should be able to see the background color of the <strong>DIV</strong> changes to red now.</p>
@@ -539,6 +475,22 @@ ga('send', 'pageview');
     console.log(e);
   });
 </script> -->
+
+  <script src="/javascripts/modernizr-2.0.js" async></script>
+  <script src="/javascripts/libs/jquery.min.js" async></script>
+  <script src="/javascripts/octopress.js" type="text/javascript" async></script>
+  <script src="/javascripts/prism.js" type="text/javascript" async></script>
+  
+  <script type="text/javascript">
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ga('create', 'UA-10379928-17', 'auto');
+ga('require', 'displayfeatures');
+ga('send', 'pageview');
+  </script>
+
 
 </body>
 </html>

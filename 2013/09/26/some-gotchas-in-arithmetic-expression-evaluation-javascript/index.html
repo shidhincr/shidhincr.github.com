@@ -20,6 +20,7 @@
   
   <link rel="canonical" href="https://www.undefinednull.com/2013/09/26/some-gotchas-in-arithmetic-expression-evaluation-javascript">
   <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/prism.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="http://feeds.feedburner.com/undefinednull/com" rel="alternate" title="Undefined NULL" type="application/atom+xml">
   <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
@@ -44,21 +45,6 @@
   }
 </style>
  -->
-
-  <script src="/javascripts/modernizr-2.0.js" async></script>
-  <script src="/javascripts/libs/jquery.min.js" async></script>
-  <script src="/javascripts/octopress.js" type="text/javascript" async></script>
-  
-  <script type="text/javascript">
-    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-ga('create', 'UA-10379928-17', 'auto');
-ga('require', 'displayfeatures');
-ga('send', 'pageview');
-  </script>
-
 
 </head>
 
@@ -125,11 +111,8 @@ ga('send', 'pageview');
 
 <p>This post is just for recollecting some of the basics of JavaScript. Let&rsquo;s start with a small JavaScript code. Here is the code –– Solve it with out using the console.</p>
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="kd">var</span> <span class="nx">a</span> <span class="o">=</span> <span class="mi">5</span><span class="p">,</span> <span class="nx">b</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span>
-</span><span class='line'><span class="nx">a</span> <span class="o">=</span> <span class="p">(</span> <span class="nx">a</span> <span class="o">-</span> <span class="p">(</span> <span class="nx">b</span> <span class="o">=</span> <span class="p">(</span> <span class="nx">a</span> <span class="o">=</span> <span class="nx">a</span> <span class="o">+</span> <span class="nx">b</span> <span class="p">)</span> <span class="o">-</span> <span class="nx">b</span> <span class="p">)</span> <span class="p">);</span>
-</span></code></pre></td></tr></table></div></figure>
+<figure class='code'><figcaption><span></span></figcaption><pre><code class='language-javascript'>var a = 5, b = 3;
+a = ( a - ( b = ( a = a + b ) - b ) );</code></pre></figure>
 
 
 <p>Take your own time to come up with an answer before moving to the next section.</p>
@@ -162,11 +145,8 @@ a = a - b
 
 <p><strong>Code 1 :</strong></p>
 
-<figure class='code'><figcaption><span>CODE 1</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="kd">var</span> <span class="nx">a</span> <span class="o">=</span> <span class="mi">5</span><span class="p">,</span> <span class="nx">b</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span>
-</span><span class='line'><span class="nx">a</span> <span class="o">=</span> <span class="p">(</span> <span class="nx">a</span> <span class="o">-</span> <span class="p">(</span> <span class="nx">b</span> <span class="o">=</span> <span class="p">(</span> <span class="nx">a</span> <span class="o">=</span> <span class="nx">a</span> <span class="o">+</span> <span class="nx">b</span> <span class="p">)</span> <span class="o">-</span> <span class="nx">b</span> <span class="p">)</span> <span class="p">);</span>
-</span></code></pre></td></tr></table></div></figure>
+<figure class='code'><figcaption><span>CODE 1</span></figcaption><pre><code class='language-javascript'>var a = 5, b = 3;
+a = ( a - ( b = ( a = a + b ) - b ) );</code></pre></figure>
 
 
 <p>Cool .. I thought it&rsquo;s done.</p>
@@ -177,11 +157,8 @@ a = a - b
 
 <p><strong>Code 2 :</strong></p>
 
-<figure class='code'><figcaption><span>CODE 2</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="kd">var</span> <span class="nx">a</span> <span class="o">=</span> <span class="mi">5</span><span class="p">,</span> <span class="nx">b</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span>
-</span><span class='line'><span class="nx">a</span> <span class="o">=</span> <span class="p">(</span> <span class="p">(</span> <span class="nx">b</span> <span class="o">=</span> <span class="p">(</span> <span class="nx">a</span> <span class="o">=</span> <span class="nx">a</span> <span class="o">+</span> <span class="nx">b</span> <span class="p">)</span> <span class="o">-</span> <span class="nx">b</span> <span class="p">)</span> <span class="o">-</span> <span class="nx">a</span> <span class="p">);</span>
-</span></code></pre></td></tr></table></div></figure>
+<figure class='code'><figcaption><span>CODE 2</span></figcaption><pre><code class='language-javascript'>var a = 5, b = 3;
+a = ( ( b = ( a = a + b ) - b ) - a );</code></pre></figure>
 
 
 <p>
@@ -262,16 +239,12 @@ a     -
 </ul>
 
 
-<figure class='code'><figcaption><span>Value Of &#8220;a&#8221;</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nx">a</span> <span class="o">=</span> <span class="nx">GetValue</span><span class="p">(</span> <span class="nx">a</span> <span class="p">)</span> <span class="o">-</span> <span class="nx">GetValue</span><span class="p">(</span> <span class="nx">Evaluate</span><span class="p">(</span> <span class="nx">X</span> <span class="p">)</span> <span class="p">)</span>
-</span></code></pre></td></tr></table></div></figure>
+<figure class='code'><figcaption><span>Value Of &#8220;a&#8221;</span></figcaption><pre><code class='language-javascript'>a = GetValue( a ) - GetValue( Evaluate( X ) )</code></pre></figure>
 
 
 <p>Which is :</p>
 
-<figure class='code'><figcaption><span>Value of &#8220;a&#8221;</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nx">a</span> <span class="o">=</span> <span class="mi">5</span> <span class="o">-</span> <span class="nx">GetValue</span><span class="p">(</span> <span class="nx">Evaluate</span><span class="p">(</span> <span class="nx">X</span> <span class="p">)</span>
-</span></code></pre></td></tr></table></div></figure>
+<figure class='code'><figcaption><span>Value of &#8220;a&#8221;</span></figcaption><pre><code class='language-javascript'>a = 5 - GetValue( Evaluate( X )</code></pre></figure>
 
 
 <p></p>
@@ -282,16 +255,12 @@ a     -
 </ul>
 
 
-<figure class='code'><figcaption><span>New value of &#8220;a&#8221; is</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nx">a</span> <span class="o">=</span> <span class="nx">GetValue</span><span class="p">(</span> <span class="nx">a</span> <span class="p">)</span> <span class="o">+</span> <span class="nx">GetValue</span><span class="p">(</span> <span class="nx">b</span> <span class="p">)</span>
-</span></code></pre></td></tr></table></div></figure>
+<figure class='code'><figcaption><span>New value of &#8220;a&#8221; is</span></figcaption><pre><code class='language-javascript'>a = GetValue( a ) + GetValue( b )</code></pre></figure>
 
 
 <p>This equals to :</p>
 
-<figure class='code'><figcaption><span>&#8220;a&#8221; became 8   </span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nx">a</span> <span class="o">=</span> <span class="mi">5</span> <span class="o">+</span> <span class="mi">3</span>
-</span></code></pre></td></tr></table></div></figure>
+<figure class='code'><figcaption><span>&#8220;a&#8221; became 8   </span></figcaption><pre><code class='language-javascript'>a = 5 + 3</code></pre></figure>
 
 
 <p>  <br/>
@@ -302,23 +271,17 @@ Finally the value of expression <code>Y</code> becomes <code>8</code>.</p>
 </ul>
 
 
-<figure class='code'><figcaption><span>Computing the value of &#8220;b&#8221;</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nx">b</span> <span class="o">=</span> <span class="nx">GetValue</span><span class="p">(</span> <span class="nx">Y</span> <span class="p">)</span> <span class="o">-</span> <span class="nx">GetValue</span><span class="p">(</span> <span class="nx">b</span> <span class="p">)</span>
-</span></code></pre></td></tr></table></div></figure>
+<figure class='code'><figcaption><span>Computing the value of &#8220;b&#8221;</span></figcaption><pre><code class='language-javascript'>b = GetValue( Y ) - GetValue( b )</code></pre></figure>
 
 
 <p>Becomes like this :</p>
 
-<figure class='code'><figcaption><span>Value of &#8220;b&#8221;</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nx">b</span> <span class="o">=</span> <span class="mi">8</span> <span class="o">-</span> <span class="nx">GetValue</span><span class="p">(</span> <span class="nx">b</span> <span class="p">)</span>
-</span></code></pre></td></tr></table></div></figure>
+<figure class='code'><figcaption><span>Value of &#8220;b&#8221;</span></figcaption><pre><code class='language-javascript'>b = 8 - GetValue( b )</code></pre></figure>
 
 
 <p>Which is :</p>
 
-<figure class='code'><figcaption><span>Final value of &#8220;b&#8221;</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nx">b</span> <span class="o">=</span> <span class="mi">8</span> <span class="o">-</span> <span class="mi">3</span>
-</span></code></pre></td></tr></table></div></figure>
+<figure class='code'><figcaption><span>Final value of &#8220;b&#8221;</span></figcaption><pre><code class='language-javascript'>b = 8 - 3</code></pre></figure>
 
 
 <p>Finally the value of <code>b</code> and expression <code>X</code> becomes <code>5</code>.</p>
@@ -330,9 +293,7 @@ Finally the value of expression <code>Y</code> becomes <code>8</code>.</p>
 
 <p>The main expression was :</p>
 
-<figure class='code'><figcaption><span>Evaluating the main expression</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nx">a</span> <span class="o">=</span> <span class="mi">5</span> <span class="o">-</span> <span class="nx">GetValue</span><span class="p">(</span> <span class="nx">X</span> <span class="p">)</span> <span class="p">;</span> <span class="c1">// value of X = 5 now</span>
-</span></code></pre></td></tr></table></div></figure>
+<figure class='code'><figcaption><span>Evaluating the main expression</span></figcaption><pre><code class='language-javascript'>a = 5 - GetValue( X ) ; // value of X = 5 now</code></pre></figure>
 
 
 <p></p>
@@ -662,6 +623,22 @@ Finally the value of expression <code>Y</code> becomes <code>8</code>.</p>
     console.log(e);
   });
 </script> -->
+
+  <script src="/javascripts/modernizr-2.0.js" async></script>
+  <script src="/javascripts/libs/jquery.min.js" async></script>
+  <script src="/javascripts/octopress.js" type="text/javascript" async></script>
+  <script src="/javascripts/prism.js" type="text/javascript" async></script>
+  
+  <script type="text/javascript">
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ga('create', 'UA-10379928-17', 'auto');
+ga('require', 'displayfeatures');
+ga('send', 'pageview');
+  </script>
+
 
 </body>
 </html>

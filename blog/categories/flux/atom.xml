@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Flux | Undefined NULL]]></title>
   <link href="https://www.undefinednull.com/blog/categories/flux/atom.xml" rel="self"/>
   <link href="https://www.undefinednull.com/"/>
-  <updated>2016-08-27T20:26:31+04:00</updated>
+  <updated>2016-08-27T20:57:27+04:00</updated>
   <id>https://www.undefinednull.com/</id>
   <author>
     <name><![CDATA[Shidhin]]></name>
@@ -46,7 +46,7 @@
 
 <p>Let&rsquo;s build the react Counter component and add a state to save the <code>number</code>. The code is given below:</p>
 
-<p>```js
+<p>```jsx
 &lsquo;use strict&rsquo;;</p>
 
 <p>import React from &lsquo;react&rsquo;;

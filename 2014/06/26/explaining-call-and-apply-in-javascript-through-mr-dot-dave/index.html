@@ -20,6 +20,7 @@
   
   <link rel="canonical" href="https://www.undefinednull.com/2014/06/26/explaining-call-and-apply-in-javascript-through-mr-dot-dave">
   <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/prism.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="http://feeds.feedburner.com/undefinednull/com" rel="alternate" title="Undefined NULL" type="application/atom+xml">
   <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
@@ -44,21 +45,6 @@
   }
 </style>
  -->
-
-  <script src="/javascripts/modernizr-2.0.js" async></script>
-  <script src="/javascripts/libs/jquery.min.js" async></script>
-  <script src="/javascripts/octopress.js" type="text/javascript" async></script>
-  
-  <script type="text/javascript">
-    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-ga('create', 'UA-10379928-17', 'auto');
-ga('require', 'displayfeatures');
-ga('send', 'pageview');
-  </script>
-
 
 </head>
 
@@ -166,49 +152,24 @@ ga('send', 'pageview');
 
 <p>Dave looks more like this in the code :</p>
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-<span class='line-number'>21</span>
-</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="kd">var</span> <span class="nx">Dave</span> <span class="o">=</span> <span class="p">{</span>
-</span><span class='line'>  <span class="nx">name</span> <span class="o">:</span> <span class="s1">&#39;Dave&#39;</span><span class="p">,</span>
-</span><span class='line'>  <span class="nx">age</span>    <span class="o">:</span> <span class="s1">&#39;30&#39;</span><span class="p">,</span>
-</span><span class='line'>  <span class="nx">getIdNumber</span><span class="o">:</span> <span class="kd">function</span><span class="p">(){</span>
-</span><span class='line'>      <span class="k">return</span> <span class="s1">&#39;id number of dave&#39;</span><span class="p">;</span>
-</span><span class='line'>  <span class="p">},</span>
-</span><span class='line'>  <span class="nx">bookCheapFlightTickets</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span> <span class="nx">place</span><span class="p">,</span> <span class="nx">numberOfPeople</span><span class="p">,</span> <span class="nx">paymentDetails</span> <span class="p">){</span>
-</span><span class='line'>      <span class="kd">function</span> <span class="nx">sendSecretCode</span><span class="p">(){</span>
-</span><span class='line'>          <span class="c1">// Dave&#39;s own logic for generating secret code</span>
-</span><span class='line'>          <span class="c1">// and sending to his friends</span>
-</span><span class='line'>          <span class="c1">// ...</span>
-</span><span class='line'>      <span class="p">}</span>
-</span><span class='line'>      <span class="kd">function</span> <span class="nx">bookTickets</span><span class="p">(){</span>
-</span><span class='line'>          <span class="c1">// book the tickets using the given details</span>
-</span><span class='line'>          <span class="c1">// the ticket will be printed always in this.name , this.age, this.getIdNumber() and here **this** is pointing to Dave</span>
-</span><span class='line'>          <span class="k">return</span> <span class="s2">&quot;Ticket is booked for &quot;</span><span class="o">+</span> <span class="k">this</span><span class="p">.</span><span class="nx">name</span> <span class="o">+</span> <span class="s2">&quot;, &quot;</span> <span class="o">+</span> <span class="k">this</span><span class="p">.</span><span class="nx">age</span> <span class="o">+</span><span class="s2">&quot;, &quot;</span><span class="o">+</span> <span class="k">this</span><span class="p">.</span><span class="nx">getIdNumber</span><span class="p">();</span>
-</span><span class='line'>      <span class="p">}</span>
-</span><span class='line'>      <span class="kd">var</span> <span class="nx">isVerified</span> <span class="o">=</span> <span class="nx">sendSecretCode</span><span class="p">();</span>
-</span><span class='line'>      <span class="k">return</span> <span class="nx">isVerified</span> <span class="o">?</span> <span class="nx">bookTickets</span><span class="p">()</span> <span class="o">:</span> <span class="kc">false</span><span class="p">;</span>
-</span><span class='line'>  <span class="p">}</span>
-</span><span class='line'><span class="p">};</span>
-</span></code></pre></td></tr></table></div></figure>
+<figure class='code'><figcaption><span></span></figcaption><pre><code class='language-javascript'>var Dave = {
+    name : &apos;Dave&apos;,
+    age    : &apos;30&apos;,
+    getIdNumber: function(){
+        return &apos;id number of dave&apos;;   },
+    bookCheapFlightTickets: function( place, numberOfPeople, paymentDetails ){
+        function sendSecretCode(){
+            // Dave&apos;s own logic for generating secret code
+            // and sending to his friends
+            // ...      }
+        function bookTickets(){
+            // book the tickets using the given details
+            // the ticket will be printed always in this.name , this.age, this.getIdNumber() and here **this** is pointing to Dave
+            return &quot;Ticket is booked for &quot;+ this.name + &quot;, &quot; + this.age +&quot;, &quot;+ this.getIdNumber();
+        }
+        var isVerified = sendSecretCode();
+        return isVerified ? bookTickets() : false;  }};
+</code></pre></figure>
 
 
 <p>Do you see any problem here ? The <code>bookCheapFlightTickets()</code> is complex. Also you cannot just execute it with <code>Dave.bookCheapFlightTickets()</code> by giving the <strong>place</strong>, <strong>numberOfPeople</strong>, and <strong>paymentDetails</strong> as parameters. Yes, the problem is the ticket is going to be printed on Dave&rsquo;s  details ( here the  details are his name, age and idNumber ).</p>
@@ -217,11 +178,8 @@ ga('send', 'pageview');
 
 <p>In simple, <code>call</code> and <code>apply</code> are two methods of the Function object. Normally you can execute a function by appending &lsquo;()&rsquo; to its name. Say, a function <code>foo</code>, can be invoked by calling <code>foo()</code>. Alternately, using call or apply :</p>
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nx">foo</span><span class="p">.</span><span class="nx">call</span><span class="p">(</span> <span class="nx">context</span><span class="p">,</span> <span class="nx">param1</span><span class="p">,</span> <span class="nx">param2</span><span class="p">,</span> <span class="nx">param3</span> <span class="p">);</span>
-</span><span class='line'><span class="nx">foo</span><span class="p">.</span><span class="nx">apply</span><span class="p">(</span> <span class="nx">context</span><span class="p">,</span> <span class="p">[</span><span class="nx">param1</span><span class="p">,</span> <span class="nx">param2</span><span class="p">,</span> <span class="nx">param3</span> <span class="p">]);</span>
-</span></code></pre></td></tr></table></div></figure>
+<figure class='code'><figcaption><span></span></figcaption><pre><code class='language-javascript'>foo.call( context, param1, param2, param3 );
+foo.apply( context, [param1, param2, param3 ]);</code></pre></figure>
 
 
 <div class='info'>
@@ -240,36 +198,20 @@ Note: Only difference between the &#8216;call&#8217; and &#8216;apply&#8217; is 
 
 <p>So now you know how to fool Dave&rsquo;s friends by impersonating as Dave. You will be mostly look like below:</p>
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="kd">var</span> <span class="nx">You</span> <span class="o">=</span> <span class="p">{</span>
-</span><span class='line'>  <span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;You&#39;</span><span class="p">,</span>
-</span><span class='line'>  <span class="nx">age</span><span class="o">:</span>    <span class="s1">&#39;29&#39;</span><span class="p">,</span>
-</span><span class='line'>  <span class="nx">getIdNumber</span><span class="o">:</span> <span class="kd">function</span><span class="p">(){</span>
-</span><span class='line'>      <span class="k">return</span> <span class="s1">&#39;your id number&#39;</span><span class="p">;</span>
-</span><span class='line'>  <span class="p">}</span>
-</span><span class='line'><span class="p">}</span>
-</span></code></pre></td></tr></table></div></figure>
+<figure class='code'><figcaption><span></span></figcaption><pre><code class='language-javascript'>var You = {
+    name: &apos;You&apos;,
+    age:    &apos;29&apos;,
+    getIdNumber: function(){
+        return &apos;your id number&apos;;  }}</code></pre></figure>
 
 
 <p>Now you can borrow Dave&rsquo;s <strong>method</strong> using <code>call</code> or <code>apply</code>.</p>
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="kd">var</span> <span class="nx">davesMethodForFlightBooking</span> <span class="o">=</span> <span class="nx">Dave</span><span class="p">.</span><span class="nx">bookCheapFlightTickets</span><span class="p">;</span>
-</span><span class='line'><span class="c1">// using call</span>
-</span><span class='line'><span class="kd">var</span> <span class="nx">bookedTicket</span> <span class="o">=</span> <span class="nx">davesMethodForFlightBooking</span><span class="p">.</span><span class="nx">call</span><span class="p">(</span><span class="nx">You</span><span class="p">,</span> <span class="nx">place</span><span class="p">,</span> <span class="nx">numberOfPeople</span><span class="p">,</span> <span class="nx">paymentDetails</span><span class="p">);</span>
-</span><span class='line'><span class="c1">// using apply</span>
-</span><span class='line'><span class="kd">var</span> <span class="nx">bookedTicket</span> <span class="o">=</span> <span class="nx">davesMethodForFlightBooking</span><span class="p">.</span><span class="nx">apply</span><span class="p">(</span><span class="nx">You</span><span class="p">,</span> <span class="p">[</span><span class="nx">place</span><span class="p">,</span> <span class="nx">numberOfPeople</span><span class="p">,</span> <span class="nx">paymentDetails</span><span class="p">]);</span>
-</span></code></pre></td></tr></table></div></figure>
+<figure class='code'><figcaption><span></span></figcaption><pre><code class='language-javascript'>var davesMethodForFlightBooking = Dave.bookCheapFlightTickets;
+// using call
+var bookedTicket = davesMethodForFlightBooking.call(You, place, numberOfPeople, paymentDetails);
+// using apply
+var bookedTicket = davesMethodForFlightBooking.apply(You, [place, numberOfPeople, paymentDetails]);</code></pre></figure>
 
 
 <h3>tl;dr</h3>
@@ -586,6 +528,22 @@ Note: Only difference between the &#8216;call&#8217; and &#8216;apply&#8217; is 
     console.log(e);
   });
 </script> -->
+
+  <script src="/javascripts/modernizr-2.0.js" async></script>
+  <script src="/javascripts/libs/jquery.min.js" async></script>
+  <script src="/javascripts/octopress.js" type="text/javascript" async></script>
+  <script src="/javascripts/prism.js" type="text/javascript" async></script>
+  
+  <script type="text/javascript">
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ga('create', 'UA-10379928-17', 'auto');
+ga('require', 'displayfeatures');
+ga('send', 'pageview');
+  </script>
+
 
 </body>
 </html>

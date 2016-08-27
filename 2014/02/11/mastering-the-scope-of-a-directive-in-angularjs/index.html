@@ -20,6 +20,7 @@
   
   <link rel="canonical" href="https://www.undefinednull.com/2014/02/11/mastering-the-scope-of-a-directive-in-angularjs">
   <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/prism.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="http://feeds.feedburner.com/undefinednull/com" rel="alternate" title="Undefined NULL" type="application/atom+xml">
   <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
@@ -44,21 +45,6 @@
   }
 </style>
  -->
-
-  <script src="/javascripts/modernizr-2.0.js" async></script>
-  <script src="/javascripts/libs/jquery.min.js" async></script>
-  <script src="/javascripts/octopress.js" type="text/javascript" async></script>
-  
-  <script type="text/javascript">
-    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-ga('create', 'UA-10379928-17', 'auto');
-ga('require', 'displayfeatures');
-ga('send', 'pageview');
-  </script>
-
 
 </head>
 
@@ -144,27 +130,16 @@ ga('send', 'pageview');
 
 <p>However, AngularJS allows us to change the default scope of directives by passing a configuration object known as <strong>directive definition object</strong>. A directive definition object –– let&rsquo;s call it as  <em>DDO</em> –– is a simple JavaScript object used for configuring the directive&rsquo;s behaviour,template..etc. Check out <a href="http://docs.AngularJS.org/guide/directive">AngularJS docs</a> about <em>DDO</em>.</p>
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="kd">var</span> <span class="nx">app</span> <span class="o">=</span> <span class="nx">angular</span><span class="p">.</span><span class="nx">module</span><span class="p">(</span><span class="s2">&quot;test&quot;</span><span class="p">,[]);</span>
-</span><span class='line'><span class="nx">app</span><span class="p">.</span><span class="nx">directive</span><span class="p">(</span><span class="s2">&quot;myDirective&quot;</span><span class="p">,</span><span class="kd">function</span><span class="p">(){</span>
-</span><span class='line'>  <span class="k">return</span> <span class="p">{</span>
-</span><span class='line'>      <span class="nx">restrict</span><span class="o">:</span> <span class="s2">&quot;EA&quot;</span><span class="p">,</span>
-</span><span class='line'>      <span class="nx">scope</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
-</span><span class='line'>      <span class="nx">link</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">scope</span><span class="p">,</span><span class="nx">elem</span><span class="p">,</span><span class="nx">attr</span><span class="p">){</span>
-</span><span class='line'>          <span class="c1">// code goes here ...</span>
-</span><span class='line'>      <span class="p">}</span>
-</span><span class='line'>  <span class="p">}</span>    
-</span><span class='line'> <span class="p">});</span>
-</span></code></pre></td></tr></table></div></figure>
+<figure class='code'><figcaption><span></span></figcaption><pre><code class='language-javascript'>var app = angular.module(&quot;test&quot;,[]);
+app.directive(&quot;myDirective&quot;,function(){
+    return {
+        restrict: &quot;EA&quot;,
+        scope: true,
+        link: function(scope,elem,attr){
+            // code goes here ...
+        }
+    }   
+ });</code></pre></figure>
 
 
 <p>In the above example, we created a directive by returning a <em>DDO</em> from the function. There are a lot of properties of the <em>DDO</em> to learn, but here we&rsquo;re just going to discuss the <code>scope</code> property, because, the values of scope property decides how the actual scope is created and used inside a directive. These values can be either <strong>&ldquo;false&rdquo;</strong>, <strong>&ldquo;true&rdquo;</strong> or <strong>&ldquo;{}&rdquo;</strong>. In the following sections, we&rsquo;ll see how each of these affects directive&rsquo;s behaviour.</p>
@@ -207,27 +182,16 @@ ga('send', 'pageview');
 
 <p>Let&rsquo;s re-write our original example like this :</p>
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="kd">var</span> <span class="nx">app</span> <span class="o">=</span> <span class="nx">angular</span><span class="p">.</span><span class="nx">module</span><span class="p">(</span><span class="s2">&quot;test&quot;</span><span class="p">,[]);</span>
-</span><span class='line'><span class="nx">app</span><span class="p">.</span><span class="nx">directive</span><span class="p">(</span><span class="s2">&quot;myDirective&quot;</span><span class="p">,</span><span class="kd">function</span><span class="p">(){</span>
-</span><span class='line'>  <span class="k">return</span> <span class="p">{</span>
-</span><span class='line'>      <span class="nx">restrict</span><span class="o">:</span> <span class="s2">&quot;EA&quot;</span><span class="p">,</span>
-</span><span class='line'>      <span class="nx">scope</span><span class="o">:</span> <span class="p">{},</span>
-</span><span class='line'>      <span class="nx">link</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">scope</span><span class="p">,</span><span class="nx">elem</span><span class="p">,</span><span class="nx">attr</span><span class="p">){</span>
-</span><span class='line'>          <span class="c1">// code goes here ...</span>
-</span><span class='line'>      <span class="p">}</span>
-</span><span class='line'>  <span class="p">}</span>    
-</span><span class='line'> <span class="p">});</span>
-</span></code></pre></td></tr></table></div></figure>
+<figure class='code'><figcaption><span></span></figcaption><pre><code class='language-javascript'>var app = angular.module(&quot;test&quot;,[]);
+app.directive(&quot;myDirective&quot;,function(){
+    return {
+        restrict: &quot;EA&quot;,
+        scope: {},
+        link: function(scope,elem,attr){
+            // code goes here ...
+        }
+    }   
+ });</code></pre></figure>
 
 
 <p>So far, this is the recommended way of setting the <code>scope</code> on <em>DDO</em> while creating custom directives. Why? Because:</p>
@@ -261,63 +225,34 @@ ga('send', 'pageview');
 
 <p>Let&rsquo;s try to understand how this works. Take the JavaScript code first:</p>
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-<span class='line-number'>21</span>
-<span class='line-number'>22</span>
-<span class='line-number'>23</span>
-<span class='line-number'>24</span>
-<span class='line-number'>25</span>
-<span class='line-number'>26</span>
-<span class='line-number'>27</span>
-<span class='line-number'>28</span>
-</pre></td><td class='code'><pre><code class='javascript'><span class='line'> <span class="kd">var</span> <span class="nx">app</span> <span class="o">=</span> <span class="nx">angular</span><span class="p">.</span><span class="nx">module</span><span class="p">(</span><span class="s2">&quot;app&quot;</span><span class="p">,</span> <span class="p">[]);</span>
-</span><span class='line'> <span class="nx">app</span><span class="p">.</span><span class="nx">controller</span><span class="p">(</span><span class="s2">&quot;MainCtrl&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span> <span class="nx">$scope</span> <span class="p">){</span>
-</span><span class='line'>    <span class="nx">$scope</span><span class="p">.</span><span class="nx">name</span> <span class="o">=</span> <span class="s2">&quot;Harry&quot;</span><span class="p">;</span>
-</span><span class='line'>    <span class="nx">$scope</span><span class="p">.</span><span class="nx">color</span> <span class="o">=</span> <span class="s2">&quot;#333333&quot;</span><span class="p">;</span>
-</span><span class='line'>    <span class="nx">$scope</span><span class="p">.</span><span class="nx">reverseName</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(){</span>
-</span><span class='line'>     <span class="nx">$scope</span><span class="p">.</span><span class="nx">name</span> <span class="o">=</span> <span class="nx">$scope</span><span class="p">.</span><span class="nx">name</span><span class="p">.</span><span class="nx">split</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">).</span><span class="nx">reverse</span><span class="p">().</span><span class="nx">join</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">);</span>
-</span><span class='line'>    <span class="p">};</span>
-</span><span class='line'>    <span class="nx">$scope</span><span class="p">.</span><span class="nx">randomColor</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(){</span>
-</span><span class='line'>        <span class="nx">$scope</span><span class="p">.</span><span class="nx">color</span> <span class="o">=</span> <span class="s1">&#39;#&#39;</span><span class="o">+</span><span class="nb">Math</span><span class="p">.</span><span class="nx">floor</span><span class="p">(</span><span class="nb">Math</span><span class="p">.</span><span class="nx">random</span><span class="p">()</span><span class="o">*</span><span class="mi">16777215</span><span class="p">).</span><span class="nx">toString</span><span class="p">(</span><span class="mi">16</span><span class="p">);</span>
-</span><span class='line'>    <span class="p">};</span>
-</span><span class='line'><span class="p">});</span>
-</span><span class='line'><span class="nx">app</span><span class="p">.</span><span class="nx">directive</span><span class="p">(</span><span class="s2">&quot;myDirective&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(){</span>
-</span><span class='line'>    <span class="k">return</span> <span class="p">{</span>
-</span><span class='line'>        <span class="nx">restrict</span><span class="o">:</span> <span class="s2">&quot;EA&quot;</span><span class="p">,</span>
-</span><span class='line'>        <span class="nx">scope</span><span class="o">:</span> <span class="p">{</span>
-</span><span class='line'>            <span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;@&quot;</span><span class="p">,</span>
-</span><span class='line'>            <span class="nx">color</span><span class="o">:</span> <span class="s2">&quot;=&quot;</span><span class="p">,</span>
-</span><span class='line'>            <span class="nx">reverse</span><span class="o">:</span> <span class="s2">&quot;&amp;&quot;</span>
-</span><span class='line'>        <span class="p">},</span>
-</span><span class='line'>        <span class="nx">template</span><span class="o">:</span> <span class="p">[</span>
-</span><span class='line'>            <span class="s2">&quot;&lt;div class=&#39;line&#39;&gt;&quot;</span><span class="p">,</span>
-</span><span class='line'>            <span class="s2">&quot;Name : &lt;strong&gt;&lt;/strong&gt;;  Change name:&lt;input type=&#39;text&#39; ng-model=&#39;name&#39; /&gt;&lt;br/&gt;&quot;</span><span class="p">,</span>
-</span><span class='line'>            <span class="s2">&quot;&lt;/div&gt;&lt;div class=&#39;line&#39;&gt;&quot;</span><span class="p">,</span>
-</span><span class='line'>            <span class="s2">&quot;Color : &lt;strong style=&#39;color:&#39;&gt;&lt;/strong&gt;;  Change color:&lt;input type=&#39;text&#39; ng-model=&#39;color&#39; /&gt;&lt;br/&gt;&lt;/div&gt;&quot;</span><span class="p">,</span>
-</span><span class='line'>            <span class="s2">&quot;&lt;br/&gt;&lt;input type=&#39;button&#39; ng-click=&#39;reverse()&#39; value=&#39;Reverse Name&#39;/&gt;&quot;</span>
-</span><span class='line'>        <span class="p">].</span><span class="nx">join</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
-</span><span class='line'>    <span class="p">};</span>
-</span><span class='line'><span class="p">});</span>
-</span></code></pre></td></tr></table></div></figure>
+<figure class='code'><figcaption><span></span></figcaption><pre><code class='language-javascript'> var app = angular.module(&quot;app&quot;, []);
+ app.controller(&quot;MainCtrl&quot;, function( $scope ){
+    $scope.name = &quot;Harry&quot;;
+    $scope.color = &quot;#333333&quot;;
+    $scope.reverseName = function(){
+     $scope.name = $scope.name.split(&quot;&quot;).reverse().join(&quot;&quot;);
+    };
+    $scope.randomColor = function(){
+        $scope.color = &apos;#&apos;+Math.floor(Math.random()*16777215).toString(16);
+    };
+});
+app.directive(&quot;myDirective&quot;, function(){
+    return {
+        restrict: &quot;EA&quot;,
+        scope: {
+            name: &quot;@&quot;,
+            color: &quot;=&quot;,
+            reverse: &quot;&amp;&quot;
+        },
+        template: [
+            &quot;&lt;div class=&apos;line&apos;&gt;&quot;,
+            &quot;Name : &lt;strong&gt;&lt;/strong&gt;;  Change name:&lt;input type=&apos;text&apos; ng-model=&apos;name&apos; /&gt;&lt;br/&gt;&quot;,
+            &quot;&lt;/div&gt;&lt;div class=&apos;line&apos;&gt;&quot;,
+            &quot;Color : &lt;strong style=&apos;color:&apos;&gt;&lt;/strong&gt;;  Change color:&lt;input type=&apos;text&apos; ng-model=&apos;color&apos; /&gt;&lt;br/&gt;&lt;/div&gt;&quot;,
+            &quot;&lt;br/&gt;&lt;input type=&apos;button&apos; ng-click=&apos;reverse()&apos; value=&apos;Reverse Name&apos;/&gt;&quot;
+        ].join(&quot;&quot;)    
+    };
+});</code></pre></figure>
 
 
 <p>It&rsquo;s clear that, the controller <code>MainCtrl</code> creates the parent scope. This parent scope has following properties and methods.</p>
@@ -348,45 +283,28 @@ randomColor = function for generating random color code
 
 <p>All these prefixes receives data from the attributes of the directive element. Let&rsquo;s take another look at the HTML code:</p>
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-</pre></td><td class='code'><pre><code class='html'><span class='line'>
-</span><span class='line'><span class="nt">&lt;div</span> <span class="na">my-directive</span>
-</span><span class='line'>  <span class="na">class=</span><span class="s">&quot;directive&quot;</span>
-</span><span class='line'>  <span class="na">name=</span><span class="s">&quot;{{name}}&quot;</span>
-</span><span class='line'>  <span class="na">reverse=</span><span class="s">&quot;reverseName()&quot;</span>
-</span><span class='line'>  <span class="na">color=</span><span class="s">&quot;color&quot;</span> <span class="nt">&gt;</span>
-</span><span class='line'><span class="nt">&lt;/div&gt;</span>
-</span><span class='line'>
-</span></code></pre></td></tr></table></div></figure>
+<figure class='code'><figcaption><span></span></figcaption><pre><code class='language-html'>
+&lt;div my-directive 
+  class=&quot;directive&quot;
+  name=&quot;{{name}}&quot; 
+  reverse=&quot;reverseName()&quot; 
+  color=&quot;color&quot; &gt;
+&lt;/div&gt;
+</code></pre></figure>
 
 
 <p>When the directive encounters a prefix in the scope property, it will look for an attribute ( with same property name ) on directive&rsquo;s html element. However, we can provide a different mapping between property and attributes. This is done by giving a separate attribute name after the prefix. Look at below code to make it more clear.</p>
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nx">scope</span> <span class="o">:</span> <span class="p">{</span>
-</span><span class='line'>  <span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;@&quot;</span>
-</span><span class='line'><span class="p">}</span>
-</span></code></pre></td></tr></table></div></figure>
+<figure class='code'><figcaption><span></span></figcaption><pre><code class='language-javascript'>scope : {
+    name: &quot;@&quot;
+}</code></pre></figure>
 
 
 <p>The above will be mapped to an attribute &ldquo;name&rdquo; in the directive. Now let&rsquo;s see what happens if we change the code like below:</p>
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nx">scope</span> <span class="o">:</span> <span class="p">{</span>
-</span><span class='line'>  <span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;@parentName&quot;</span>
-</span><span class='line'><span class="p">}</span>
-</span></code></pre></td></tr></table></div></figure>
+<figure class='code'><figcaption><span></span></figcaption><pre><code class='language-javascript'>scope : {
+    name: &quot;@parentName&quot;
+}</code></pre></figure>
 
 
 <p>At this time, the name property will be looking for an attribute &ldquo;parent-name&rdquo; in the html element to get its value. Simply, any string after the  <strong><em>Prefixes</em></strong> should match the attribute name.</p>
@@ -737,6 +655,22 @@ randomColor = function for generating random color code
     console.log(e);
   });
 </script> -->
+
+  <script src="/javascripts/modernizr-2.0.js" async></script>
+  <script src="/javascripts/libs/jquery.min.js" async></script>
+  <script src="/javascripts/octopress.js" type="text/javascript" async></script>
+  <script src="/javascripts/prism.js" type="text/javascript" async></script>
+  
+  <script type="text/javascript">
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ga('create', 'UA-10379928-17', 'auto');
+ga('require', 'displayfeatures');
+ga('send', 'pageview');
+  </script>
+
 
 </body>
 </html>

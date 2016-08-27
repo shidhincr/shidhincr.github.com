@@ -20,6 +20,7 @@
   
   <link rel="canonical" href="https://www.undefinednull.com/2014/02/17/resolve-in-angularjs-routes-explained-as-story">
   <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/prism.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="http://feeds.feedburner.com/undefinednull/com" rel="alternate" title="Undefined NULL" type="application/atom+xml">
   <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
@@ -44,21 +45,6 @@
   }
 </style>
  -->
-
-  <script src="/javascripts/modernizr-2.0.js" async></script>
-  <script src="/javascripts/libs/jquery.min.js" async></script>
-  <script src="/javascripts/octopress.js" type="text/javascript" async></script>
-  
-  <script type="text/javascript">
-    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-ga('create', 'UA-10379928-17', 'auto');
-ga('require', 'displayfeatures');
-ga('send', 'pageview');
-  </script>
-
 
 </head>
 
@@ -142,177 +128,99 @@ ga('send', 'pageview');
 
 
 <figure class='code'><figcaption><span>Application (app.js)</span> <a href='/downloads/code/angular_resolve/app.js'>download</a></figcaption>
-<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-<span class='line-number'>21</span>
-<span class='line-number'>22</span>
-<span class='line-number'>23</span>
-<span class='line-number'>24</span>
-<span class='line-number'>25</span>
-<span class='line-number'>26</span>
-<span class='line-number'>27</span>
-<span class='line-number'>28</span>
-</pre></td><td class='code'><pre><code class='js'><span class='line'><span class="s2">&quot;use strict&quot;</span><span class="p">;</span>
-</span><span class='line'>
-</span><span class='line'><span class="kd">var</span> <span class="nx">app</span> <span class="o">=</span> <span class="nx">angular</span><span class="p">.</span><span class="nx">module</span><span class="p">(</span> <span class="s2">&quot;app&quot;</span><span class="p">,</span> <span class="p">[</span> <span class="p">]</span> <span class="p">);</span>
-</span><span class='line'>
-</span><span class='line'><span class="nx">app</span><span class="p">.</span><span class="nx">config</span><span class="p">(</span> <span class="kd">function</span><span class="p">(</span> <span class="nx">$routeProvider</span> <span class="p">)</span> <span class="p">{</span>
-</span><span class='line'>  <span class="nx">$routeProvider</span><span class="p">.</span><span class="nx">when</span><span class="p">(</span> <span class="s2">&quot;/visitplace&quot;</span><span class="p">,</span> <span class="p">{</span>
-</span><span class='line'>    <span class="nx">templateUrl</span><span class="o">:</span> <span class="s2">&quot;placetovisit.html&quot;</span><span class="p">,</span>
-</span><span class='line'>    <span class="nx">controller</span><span class="o">:</span> <span class="s2">&quot;TourCoordinatorCtrl&quot;</span>
-</span><span class='line'>  <span class="p">}</span> <span class="p">);</span>
-</span><span class='line'><span class="p">}</span> <span class="p">);</span>
-</span><span class='line'>
-</span><span class='line'><span class="nx">app</span><span class="p">.</span><span class="nx">factory</span><span class="p">(</span> <span class="s2">&quot;accommodation&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span> <span class="p">)</span> <span class="p">{</span>
-</span><span class='line'>  <span class="k">return</span> <span class="p">{</span>
-</span><span class='line'>    <span class="nx">hotelName</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span> <span class="p">)</span> <span class="p">{</span>
-</span><span class='line'>      <span class="k">return</span> <span class="s2">&quot;Some Hotel&quot;</span><span class="p">;</span>
-</span><span class='line'>    <span class="p">},</span>
-</span><span class='line'>    <span class="nx">roomNo</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span> <span class="p">)</span> <span class="p">{</span>
-</span><span class='line'>      <span class="k">return</span> <span class="s2">&quot;203&quot;</span><span class="p">;</span>
-</span><span class='line'>    <span class="p">}</span>
-</span><span class='line'>  <span class="p">};</span>
-</span><span class='line'><span class="p">}</span> <span class="p">);</span>
-</span><span class='line'>
-</span><span class='line'><span class="nx">app</span><span class="p">.</span><span class="nx">controller</span><span class="p">(</span> <span class="s2">&quot;TourCoordinatorCtrl&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span> <span class="nx">$scope</span><span class="p">,</span> <span class="nx">accommodation</span> <span class="p">)</span> <span class="p">{</span>
-</span><span class='line'>  <span class="nx">$scope</span><span class="p">.</span><span class="nx">name</span> <span class="o">=</span> <span class="s2">&quot;Shidhin&quot;</span><span class="p">;</span>
-</span><span class='line'>  <span class="nx">$scope</span><span class="p">.</span><span class="nx">place</span> <span class="o">=</span> <span class="s2">&quot;Switzerland&quot;</span><span class="p">;</span>
-</span><span class='line'>  <span class="nx">$scope</span><span class="p">.</span><span class="nx">hotel</span> <span class="o">=</span> <span class="nx">accommodation</span><span class="p">.</span><span class="nx">hotelName</span><span class="p">(</span> <span class="p">);</span>
-</span><span class='line'>  <span class="nx">$scope</span><span class="p">.</span><span class="nx">roomno</span> <span class="o">=</span> <span class="nx">accommodation</span><span class="p">.</span><span class="nx">roomNo</span><span class="p">(</span> <span class="p">);</span>
-</span><span class='line'><span class="p">}</span> <span class="p">);</span>
-</span></code></pre></td></tr></table></div></figure>
+<pre><code class='language-javascript'>&quot;use strict&quot;;
+
+var app = angular.module( &quot;app&quot;, [ ] );
+
+app.config( function( $routeProvider ) {
+  $routeProvider.when( &quot;/visitplace&quot;, {
+    templateUrl: &quot;placetovisit.html&quot;,
+    controller: &quot;TourCoordinatorCtrl&quot;
+  } );
+} );
+
+app.factory( &quot;accommodation&quot;, function( ) {
+  return {
+    hotelName: function( ) {
+      return &quot;Some Hotel&quot;;
+    },
+    roomNo: function( ) {
+      return &quot;203&quot;;
+    }
+  };
+} );
+
+app.controller( &quot;TourCoordinatorCtrl&quot;, function( $scope, accommodation ) {
+  $scope.name = &quot;Shidhin&quot;;
+  $scope.place = &quot;Switzerland&quot;;
+  $scope.hotel = accommodation.hotelName( );
+  $scope.roomno = accommodation.roomNo( );
+} );
+</code></pre></figure>
 
 
 <p>And the templates <code>placetovisit.html</code> and <code>index.html</code> :</p>
 
 <figure class='code'><figcaption><span>Template (placetovisit.html)</span> <a href='/downloads/code/angular_resolve/placetovisit.html'>download</a></figcaption>
-<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="nt">&lt;h1&gt;</span>Trip details<span class="nt">&lt;/h1&gt;</span>
-</span><span class='line'><span class="nt">&lt;div&gt;</span>
-</span><span class='line'>  <span class="nt">&lt;h2&gt;</span>Hi, {{name}}. Welcome to {{place}}<span class="nt">&lt;/h2&gt;</span>
-</span><span class='line'>  <span class="nt">&lt;div&gt;</span>The accomodation is arranged on <span class="nt">&lt;strong&gt;</span>{{hotel}}<span class="nt">&lt;/strong&gt;</span> and room number is <span class="nt">&lt;strong&gt;</span>{{roomno}}<span class="nt">&lt;/strong&gt;&lt;/div&gt;</span>    
-</span><span class='line'><span class="nt">&lt;/div&gt;</span>
-</span></code></pre></td></tr></table></div></figure>
+<pre><code class='language-html'>&lt;h1&gt;Trip details&lt;/h1&gt;
+&lt;div&gt;
+    &lt;h2&gt;Hi, {{name}}. Welcome to {{place}}&lt;/h2&gt;
+    &lt;div&gt;The accomodation is arranged on &lt;strong&gt;{{hotel}}&lt;/strong&gt; and room number is &lt;strong&gt;{{roomno}}&lt;/strong&gt;&lt;/div&gt;    
+&lt;/div&gt;
+</code></pre></figure>
 
 
 
 
-<figure class='code'><figcaption><span>Index.html</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="cp">&lt;!doctype html&gt;</span>
-</span><span class='line'><span class="nt">&lt;html</span> <span class="na">lang=</span><span class="s">&quot;en&quot;</span> <span class="na">ng-app=</span><span class="s">&quot;app&quot;</span><span class="nt">&gt;</span>
-</span><span class='line'><span class="nt">&lt;head&gt;</span>
-</span><span class='line'>  <span class="nt">&lt;meta</span> <span class="na">charset=</span><span class="s">&quot;UTF-8&quot;</span><span class="nt">&gt;</span>
-</span><span class='line'>  <span class="nt">&lt;title&gt;</span>AngularJS Resolve routes example<span class="nt">&lt;/title&gt;</span>
-</span><span class='line'><span class="nt">&lt;/head&gt;</span>
-</span><span class='line'><span class="nt">&lt;body&gt;</span>
-</span><span class='line'>  <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;#/visitplace&quot;</span><span class="nt">&gt;</span>I want to go for a trip<span class="nt">&lt;/a&gt;</span>
-</span><span class='line'>  <span class="nt">&lt;div</span> <span class="na">ng-view</span><span class="nt">&gt;&lt;/div&gt;</span>
-</span><span class='line'><span class="nt">&lt;script </span><span class="na">src=</span><span class="s">&quot;https://ajax.googleapis.com/ajax/libs/AngularJS/1.0.1/angular.min.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
-</span><span class='line'><span class="nt">&lt;script </span><span class="na">src=</span><span class="s">&quot;app.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
-</span><span class='line'><span class="nt">&lt;/body&gt;</span>
-</span><span class='line'><span class="nt">&lt;/html&gt;</span>
-</span></code></pre></td></tr></table></div></figure>
+<figure class='code'><figcaption><span>Index.html</span></figcaption><pre><code class='language-html'>&lt;!doctype html&gt;
+&lt;html lang=&quot;en&quot; ng-app=&quot;app&quot;&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;title&gt;AngularJS Resolve routes example&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;a href=&quot;#/visitplace&quot;&gt;I want to go for a trip&lt;/a&gt;
+    &lt;div ng-view&gt;&lt;/div&gt;
+&lt;script src=&quot;https://ajax.googleapis.com/ajax/libs/AngularJS/1.0.1/angular.min.js&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;app.js&quot;&gt;&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre></figure>
 
 
 <p>Everything works as expected when we navigate to the route <code>/visitplace</code>. If you notice, the tour controller has a dependency on <code>accommodation</code> service. But it&rsquo;s just the controller&rsquo;s responsibility to find the hotel and room details. Also, getting the hotel and room details are completely synchronous events. That means, the room will be arranged before I reach the place.</p>
 
 <p>But what if they&rsquo;re asynchronous events? Let&rsquo;s think this way: What If the tour coordinator is not so professional and he forgot to book the hotel and room. Because of this, when I arrive at the place, I&rsquo;d to wait till I get a new room. Similarly, in the code, we can see that the view is rendered, but the <code>getHotel()</code> and <code>getRoom()</code> methods taking extra time to get the room details.</p>
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-<span class='line-number'>21</span>
-<span class='line-number'>22</span>
-<span class='line-number'>23</span>
-<span class='line-number'>24</span>
-<span class='line-number'>25</span>
-<span class='line-number'>26</span>
-<span class='line-number'>27</span>
-<span class='line-number'>28</span>
-<span class='line-number'>29</span>
-<span class='line-number'>30</span>
-</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="s2">&quot;use strict&quot;</span><span class="p">;</span>
-</span><span class='line'><span class="kd">var</span> <span class="nx">app</span> <span class="o">=</span> <span class="nx">angular</span><span class="p">.</span><span class="nx">module</span><span class="p">(</span> <span class="s2">&quot;app&quot;</span><span class="p">,</span> <span class="p">[</span> <span class="p">]</span> <span class="p">);</span>
-</span><span class='line'><span class="nx">app</span><span class="p">.</span><span class="nx">config</span><span class="p">(</span> <span class="kd">function</span><span class="p">(</span> <span class="nx">$routeProvider</span> <span class="p">)</span> <span class="p">{</span>
-</span><span class='line'>  <span class="nx">$routeProvider</span><span class="p">.</span><span class="nx">when</span><span class="p">(</span> <span class="s2">&quot;/visitplace&quot;</span><span class="p">,</span> <span class="p">{</span>
-</span><span class='line'>    <span class="nx">templateUrl</span><span class="o">:</span> <span class="s2">&quot;placetovisit.html&quot;</span><span class="p">,</span>
-</span><span class='line'>    <span class="nx">controller</span><span class="o">:</span> <span class="s2">&quot;TourCoordinatorCtrl&quot;</span>
-</span><span class='line'>  <span class="p">}</span> <span class="p">);</span>
-</span><span class='line'><span class="p">}</span> <span class="p">);</span>
-</span><span class='line'><span class="nx">app</span><span class="p">.</span><span class="nx">factory</span><span class="p">(</span> <span class="s2">&quot;accommodation&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span> <span class="nx">$timeout</span> <span class="p">)</span> <span class="p">{</span>
-</span><span class='line'>  <span class="k">return</span> <span class="p">{</span>
-</span><span class='line'>    <span class="nx">hotelName</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span> <span class="nx">scope</span> <span class="p">)</span> <span class="p">{</span>
-</span><span class='line'>      <span class="nx">$timeout</span><span class="p">(</span><span class="kd">function</span><span class="p">(){</span>
-</span><span class='line'>        <span class="nx">scope</span><span class="p">.</span><span class="nx">hotel</span> <span class="o">=</span> <span class="s2">&quot;Some hotel&quot;</span><span class="p">;</span>
-</span><span class='line'>      <span class="p">},</span><span class="mi">3000</span><span class="p">);</span>
-</span><span class='line'>      <span class="k">return</span> <span class="s2">&quot;---&quot;</span><span class="p">;</span>
-</span><span class='line'>    <span class="p">},</span>
-</span><span class='line'>    <span class="nx">roomNo</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span> <span class="nx">scope</span> <span class="p">)</span> <span class="p">{</span>
-</span><span class='line'>      <span class="nx">$timeout</span><span class="p">(</span><span class="kd">function</span><span class="p">(){</span>
-</span><span class='line'>        <span class="nx">scope</span><span class="p">.</span><span class="nx">roomno</span> <span class="o">=</span> <span class="s2">&quot;103&quot;</span><span class="p">;</span>
-</span><span class='line'>      <span class="p">},</span><span class="mi">3000</span><span class="p">);</span>
-</span><span class='line'>      <span class="k">return</span> <span class="s2">&quot;---&quot;</span><span class="p">;</span>
-</span><span class='line'>    <span class="p">}</span>
-</span><span class='line'>  <span class="p">};</span>
-</span><span class='line'><span class="p">}</span> <span class="p">);</span>
-</span><span class='line'><span class="nx">app</span><span class="p">.</span><span class="nx">controller</span><span class="p">(</span> <span class="s2">&quot;TourCoordinatorCtrl&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span> <span class="nx">$scope</span><span class="p">,</span> <span class="nx">accommodation</span> <span class="p">)</span> <span class="p">{</span>
-</span><span class='line'>  <span class="nx">$scope</span><span class="p">.</span><span class="nx">name</span> <span class="o">=</span> <span class="s2">&quot;Shidhin&quot;</span><span class="p">;</span>
-</span><span class='line'>  <span class="nx">$scope</span><span class="p">.</span><span class="nx">place</span> <span class="o">=</span> <span class="s2">&quot;Switzerland&quot;</span><span class="p">;</span>
-</span><span class='line'>  <span class="nx">$scope</span><span class="p">.</span><span class="nx">hotel</span> <span class="o">=</span> <span class="nx">accommodation</span><span class="p">.</span><span class="nx">hotelName</span><span class="p">(</span> <span class="nx">$scope</span> <span class="p">);</span>
-</span><span class='line'>  <span class="nx">$scope</span><span class="p">.</span><span class="nx">roomno</span> <span class="o">=</span> <span class="nx">accommodation</span><span class="p">.</span><span class="nx">roomNo</span><span class="p">(</span> <span class="nx">$scope</span> <span class="p">);</span>
-</span><span class='line'><span class="p">}</span> <span class="p">);</span>
-</span></code></pre></td></tr></table></div></figure>
+<figure class='code'><figcaption><span></span></figcaption><pre><code class='language-javascript'>&quot;use strict&quot;;
+var app = angular.module( &quot;app&quot;, [ ] );
+app.config( function( $routeProvider ) {
+  $routeProvider.when( &quot;/visitplace&quot;, {
+    templateUrl: &quot;placetovisit.html&quot;,
+    controller: &quot;TourCoordinatorCtrl&quot;
+  } );
+} );
+app.factory( &quot;accommodation&quot;, function( $timeout ) {
+  return {
+    hotelName: function( scope ) {
+      $timeout(function(){
+        scope.hotel = &quot;Some hotel&quot;;
+      },3000);
+      return &quot;---&quot;;
+    },
+    roomNo: function( scope ) {
+      $timeout(function(){
+        scope.roomno = &quot;103&quot;;
+      },3000);
+      return &quot;---&quot;;
+    }
+  };
+} );
+app.controller( &quot;TourCoordinatorCtrl&quot;, function( $scope, accommodation ) {
+  $scope.name = &quot;Shidhin&quot;;
+  $scope.place = &quot;Switzerland&quot;;
+  $scope.hotel = accommodation.hotelName( $scope );
+  $scope.roomno = accommodation.roomNo( $scope );
+} );</code></pre></figure>
 
 
 <p>This is not ideal in sometimes. I&rsquo;ve to render the view and wait for some of the data to be loaded. In my case, it&rsquo;s like I already started the trip and reached the place; but I&rsquo;m waiting in the place to get my accommodation. This is really annoying ! Is there any way to make sure that these dependencies are resolved before I start my journey ? Let&rsquo;s see :</p>
@@ -325,57 +233,31 @@ ga('send', 'pageview');
 
 <p>Let&rsquo;s relate our current story to Angular&rsquo;s context by using this resolve object. Look at our modified application code:</p>
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-<span class='line-number'>21</span>
-<span class='line-number'>22</span>
-<span class='line-number'>23</span>
-<span class='line-number'>24</span>
-<span class='line-number'>25</span>
-</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="s2">&quot;use strict&quot;</span><span class="p">;</span>
-</span><span class='line'><span class="kd">var</span> <span class="nx">app</span> <span class="o">=</span> <span class="nx">angular</span><span class="p">.</span><span class="nx">module</span><span class="p">(</span> <span class="s2">&quot;app&quot;</span><span class="p">,</span> <span class="p">[</span> <span class="p">]</span> <span class="p">,</span> <span class="kd">function</span><span class="p">(</span> <span class="nx">$routeProvider</span> <span class="p">)</span> <span class="p">{</span>
-</span><span class='line'>  <span class="nx">$routeProvider</span><span class="p">.</span><span class="nx">when</span><span class="p">(</span> <span class="s2">&quot;/visitplace&quot;</span><span class="p">,</span> <span class="p">{</span>
-</span><span class='line'>    <span class="nx">templateUrl</span><span class="o">:</span> <span class="s2">&quot;placetovisit.html&quot;</span><span class="p">,</span>
-</span><span class='line'>    <span class="nx">controller</span><span class="o">:</span> <span class="s2">&quot;TourCoordinatorCtrl&quot;</span><span class="p">,</span>
-</span><span class='line'>    <span class="nx">resolve</span><span class="o">:</span> <span class="p">{</span>
-</span><span class='line'>      <span class="s2">&quot;myFriendsHotel&quot;</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span> <span class="p">)</span> <span class="p">{</span>
-</span><span class='line'>        <span class="k">return</span> <span class="p">{</span>
-</span><span class='line'>          <span class="nx">hotelName</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span> <span class="p">)</span> <span class="p">{</span>
-</span><span class='line'>            <span class="k">return</span> <span class="s2">&quot;My Friend&#39;s hotel&quot;</span><span class="p">;</span>
-</span><span class='line'>          <span class="p">},</span>
-</span><span class='line'>          <span class="nx">roomNo</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span> <span class="p">)</span> <span class="p">{</span>
-</span><span class='line'>            <span class="k">return</span> <span class="s2">&quot;100&quot;</span><span class="p">;</span>
-</span><span class='line'>          <span class="p">}</span>
-</span><span class='line'>        <span class="p">};</span>
-</span><span class='line'>      <span class="p">}</span>
-</span><span class='line'>    <span class="p">}</span>
-</span><span class='line'>  <span class="p">});</span>
-</span><span class='line'><span class="p">}</span> <span class="p">);</span>
-</span><span class='line'><span class="nx">app</span><span class="p">.</span><span class="nx">controller</span><span class="p">(</span> <span class="s2">&quot;TourCoordinatorCtrl&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span> <span class="nx">$scope</span><span class="p">,</span> <span class="nx">myFriendsHotel</span> <span class="p">)</span> <span class="p">{</span>
-</span><span class='line'>  <span class="nx">$scope</span><span class="p">.</span><span class="nx">name</span> <span class="o">=</span> <span class="s2">&quot;Shidhin&quot;</span><span class="p">;</span>
-</span><span class='line'>  <span class="nx">$scope</span><span class="p">.</span><span class="nx">place</span> <span class="o">=</span> <span class="s2">&quot;Switzerland&quot;</span><span class="p">;</span>
-</span><span class='line'>  <span class="nx">$scope</span><span class="p">.</span><span class="nx">hotel</span> <span class="o">=</span> <span class="nx">myFriendsHotel</span><span class="p">.</span><span class="nx">hotelName</span><span class="p">(</span> <span class="p">);</span>
-</span><span class='line'>  <span class="nx">$scope</span><span class="p">.</span><span class="nx">roomno</span> <span class="o">=</span> <span class="nx">myFriendsHotel</span><span class="p">.</span><span class="nx">roomNo</span><span class="p">(</span> <span class="p">);</span>
-</span><span class='line'><span class="p">}</span> <span class="p">);</span>
-</span></code></pre></td></tr></table></div></figure>
+<figure class='code'><figcaption><span></span></figcaption><pre><code class='language-javascript'>&quot;use strict&quot;;
+var app = angular.module( &quot;app&quot;, [ ] , function( $routeProvider ) {
+  $routeProvider.when( &quot;/visitplace&quot;, {
+    templateUrl: &quot;placetovisit.html&quot;,
+    controller: &quot;TourCoordinatorCtrl&quot;,
+    resolve: {
+      &quot;myFriendsHotel&quot;: function( ) {
+        return {
+          hotelName: function( ) {
+            return &quot;My Friend&apos;s hotel&quot;;
+          },
+          roomNo: function( ) {
+            return &quot;100&quot;;
+          }
+        };
+      }
+    }
+  });
+} );
+app.controller( &quot;TourCoordinatorCtrl&quot;, function( $scope, myFriendsHotel ) {
+  $scope.name = &quot;Shidhin&quot;;
+  $scope.place = &quot;Switzerland&quot;;
+  $scope.hotel = myFriendsHotel.hotelName( );
+  $scope.roomno = myFriendsHotel.roomNo( );
+} );</code></pre></figure>
 
 
 <p><em>Note: When controller is defined in the route, never initialise it again through ng-controller. That might throw an error when used with resolve configuration.</em></p>
@@ -388,65 +270,35 @@ ga('send', 'pageview');
 
 <p>Let&rsquo;s see the final version of our code  in Angular:</p>
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-<span class='line-number'>21</span>
-<span class='line-number'>22</span>
-<span class='line-number'>23</span>
-<span class='line-number'>24</span>
-<span class='line-number'>25</span>
-<span class='line-number'>26</span>
-<span class='line-number'>27</span>
-<span class='line-number'>28</span>
-<span class='line-number'>29</span>
-</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="s2">&quot;use strict&quot;</span><span class="p">;</span>
-</span><span class='line'><span class="kd">var</span> <span class="nx">app</span> <span class="o">=</span> <span class="nx">angular</span><span class="p">.</span><span class="nx">module</span><span class="p">(</span> <span class="s2">&quot;app&quot;</span><span class="p">,</span> <span class="p">[</span> <span class="p">]</span> <span class="p">,</span> <span class="kd">function</span><span class="p">(</span> <span class="nx">$routeProvider</span> <span class="p">)</span> <span class="p">{</span>
-</span><span class='line'>  <span class="nx">$routeProvider</span><span class="p">.</span><span class="nx">when</span><span class="p">(</span> <span class="s2">&quot;/visitplace&quot;</span><span class="p">,</span> <span class="p">{</span>
-</span><span class='line'>    <span class="nx">templateUrl</span><span class="o">:</span> <span class="s2">&quot;placetovisit.html&quot;</span><span class="p">,</span>
-</span><span class='line'>    <span class="nx">controller</span><span class="o">:</span> <span class="s2">&quot;TourCoordinatorCtrl&quot;</span><span class="p">,</span>
-</span><span class='line'>    <span class="nx">resolve</span><span class="o">:</span> <span class="p">{</span>
-</span><span class='line'>      <span class="s2">&quot;accommodation&quot;</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span> <span class="nx">$q</span><span class="p">,</span> <span class="nx">$timeout</span> <span class="p">)</span> <span class="p">{</span>
-</span><span class='line'>        <span class="kd">var</span> <span class="nx">myFriend</span> <span class="o">=</span> <span class="nx">$q</span><span class="p">.</span><span class="nx">defer</span><span class="p">();</span>
-</span><span class='line'>        <span class="nx">$timeout</span><span class="p">(</span><span class="kd">function</span><span class="p">(){</span>
-</span><span class='line'>          <span class="nx">myFriend</span><span class="p">.</span><span class="nx">resolve</span><span class="p">({</span>
-</span><span class='line'>            <span class="nx">hotelName</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span> <span class="p">)</span> <span class="p">{</span>
-</span><span class='line'>              <span class="k">return</span> <span class="s2">&quot;My Friend&#39;s friend&#39;s hotel&quot;</span><span class="p">;</span>
-</span><span class='line'>            <span class="p">},</span>
-</span><span class='line'>            <span class="nx">roomNo</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span> <span class="p">)</span> <span class="p">{</span>
-</span><span class='line'>              <span class="k">return</span> <span class="s2">&quot;404&quot;</span><span class="p">;</span>
-</span><span class='line'>            <span class="p">}</span>
-</span><span class='line'>          <span class="p">});</span>
-</span><span class='line'>        <span class="p">},</span><span class="mi">5000</span><span class="p">);</span>
-</span><span class='line'>        <span class="k">return</span> <span class="nx">myFriend</span><span class="p">.</span><span class="nx">promise</span><span class="p">;</span>
-</span><span class='line'>      <span class="p">}</span>
-</span><span class='line'>    <span class="p">}</span>
-</span><span class='line'>  <span class="p">});</span>
-</span><span class='line'><span class="p">}</span> <span class="p">);</span>
-</span><span class='line'><span class="nx">app</span><span class="p">.</span><span class="nx">controller</span><span class="p">(</span> <span class="s2">&quot;TourCoordinatorCtrl&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span> <span class="nx">$scope</span><span class="p">,</span> <span class="nx">accommodation</span> <span class="p">)</span> <span class="p">{</span>
-</span><span class='line'>  <span class="nx">$scope</span><span class="p">.</span><span class="nx">name</span> <span class="o">=</span> <span class="s2">&quot;Shidhin&quot;</span><span class="p">;</span>
-</span><span class='line'>  <span class="nx">$scope</span><span class="p">.</span><span class="nx">place</span> <span class="o">=</span> <span class="s2">&quot;Switzerland&quot;</span><span class="p">;</span>
-</span><span class='line'>  <span class="nx">$scope</span><span class="p">.</span><span class="nx">hotel</span> <span class="o">=</span> <span class="nx">accommodation</span><span class="p">.</span><span class="nx">hotelName</span><span class="p">(</span> <span class="p">);</span>
-</span><span class='line'>  <span class="nx">$scope</span><span class="p">.</span><span class="nx">roomno</span> <span class="o">=</span> <span class="nx">accommodation</span><span class="p">.</span><span class="nx">roomNo</span><span class="p">(</span> <span class="p">);</span>
-</span><span class='line'><span class="p">}</span> <span class="p">);</span>
-</span></code></pre></td></tr></table></div></figure>
+<figure class='code'><figcaption><span></span></figcaption><pre><code class='language-javascript'>&quot;use strict&quot;;
+var app = angular.module( &quot;app&quot;, [ ] , function( $routeProvider ) {
+  $routeProvider.when( &quot;/visitplace&quot;, {
+    templateUrl: &quot;placetovisit.html&quot;,
+    controller: &quot;TourCoordinatorCtrl&quot;,
+    resolve: {
+      &quot;accommodation&quot;: function( $q, $timeout ) {
+        var myFriend = $q.defer();        
+        $timeout(function(){
+          myFriend.resolve({
+            hotelName: function( ) {
+              return &quot;My Friend&apos;s friend&apos;s hotel&quot;;
+            },
+            roomNo: function( ) {
+              return &quot;404&quot;;
+            }
+          });
+        },5000);
+        return myFriend.promise;
+      }
+    }
+  });
+} );
+app.controller( &quot;TourCoordinatorCtrl&quot;, function( $scope, accommodation ) {
+  $scope.name = &quot;Shidhin&quot;;
+  $scope.place = &quot;Switzerland&quot;;
+  $scope.hotel = accommodation.hotelName( );
+  $scope.roomno = accommodation.roomNo( );
+} );</code></pre></figure>
 
 
 <p>Closely look at each lines and see the differences from the previous one. Did you notice that, this time we&rsquo;ve defined a variable <code>myFriend</code> inside the resolve function and initialised it using <code>$q.defer()</code>. The <strong>$q</strong> is the implementation of <em>Promises</em> API in AngularJS. It&rsquo;s inspired by the &ldquo;<strong>Q</strong>&rdquo; library implementation by kriskowal ( <a href="https://github.com/kriskowal/q">link</a> here ). If you don&rsquo;t know what a <em>Promise</em> is, then you should definitely check it out <a href="http://12devs.co.uk/articles/promises-an-alternative-way-to-approach-asynchronous-javascript/">here</a>.</p>
@@ -763,6 +615,22 @@ ga('send', 'pageview');
     console.log(e);
   });
 </script> -->
+
+  <script src="/javascripts/modernizr-2.0.js" async></script>
+  <script src="/javascripts/libs/jquery.min.js" async></script>
+  <script src="/javascripts/octopress.js" type="text/javascript" async></script>
+  <script src="/javascripts/prism.js" type="text/javascript" async></script>
+  
+  <script type="text/javascript">
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ga('create', 'UA-10379928-17', 'auto');
+ga('require', 'displayfeatures');
+ga('send', 'pageview');
+  </script>
+
 
 </body>
 </html>
