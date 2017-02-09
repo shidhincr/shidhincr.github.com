@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "React Redux Part 1 : Implementing a counter component in react by using state"
-date: 2016-01-21 23:07:48 +0400
+date: 2016-01-21 10:07:48 +0400
 comments: true
 author: Shidhin
 published: true

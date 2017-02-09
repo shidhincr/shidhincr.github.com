@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Repeating Multiple Elements using ng-repeat-start and ng-repeat-end in AngularJS"
-date: 2015-04-10 23:45:27 +0400
+date: 2015-04-10 10:45:27 +0400
 author: Shidhin C R
 comments: true
 published: true
