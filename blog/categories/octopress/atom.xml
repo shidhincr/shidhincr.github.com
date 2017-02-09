@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Octopress | Undefined NULL]]></title>
   <link href="https://www.undefinednull.com/blog/categories/octopress/atom.xml" rel="self"/>
   <link href="https://www.undefinednull.com/"/>
-  <updated>2016-08-27T20:57:27+04:00</updated>
+  <updated>2017-02-09T15:52:17+05:30</updated>
   <id>https://www.undefinednull.com/</id>
   <author>
     <name><![CDATA[Shidhin]]></name>
@@ -16,7 +16,7 @@
   <entry>
     <title type="html"><![CDATA[Octopress Blog Tweaks: Adding Author Info Section Below Each Posts]]></title>
     <link href="https://www.undefinednull.com/2013/10/15/octopress-blog-tweaks-adding-author-information-section-below-each-posts/"/>
-    <updated>2013-10-15T10:15:00+04:00</updated>
+    <updated>2013-10-15T10:15:00+05:30</updated>
     <id>https://www.undefinednull.com/2013/10/15/octopress-blog-tweaks-adding-author-information-section-below-each-posts</id>
     <content type="html"><![CDATA[<p>A good blogging platform is one which allows easy customization. I&rsquo;ve been using Octopress for more than 2 weeks and happy to tell that it&rsquo;s one of those allows customization with out any pain. I want to share a tweak I added to my blog recently : It&rsquo;s an author information section below every post. Let&rsquo;s see how I built it and added to my blog.</p>
 

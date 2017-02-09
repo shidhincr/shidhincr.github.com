@@ -4,7 +4,7 @@
   <title><![CDATA[Undefined NULL]]></title>
   <link href="https://www.undefinednull.com/atom.xml" rel="self"/>
   <link href="https://www.undefinednull.com/"/>
-  <updated>2016-08-27T20:57:27+04:00</updated>
+  <updated>2017-02-09T15:52:17+05:30</updated>
   <id>https://www.undefinednull.com/</id>
   <author>
     <name><![CDATA[Shidhin]]></name>
@@ -16,7 +16,7 @@
   <entry>
     <title type="html"><![CDATA[Debugging React Native Apps using Visual Studio Code]]></title>
     <link href="https://www.undefinednull.com/2016/04/21/debugging-react-native-apps-using-visual-studio-code/"/>
-    <updated>2016-04-21T15:39:09+04:00</updated>
+    <updated>2016-04-21T17:09:09+05:30</updated>
     <id>https://www.undefinednull.com/2016/04/21/debugging-react-native-apps-using-visual-studio-code</id>
     <content type="html"><![CDATA[<p> I always think that I am a <a href="https://blog.codinghorror.com/the-magpie-developer/">Magpie developer</a>. I don&rsquo;t know if others do this often; But, most of the times, I switch between my IDEs,  trying out new frameworks ( even though it doesn&rsquo;t solve most of my problems ).</p>
 
@@ -128,9 +128,9 @@
   
   <entry>
     <title type="html"><![CDATA[React Redux Part 1 : Implementing a counter component in react by using state]]></title>
-    <link href="https://www.undefinednull.com/2016/01/21/react-redux-part-1-implementing-a-counter-component-in-react-by-using-state/"/>
-    <updated>2016-01-21T23:07:48+04:00</updated>
-    <id>https://www.undefinednull.com/2016/01/21/react-redux-part-1-implementing-a-counter-component-in-react-by-using-state</id>
+    <link href="https://www.undefinednull.com/2016/01/22/react-redux-part-1-implementing-a-counter-component-in-react-by-using-state/"/>
+    <updated>2016-01-22T00:37:48+05:30</updated>
+    <id>https://www.undefinednull.com/2016/01/22/react-redux-part-1-implementing-a-counter-component-in-react-by-using-state</id>
     <content type="html"><![CDATA[<p>The frontend world is moving so fast these days. The hottest trend is React along with the Flux pattern. Flux is a architectural pattern introduced by Facebook to solve some of the problems in large data centric applications. Facebook introduced flux as a concept, but there&rsquo;re number of flux libraries born from then. Today we&rsquo;re gonna talk about the most popular library in that category named <a href="http://redux.js.org/">Redux</a>.</p>
 
 <!-- more -->
@@ -224,7 +224,7 @@ git checkout react-state</code></pre></figure>
   <entry>
     <title type="html"><![CDATA[Injecting Custom JavaScript into React Native's Webview]]></title>
     <link href="https://www.undefinednull.com/2015/12/27/injecting-custom-javascript-into-react-natives-webview/"/>
-    <updated>2015-12-27T22:11:28+04:00</updated>
+    <updated>2015-12-27T23:41:28+05:30</updated>
     <id>https://www.undefinednull.com/2015/12/27/injecting-custom-javascript-into-react-natives-webview</id>
     <content type="html"><![CDATA[<p><img src="https://lh3.googleusercontent.com/-3JWl2Mvff3w/VoApfwiv1TI/AAAAAAAAssU/UJRZsSvHHpo/s800/Screen+Shot+2015-12-27+at+10.09.12+PM.png" title="Screen Shot 2015-12-27 at 10.09.12 PM.png" alt="react native webview" /></p>
 
@@ -297,7 +297,7 @@ AppRegistry.registerComponent(&apos;MyApp&apos;, () =&gt; MyApp);</code></pre></
   <entry>
     <title type="html"><![CDATA[iTerm tips and zsh plugins for better development environment]]></title>
     <link href="https://www.undefinednull.com/2015/07/31/iterm-tips-and-zsh-plugins-for-better-development-environment/"/>
-    <updated>2015-07-31T13:31:07+04:00</updated>
+    <updated>2015-07-31T15:01:07+05:30</updated>
     <id>https://www.undefinednull.com/2015/07/31/iterm-tips-and-zsh-plugins-for-better-development-environment</id>
     <content type="html"><![CDATA[<p>This post is about the two tools I use regularly in my development environment:  <strong>iTerm</strong> and <strong>oh-my-zsh</strong>. <a href="https://www.iterm2.com/">iTerm</a> is a mac terminal replacement and zsh + <a href="https://github.com/robbyrussell/oh-my-zsh">oh-my-zsh</a> is an excellent combo to replace the bash shell with some cool stuffs.</p>
 
@@ -435,7 +435,7 @@ plugins=(git bundler foobar)</p></blockquote>
   <entry>
     <title type="html"><![CDATA[React TDD Example: Unit Testing and Building a React Component with Jest, Gulp and React Test Utils]]></title>
     <link href="https://www.undefinednull.com/2015/05/03/react-tdd-example-unit-testing-and-building-a-react-component-with-jest-gulp-and-react-test-utils/"/>
-    <updated>2015-05-03T10:32:01+04:00</updated>
+    <updated>2015-05-03T12:02:01+05:30</updated>
     <id>https://www.undefinednull.com/2015/05/03/react-tdd-example-unit-testing-and-building-a-react-component-with-jest-gulp-and-react-test-utils</id>
     <content type="html"><![CDATA[<p>ReactJs has attained lot of momentum since its initial release in 2013, and became the best JavaScript library for developing rich UI interface. React also popularized different concepts like Virtual DOM, Uni-directional data flow and Componentization in the front-end community. As of today, React has more than 20,000 stars in <a href="https://github.com/facebook/react">Github repo</a>, and actively maintained by the Facebook team.</p>
 
@@ -1012,9 +1012,9 @@ ReactDOM.render(&lt;Accordion data={input}/&gt;, document.getElementById(&apos;v
   
   <entry>
     <title type="html"><![CDATA[Repeating Multiple Elements using ng-repeat-start and ng-repeat-end in AngularJS]]></title>
-    <link href="https://www.undefinednull.com/2015/04/10/repeating-multiple-elements-using-ng-repeat-start-and-ng-repeat-end-in-angularjs/"/>
-    <updated>2015-04-10T23:45:27+04:00</updated>
-    <id>https://www.undefinednull.com/2015/04/10/repeating-multiple-elements-using-ng-repeat-start-and-ng-repeat-end-in-angularjs</id>
+    <link href="https://www.undefinednull.com/2015/04/11/repeating-multiple-elements-using-ng-repeat-start-and-ng-repeat-end-in-angularjs/"/>
+    <updated>2015-04-11T01:15:27+05:30</updated>
+    <id>https://www.undefinednull.com/2015/04/11/repeating-multiple-elements-using-ng-repeat-start-and-ng-repeat-end-in-angularjs</id>
     <content type="html"><![CDATA[<p>When the AngularJS <a href="http://www.angularjs.org">website</a> is released, the TODO example in their website was one of the main attractions. The example was simple and just below 30 lines of code ( Here is the <a href="https://jsfiddle.net/1waxcf9x/">link</a>  if you want to check ). The whole trick behind the scene was done by a directive named <strong>ng-repeat</strong>, as shown below:</p>
 
 <!-- more -->
@@ -1092,7 +1092,7 @@ ReactDOM.render(&lt;Accordion data={input}/&gt;, document.getElementById(&apos;v
   <entry>
     <title type="html"><![CDATA[Implementing a curry function in JavaScript using TDD]]></title>
     <link href="https://www.undefinednull.com/2015/03/19/implementing-a-curry-function-in-javascript-using-tdd/"/>
-    <updated>2015-03-19T18:51:27+04:00</updated>
+    <updated>2015-03-19T20:21:27+05:30</updated>
     <id>https://www.undefinednull.com/2015/03/19/implementing-a-curry-function-in-javascript-using-tdd</id>
     <content type="html"><![CDATA[<p>TDD stands for Test Driven Development. To those who don&rsquo;t know what TDD means: In a typical TDD Environment, a developer start with a basic test case describing the minimal requirement for implementing the module. Then he writes the actual implementation code for making the test case pass.</p>
 
@@ -1596,7 +1596,7 @@ var makeCurry = function(fn){
   <entry>
     <title type="html"><![CDATA[Remote debugging localhost with weinre ( and HTTPS too ) ]]></title>
     <link href="https://www.undefinednull.com/2015/03/17/remote-debugging-localhost-with-weinre/"/>
-    <updated>2015-03-17T10:33:00+04:00</updated>
+    <updated>2015-03-17T10:33:00+05:30</updated>
     <id>https://www.undefinednull.com/2015/03/17/remote-debugging-localhost-with-weinre</id>
     <content type="html"><![CDATA[<p>Debugging mobile websites/applications is a real pain. No debuggers for Javascript, no console logs, cannot inspect html/css, and so on.</p>
 
@@ -1746,7 +1746,7 @@ vi target-min-script.js</code></pre></figure>
   <entry>
     <title type="html"><![CDATA[Whatsapp web client: Hide/blur thumbnail images preview]]></title>
     <link href="https://www.undefinednull.com/2015/02/04/whatsapp-web-client-hide-slash-blur-thumbnail-images-preview/"/>
-    <updated>2015-02-04T14:07:17+04:00</updated>
+    <updated>2015-02-04T15:37:17+05:30</updated>
     <id>https://www.undefinednull.com/2015/02/04/whatsapp-web-client-hide-slash-blur-thumbnail-images-preview</id>
     <content type="html"><![CDATA[<p>The most anticipated Whatsapp web is here finally. If you haven&rsquo;t seen it go check it out: <a href="http://web.whatsapp.com">http://web.whatsapp.com</a>. I really like it because of these reasons:</p>
 
@@ -1789,7 +1789,7 @@ vi target-min-script.js</code></pre></figure>
   <entry>
     <title type="html"><![CDATA[A brief walk-through of the ng-options in AngularJS]]></title>
     <link href="https://www.undefinednull.com/2014/08/11/a-brief-walk-through-of-the-ng-options-in-angularjs/"/>
-    <updated>2014-08-11T11:13:45+04:00</updated>
+    <updated>2014-08-11T12:43:45+05:30</updated>
     <id>https://www.undefinednull.com/2014/08/11/a-brief-walk-through-of-the-ng-options-in-angularjs</id>
     <content type="html"><![CDATA[<p><img src="https://lh4.googleusercontent.com/-ts5lhPEvP2U/VA2txu4TiLI/AAAAAAAASWs/ZR8EkWYzhcI/w681-h250-no/ng-options.jpg" alt="" /></p>
 
@@ -2043,7 +2043,7 @@ For object data sources, the default model bound to the select box is the value,
   <entry>
     <title type="html"><![CDATA[Practical Guide to PreLink, PostLink and Controller Methods of Angular Directives]]></title>
     <link href="https://www.undefinednull.com/2014/07/07/practical-guide-to-prelink-postlink-and-controller-methods-of-angular-directives/"/>
-    <updated>2014-07-07T14:20:58+04:00</updated>
+    <updated>2014-07-07T15:50:58+05:30</updated>
     <id>https://www.undefinednull.com/2014/07/07/practical-guide-to-prelink-postlink-and-controller-methods-of-angular-directives</id>
     <content type="html"><![CDATA[<p>I have discussed about the scope of a directive in my previous <a href="http://www.undefinednull.com/2014/02/11/mastering-the-scope-of-a-directive-in-angularjs/">article</a>. Here we&rsquo;re going to see how to use the link and controller functions of an AngularJs directive.</p>
 
@@ -2218,7 +2218,7 @@ Used for defining a proper API to the directive. Using controller, directives ca
   <entry>
     <title type="html"><![CDATA[Explaining Call and Apply in JavaScript, through Mr.Dave]]></title>
     <link href="https://www.undefinednull.com/2014/06/26/explaining-call-and-apply-in-javascript-through-mr-dot-dave/"/>
-    <updated>2014-06-26T10:41:07+04:00</updated>
+    <updated>2014-06-26T12:11:07+05:30</updated>
     <id>https://www.undefinednull.com/2014/06/26/explaining-call-and-apply-in-javascript-through-mr-dot-dave</id>
     <content type="html"><![CDATA[<h3>Call and Apply, makes sense. Who is Mr.Dave ?</h3>
 
@@ -2344,7 +2344,7 @@ var bookedTicket = davesMethodForFlightBooking.apply(You, [place, numberOfPeople
   <entry>
     <title type="html"><![CDATA[AngularJS: Real time model persistence using local storage]]></title>
     <link href="https://www.undefinednull.com/2014/02/25/angularjs-real-time-model-persistence-using-local-storage/"/>
-    <updated>2014-02-25T07:46:00+04:00</updated>
+    <updated>2014-02-25T07:46:00+05:30</updated>
     <id>https://www.undefinednull.com/2014/02/25/angularjs-real-time-model-persistence-using-local-storage</id>
     <content type="html"><![CDATA[<p>Last week, I came across a situation while working on a simple AngularJS application. I&rsquo;d to sync the data between multiple open tabs. As you guess,  the easy way to sync data between multiple tabs is through <strong>local storage</strong>. Ofcourse there are better ways of doing this using <strong>websockets</strong>; but here I am going to explain the client-side way –– using local storage and real time updating other tabs.</p>
 
@@ -2456,7 +2456,7 @@ app.factory(&quot;LS&quot;, function($window, $rootScope) {
   <entry>
     <title type="html"><![CDATA['Resolve' in AngularJS routes, explained as story]]></title>
     <link href="https://www.undefinednull.com/2014/02/17/resolve-in-angularjs-routes-explained-as-story/"/>
-    <updated>2014-02-17T11:09:00+04:00</updated>
+    <updated>2014-02-17T11:09:00+05:30</updated>
     <id>https://www.undefinednull.com/2014/02/17/resolve-in-angularjs-routes-explained-as-story</id>
     <content type="html"><![CDATA[<p>I feel AngularJS documentation is baffling sometimes. Reason may be,  I&rsquo;m going through the same <a href="http://www.bennadel.com/blog/2439-My-Experience-With-AngularJS-The-Super-heroic-JavaScript-MVW-Framework.htm">learning curve</a> described by <a href="https://twitter.com/bennadel">@bennadel</a>. Through this article, I&rsquo;m primarily aiming to help those who got stuck at some point of the curve. Don&rsquo;t take it too seriously; I&rsquo;m just sharing some of my experiences with AngularJS.</p>
 
@@ -2669,7 +2669,7 @@ app.controller( &quot;TourCoordinatorCtrl&quot;, function( $scope, accommodation
   <entry>
     <title type="html"><![CDATA[Mastering the scope of the directives in AngularJS]]></title>
     <link href="https://www.undefinednull.com/2014/02/11/mastering-the-scope-of-a-directive-in-angularjs/"/>
-    <updated>2014-02-11T08:26:00+04:00</updated>
+    <updated>2014-02-11T08:26:00+05:30</updated>
     <id>https://www.undefinednull.com/2014/02/11/mastering-the-scope-of-a-directive-in-angularjs</id>
     <content type="html"><![CDATA[<p><img src="https://lh5.googleusercontent.com/-XOGfvAHr7HQ/UvoUItkZMZI/AAAAAAAAHJk/IJz5JcUB9dw/w520-h274-no/scopes_in_directives.png" alt="" /></p>
 
@@ -2922,7 +2922,7 @@ randomColor = function for generating random color code
   <entry>
     <title type="html"><![CDATA[Multiple Left-hand assignment in JavaScript, is really bad. Think before you do it.]]></title>
     <link href="https://www.undefinednull.com/2014/02/03/multiple-left-hand-assignment-in-javascript-is-really-bad-think-once-before-you-do-it/"/>
-    <updated>2014-02-03T12:04:00+04:00</updated>
+    <updated>2014-02-03T12:04:00+05:30</updated>
     <id>https://www.undefinednull.com/2014/02/03/multiple-left-hand-assignment-in-javascript-is-really-bad-think-once-before-you-do-it</id>
     <content type="html"><![CDATA[<p><strong>“JavaScript allows multiple left-hand assignments”</strong></p>
 
@@ -2977,7 +2977,7 @@ window.d // will be 10
   <entry>
     <title type="html"><![CDATA[Starting VerbalRegex.com open source project]]></title>
     <link href="https://www.undefinednull.com/2014/01/29/starting-verbalregex-dot-com-open-source-project/"/>
-    <updated>2014-01-29T01:09:00+04:00</updated>
+    <updated>2014-01-29T01:09:00+05:30</updated>
     <id>https://www.undefinednull.com/2014/01/29/starting-verbalregex-dot-com-open-source-project</id>
     <content type="html"><![CDATA[<p>On the other day, while exploring the Github repositories, this one grabbed my attention.</p>
 
@@ -3019,7 +3019,7 @@ window.d // will be 10
   <entry>
     <title type="html"><![CDATA[Octopress Blog Tweaks: Adding Author Info Section Below Each Posts]]></title>
     <link href="https://www.undefinednull.com/2013/10/15/octopress-blog-tweaks-adding-author-information-section-below-each-posts/"/>
-    <updated>2013-10-15T10:15:00+04:00</updated>
+    <updated>2013-10-15T10:15:00+05:30</updated>
     <id>https://www.undefinednull.com/2013/10/15/octopress-blog-tweaks-adding-author-information-section-below-each-posts</id>
     <content type="html"><![CDATA[<p>A good blogging platform is one which allows easy customization. I&rsquo;ve been using Octopress for more than 2 weeks and happy to tell that it&rsquo;s one of those allows customization with out any pain. I want to share a tweak I added to my blog recently : It&rsquo;s an author information section below every post. Let&rsquo;s see how I built it and added to my blog.</p>
 
@@ -3178,7 +3178,7 @@ window.d // will be 10
   <entry>
     <title type="html"><![CDATA[ Some Gotchas In Arithmetic Expression Evaluation : JavaScript]]></title>
     <link href="https://www.undefinednull.com/2013/09/26/some-gotchas-in-arithmetic-expression-evaluation-javascript/"/>
-    <updated>2013-09-26T16:15:00+04:00</updated>
+    <updated>2013-09-26T16:15:00+05:30</updated>
     <id>https://www.undefinednull.com/2013/09/26/some-gotchas-in-arithmetic-expression-evaluation-javascript</id>
     <content type="html"><![CDATA[<h2>Solve a small problem in JavaScript</h2>
 
@@ -3399,7 +3399,7 @@ Finally the value of expression <code>Y</code> becomes <code>8</code>.</p>
   <entry>
     <title type="html"><![CDATA[Starting my new blog: Finally Octopress]]></title>
     <link href="https://www.undefinednull.com/2013/09/25/starting-my-new-blog-finally-octopress/"/>
-    <updated>2013-09-25T07:36:00+04:00</updated>
+    <updated>2013-09-25T07:36:00+05:30</updated>
     <id>https://www.undefinednull.com/2013/09/25/starting-my-new-blog-finally-octopress</id>
     <content type="html"><![CDATA[<h2>Finally Octopress !!</h2>
 

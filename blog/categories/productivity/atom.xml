@@ -4,7 +4,7 @@
   <title><![CDATA[Category: productivity | Undefined NULL]]></title>
   <link href="https://www.undefinednull.com/blog/categories/productivity/atom.xml" rel="self"/>
   <link href="https://www.undefinednull.com/"/>
-  <updated>2016-08-27T20:57:27+04:00</updated>
+  <updated>2017-02-09T15:52:17+05:30</updated>
   <id>https://www.undefinednull.com/</id>
   <author>
     <name><![CDATA[Shidhin]]></name>
@@ -16,7 +16,7 @@
   <entry>
     <title type="html"><![CDATA[iTerm tips and zsh plugins for better development environment]]></title>
     <link href="https://www.undefinednull.com/2015/07/31/iterm-tips-and-zsh-plugins-for-better-development-environment/"/>
-    <updated>2015-07-31T13:31:07+04:00</updated>
+    <updated>2015-07-31T15:01:07+05:30</updated>
     <id>https://www.undefinednull.com/2015/07/31/iterm-tips-and-zsh-plugins-for-better-development-environment</id>
     <content type="html"><![CDATA[<p>This post is about the two tools I use regularly in my development environment:  <strong>iTerm</strong> and <strong>oh-my-zsh</strong>. <a href="https://www.iterm2.com/">iTerm</a> is a mac terminal replacement and zsh + <a href="https://github.com/robbyrussell/oh-my-zsh">oh-my-zsh</a> is an excellent combo to replace the bash shell with some cool stuffs.</p>
 

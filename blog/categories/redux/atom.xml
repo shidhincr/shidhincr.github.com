@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Redux | Undefined NULL]]></title>
   <link href="https://www.undefinednull.com/blog/categories/redux/atom.xml" rel="self"/>
   <link href="https://www.undefinednull.com/"/>
-  <updated>2016-08-27T20:57:27+04:00</updated>
+  <updated>2017-02-09T15:52:17+05:30</updated>
   <id>https://www.undefinednull.com/</id>
   <author>
     <name><![CDATA[Shidhin]]></name>
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[React Redux Part 1 : Implementing a counter component in react by using state]]></title>
-    <link href="https://www.undefinednull.com/2016/01/21/react-redux-part-1-implementing-a-counter-component-in-react-by-using-state/"/>
-    <updated>2016-01-21T23:07:48+04:00</updated>
-    <id>https://www.undefinednull.com/2016/01/21/react-redux-part-1-implementing-a-counter-component-in-react-by-using-state</id>
+    <link href="https://www.undefinednull.com/2016/01/22/react-redux-part-1-implementing-a-counter-component-in-react-by-using-state/"/>
+    <updated>2016-01-22T00:37:48+05:30</updated>
+    <id>https://www.undefinednull.com/2016/01/22/react-redux-part-1-implementing-a-counter-component-in-react-by-using-state</id>
     <content type="html"><![CDATA[<p>The frontend world is moving so fast these days. The hottest trend is React along with the Flux pattern. Flux is a architectural pattern introduced by Facebook to solve some of the problems in large data centric applications. Facebook introduced flux as a concept, but there&rsquo;re number of flux libraries born from then. Today we&rsquo;re gonna talk about the most popular library in that category named <a href="http://redux.js.org/">Redux</a>.</p>
 
 <!-- more -->

@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Testem | Undefined NULL]]></title>
   <link href="https://www.undefinednull.com/blog/categories/testem/atom.xml" rel="self"/>
   <link href="https://www.undefinednull.com/"/>
-  <updated>2016-08-27T20:57:27+04:00</updated>
+  <updated>2017-02-09T15:52:17+05:30</updated>
   <id>https://www.undefinednull.com/</id>
   <author>
     <name><![CDATA[Shidhin]]></name>
@@ -16,7 +16,7 @@
   <entry>
     <title type="html"><![CDATA[Implementing a curry function in JavaScript using TDD]]></title>
     <link href="https://www.undefinednull.com/2015/03/19/implementing-a-curry-function-in-javascript-using-tdd/"/>
-    <updated>2015-03-19T18:51:27+04:00</updated>
+    <updated>2015-03-19T20:21:27+05:30</updated>
     <id>https://www.undefinednull.com/2015/03/19/implementing-a-curry-function-in-javascript-using-tdd</id>
     <content type="html"><![CDATA[<p>TDD stands for Test Driven Development. To those who don&rsquo;t know what TDD means: In a typical TDD Environment, a developer start with a basic test case describing the minimal requirement for implementing the module. Then he writes the actual implementation code for making the test case pass.</p>
 

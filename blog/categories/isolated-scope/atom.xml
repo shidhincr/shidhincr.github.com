@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Isolated scope | Undefined NULL]]></title>
   <link href="https://www.undefinednull.com/blog/categories/isolated-scope/atom.xml" rel="self"/>
   <link href="https://www.undefinednull.com/"/>
-  <updated>2016-08-27T20:57:27+04:00</updated>
+  <updated>2017-02-09T15:52:17+05:30</updated>
   <id>https://www.undefinednull.com/</id>
   <author>
     <name><![CDATA[Shidhin]]></name>
@@ -16,7 +16,7 @@
   <entry>
     <title type="html"><![CDATA[Mastering the scope of the directives in AngularJS]]></title>
     <link href="https://www.undefinednull.com/2014/02/11/mastering-the-scope-of-a-directive-in-angularjs/"/>
-    <updated>2014-02-11T08:26:00+04:00</updated>
+    <updated>2014-02-11T08:26:00+05:30</updated>
     <id>https://www.undefinednull.com/2014/02/11/mastering-the-scope-of-a-directive-in-angularjs</id>
     <content type="html"><![CDATA[<p><img src="https://lh5.googleusercontent.com/-XOGfvAHr7HQ/UvoUItkZMZI/AAAAAAAAHJk/IJz5JcUB9dw/w520-h274-no/scopes_in_directives.png" alt="" /></p>
 

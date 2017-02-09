@@ -5,11 +5,11 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Repeating Multiple Elements using ng-repeat-start and ng-repeat-end in AngularJS</title>
+  <title>React Redux Part 1 : Implementing a counter component in react by using state</title>
   <meta name="author" content="Shidhin">
 
   
-  <meta name="description" content="When the AngularJS website is released, the TODO example in their website was one of the main attractions. The example was simple and just below 30 &hellip;">
+  <meta name="description" content="The frontend world is moving so fast these days. The hottest trend is React along with the Flux pattern. Flux is a architectural pattern introduced &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -18,7 +18,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="https://www.undefinednull.com/2015/04/10/repeating-multiple-elements-using-ng-repeat-start-and-ng-repeat-end-in-angularjs">
+  <link rel="canonical" href="https://www.undefinednull.com/2016/01/22/react-redux-part-1-implementing-a-counter-component-in-react-by-using-state">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/prism.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
@@ -82,7 +82,7 @@
   
   <header>
     
-      <h1 class="entry-title">Repeating Multiple Elements Using Ng-repeat-start and Ng-repeat-end in AngularJS</h1>
+      <h1 class="entry-title">React Redux Part 1 : Implementing a Counter Component in React by Using State</h1>
     
     
       <p class="meta">
@@ -98,7 +98,7 @@
   
 
 
-<time datetime="2015-04-10T23:45:27+04:00" pubdate data-updated="true">Apr 10<span>th</span>, 2015</time>
+<time datetime="2016-01-22T00:37:48+05:30" pubdate data-updated="true">Jan 22<span>nd</span>, 2016</time>
         
          | <a href="#disqus_thread">Comments</a>
         
@@ -107,77 +107,93 @@
   </header>
 
 
-<div class="entry-content"><p>When the AngularJS <a href="http://www.angularjs.org">website</a> is released, the TODO example in their website was one of the main attractions. The example was simple and just below 30 lines of code ( Here is the <a href="https://jsfiddle.net/1waxcf9x/">link</a>  if you want to check ). The whole trick behind the scene was done by a directive named <strong>ng-repeat</strong>, as shown below:</p>
+<div class="entry-content"><p>The frontend world is moving so fast these days. The hottest trend is React along with the Flux pattern. Flux is a architectural pattern introduced by Facebook to solve some of the problems in large data centric applications. Facebook introduced flux as a concept, but there&rsquo;re number of flux libraries born from then. Today we&rsquo;re gonna talk about the most popular library in that category named <a href="http://redux.js.org/">Redux</a>.</p>
 
 <!-- more -->
 
 
-<figure class='code'><figcaption><span></span></figcaption><pre><code class='language-javascript'>ng-repeat=&quot;todo in todoList.todos&quot;</code></pre></figure>
+<p>Redux is not exactly an flux library. As per the redux tagline, it is known as a &ldquo;predictable state container for Javascript apps&rdquo;. I don&rsquo;t want to state Redux as a flux framework as Redux is deviated from some of the flux principles; And, those are clearly explained in its documentation. This blog post is not about how redux works, but rather demonstrating how redux is used in a typical React application. The tutorial also divided into multiple blog posts, so that you can skip to the interested ones.</p>
+
+<p><strong>Why this post:</strong></p>
+
+<p>If you follow the <a href="https://egghead.io/series/getting-started-with-redux">egghead.io videos</a> from <a href="https://twitter.com/dan_abramov">@dan_abramov</a>, you might feel that Redux is super simple. But then if you try to follow the examples from different sources, you might be overwhelmed by the terms like <code>connect</code>, <code>bindActionCreators</code> ..etc. I was trying to learn them step by step and understand what each of these try to solve. These blog posts are the outcome of my learnings and these are for absolute beginners. So, if you think you&rsquo;re an advanced guy, just share it to your beginner friends.</p>
+
+<p>Here we&rsquo;ll see how to implement a Counter component with:</p>
+
+<ol>
+<li>Section 1 : React with state ( not using Redux )</li>
+<li>Section 2: Try to integrate Redux and using store</li>
+<li>Section 3: Using React-redux library to connect between React and Redux</li>
+<li>Section 4: Removing boilerplate code with redux helper methods.</li>
+<li>Section 5: Async code handling with Redux</li>
+</ol>
 
 
-<p>Till Angular 1.2, ng-repeat was designed to work on a single DOM element. In other words, ng-repeat can repeat only the DOM element on which it is added. Therefore, some of the situations &mdash; see below &mdash; lead Angular community to think about modifying ng-repeat in version 1.2. In the next section, we&rsquo;ll see the problem with ng-repeat and the solutions introduced.</p>
+<h2>Building a simple counter in React ( with data saved in state )</h2>
 
-<h3>What was the issue ?</h3>
+<p>In our first section, we&rsquo;re going to build a simple <code>Counter</code> component with React. This section is just for the beginners and if you know how this works, feel free to skip to the next section.</p>
 
-<p>Consider the model like this:</p>
+<p>Let&rsquo;s build the react Counter component and add a state to save the <code>number</code>. The code is given below:</p>
 
-<figure class='code'><figcaption><span></span></figcaption><pre><code class='language-javascript'>$scope.data = [{
-    name: &apos;Shidhin&apos;,
-    info: &apos;I am from Dubai&apos;
-}, {
-    name: &apos;Someone&apos;,
-    info: &apos;I am from New york&apos;
-}]</code></pre></figure>
+<figure class='code'><figcaption><span></span></figcaption><pre><code class='language-jsx'>&apos;use strict&apos;;
 
+import React from &apos;react&apos;;
+import ReactDOM from &apos;react-dom&apos;;
+let {Component} = React;
 
-<p>And assume if we need an output like this:</p>
+class App extends Component {
+  constructor(props){
+    super(props);
+    this.state = {
+      number: this.props.number || 0
+    }
+    this._increment = this._increment.bind(this);
+    this._decrement = this._decrement.bind(this);
+  }
 
-<figure class='code'><figcaption><span></span></figcaption><pre><code class='language-html'>&lt;table&gt;
-    &lt;tr&gt;
-        &lt;td&gt;Shidhin&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-        &lt;td&gt;I am from Dubai&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-        &lt;td&gt;Someone&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-        &lt;td&gt;I am from New york&lt;/td&gt;
-    &lt;/tr&gt;
-&lt;/table&gt;</code></pre></figure>
+  render(){
+    let {number} = this.state;
+    return(
+      &lt;div&gt;
+        &lt;h2&gt;The number is = {number} &lt;/h2&gt;
+        &lt;div&gt;
+            &lt;button onClick={this._increment}&gt;Increment&lt;/button&gt;
+            &lt;button onClick={this._decrement}&gt;Decrement&lt;/button&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    );
+  }
 
+  _increment(){
+    this.setState({
+      number: this.state.number + 1
+    });
+  }
+  _decrement(){
+    this.setState({
+      number: this.state.number - 1
+    });
+  }
+}
 
-<p>The fundamental problem here is, the <code>TR</code> tag cannot be grouped in another element other than <code>TABLE</code>. Since creating each <code>TABLE</code> for each <code>TR</code> is not feasible, it is difficult to create the above mark-up using ng-repeat.</p>
+App.propTypes ={
+  number: React.PropTypes.number
+}
 
-<h3>What changed in Angular 1.2</h3>
-
-<p>From Angular version 1.2 onwards, ng-repeat got two siblings directives named <code>ng-repeat-start</code> and <code>ng-repeat-end</code>. With these, we can explicitly specify the starting and ending for ng-repeat. So, instead of using the ng-repeat directive on one single DOM element, we can specify the ng-repeat-start and ng-repeat-end on any two DOM elements.</p>
-
-<p>These directives do the same job as ng-repeat &mdash; it uses the same expressions as ng-repeat  &mdash; but the main difference is, it <strong>repeats all DOM elements</strong> between the starting element and ending element (including the starting and ending tags).</p>
-
-<p>Let&rsquo;s implement the above example with these new directives:</p>
-
-<figure class='code'><figcaption><span></span></figcaption><pre><code class='language-html'>
-&lt;table&gt;
-    &lt;tr ng-repeat-start=&quot;d in data&quot;&gt;
-        &lt;td&gt;{{d.name}}&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr ng-repeat-end&gt;
-        &lt;td&gt;{{d.info}}&lt;/td&gt;
-    &lt;/tr&gt;
-&lt;/table&gt;
-</code></pre></figure>
-
-
-<p>The above code will generate the desired output. You can see a <a href="http://jsfiddle.net/shidhincr/3eLp5u6m/1/">DEMO</a> here</p>
-
-<iframe style="width: 100%; height: 300px" frameborder="0" seamless="seamless" src="https://jsfiddle.net/shidhincr/3eLp5u6m/1/embedded/js,resources,html,css,result/light/"></iframe>
+ReactDOM.render(
+  &lt;App number={20}/&gt;,
+  document.querySelector(&apos;#app&apos;)
+)   </code></pre></figure>
 
 
-<h3>Summary</h3>
+<p>The example code is available in this Github <a href="https://github.com/shidhincr/SimpleReactReduxCounter">repo</a>. Just clone the repo and switch to the branch <code>react-state</code>.</p>
 
-<p>Angular community had done a great job by introducing <strong>ng-repeat-start</strong> and <strong>ng-repeat-end</strong> directives. They&rsquo;re really powerful and solve some of the short-comings of the ng-repeat directive. I hope this article will help you for start using ng-repeat effectively in your next project. Thanks for reading!</p>
+<figure class='code'><figcaption><span></span></figcaption><pre><code class='language-sh'>git clone https://github.com/shidhincr/SimpleReactReduxCounter
+cd SimpleReactReduxCounter
+git checkout react-state</code></pre></figure>
+
+
+<p>In the next section we&rsquo;ll see how to use <a href="https://www.npmjs.com/package/redux">redux</a> to implement the same.</p>
 </div>
 <!-- nothing here for now -->
 <!-- Go to www.addthis.com/dashboard to customize your tools -->
@@ -189,8 +205,7 @@
       
   
 
-<span class="byline author vcard">Posted by <span class="fn">Shidhin C R</span></span>
-
+<span class="byline author vcard">Posted by <span class="fn">Shidhin</span></span>
       
 
 
@@ -203,22 +218,26 @@
   
 
 
-<time datetime="2015-04-10T23:45:27+04:00" pubdate data-updated="true">Apr 10<span>th</span>, 2015</time>
+<time datetime="2016-01-22T00:37:48+05:30" pubdate data-updated="true">Jan 22<span>nd</span>, 2016</time>
       
 
 <span class="categories">
   
-    <a class='category' href='/blog/categories/angularjs/'>AngularJS</a>, <a class='category' href='/blog/categories/ng-repeat/'>ng-repeat</a>, <a class='category' href='/blog/categories/ng-repeat-end/'>ng-repeat-end</a>, <a class='category' href='/blog/categories/ng-repeat-start/'>ng-repeat-start</a>
+    <a class='category' href='/blog/categories/flux/'>Flux</a>, <a class='category' href='/blog/categories/reactjs/'>ReactJS</a>, <a class='category' href='/blog/categories/redux/'>Redux</a>
   
 </span>
 
 
+      <!-- UDEMY Ads-->
+      <br><br>
+      <a href="http://click.linksynergy.com/fs-bin/click?id=ZV3KmhFxe0Q&offerid=323058.1246&subid=0&type=4"><IMG border="0"   alt="Sitewide-10usd728x90" src="http://ad.linksynergy.com/fs-bin/show?id=ZV3KmhFxe0Q&bids=323058.1246&subid=0&type=4&gridnum=16"></a>
+      <!-- END: UDEMY Ads-->
       
   <h3>Related posts</h3>
   <ol class="posts">
   
     <li class="related">
-      <a href="/2014/08/11/a-brief-walk-through-of-the-ng-options-in-angularjs/" onClick="ga('send', 'event', 'Post Page', 'Clicked Related Post', '/2014/08/11/a-brief-walk-through-of-the-ng-options-in-angularjs/', 1);">A brief walk-through of the ng-options in AngularJS</a>
+      <a href="/2015/05/03/react-tdd-example-unit-testing-and-building-a-react-component-with-jest-gulp-and-react-test-utils/" onClick="ga('send', 'event', 'Post Page', 'Clicked Related Post', '/2015/05/03/react-tdd-example-unit-testing-and-building-a-react-component-with-jest-gulp-and-react-test-utils/', 1);">React TDD Example: Unit Testing and Building a React Component with Jest, Gulp and React Test Utils</a>
     </li>
   
     <li class="related">
@@ -226,11 +245,11 @@
     </li>
   
     <li class="related">
-      <a href="/2014/07/07/practical-guide-to-prelink-postlink-and-controller-methods-of-angular-directives/" onClick="ga('send', 'event', 'Post Page', 'Clicked Related Post', '/2014/07/07/practical-guide-to-prelink-postlink-and-controller-methods-of-angular-directives/', 3);">Practical Guide to PreLink, PostLink and Controller Methods of Angular Directives</a>
+      <a href="/2015/03/19/implementing-a-curry-function-in-javascript-using-tdd/" onClick="ga('send', 'event', 'Post Page', 'Clicked Related Post', '/2015/03/19/implementing-a-curry-function-in-javascript-using-tdd/', 3);">Implementing a curry function in JavaScript using TDD</a>
     </li>
   
     <li class="related">
-      <a href="/2013/09/26/some-gotchas-in-arithmetic-expression-evaluation-javascript/" onClick="ga('send', 'event', 'Post Page', 'Clicked Related Post', '/2013/09/26/some-gotchas-in-arithmetic-expression-evaluation-javascript/', 4);"> Some Gotchas In Arithmetic Expression Evaluation : JavaScript</a>
+      <a href="/2014/08/11/a-brief-walk-through-of-the-ng-options-in-angularjs/" onClick="ga('send', 'event', 'Post Page', 'Clicked Related Post', '/2014/08/11/a-brief-walk-through-of-the-ng-options-in-angularjs/', 4);">A brief walk-through of the ng-options in AngularJS</a>
     </li>
   
   </ol>
@@ -240,7 +259,7 @@
     
       <div class="sharing">
   
-  <a href="//twitter.com/share" class="twitter-share-button" data-url="https://www.undefinednull.com/2015/04/10/repeating-multiple-elements-using-ng-repeat-start-and-ng-repeat-end-in-angularjs/" data-via="shidhincr" data-counturl="https://www.undefinednull.com/2015/04/10/repeating-multiple-elements-using-ng-repeat-start-and-ng-repeat-end-in-angularjs/" >Tweet</a>
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="https://www.undefinednull.com/2016/01/22/react-redux-part-1-implementing-a-counter-component-in-react-by-using-state/" data-via="shidhincr" data-counturl="https://www.undefinednull.com/2016/01/22/react-redux-part-1-implementing-a-counter-component-in-react-by-using-state/" >Tweet</a>
   
   
   <div class="g-plusone" data-size="medium"></div>
@@ -267,10 +286,10 @@
     </p>
     <p class="meta">
       
-        <a class="basic-alignment left" href="/2015/03/19/implementing-a-curry-function-in-javascript-using-tdd/" title="Previous Post: Implementing a curry function in JavaScript using TDD">&laquo; Implementing a curry function in JavaScript using TDD</a>
+        <a class="basic-alignment left" href="/2015/12/27/injecting-custom-javascript-into-react-natives-webview/" title="Previous Post: Injecting Custom JavaScript into React Native's Webview">&laquo; Injecting Custom JavaScript into React Native's Webview</a>
       
       
-        <a class="basic-alignment right" href="/2015/05/03/react-tdd-example-unit-testing-and-building-a-react-component-with-jest-gulp-and-react-test-utils/" title="Next Post: React TDD Example: Unit Testing and Building a React Component with Jest, Gulp and React Test Utils">React TDD Example: Unit Testing and Building a React Component with Jest, Gulp and React Test Utils &raquo;</a>
+        <a class="basic-alignment right" href="/2016/04/21/debugging-react-native-apps-using-visual-studio-code/" title="Next Post: Debugging React Native Apps using Visual Studio Code">Debugging React Native Apps using Visual Studio Code &raquo;</a>
       
     </p>
     <p class="meta">
@@ -321,7 +340,7 @@
       </li>
     
       <li class="post">
-        <a href="/2016/01/21/react-redux-part-1-implementing-a-counter-component-in-react-by-using-state/">React Redux Part 1 : Implementing a Counter Component in React by Using State</a>
+        <a href="/2016/01/22/react-redux-part-1-implementing-a-counter-component-in-react-by-using-state/">React Redux Part 1 : Implementing a Counter Component in React by Using State</a>
       </li>
     
       <li class="post">
@@ -378,6 +397,8 @@
 <script>
 (adsbygoogle = window.adsbygoogle || []).push({});
 </script>
+<br><br>
+<a href="http://click.linksynergy.com/fs-bin/click?id=ZV3KmhFxe0Q&offerid=323058.1193&subid=0&type=4"><IMG border="0"   alt="December Sitewide-3of5-10usd160x600" src="http://ad.linksynergy.com/fs-bin/show?id=ZV3KmhFxe0Q&bids=323058.1193&subid=0&type=4&gridnum=9"></a>
   
 </aside>
 
@@ -385,7 +406,7 @@
     </div>
   </div>
   <footer role="contentinfo"><p>
-  Copyright &copy; 2016 - Shidhin -
+  Copyright &copy; 2017 - Shidhin -
   <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
   <span style="position: absolute; right: 10px">
    <a href="/privacypolicy.html">Privacy policy</a>&nbsp;|&nbsp;
@@ -401,8 +422,8 @@
       
         
         // var disqus_developer = 1;
-        var disqus_identifier = 'www.undefinednull.com/2015/04/10/repeating-multiple-elements-using-ng-repeat-start-and-ng-repeat-end-in-angularjs/';
-        var disqus_url = 'https://www.undefinednull.com/2015/04/10/repeating-multiple-elements-using-ng-repeat-start-and-ng-repeat-end-in-angularjs/';
+        var disqus_identifier = 'www.undefinednull.com/2016/01/22/react-redux-part-1-implementing-a-counter-component-in-react-by-using-state/';
+        var disqus_url = 'https://www.undefinednull.com/2016/01/22/react-redux-part-1-implementing-a-counter-component-in-react-by-using-state/';
         var disqus_script = 'embed.js';
       
     (function () {

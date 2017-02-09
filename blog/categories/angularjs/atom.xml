@@ -4,7 +4,7 @@
   <title><![CDATA[Category: angularjs | Undefined NULL]]></title>
   <link href="https://www.undefinednull.com/blog/categories/angularjs/atom.xml" rel="self"/>
   <link href="https://www.undefinednull.com/"/>
-  <updated>2016-08-27T20:57:27+04:00</updated>
+  <updated>2017-02-09T15:52:17+05:30</updated>
   <id>https://www.undefinednull.com/</id>
   <author>
     <name><![CDATA[Shidhin]]></name>
@@ -16,7 +16,7 @@
   <entry>
     <title type="html"><![CDATA[Practical Guide to PreLink, PostLink and Controller Methods of Angular Directives]]></title>
     <link href="https://www.undefinednull.com/2014/07/07/practical-guide-to-prelink-postlink-and-controller-methods-of-angular-directives/"/>
-    <updated>2014-07-07T14:20:58+04:00</updated>
+    <updated>2014-07-07T15:50:58+05:30</updated>
     <id>https://www.undefinednull.com/2014/07/07/practical-guide-to-prelink-postlink-and-controller-methods-of-angular-directives</id>
     <content type="html"><![CDATA[<p>I have discussed about the scope of a directive in my previous <a href="http://www.undefinednull.com/2014/02/11/mastering-the-scope-of-a-directive-in-angularjs/">article</a>. Here we&rsquo;re going to see how to use the link and controller functions of an AngularJs directive.</p>
 

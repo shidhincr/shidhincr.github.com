@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Jest | Undefined NULL]]></title>
   <link href="https://www.undefinednull.com/blog/categories/jest/atom.xml" rel="self"/>
   <link href="https://www.undefinednull.com/"/>
-  <updated>2016-08-27T20:57:27+04:00</updated>
+  <updated>2017-02-09T15:52:17+05:30</updated>
   <id>https://www.undefinednull.com/</id>
   <author>
     <name><![CDATA[Shidhin]]></name>
@@ -16,7 +16,7 @@
   <entry>
     <title type="html"><![CDATA[React TDD Example: Unit Testing and Building a React Component with Jest, Gulp and React Test Utils]]></title>
     <link href="https://www.undefinednull.com/2015/05/03/react-tdd-example-unit-testing-and-building-a-react-component-with-jest-gulp-and-react-test-utils/"/>
-    <updated>2015-05-03T10:32:01+04:00</updated>
+    <updated>2015-05-03T12:02:01+05:30</updated>
     <id>https://www.undefinednull.com/2015/05/03/react-tdd-example-unit-testing-and-building-a-react-component-with-jest-gulp-and-react-test-utils</id>
     <content type="html"><![CDATA[<p>ReactJs has attained lot of momentum since its initial release in 2013, and became the best JavaScript library for developing rich UI interface. React also popularized different concepts like Virtual DOM, Uni-directional data flow and Componentization in the front-end community. As of today, React has more than 20,000 stars in <a href="https://github.com/facebook/react">Github repo</a>, and actively maintained by the Facebook team.</p>
 

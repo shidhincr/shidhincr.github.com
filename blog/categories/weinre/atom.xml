@@ -4,7 +4,7 @@
   <title><![CDATA[Category: weinre | Undefined NULL]]></title>
   <link href="https://www.undefinednull.com/blog/categories/weinre/atom.xml" rel="self"/>
   <link href="https://www.undefinednull.com/"/>
-  <updated>2016-08-27T20:57:27+04:00</updated>
+  <updated>2017-02-09T15:52:17+05:30</updated>
   <id>https://www.undefinednull.com/</id>
   <author>
     <name><![CDATA[Shidhin]]></name>
@@ -16,7 +16,7 @@
   <entry>
     <title type="html"><![CDATA[Remote debugging localhost with weinre ( and HTTPS too ) ]]></title>
     <link href="https://www.undefinednull.com/2015/03/17/remote-debugging-localhost-with-weinre/"/>
-    <updated>2015-03-17T10:33:00+04:00</updated>
+    <updated>2015-03-17T10:33:00+05:30</updated>
     <id>https://www.undefinednull.com/2015/03/17/remote-debugging-localhost-with-weinre</id>
     <content type="html"><![CDATA[<p>Debugging mobile websites/applications is a real pain. No debuggers for Javascript, no console logs, cannot inspect html/css, and so on.</p>
 
