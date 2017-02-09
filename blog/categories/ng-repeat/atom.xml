@@ -4,7 +4,7 @@
   <title><![CDATA[Category: ng-repeat | Undefined NULL]]></title>
   <link href="https://www.undefinednull.com/blog/categories/ng-repeat/atom.xml" rel="self"/>
   <link href="https://www.undefinednull.com/"/>
-  <updated>2017-02-09T15:52:17+05:30</updated>
+  <updated>2017-02-09T15:59:12+05:30</updated>
   <id>https://www.undefinednull.com/</id>
   <author>
     <name><![CDATA[Shidhin]]></name>
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Repeating Multiple Elements using ng-repeat-start and ng-repeat-end in AngularJS]]></title>
-    <link href="https://www.undefinednull.com/2015/04/11/repeating-multiple-elements-using-ng-repeat-start-and-ng-repeat-end-in-angularjs/"/>
-    <updated>2015-04-11T01:15:27+05:30</updated>
-    <id>https://www.undefinednull.com/2015/04/11/repeating-multiple-elements-using-ng-repeat-start-and-ng-repeat-end-in-angularjs</id>
+    <link href="https://www.undefinednull.com/2015/04/10/repeating-multiple-elements-using-ng-repeat-start-and-ng-repeat-end-in-angularjs/"/>
+    <updated>2015-04-10T12:15:27+05:30</updated>
+    <id>https://www.undefinednull.com/2015/04/10/repeating-multiple-elements-using-ng-repeat-start-and-ng-repeat-end-in-angularjs</id>
     <content type="html"><![CDATA[<p>When the AngularJS <a href="http://www.angularjs.org">website</a> is released, the TODO example in their website was one of the main attractions. The example was simple and just below 30 lines of code ( Here is the <a href="https://jsfiddle.net/1waxcf9x/">link</a>  if you want to check ). The whole trick behind the scene was done by a directive named <strong>ng-repeat</strong>, as shown below:</p>
 
 <!-- more -->

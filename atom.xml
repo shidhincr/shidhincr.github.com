@@ -4,7 +4,7 @@
   <title><![CDATA[Undefined NULL]]></title>
   <link href="https://www.undefinednull.com/atom.xml" rel="self"/>
   <link href="https://www.undefinednull.com/"/>
-  <updated>2017-02-09T15:52:17+05:30</updated>
+  <updated>2017-02-09T15:59:12+05:30</updated>
   <id>https://www.undefinednull.com/</id>
   <author>
     <name><![CDATA[Shidhin]]></name>
@@ -128,9 +128,9 @@
   
   <entry>
     <title type="html"><![CDATA[React Redux Part 1 : Implementing a counter component in react by using state]]></title>
-    <link href="https://www.undefinednull.com/2016/01/22/react-redux-part-1-implementing-a-counter-component-in-react-by-using-state/"/>
-    <updated>2016-01-22T00:37:48+05:30</updated>
-    <id>https://www.undefinednull.com/2016/01/22/react-redux-part-1-implementing-a-counter-component-in-react-by-using-state</id>
+    <link href="https://www.undefinednull.com/2016/01/21/react-redux-part-1-implementing-a-counter-component-in-react-by-using-state/"/>
+    <updated>2016-01-21T11:37:48+05:30</updated>
+    <id>https://www.undefinednull.com/2016/01/21/react-redux-part-1-implementing-a-counter-component-in-react-by-using-state</id>
     <content type="html"><![CDATA[<p>The frontend world is moving so fast these days. The hottest trend is React along with the Flux pattern. Flux is a architectural pattern introduced by Facebook to solve some of the problems in large data centric applications. Facebook introduced flux as a concept, but there&rsquo;re number of flux libraries born from then. Today we&rsquo;re gonna talk about the most popular library in that category named <a href="http://redux.js.org/">Redux</a>.</p>
 
 <!-- more -->
@@ -1012,9 +1012,9 @@ ReactDOM.render(&lt;Accordion data={input}/&gt;, document.getElementById(&apos;v
   
   <entry>
     <title type="html"><![CDATA[Repeating Multiple Elements using ng-repeat-start and ng-repeat-end in AngularJS]]></title>
-    <link href="https://www.undefinednull.com/2015/04/11/repeating-multiple-elements-using-ng-repeat-start-and-ng-repeat-end-in-angularjs/"/>
-    <updated>2015-04-11T01:15:27+05:30</updated>
-    <id>https://www.undefinednull.com/2015/04/11/repeating-multiple-elements-using-ng-repeat-start-and-ng-repeat-end-in-angularjs</id>
+    <link href="https://www.undefinednull.com/2015/04/10/repeating-multiple-elements-using-ng-repeat-start-and-ng-repeat-end-in-angularjs/"/>
+    <updated>2015-04-10T12:15:27+05:30</updated>
+    <id>https://www.undefinednull.com/2015/04/10/repeating-multiple-elements-using-ng-repeat-start-and-ng-repeat-end-in-angularjs</id>
     <content type="html"><![CDATA[<p>When the AngularJS <a href="http://www.angularjs.org">website</a> is released, the TODO example in their website was one of the main attractions. The example was simple and just below 30 lines of code ( Here is the <a href="https://jsfiddle.net/1waxcf9x/">link</a>  if you want to check ). The whole trick behind the scene was done by a directive named <strong>ng-repeat</strong>, as shown below:</p>
 
 <!-- more -->
