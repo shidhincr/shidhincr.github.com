@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  
+  <url>
+    <loc>https://www.undefinednull.com/posts/2013-09-25-starting-my-new-blog-finally-octopress/</loc>
+    <lastmod>2013-09-25</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://www.undefinednull.com/2013/09/26/some-gotchas-in-arithmetic-expression-evaluation-javascript/</loc>
+    <lastmod>2013-09-26</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://www.undefinednull.com/2013/10/15/octopress-blog-tweaks-adding-author-information-section-below-each-posts/</loc>
+    <lastmod>2013-10-15</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://www.undefinednull.com/2014/02/03/multiple-left-hand-assignment-in-javascript-is-really-bad-think-once-before-you-do-it/</loc>
+    <lastmod>2014-02-03</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://www.undefinednull.com/2014/02/11/mastering-the-scope-of-a-directive-in-angularjs/</loc>
+    <lastmod>2014-02-11</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://www.undefinednull.com/2014/02/17/resolve-in-angularjs-routes-explained-as-story/</loc>
+    <lastmod>2014-02-17</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://www.undefinednull.com/2014/02/25/angularjs-real-time-model-persistence-using-local-storage/</loc>
+    <lastmod>2014-02-25</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://www.undefinednull.com/2014/06/26/explaining-call-and-apply-in-javascript-through-mr-dot-dave/</loc>
+    <lastmod>2014-06-26</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://www.undefinednull.com/2014/07/07/practical-guide-to-prelink-postlink-and-controller-methods-of-angular-directives/</loc>
+    <lastmod>2014-07-07</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://www.undefinednull.com/posts/2014-07-15-setting-up-my-macbook-for-development-environment/</loc>
+    <lastmod>2014-07-15</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://www.undefinednull.com/2014/08/11/a-brief-walk-through-of-the-ng-options-in-angularjs/</loc>
+    <lastmod>2014-08-11</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://www.undefinednull.com/2015/03/17/remote-debugging-localhost-with-weinre/</loc>
+    <lastmod>2015-03-17</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://www.undefinednull.com/2015/03/19/implementing-a-curry-function-in-javascript-using-tdd/</loc>
+    <lastmod>2015-03-19</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://www.undefinednull.com/2015/04/10/repeating-multiple-elements-using-ng-repeat-start-and-ng-repeat-end-in-angularjs/</loc>
+    <lastmod>2015-04-10</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://www.undefinednull.com/2015/05/03/react-tdd-example-unit-testing-and-building-a-react-component-with-jest-gulp-and-react-test-utils/</loc>
+    <lastmod>2015-05-03</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://www.undefinednull.com/2015/07/31/iterm-tips-and-zsh-plugins-for-better-development-environment/</loc>
+    <lastmod>2015-07-31</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://www.undefinednull.com/2015/12/27/injecting-custom-javascript-into-react-natives-webview/</loc>
+    <lastmod>2015-12-27</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://www.undefinednull.com/2016/01/21/react-redux-part-1-implementing-a-counter-component-in-react-by-using-state/</loc>
+    <lastmod>2016-01-21</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://www.undefinednull.com/2016/04/21/debugging-react-native-apps-using-visual-studio-code/</loc>
+    <lastmod>2016-04-21</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://www.undefinednull.com/about/</loc>
+    <lastmod>2020-03-15</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://www.undefinednull.com/archive/</loc>
+    <lastmod>2020-03-15</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://www.undefinednull.com/</loc>
+    <lastmod>2020-03-15</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://www.undefinednull.com/page-list/</loc>
+    <lastmod>2020-03-15</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://www.undefinednull.com/tags/</loc>
+    <lastmod>2020-03-15</lastmod>
+  </url>
+</urlset>
