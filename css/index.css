@@ -286,11 +286,11 @@ main img {
 }
 #homeLink > a {
   color: #c6304b;
-  font-size: 30px;
+  font-size: 25px;
   font-weight: bold;
   letter-spacing: 3px;
   font-family: monospace;
-  background: -webkit-linear-gradient(45deg, #839ce1, #8fdee4);
+  background: linear-gradient(45deg,#607D8B,#9E9E9E);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
@@ -316,7 +316,7 @@ main img {
   font-size: 1.5em;
   font-weight: bold;
   font-family: sans-serif;
-  background: linear-gradient(45deg,#e42776,#ecc124);
+  background: linear-gradient(45deg,#c30e51,#2196F3);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
