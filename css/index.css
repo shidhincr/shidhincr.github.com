@@ -316,9 +316,9 @@ main img {
   font-size: 1.5em;
   font-weight: bold;
   font-family: sans-serif;
-  background: -webkit-linear-gradient(45deg, #653b43, #f92672);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+  background: linear-gradient(45deg,#e42776,#ecc124);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 .rainbow-border-box {
   border-bottom: 2px solid transparent;
