@@ -316,7 +316,7 @@ main img {
   font-size: 1.5em;
   font-weight: bold;
   font-family: sans-serif;
-  background: linear-gradient(45deg,#c30e51,#2196F3);
+  background: linear-gradient(45deg,#6642bd,#ea4337);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
