@@ -1,0 +1,23 @@
+<div class="post-cards">
+  {% for post in postslist | reverse %}
+    {% if post.data.published %}
+      <div class="post-card" >
+        <div class="post-card__date">
+          {{ post.date | readableDate }}
+        </div>
+        <a class="post-card__link" href="{{ post.url | url }}">
+          <h2 class="post-card__title">
+            {%if post.data.title%}
+              {{ post.data.title }}
+            {% else %}
+              <code>{{post.url}}</code>
+            {% endif %}
+          </h2>
+        </a>
+        <div class="post-card__excerpt">
+          {{ post | excerpt | safe  }}
+        </div>
+      </div>
+    {% endif %}
+  {% endfor %}
+</div>

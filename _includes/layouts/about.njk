@@ -1,0 +1,14 @@
+---
+layout: layouts/base.njk
+templateClass: tmpl-post
+---
+<h1 class="post-card__title">{{ title }}</h1>
+
+<div class="post-card__meta post-card__meta--center">
+  <img src="/img/shidhin_dp.png" alt="Shidhin CR" class="about-me__image">
+</div>
+<div class="rainbow-border-box"></div>
+
+{{ content | safe }}
+
+<p><a href="{{ '/' | url }}">← Home</a></p>

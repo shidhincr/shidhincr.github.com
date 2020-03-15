@@ -1,0 +1,26 @@
+---
+layout: layouts/base.njk
+templateClass: tmpl-post
+---
+<h1 class="post-card__title">{{ title }}</h1>
+
+<div class=" post-card__meta">
+  <div class="post-card__meta-date">
+    {{ date | readableDate }}
+  </div>
+  <div class="post-card__meta-readtime">
+    About {{ content | readingTime }} read
+  </div>
+</div>
+<div class="rainbow-border-box"></div>
+{% for cat in categories %}
+  <span class="post-card__category">
+    {{ cat }}
+  </span>
+{% endfor %}
+
+{{ content | safe }}
+
+<p><a href="{{ '/' | url }}">← Home</a></p>
+
+{% include 'footer.njk' %}

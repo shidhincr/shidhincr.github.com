@@ -1,0 +1,41 @@
+{
+  "name": "undefinednull-blog",
+  "version": "1.0.0",
+  "description": "Personal blog of Shidhin CR",
+  "scripts": {
+    "build": "eleventy",
+    "start": "eleventy --serve",
+    "debug": "DEBUG=* eleventy",
+    "github-deploy": "gh-pages -d _site --branch master",
+    "deploy": "run-s build github-deploy"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/11ty/eleventy-base-blog.git"
+  },
+  "author": {
+    "name": "Shidhin CR",
+    "email": "shidhincr@gmail.com",
+    "url": "https://www.undefinednull.com/"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/11ty/eleventy-base-blog/issues"
+  },
+  "homepage": "https://github.com/11ty/eleventy-base-blog#readme",
+  "devDependencies": {
+    "@11ty/eleventy": "^0.10.0",
+    "@11ty/eleventy-plugin-rss": "^1.0.6",
+    "@11ty/eleventy-plugin-syntaxhighlight": "^3.0.1",
+    "clean-css": "^4.2.3",
+    "eleventy-plugin-lazyimages": "^1.0.5",
+    "eleventy-plugin-reading-time": "0.0.1",
+    "gh-pages": "^2.2.0",
+    "html-minifier": "^4.0.0",
+    "luxon": "^1.12.0",
+    "markdown-it": "^8.4.2",
+    "markdown-it-anchor": "^5.0.2",
+    "markdown-it-container": "^2.0.0",
+    "npm-run-all": "^4.1.5"
+  }
+}
