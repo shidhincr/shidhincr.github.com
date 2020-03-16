@@ -439,6 +439,21 @@ main img {
 .footer_desc-social-links a:last-child {
   border: none;
 }
+.footer-links {
+  background: #fafafa;
+  color: #607D8B;
+  font-size: 10px;
+  padding: 10px 20px;
+  max-width: 900px;
+  margin: auto;
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: space-between;
+}
+.footer-links a, .footer-links a:visited {
+  color: #607d8b;
+  text-decoration: none;
+}
 /* Media queries */
 @media(max-width: 560px) {
   body {
