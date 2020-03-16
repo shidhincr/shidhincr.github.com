@@ -411,7 +411,7 @@ main img {
   justify-content: center;
 }
 .footer__image img {
-  width: auto;
+  width: 100px;
   border-radius: 50%;
   max-width: 100%;
   max-height: 100%;
