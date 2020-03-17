@@ -454,6 +454,18 @@ main img {
   color: #607d8b;
   text-decoration: none;
 }
+.load-comments {
+  padding: 10px;
+  max-width: 200px;
+  border: 2px solid #ccc;
+  text-align: center;
+  margin: auto;
+  margin: 50px auto;
+  cursor: pointer;
+  box-shadow: 0 13px 5px -8px #ccc;
+  font-size: 14px;
+  color: #666;
+}
 /* Media queries */
 @media(max-width: 560px) {
   body {
