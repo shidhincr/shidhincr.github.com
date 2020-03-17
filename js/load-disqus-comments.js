@@ -20,7 +20,7 @@
             disqusDiv.scrollIntoView();
           }
           elem.remove();
-        }, 1000);
+        }, 2000);
       },
       { once: true }
     );
