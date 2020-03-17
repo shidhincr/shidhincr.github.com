@@ -21,6 +21,11 @@ templateClass: tmpl-post
 
 {{ content | safe }}
 
+<div class="load-comments" data-load-disqus>Comments</div>
+
 <p><a href="{{ '/' | url }}">← Home</a></p>
 
+
 {% include 'footer.njk' %}
+
+<div id="disqus_thread"></div>

@@ -60,8 +60,15 @@
     <main{% if templateClass %} class="{{ templateClass }}"{% endif %}>
       {{ content | safe }}
     </main>
+    {% set js%}
+      {% include '../../js/load-disqus-comments.js'%}
+    {% endset %}
     <script src="/js/quicklink.umd.js" async defer></script>
     <script>
+    var disqus_config = function () {
+      this.page.url = "{{ metadata.url + page.url | url }}"; 
+      this.page.identifier = "{{ metadata.url + page.url | url }}"; 
+    };
       window.addEventListener('load', () =>{
         quicklink.listen();
       });
@@ -72,6 +79,7 @@ m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
 ga('create', 'UA-10379928-17', 'auto');
 ga('require', 'displayfeatures');
 ga('send', 'pageview');
+  {{ js | jsmin | safe }}
   </script>
   <div class="footer-links">
     <div>

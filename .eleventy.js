@@ -6,6 +6,7 @@ const htmlmin = require("html-minifier");
 const readingTime = require('eleventy-plugin-reading-time');
 const CleanCSS = require("clean-css");
 const lazyImagesPlugin = require('eleventy-plugin-lazyimages');
+const Terser = require("terser");
 
 module.exports = function(eleventyConfig) {
   eleventyConfig.addPlugin(lazyImagesPlugin);
@@ -22,6 +23,16 @@ module.exports = function(eleventyConfig) {
 
   eleventyConfig.addFilter("cssmin", function(code) {
     return new CleanCSS({}).minify(code).styles;
+  });
+
+  eleventyConfig.addFilter("jsmin", function(code) {
+      let minified = Terser.minify(code);
+      if( minified.error ) {
+          console.log("Terser error: ", minified.error);
+          return code;
+      }
+
+      return minified.code;
   });
 
   // https://html.spec.whatwg.org/multipage/common-microsyntaxes.html#valid-date-string
