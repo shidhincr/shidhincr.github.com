@@ -238,7 +238,7 @@ a	  -
 		<updated>2014-02-11T05:30:00+05:30</updated>
 		<id>https://www.undefinednull.com/2014/02/11/mastering-the-scope-of-a-directive-in-angularjs/</id>
 		<content type="html">&lt;div class=&quot;image-center&quot;&gt;
-&lt;p&gt;&lt;img src=&quot;https://lh5.googleusercontent.com/-XOGfvAHr7HQ/UvoUItkZMZI/AAAAAAAAHJk/IJz5JcUB9dw/w520-h274-no/scopes_in_directives.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://www.undefinednull.com/img/scopes_in_directives.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;h2 id=&quot;what-are-directives&quot;&gt;What are Directives &lt;a class=&quot;direct-link&quot; href=&quot;#what-are-directives&quot; aria-hidden=&quot;true&quot;&gt;#&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;Directives are one of the most powerful features of AngularJS. You can imagine them as building blocks ( aka re-usable components ) of any AngularJS application. Mastering all the directives, is totally out of this article’s scope. For that, I would really recommend this &lt;a href=&quot;http://www.packtpub.com/AngularJS-directives/book&quot;&gt;book&lt;/a&gt;; it covers everything you need to know about directives. Here, we’ll discuss one aspect of directives called : &amp;quot;&lt;strong&gt;Directive scope&lt;/strong&gt;&amp;quot;.&lt;/p&gt;
