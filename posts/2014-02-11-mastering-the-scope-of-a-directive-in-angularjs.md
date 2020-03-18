@@ -15,7 +15,7 @@ categories:
 
 ---
 ::: image-center
-![](https://lh5.googleusercontent.com/-XOGfvAHr7HQ/UvoUItkZMZI/AAAAAAAAHJk/IJz5JcUB9dw/w520-h274-no/scopes_in_directives.png)
+![](/img/scopes_in_directives.png)
 :::
 
 ## What are Directives
