@@ -19,7 +19,7 @@ body {
   font-family: 'Lora', sans-serif;
   color: var(--darkgray);
   /* background: linear-gradient(to top, #7f7fd5, #86a8e7, #91eae4); */
-  background: linear-gradient(to top,#76769a,#f5d1d1,#e9eeee);
+  background: linear-gradient(to top,#76769a,#f5d1d1,#cae0e0);
   background-attachment: fixed;
   overflow-x: hidden;
 }
