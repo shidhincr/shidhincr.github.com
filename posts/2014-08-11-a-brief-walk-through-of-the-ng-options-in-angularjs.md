@@ -11,7 +11,9 @@ categories:
 - ng-options
 
 ---
-![](https://lh4.googleusercontent.com/-ts5lhPEvP2U/VA2txu4TiLI/AAAAAAAASWs/ZR8EkWYzhcI/w681-h250-no/ng-options.jpg)
+::: image-center
+![ng-options](/img/ng-options.jpg)
+:::
 
 Using ng-options was bit tough for me. I banged my head couple of times when I actually used ng-options in my code. And most of the times, I had to google and find out how to make it work. Looking the AngularJS documentation didn't help much, as it's less informative and doesn't have much code samples. 
 
@@ -227,10 +229,6 @@ The remaining expressions available for object data source is given below. There
 2. There is no straight forward way of selecting the default options. Usually the controller is responsible for setting the model for select box, so that the default option will be selected automatically.
 3. It's also possible to add filters to the ng-options expressions.
 
-
-#### Please re-tweet if you found this article helpful
-<blockquote class="twitter-tweet" lang="en"><p lang="en" dir="ltr">A brief walk-through of the ng-options in <a href="https://twitter.com/hashtag/AngularJS?src=hash">#AngularJS</a> <a href="https://t.co/RopuFUtD35">https://t.co/RopuFUtD35</a> via <a href="https://twitter.com/shidhincr">@shidhincr</a></p>&mdash; Shidhin (@shidhincr) <a href="https://twitter.com/shidhincr/status/661084286808756224">November 2, 2015</a></blockquote>
-<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
 
 ## Summary
 

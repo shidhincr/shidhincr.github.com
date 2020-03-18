@@ -57,7 +57,7 @@ In the above example, we created a directive by returning a *DDO* from the funct
 	
 Let's try another example. We'll create simple directive to render a div and a textbox that can show and change a name. The `name` property gets the initial value from the `Ctrl1` scope ( parent scope of the directive ).
 
-<iframe class="embedd-iframe" src="//jsfiddle.net/shidhincr/eyNYw/4/embedded/js,html,css,result/" ></iframe>
+<iframe loading="lazy" class="embedd-iframe" src="//jsfiddle.net/shidhincr/eyNYw/4/embedded/js,html,css,result/" ></iframe>
 	
 If we change the name inside the textbox, notice the header name also gets changed. Since there's no scope provided in the *DDO*, the directive uses its parent scope. Therefore, any changes we make inside the directive are actually reflected in the parent scope. Similarly, parent `Ctrl1` scope has  a method to reverse the name and this gets triggered when we click on the header. Now as we expect, clicking on the header should reverse the name inside the directive too.
 
@@ -72,7 +72,7 @@ Confused ? Let's see the exact differences between setting `scope: true` and `sc
 
 Let's look at the following fiddle to make it more clear :
 
-<iframe class="embedd-iframe" src="//jsfiddle.net/shidhincr/q3kex/3/embedded/js,html,css,result/" ></iframe>
+<iframe loading="lazy" class="embedd-iframe" src="//jsfiddle.net/shidhincr/q3kex/3/embedded/js,html,css,result/" ></iframe>
 
 First, try clicking on the header. We can see that the name gets reversed inside controller `Ctrl1` and the directive. Next, change the name inside the textbox; the parent `scope` is not at all affected. 
 
@@ -109,7 +109,7 @@ Though it's called as an *Isolated scope*, AngularJS allows to communicate with 
 
 See the below fiddle:
 
-<iframe class="embedd-iframe" src="//jsfiddle.net/shidhincr/q3kex/4/embedded/js,html,css,result/" ></iframe>
+<iframe loading="lazy" class="embedd-iframe" src="//jsfiddle.net/shidhincr/q3kex/4/embedded/js,html,css,result/" ></iframe>
 
 We just created a directive with an isolated scope. Notice, even the parent scope has a name "Harry", the textbox inside directive is blank. This is because of the new *Isolated scope* doesn't know anything about its parent scope.
 
@@ -121,7 +121,7 @@ To access any parent scope data, we need to pass that to our directive explicitl
 
 Just go through the below fiddle, and look at the "HTML", "JavaScript" and  "Results" tabs.
 
-<iframe class="embedd-iframe" src="//jsfiddle.net/shidhincr/pJLT8/10/embedded/js,html,css,result/" ></iframe>
+<iframe loading="lazy" class="embedd-iframe" src="//jsfiddle.net/shidhincr/pJLT8/10/embedded/js,html,css,result/" ></iframe>
 
 Let's try to understand how this works. Take the JavaScript code first:
 
@@ -233,11 +233,6 @@ I know that AngularJS have made these things a little bit difficult to understan
 That's it !  This post ended up becoming much longer than I expected, because I wanted to include everything I know. I hope everyone enjoyed reading this. If you find any errors I would really appreciate it if you guys could send me your corrections and comments ––  the comment box is made just for that. Thanks everyone !!
 
 Special thanks to *David Tulip* for proof-reading and helping me to fix grammatical errors.
-
-#### Please re-tweet if you found this article helpful
-<blockquote class="twitter-tweet" lang="en"><p lang="en" dir="ltr">Everything you need to know about the directive scope in <a href="https://twitter.com/hashtag/AngularJS?src=hash">#AngularJS</a> <a href="http://t.co/qhDDYjo6MD">http://t.co/qhDDYjo6MD</a></p>&mdash; Shidhin (@shidhincr) <a href="https://twitter.com/shidhincr/status/443665764382281728">March 12, 2014</a></blockquote>
-<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
-
 
 <u>**Further Read :**</u>
 

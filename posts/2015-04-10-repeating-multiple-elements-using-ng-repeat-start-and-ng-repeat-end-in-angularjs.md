@@ -75,7 +75,7 @@ Let's implement the above example with these new directives:
 ```
 The above code will generate the desired output. You can see a [DEMO](//jsfiddle.net/shidhincr/3eLp5u6m/1/) here
 
-<iframe class="embedd-iframe" src="//jsfiddle.net/shidhincr/3eLp5u6m/1/embedded/js,html,css,result/" ></iframe>
+<iframe loading="lazy" class="embedd-iframe" src="//jsfiddle.net/shidhincr/3eLp5u6m/1/embedded/js,html,css,result/" ></iframe>
 
 ### Summary
 
