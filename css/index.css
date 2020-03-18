@@ -18,7 +18,9 @@ body {
   margin: 0;
   font-family: 'Lora', sans-serif;
   color: var(--darkgray);
-  background: linear-gradient(to top, #7f7fd5, #86a8e7, #91eae4);
+  /* background: linear-gradient(to top, #7f7fd5, #86a8e7, #91eae4); */
+  background: linear-gradient(to top,#76769a,#f5d1d1,#cae0e0);
+  background-attachment: fixed;
   overflow-x: hidden;
 }
 p:last-child {
@@ -339,7 +341,7 @@ main img {
 
 .post-card__meta-date {
   font-size: 0.9em;
-  color: #888;
+  color: #666;
 }
 .post-card__meta-readtime {
   font-size: 0.9em;
