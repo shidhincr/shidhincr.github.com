@@ -8,5 +8,7 @@ permalink: /archive/
 
 <h1>Archive</h1>
 
-{% set postslist = collections.posts %}
+{% set postslist = collections.posts | groupByYear %}
+{% set postslistYears = postslist | keys | reverse %}
+
 {% include "postslist.njk" %}

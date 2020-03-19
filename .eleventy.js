@@ -3,10 +3,11 @@ const fs = require("fs");
 const pluginRss = require("@11ty/eleventy-plugin-rss");
 const pluginSyntaxHighlight = require("@11ty/eleventy-plugin-syntaxhighlight");
 const htmlmin = require("html-minifier");
-const readingTime = require('eleventy-plugin-reading-time');
+const readingTime = require("eleventy-plugin-reading-time");
 const CleanCSS = require("clean-css");
-const lazyImagesPlugin = require('eleventy-plugin-lazyimages');
+const lazyImagesPlugin = require("eleventy-plugin-lazyimages");
 const Terser = require("terser");
+const _ = require("lodash");
 
 module.exports = function(eleventyConfig) {
   eleventyConfig.addPlugin(lazyImagesPlugin);
@@ -18,7 +19,7 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addLayoutAlias("post", "layouts/post.njk");
 
   eleventyConfig.addFilter("readableDate", dateObj => {
-    return DateTime.fromJSDate(dateObj, {zone: 'utc'}).toFormat("d LLL yyyy");
+    return DateTime.fromJSDate(dateObj, { zone: "utc" }).toFormat("d LLL yyyy");
   });
 
   eleventyConfig.addFilter("cssmin", function(code) {
@@ -26,37 +27,49 @@ module.exports = function(eleventyConfig) {
   });
 
   eleventyConfig.addFilter("jsmin", function(code) {
-      let minified = Terser.minify(code);
-      if( minified.error ) {
-          console.log("Terser error: ", minified.error);
-          return code;
-      }
+    let minified = Terser.minify(code);
+    if (minified.error) {
+      console.log("Terser error: ", minified.error);
+      return code;
+    }
 
-      return minified.code;
+    return minified.code;
   });
 
   // https://html.spec.whatwg.org/multipage/common-microsyntaxes.html#valid-date-string
-  eleventyConfig.addFilter('htmlDateString', (dateObj) => {
-    return DateTime.fromJSDate(dateObj, {zone: 'utc'}).toFormat('yyyy-LL-dd');
+  eleventyConfig.addFilter("htmlDateString", dateObj => {
+    return DateTime.fromJSDate(dateObj, { zone: "utc" }).toFormat("yyyy-LL-dd");
   });
 
-  eleventyConfig.addFilter('excerpt', (post) => {
-    const content = post.templateContent || '';
-    const rgx = new RegExp('<!-- more -->', 'igm')
+  eleventyConfig.addFilter("excerpt", post => {
+    const content = post.templateContent || "";
+    const rgx = new RegExp("<!-- more -->", "igm");
     const arr = content.split(rgx);
-    if(!arr[1]) {
-      return post.data.description || '';
+    if (!arr[1]) {
+      return post.data.description || "";
     }
     return arr[0];
   });
 
-  eleventyConfig.addFilter('log', (data) => {
-    return console.dir(data)
+  eleventyConfig.addFilter("log", data => {
+    return console.dir(data);
+  });
+
+  eleventyConfig.addFilter("keys", obj => {
+    return _.keys(obj);
+  });
+
+  eleventyConfig.addFilter("groupByYear", posts => {
+    const _posts = _.groupBy(posts, function(post) {
+      const year = new Date(post.date).getFullYear();
+      return year;
+    });
+    return _posts;
   });
 
   // Get the first `n` elements of a collection.
   eleventyConfig.addFilter("head", (array, n) => {
-    if( n < 0 ) {
+    if (n < 0) {
       return array.slice(n);
     }
 
@@ -87,15 +100,16 @@ module.exports = function(eleventyConfig) {
     permalinkSymbol: "#"
   };
 
-  eleventyConfig.setLibrary("md", markdownIt(options)
-    .use(markdownItAnchor, opts)
-    .use(markdownItContainer, 'image-center')
-    .use(markdownItContainer, 'info')
+  eleventyConfig.setLibrary(
+    "md",
+    markdownIt(options)
+      .use(markdownItAnchor, opts)
+      .use(markdownItContainer, "image-center")
+      .use(markdownItContainer, "info")
   );
 
-
   eleventyConfig.addTransform("htmlmin", function(content, outputPath) {
-    if( outputPath.endsWith(".html") ) {
+    if (outputPath.endsWith(".html")) {
       let minified = htmlmin.minify(content, {
         useShortDoctype: true,
         removeComments: true,
@@ -110,7 +124,7 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.setBrowserSyncConfig({
     callbacks: {
       ready: function(err, browserSync) {
-        const content_404 = fs.readFileSync('_site/404.html');
+        const content_404 = fs.readFileSync("_site/404.html");
 
         browserSync.addMiddleware("*", (req, res) => {
           // Provides the 404 content without redirect.
@@ -122,12 +136,7 @@ module.exports = function(eleventyConfig) {
   });
 
   return {
-    templateFormats: [
-      "md",
-      "njk",
-      "html",
-      "liquid"
-    ],
+    templateFormats: ["md", "njk", "html", "liquid"],
 
     // If your site lives in a different subdirectory, change this.
     // Leading or trailing slashes are all normalized away, so don’t worry about it.
