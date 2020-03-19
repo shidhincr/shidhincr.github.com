@@ -172,9 +172,17 @@ pre + .info {
 }
 
 /* Posts list */
+.postlist-year > h3 {
+  background: linear-gradient(to left,#E91E63,#9C27B0,#3F51B5);
+  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
+  display: inline-block;
+  margin: 0;
+}
 .postlist {
   list-style: none;
   padding: 0;
+  padding-left: 20px;
 }
 .postlist-item {
   font-size: 16px;
@@ -193,6 +201,8 @@ pre + .info {
 }
 .postlist-date {
   word-spacing: -0.5px;
+  margin: 0 10px;
+  font-style: italic;
 }
 .postlist-link {
   display: inline-block;
@@ -251,7 +261,7 @@ main > h1 {
 }
 main img {
   display: block;
-  width: 100%;
+  /* width: 100%; */
   max-width: 100%;
   height: auto;
 }
@@ -383,7 +393,9 @@ main img {
 }
 
 .image-center {
-  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .about-me__image {
