@@ -251,7 +251,7 @@ main > h1 {
 }
 main img {
   display: block;
-  width: 100%;
+  /* width: 100%; */
   max-width: 100%;
   height: auto;
 }
@@ -383,7 +383,9 @@ main img {
 }
 
 .image-center {
-  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .about-me__image {

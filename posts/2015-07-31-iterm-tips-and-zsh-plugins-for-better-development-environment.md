@@ -16,7 +16,7 @@ categories:
 This post is about the two tools I use regularly in my development environment:  **iTerm** and **oh-my-zsh**. [iTerm](https://www.iterm2.com/) is a mac terminal replacement and zsh + [oh-my-zsh](https://github.com/robbyrussell/oh-my-zsh) is an excellent combo to replace the bash shell with some cool stuffs.
 
 ::: image-center
-![iTerm and Oh-my-zsh](https://lh3.googleusercontent.com/-Ccq2BJHbMmI/Vb8hLcwrnbI/AAAAAAAAk3Y/4Jx8wKfWBSk/s600/iterm-ohmyzsh.png "iterm-ohmyzsh.png")
+![iTerm and Oh-my-zsh](/img/iterm-zsh-plugins/iterm-ohmyzsh.png "iterm-ohmyzsh.png")
 :::
 
 Here, we'll see how to achieve some productivity improvements by effectively using these tools.
@@ -31,31 +31,31 @@ Often we have to work with multiple terminals. iTerm support splitting the curre
 
 For adding a new tab, the shortcut is `CMD + T` ( same like your browser ).
 
-![iTerm tabs split terminal](https://lh3.googleusercontent.com/1VEt46R1AIZWg9W1Pj5He78A7ptDUxnk6VKyuxoks-LZ=s1200 "Screen Shot 2015-07-31 at 11.11.25 AM.png")
+![iTerm tabs split terminal](/img/iterm-zsh-plugins/new-tab.png)
 
 **Auto-complete menu**
 
 iTerm has a pretty cool drop-down menu for auto-completion.  Press `CMD+;` from the terminal and you can see the autocomplete dropdown showing the completion.
 
-![enter image description here](https://lh3.googleusercontent.com/28zFeuRzWlvcnEag7bH5fbkED-EpPs_Z1-urIKDPbOsK=s1200 "Screen Shot 2015-07-31 at 11.24.59 AM.png")
+![auto completion](/img/iterm-zsh-plugins/autocomplete.png)
 
 **Show paste history**
 
 iTerm also keeps a buffer of the previous paste history. You can see the paste history in a dropdown menu by pressing the keys `CMD+SHIFT+H`
 
-![iterm search history](https://lh3.googleusercontent.com/bHk6sn9vQaprRLoWZ8nXk5H3dCOo7Y9hrN9IWzi5bT7l=s1200 "Screen Shot 2015-07-31 at 12.51.41 PM.png")
+![iterm search history](/img/iterm-zsh-plugins/paste-history.png)
 
 **Find the cursor**
 
 Once you start working with multiple split panes and tabs, sometimes it's hard to find where your cursor is. Press the key combination `CMD+/` and iTerm will highlight where your cursor is. Pretty smart, huh ?
 
-![iterm highlight cursor](https://lh3.googleusercontent.com/-yhazmLTbXbE/Vbs2Ka1EdVI/AAAAAAAAknw/Ehj7tIR2LLw/s1200/Screen+Shot+2015-07-31+at+12.39.47+PM.png "Screen Shot 2015-07-31 at 12.39.47 PM.png")
+![iterm highlight cursor](/img/iterm-zsh-plugins/find-cursor.png "Screen Shot 2015-07-31 at 12.39.47 PM.png")
 
 **Search all tabs ( aka Expose tabs )**
 
 This is another feature excites me when I have to work with so many tabs or panes. It is hard to move from one tab/pane to another pane when not sure where exactly it is. iTerm can expose all the tabs for you with the key combination `CMD+OPTIONS+E` and then you can search for the tab.
 
-![expose tabs iterm](https://lh3.googleusercontent.com/0tBtS6PAKy96fDhsK-6rEZ7mpag8Y6mWsBC13NbVUgw_=s1200 "Screen Shot 2015-07-31 at 12.56.05 PM.png")
+![expose tabs iterm](/img/iterm-zsh-plugins/search-tabs.png "Screen Shot 2015-07-31 at 12.56.05 PM.png")
 
 
 This is not the end; iTerm has lot of features, but this post is not enough for explaining all of them. For the complete set of iTerm features, check this [link](https://iterm2.com/documentation-highlights.html).
@@ -83,7 +83,7 @@ The `z` plugin remembers this navigation and the next time I just need to type t
 
 See `z` in action:
 
-![zsh z plugin](https://lh3.googleusercontent.com/-kDYjTHFSZ8c/Vb8QT0tD6CI/AAAAAAAAk1Y/XcLh-HinVxI/s0/z-plugin.gif "z-plugin.gif")
+![zsh z plugin](/img/iterm-zsh-plugins/z-plugin.gif "z-plugin.gif")
 
 **The H plugin**
 
@@ -95,7 +95,7 @@ Then, type `h` in the command prompt and enter.
 
 This plugin provides a set of git aliases to oh-my-zsh. I use this a lot everyday and I think I might've forgotten the original git commands now :). Just kidding, this is a wonderful plugin that saves a lot of my time.  See the below image to know how I usually work with these aliases.
 
-![zsh git plugin](https://lh3.googleusercontent.com/-5dd8PIO6EsM/Vb8U-IU02-I/AAAAAAAAk2s/vm7nEywxfWU/s0/git-plugin.gif "git-plugin.gif")
+![zsh git plugin](/img/iterm-zsh-plugins/git-plugin.gif "git-plugin.gif")
 
 I am sure that once you start using this plugin, you won't look back. You can find the complete zsh git cheatsheet here in this [link](https://github.com/robbyrussell/oh-my-zsh/wiki/Cheatsheet#git)
 
