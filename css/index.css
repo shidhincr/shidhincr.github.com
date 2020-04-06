@@ -472,12 +472,12 @@ main img {
 .load-comments {
   padding: 10px;
   max-width: 200px;
-  border: 2px solid #ccc;
+  border: 2px inset #9c27b08f;
   text-align: center;
   margin: auto;
   margin: 50px auto;
   cursor: pointer;
-  box-shadow: 0 13px 5px -8px #ccc;
+  box-shadow: 0 0 10px 0px #eec6f5;
   border-radius: 5px;
   font-size: 14px;
   color: #666;
