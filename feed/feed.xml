@@ -968,7 +968,7 @@ For object data sources, the default model bound to the select box is the value,
   &lt;strong&gt;Update Feb 9 2016&lt;/strong&gt; : The ReactJS version is bumped to 0.14 in the seed project and updated the article accordingly.
 &lt;/div&gt;&lt;br&gt;
 &lt;div class=&quot;image-center&quot;&gt;
-&lt;p&gt;&lt;img src=&quot;https://lh4.googleusercontent.com/-qJ1PeOhFiBM/VVBaO3ZI6qI/AAAAAAAAhpw/l-WLLtdZuxM/w640-h480-no/react-jest.jpg&quot; alt=&quot;React and Jest for TDD&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://www.undefinednull.com/img/react-jest.jpg&quot; alt=&quot;React and Jest for TDD&quot;&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;p&gt;As I said already, React is a solid piece of work from Facebook. Any solid software will be built with testability in mind; And React is not an exception to that. Facebook built React with complete testing support -- They even released their own testing framework named &amp;quot;&lt;strong&gt;Jest&lt;/strong&gt;&amp;quot; and &lt;strong&gt;React Test Utils&lt;/strong&gt; for unit testing React components.&lt;/p&gt;
 &lt;p&gt;Here in this post, we&#39;ll see how to build a react component in TDD approach.&lt;/p&gt;
