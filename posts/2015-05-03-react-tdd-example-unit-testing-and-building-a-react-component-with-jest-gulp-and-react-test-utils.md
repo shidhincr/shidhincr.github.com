@@ -19,7 +19,7 @@ ReactJs has attained lot of momentum since its initial release in 2013, and beca
 </div><br/>
 
 ::: image-center
-![React and Jest for TDD](https://lh4.googleusercontent.com/-qJ1PeOhFiBM/VVBaO3ZI6qI/AAAAAAAAhpw/l-WLLtdZuxM/w640-h480-no/react-jest.jpg)
+![React and Jest for TDD](/img/react-jest.jpg)
 :::
 
 As I said already, React is a solid piece of work from Facebook. Any solid software will be built with testability in mind; And React is not an exception to that. Facebook built React with complete testing support -- They even released their own testing framework named "**Jest**" and **React Test Utils** for unit testing React components.
