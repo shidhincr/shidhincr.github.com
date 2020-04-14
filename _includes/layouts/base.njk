@@ -103,6 +103,9 @@
       {% endset %}
   <script>
     {{ js | jsmin | safe }}
+    if ("serviceWorker" in navigator){
+      navigator.serviceWorker.register("/service-worker.js");
+    }
   </script>
   <div class="footer-links">
     <div>

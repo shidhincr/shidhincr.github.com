@@ -2,6 +2,7 @@ const { DateTime } = require("luxon");
 const fs = require("fs");
 const pluginRss = require("@11ty/eleventy-plugin-rss");
 const pluginSyntaxHighlight = require("@11ty/eleventy-plugin-syntaxhighlight");
+const pluginPWA = require('eleventy-plugin-pwa');
 const htmlmin = require("html-minifier");
 const readingTime = require("eleventy-plugin-reading-time");
 const CleanCSS = require("clean-css");
@@ -14,6 +15,7 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addPlugin(pluginRss);
   eleventyConfig.addPlugin(pluginSyntaxHighlight);
   eleventyConfig.addPlugin(readingTime);
+  eleventyConfig.addPlugin(pluginPWA);
   eleventyConfig.setDataDeepMerge(true);
 
   eleventyConfig.addLayoutAlias("post", "layouts/post.njk");

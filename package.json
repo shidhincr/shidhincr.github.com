@@ -29,6 +29,7 @@
     "@11ty/eleventy-plugin-syntaxhighlight": "^3.0.1",
     "clean-css": "^4.2.3",
     "eleventy-plugin-lazyimages": "^1.0.5",
+    "eleventy-plugin-pwa": "^1.0.8",
     "eleventy-plugin-reading-time": "0.0.1",
     "gh-pages": "^2.2.0",
     "html-minifier": "^4.0.0",
