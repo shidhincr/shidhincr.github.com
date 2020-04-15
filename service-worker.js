@@ -28,83 +28,83 @@ workbox.core.clientsClaim();
 self.__precacheManifest = [
   {
     "url": "2013/09/26/some-gotchas-in-arithmetic-expression-evaluation-javascript/index.html",
-    "revision": "603ad4cc1e82eaf79222b2a614e9fc84"
+    "revision": "ff63ca444bd10e8c43617fe545886eb1"
   },
   {
     "url": "2013/10/15/octopress-blog-tweaks-adding-author-information-section-below-each-posts/index.html",
-    "revision": "61ef492e54a364662d0cf549f649195d"
+    "revision": "843c6619d444dc4ac697395dd1e052c1"
   },
   {
     "url": "2014/02/03/multiple-left-hand-assignment-in-javascript-is-really-bad-think-once-before-you-do-it/index.html",
-    "revision": "01f8ce9a18f3870a87dc7944a9da0e24"
+    "revision": "9404c0045ede25d1104d990b8e0b5670"
   },
   {
     "url": "2014/02/11/mastering-the-scope-of-a-directive-in-angularjs/index.html",
-    "revision": "4c7b1e9b9af05719d05ae79b54629ff3"
+    "revision": "7bb11c98b7f7c42bd7c37a4c4040eaed"
   },
   {
     "url": "2014/02/17/resolve-in-angularjs-routes-explained-as-story/index.html",
-    "revision": "9e2707b31d60b64905096319da195f7e"
+    "revision": "dc0029c40d981bd643c9781abf8b98e4"
   },
   {
     "url": "2014/02/25/angularjs-real-time-model-persistence-using-local-storage/index.html",
-    "revision": "cd0272916fa3d03ff3d106dd2352dc0b"
+    "revision": "280eb1b3d20d8b2a284d5b0ce4b6d610"
   },
   {
     "url": "2014/06/26/explaining-call-and-apply-in-javascript-through-mr-dot-dave/index.html",
-    "revision": "d5e9d80fe35fe4b3c69da50b8a13b3d6"
+    "revision": "00194821fa8bc110244789dfb9cc9fa3"
   },
   {
     "url": "2014/07/07/practical-guide-to-prelink-postlink-and-controller-methods-of-angular-directives/index.html",
-    "revision": "c9862bbd8b92f44975872b8693e1cdb8"
+    "revision": "425d7aad190def29b58494e0f9e55581"
   },
   {
     "url": "2014/08/11/a-brief-walk-through-of-the-ng-options-in-angularjs/index.html",
-    "revision": "01dbda07292467c457671941be6d8166"
+    "revision": "46be47adcb7cc6926c0fea96e3fe2cec"
   },
   {
     "url": "2015/03/17/remote-debugging-localhost-with-weinre/index.html",
-    "revision": "3341db42f134aacc2f0412a5c32c15a9"
+    "revision": "eb723c77d61f15d41ee3018bb96b31f6"
   },
   {
     "url": "2015/03/19/implementing-a-curry-function-in-javascript-using-tdd/index.html",
-    "revision": "e7baddee57e186c50886b15d0892e62f"
+    "revision": "1060c0b1f553750717169ff5b34b0289"
   },
   {
     "url": "2015/04/10/repeating-multiple-elements-using-ng-repeat-start-and-ng-repeat-end-in-angularjs/index.html",
-    "revision": "ace049faa234d19e29fe6d88c027145f"
+    "revision": "c0612af77d06ea1c6929c93ea37aafdf"
   },
   {
     "url": "2015/05/03/react-tdd-example-unit-testing-and-building-a-react-component-with-jest-gulp-and-react-test-utils/index.html",
-    "revision": "5d3373f3160995bcaab7cdedc1f58bb1"
+    "revision": "04422e026f87c561b92023ff5ccaceba"
   },
   {
     "url": "2015/07/31/iterm-tips-and-zsh-plugins-for-better-development-environment/index.html",
-    "revision": "295e598c461cf866b195b431c56cf04e"
+    "revision": "fa1df43c07e96e64f679b66f26ac3039"
   },
   {
     "url": "2015/12/27/injecting-custom-javascript-into-react-natives-webview/index.html",
-    "revision": "a31c5aabe367e13ecae1d6891ea0a2e0"
+    "revision": "10d7bea991a4e27a9518821e44a8e86e"
   },
   {
     "url": "2016/01/21/react-redux-part-1-implementing-a-counter-component-in-react-by-using-state/index.html",
-    "revision": "5c611be396b902c50edadf48be74f0dd"
+    "revision": "51248c6933d0caf923d2c04b6e2c3806"
   },
   {
     "url": "2016/04/21/debugging-react-native-apps-using-visual-studio-code/index.html",
-    "revision": "3e27f9626f04706e11be7d368770fd4c"
+    "revision": "94c089d1033e9bc7a138d67601ca935b"
   },
   {
     "url": "404.html",
-    "revision": "2c8bf7c6cd3d6fc295d0524dfb4f8236"
+    "revision": "fff335124462e10928a7989ddbd9b00a"
   },
   {
     "url": "about/index.html",
-    "revision": "98f142f6a8304088c6ae3fc7302b3689"
+    "revision": "1018b75d6cf3e5e84461be302ab7abcc"
   },
   {
     "url": "archive/index.html",
-    "revision": "af66e0391c90d43e433148f01a7a7dea"
+    "revision": "4deae0e0dbd7a73d24a7f07283fceeb0"
   },
   {
     "url": "css/index.css",
@@ -120,7 +120,7 @@ self.__precacheManifest = [
   },
   {
     "url": "index.html",
-    "revision": "ea3b23d6e930975c3ca2206ddc7f3a50"
+    "revision": "4dec9f124418e0ffbe56499c81f83618"
   },
   {
     "url": "js/load-disqus-comments.js",
@@ -132,23 +132,23 @@ self.__precacheManifest = [
   },
   {
     "url": "page-list/1/index.html",
-    "revision": "30c4b32a3c1c0b982cd0987ae818b865"
+    "revision": "5da333df2ff085a414f06ed1f63ab366"
   },
   {
     "url": "page-list/index.html",
-    "revision": "36480cccee8918141d9e08f3da169950"
+    "revision": "d2376306c07ad3d4e780c5fe69528c70"
   },
   {
     "url": "posts/2013-09-25-starting-my-new-blog-finally-octopress/index.html",
-    "revision": "792307dc2e45083a27d773178baaedaf"
+    "revision": "13a486ff567aea8c8489b726b4be9f7e"
   },
   {
     "url": "posts/2014-07-15-setting-up-my-macbook-for-development-environment/index.html",
-    "revision": "e121b4af2fc1d4c6a74c751ae8107f57"
+    "revision": "cb1a9f4d906209714800bef216dad66c"
   },
   {
     "url": "tags/index.html",
-    "revision": "7e3a3585aa020533c3b3a3e21e477ecb"
+    "revision": "fbd1ae4ae30a8fad376b4ab7a64ae65e"
   }
 ].concat(self.__precacheManifest || []);
 workbox.precaching.precacheAndRoute(self.__precacheManifest, {});
