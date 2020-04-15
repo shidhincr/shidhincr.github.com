@@ -15,7 +15,12 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addPlugin(pluginRss);
   eleventyConfig.addPlugin(pluginSyntaxHighlight);
   eleventyConfig.addPlugin(readingTime);
-  eleventyConfig.addPlugin(pluginPWA);
+  eleventyConfig.addPlugin(pluginPWA, {
+    cleanupOutdatedCaches: true,
+    globPatterns: [
+      "**/*.{html,css,js,mjs,map,webp,ico,svg,woff2,woff,eot,ttf,otf,ttc,json}"
+    ],
+  });
   eleventyConfig.setDataDeepMerge(true);
 
   eleventyConfig.addLayoutAlias("post", "layouts/post.njk");
