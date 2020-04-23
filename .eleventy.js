@@ -11,14 +11,17 @@ const Terser = require("terser");
 const _ = require("lodash");
 
 module.exports = function(eleventyConfig) {
-  eleventyConfig.addPlugin(lazyImagesPlugin);
+  eleventyConfig.addPlugin(lazyImagesPlugin, {
+    appendInitScript: false
+  });
   eleventyConfig.addPlugin(pluginRss);
   eleventyConfig.addPlugin(pluginSyntaxHighlight);
   eleventyConfig.addPlugin(readingTime);
   eleventyConfig.addPlugin(pluginPWA, {
     cleanupOutdatedCaches: true,
+    navigationPreload: true,
     globPatterns: [
-      "**/*.{html,css,js,mjs,map,webp,ico,svg,woff2,woff,eot,ttf,otf,ttc,json}"
+      "**/*.{html,mjs,map,webp,ico,svg,woff2,woff,eot,ttf,otf,ttc,json}"
     ],
   });
   eleventyConfig.setDataDeepMerge(true);
