@@ -14,6 +14,8 @@
 importScripts("workbox-v4.3.1/workbox-sw.js");
 workbox.setConfig({modulePathPrefix: "workbox-v4.3.1"});
 
+workbox.navigationPreload.enable();
+
 workbox.core.setCacheNameDetails({prefix: "eleventy-plugin-pwa"});
 
 workbox.core.skipWaiting();
@@ -27,12 +29,12 @@ workbox.core.clientsClaim();
  */
 self.__precacheManifest = [
   {
-    "url": "img/favicon.ico",
-    "revision": "2d1aefa2d4432083fe876eaba13bb1bb"
+    "url": "css/Lora.woff2",
+    "revision": "9ffe4d9c3a430e43dd2cfc36b7472ce9"
   },
   {
-    "url": "js/load-disqus-comments.js",
-    "revision": "7e430790260f5ae5c144fe787071d9e6"
+    "url": "img/favicon.ico",
+    "revision": "2d1aefa2d4432083fe876eaba13bb1bb"
   },
   {
     "url": "manifest.json",
