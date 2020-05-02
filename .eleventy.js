@@ -18,7 +18,7 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addPlugin(pluginRss);
   eleventyConfig.addPlugin(pluginSyntaxHighlight);
   eleventyConfig.addPlugin(readingTime);
-  eleventyConfig.addPlugin(accessibilityPlugin);
+  // eleventyConfig.addPlugin(accessibilityPlugin);
   eleventyConfig.addPlugin(pluginPWA, {
     cleanupOutdatedCaches: true,
     navigationPreload: true,
