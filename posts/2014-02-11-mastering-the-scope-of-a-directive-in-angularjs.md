@@ -57,7 +57,7 @@ In the above example, we created a directive by returning a *DDO* from the funct
 	
 Let's try another example. We'll create simple directive to render a div and a textbox that can show and change a name. The `name` property gets the initial value from the `Ctrl1` scope ( parent scope of the directive ).
 
-<iframe loading="lazy" class="embedd-iframe" src="//jsfiddle.net/shidhincr/eyNYw/4/embedded/js,html,css,result/" ></iframe>
+<iframe loading="lazy" class="embedd-iframe" src="//jsfiddle.net/shidhincr/eyNYw/4/embedded/js,html,css,result/" title="js-fiddle"></iframe>
 	
 If we change the name inside the textbox, notice the header name also gets changed. Since there's no scope provided in the *DDO*, the directive uses its parent scope. Therefore, any changes we make inside the directive are actually reflected in the parent scope. Similarly, parent `Ctrl1` scope has  a method to reverse the name and this gets triggered when we click on the header. Now as we expect, clicking on the header should reverse the name inside the directive too.
 
@@ -72,7 +72,7 @@ Confused ? Let's see the exact differences between setting `scope: true` and `sc
 
 Let's look at the following fiddle to make it more clear :
 
-<iframe loading="lazy" class="embedd-iframe" src="//jsfiddle.net/shidhincr/q3kex/3/embedded/js,html,css,result/" ></iframe>
+<iframe loading="lazy" class="embedd-iframe" src="//jsfiddle.net/shidhincr/q3kex/3/embedded/js,html,css,result/" title="js-fiddle-1"></iframe>
 
 First, try clicking on the header. We can see that the name gets reversed inside controller `Ctrl1` and the directive. Next, change the name inside the textbox; the parent `scope` is not at all affected. 
 
@@ -109,7 +109,7 @@ Though it's called as an *Isolated scope*, AngularJS allows to communicate with 
 
 See the below fiddle:
 
-<iframe loading="lazy" class="embedd-iframe" src="//jsfiddle.net/shidhincr/q3kex/4/embedded/js,html,css,result/" ></iframe>
+<iframe loading="lazy" class="embedd-iframe" src="//jsfiddle.net/shidhincr/q3kex/4/embedded/js,html,css,result/" title="js-fiddle-2"></iframe>
 
 We just created a directive with an isolated scope. Notice, even the parent scope has a name "Harry", the textbox inside directive is blank. This is because of the new *Isolated scope* doesn't know anything about its parent scope.
 
@@ -121,7 +121,7 @@ To access any parent scope data, we need to pass that to our directive explicitl
 
 Just go through the below fiddle, and look at the "HTML", "JavaScript" and  "Results" tabs.
 
-<iframe loading="lazy" class="embedd-iframe" src="//jsfiddle.net/shidhincr/pJLT8/10/embedded/js,html,css,result/" ></iframe>
+<iframe loading="lazy" class="embedd-iframe" src="//jsfiddle.net/shidhincr/pJLT8/10/embedded/js,html,css,result/" title="js-fiddle-3"></iframe>
 
 Let's try to understand how this works. Take the JavaScript code first:
 

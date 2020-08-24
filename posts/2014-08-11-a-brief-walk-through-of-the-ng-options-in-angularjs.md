@@ -117,7 +117,7 @@ We'll cover these different type of **comprehension expressions** with the help 
 
 This is the simplest and commonly used expression. This tells **ng-options** directive to loop through the array, and generate option element containing the current value. The generated html looks like this:
 
-![](https://lh3.googleusercontent.com/-sWj95dIg0Co/VA0e8YuM7UI/AAAAAAAASRY/kmmupaPV1Ac/h114/Screenshot%2B2014-09-08%2B07.06.16.png)
+![ng-option-label-as-value](/img/ng-option-label-as-value.png)
 
 The *value* of each option element is the loop couter and the text inside the option element is the current array content. Note the `label` is the one generates the text inside each option element. So it should be same name as `value` if items array contains all premitive type. In the above example, both label and value referred as `item`.
 
@@ -135,15 +135,15 @@ The above code is pretty simple to understand. We're telling angular that to loo
 
 By default, unless specified, the model bound the parent select box will be the `value` of the expression. That means, in the previous example, the `item` is the model for the select element. If we select the second element in the select box, the model is this:
 
-![](https://lh5.googleusercontent.com/-H_M5Y7QW9Jw/VA0l1wZY6WI/AAAAAAAASRw/EB54lG4L-rA/h240/Screen%2BShot%2B2014-09-08%2Bat%2B7.43.05%2BAM.png)
+![selected-item-is](/img/selected-item-is.png)
 
 However, AngularJS provides another variation of expression to change this behaviour. Using `select as` we can specify a different model to the select box. Let's see the below example:
 
 	ng-options="item.age as item.name for item in items"
 
-![](https://lh5.googleusercontent.com/-AY6sL4nCidI/VA0nnsQRQuI/AAAAAAAASR8/ja0NvwcMtyI/h128/Screen%2BShot%2B2014-09-08%2Bat%2B7.50.24%2BAM.png)
+![ng-model-screenshot](/img/ng-model-screenshot.png)
 
-![](https://lh6.googleusercontent.com/-MkszZ2GNFv4/VA0n65cdfcI/AAAAAAAASSM/45mrEy-1XKU/h240/Screen%2BShot%2B2014-09-08%2Bat%2B7.51.34%2BAM.png)
+![selected-item-is-2](/img/selected-item-is-2.png)
 
 Here, each option will have the text as `item.name` but when we select any of them, the selectedItem will be `item.age`.
 
@@ -167,7 +167,7 @@ and the ng-options in HTML
 
 The above expression tells Angular to group each options based on the `item.age`. If we run the code, the output looks like this
 
-![](https://lh4.googleusercontent.com/-IMgiQ1KQINw/VA2flqQxDiI/AAAAAAAASVQ/LYQ4LHM6Th0/w239-h301-no/Screen%2BShot%2B2014-09-08%2Bat%2B1.38.12%2BPM.png)
+![selected-item-screenshot](/img/selected-item-screenshot.png)
 
 **4) `select` as `label` group by `group` for `value` in `array` track by `trackexpr`**
 
@@ -204,7 +204,7 @@ Let's modify the expression like this in our mark-up
 	
 The generated html is like this:
 
-![](https://lh3.googleusercontent.com/-eoAgJdq75go/VA_CWccGIqI/AAAAAAAASeo/OE-cjTGnGr4/h166/Screen%2BShot%2B2014-09-10%2Bat%2B7.15.04%2BAM.png)
+![label-for-key-value-object](/img/label-for-key-value-object.png)
 
 The generated html is a select box with all the key names. Similarly, we can create the select box with only values, shown below.
 

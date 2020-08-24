@@ -10,12 +10,12 @@ categories:
 permalink: 2014/06/26/explaining-call-and-apply-in-javascript-through-mr-dot-dave/
 ---
 
-### Call and Apply, makes sense. Who is Mr.Dave ?
+## Call and Apply, makes sense. Who is Mr.Dave ?
 
 First, I admit the title looks bit weird. I know this topic has been explained a thousand times in many JavaScript blogs, and I don't want to repeat the same here too. So I am gonna explain this through a person '**Dave**'.
 Yesterday I got a chance to explain the call and apply methods in JavaScript to some of my friends. I had to pick a real world scenario to make them properly understand how it works. Here I am going to explain the same. Excuse me if this is going to be dumb story.
 
-### Real world scenario
+## Real world scenario
 
 Let's assume, you've got a friend called Dave, and he is very smart. An interesting thing about him is, he has developed a **method** for booking flight tickets for cheap and easily. Basically how he has done this is by creating lot of contacts in this field, so that he can get more offers while flight booking. It took him many months to get it done.
 
@@ -32,7 +32,7 @@ Whenever Dave wants to make a flight booking, he calls his friends ( the contact
 
 Yeah, you are going to do the third step now. That's the exact need of `call` and `apply` in JavaScript.
 
-### Structure of Dave in Code
+## Structure of Dave in Code
 
 Dave looks more like this in the code :
 
@@ -63,7 +63,7 @@ var Dave = {
 
 Do you see any problem here ? The `bookCheapFlightTickets()` is complex. Also you cannot just execute it with `Dave.bookCheapFlightTickets()` by giving the **place**, **numberOfPeople**, and **paymentDetails** as parameters. Yes, the problem is the ticket is going to be printed on Dave's  details ( here the  details are his name, age and idNumber ).
 
-### What are Call and Apply
+## What are Call and Apply
 
 In simple, `call` and `apply` are two methods of the Function object. Normally you can execute a function by appending '()' to its name. Say, a function `foo`, can be invoked by calling `foo()`. Alternately, using call or apply :
 
@@ -79,7 +79,7 @@ Now you may ask, what is this `context` parameter. Yeah, this is the only specia
 
 So the main point is anything points to `this` inside a function can be changed to this `context` object. Voila,  that's what we're looking for !
 
-### Let's Apply What You Learnt
+## Let's Apply What You Learnt
 
 So now you know how to fool Dave's friends by impersonating as Dave. You will be mostly look like below:
 
@@ -103,7 +103,7 @@ Now you can borrow Dave's **method** using `call` or `apply`.
 	var bookedTicket = davesMethodForFlightBooking.apply(You, [place, numberOfPeople, paymentDetails]);
 ```
 
-### tl;dr
+## tl;dr
 
 `Call` and `Apply` are two important tools of advanced JavaScript programming. In JavaScript, a function always have an execution context, called as `this`. When the function is executed normally, like this `foo()` the execution context points to the global window object. If the function is a method of an object, the execution context points to that object. For example, in the code `obj.foo()` the execution context `this` points to `obj`.
 
@@ -113,6 +113,6 @@ The only difference between the `call` and `apply` is the way to you pass the pa
 
 
 
-### That's it
+## That's it
 
 Thanks for reading ! Please correct me if I made any mistakes in the post.

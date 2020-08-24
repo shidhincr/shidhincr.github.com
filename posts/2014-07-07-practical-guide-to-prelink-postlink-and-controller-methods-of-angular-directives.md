@@ -29,7 +29,7 @@ There are 4 parameters available to the link function.
 
 Now let's create a simple directive to see how the data binding works. See the JSFiddle below:
 
-<iframe loading="lazy" class="embedd-iframe" src="//jsfiddle.net/shidhincr/Bpxn2/embedded/js,html,css,result/" ></iframe>
+<iframe loading="lazy" class="embedd-iframe" src="//jsfiddle.net/shidhincr/Bpxn2/embedded/js,html,css,result/" title="js-fiddle"></iframe>
 
 The `name` and `greeting` properties attached to the scope are linked to the template once the link function is executed. And, the browser will show **"Hey, I am Paul"** in the view.
 
@@ -89,7 +89,7 @@ The signature is of the pre-link function is same as that of a post-link. The on
 
 Let's create a new directive called `<son>` and place inside the template of `<dad>` directive.
 
-<iframe loading="lazy" class="embedd-iframe" src="//jsfiddle.net/shidhincr/Bpxn2/1/embedded/js,html,css,result/" ></iframe>
+<iframe loading="lazy" class="embedd-iframe" src="//jsfiddle.net/shidhincr/Bpxn2/1/embedded/js,html,css,result/" title="js-fiddle-1"></iframe>
 
 We created a **son** directive and placed inside the **dad** directive's template. Since there is no scope specified for the **son** directive, we assume that all parent directive scope should be available to it. Let's look at the output tab of the jsFiddle, we can see that the **son** directive prints like this:
 
@@ -103,7 +103,7 @@ Now let's analyse what happened. Here, both the **dad** and **son** directives h
 
 This is where the `pre-link` comes handy. A pre-link function of a directive will get executed before all of its child directives' link functions. Let's modify our jsFiddle:
 
-<iframe loading="lazy" class="embedd-iframe" src="//jsfiddle.net/shidhincr/Bpxn2/2/embedded/js,html,css,result/" ></iframe>
+<iframe loading="lazy" class="embedd-iframe" src="//jsfiddle.net/shidhincr/Bpxn2/2/embedded/js,html,css,result/" title="js-fiddle-2"></iframe>
 
 See the output tab. Dad's name is now available to the son.
 
@@ -113,7 +113,7 @@ Changing post-link to pre-link will solve the above problem. However, it's not a
 
 Directive's controller is designed for that. A controller is a place where directive can define it's public API. Let's solve the above problem in controller way.
 
-<iframe loading="lazy" class="embedd-iframe" src="//jsfiddle.net/shidhincr/Bpxn2/2/embedded/js,html,css,result/" ></iframe>
+<iframe loading="lazy" class="embedd-iframe" src="//jsfiddle.net/shidhincr/Bpxn2/2/embedded/js,html,css,result/" title="js-fiddle-3"></iframe>
 
 Here, we're defining a proper API, and our directive is more robust now. Similarly,  we're making sure that the **son** directive has a dependency on the **dad** directive. In simple words, son cannot exist with out a dad. We can see that, AngularJs will throw an error when the son directive is placed outside the dad directive. This makes sure that our code is well error handled.
 

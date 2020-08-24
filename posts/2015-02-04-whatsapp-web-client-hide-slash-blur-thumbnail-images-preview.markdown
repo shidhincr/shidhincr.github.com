@@ -32,10 +32,6 @@ I use whatsapp web and I had the same problem. That's when I decided to make a C
 
 **[WhatsApp web Hide Images Chrome Extension](https://chrome.google.com/webstore/detail/whatsapp-web-hide-media-i/elioehejcldpnphaohhkcdjhjojjbkim)**
 
-Preview:
-
-![screenshot](https://lh6.googleusercontent.com/u8Y1oIPCC_ejXU5OlpQJIxZCHEJr5Fx-HsV9UzG6KnR0gk6VmrkcHnN-QjRCQRqbMTy5xnTM=s640-h400-e365)
-
 The extension will not stop the media auto-download. But it will hide all the thumbnail images by default. On mouseover, a transparent image will be shown, and onclick it will show the full image. I hope this will be useful to some of you guys.
 
 

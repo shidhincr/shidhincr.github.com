@@ -15,7 +15,7 @@ In recent years, Web peformance optimizations became a mandatory skill for every
 
 Optimizing the page load or run time performance has a positive impact on the user experience. There are numourous studies shows the conversion rate in e-commerce websites has a direct relationship with the page load time. Every second saved from the page load speed improves the conversion rate.
 
-### What's Link Preload
+## What's Link Preload
 
 > Link preload is a **declarative** way to fetch the assets without affecting the **onload event** of your entire page.
 

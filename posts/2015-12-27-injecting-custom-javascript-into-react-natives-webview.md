@@ -12,7 +12,7 @@ categories:
 - Webview
 ---
 
-![react native webview](https://lh3.googleusercontent.com/-3JWl2Mvff3w/VoApfwiv1TI/AAAAAAAAssU/UJRZsSvHHpo/s800/Screen+Shot+2015-12-27+at+10.09.12+PM.png "Screen Shot 2015-12-27 at 10.09.12 PM.png")
+![react native webview](/img/react-native-webview.png "React native webview")
 
 I was playing around with [React native](https://facebook.github.io/react-native/) these days. Ever since they added the support for the webview in React native for Android ( which happened in their last [release](https://github.com/facebook/react-native/releases/tag/v0.17.0) ), I was eager to try it out. So, today's post is about React native webview.
 

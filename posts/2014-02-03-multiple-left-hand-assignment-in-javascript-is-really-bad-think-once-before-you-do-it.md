@@ -23,7 +23,7 @@ var a = b = c = d = 10;
 
 The assignment expressions are always evaluated from right-to-left. So what the above expression actually does is, assign the value `10` to the variable `d`, then assign the value of `d` to `c` and so on. <!--more-->Finally all the variables will get the value `10`. This kind of "short-hand" code will allows you to get rid of the repetitive code; especially when you want to initialise multiple variables with an initial value.
 
-### And what’s the catch here ?
+## And what’s the catch here ?
 
 Well, in simple words: **“the scope“**  . To understand that, let’s move the same expression inside a function. Like this:
 

@@ -9,8 +9,6 @@ categories:
 - PacketPub offer
 ---
 
-![#Packt2k](http://lh4.googleusercontent.com/-Z3p9zQTOkDo/Uywf-U3Iu-I/AAAAAAAAHfQ/qvPe9fC2MoI/w600-h250-no/2000th-Book-Home-Page-Banner.png)
-
 ## What is this all about ?
 
 Being a good customer of Packet Pub from long time, I subscribed to their email service, so that I would be notified about the latest book releases, promotional offers..etc. And today, I received an email about their 2000th title offer. I guess this is an exciting offer worth sharing through my blog.

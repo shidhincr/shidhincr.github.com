@@ -14,13 +14,13 @@ categories:
 
 TDD stands for Test Driven Development. To those who don't know what TDD means: In a typical TDD Environment, a developer start with a basic test case describing the minimal requirement for implementing the module. Then he writes the actual implementation code for making the test case pass.
 <!-- more -->
-![TDD](https://lh3.googleusercontent.com/dtPfB5V-ew-rm3aApkXHTA8jFVwsFzoNNepbn9wU=w264-h207-p-no)
+![TDD](/img/tdd.png)
 
 Next, another test case is written for a different expectation for the module, followed by writing the implementation to make the test pass. This process goes on till the all the expectations for the actual module is implemented.
 
 This way of development ( driven by series of test cases ) is called TDD.
 
-### Setting up the tools
+## Setting up the tools
 
 Here we're going to use [Mocha](http://mochajs.org) as the unit testing framework. For running the tests, we will be using [Testem](https://github.com/airportyh/testem).
 
@@ -42,7 +42,7 @@ Create the following files:
 2. curry-spec.js ( Test file for the curry.js )
 3. testem.yml ( Testem configurations )
 
-#### Testem Configuration
+## Testem Configuration
 Edit the `testem.yml` and set up the source files for running the tests.
 
 ```yml
@@ -52,7 +52,7 @@ src_files:
 ```
 Open Terminal and run the command `testem` from the TDD folder to verify testem is running.
 
-#### Mocha and Chai
+## Mocha and Chai
 As I said earlier, we're going to use **Mocha** and **Chai** for writing the test cases. By default, testem uses Jasmine as the testing framework. So to use Mocha and Chai, we need to change the testem configuration.
 
 First install Chai.js from npm.
@@ -106,7 +106,7 @@ http://localhost:7357/
 
 Behaviour of the module is the output it produces for various inputs. Or we can say, how the module is responding to various scenarios. These scenarios are going to be our test cases. So, before we start writing our test cases, we should think about all possible scenarios the module can handle with.
 
-### JavaScript Curry Function
+## JavaScript Curry Function
 
 Here we're going to implement a curry function in JavaScript. So in this case, the *module* or the *unit* is the function named `curry`. Let's think and start identifying different scenarios ( in this context, inputs ) for our `curry` function.
 
@@ -127,7 +127,7 @@ sumofTwoAndThree(3) // should return 6
 
 So, what we're going to implement now is a function that can create a curried function from any other function. We'll divide our test cases into two groups: one for curry function generator and another one for the actual curry function.
 
-### Writing the first test case
+## Writing the first test case
 
 Let's start with the curry function generator. We'll name it as `makeCurry`. Its behaviour is to transform any function into a curried function.
 

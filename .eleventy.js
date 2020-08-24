@@ -18,7 +18,7 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addPlugin(pluginRss);
   eleventyConfig.addPlugin(pluginSyntaxHighlight);
   eleventyConfig.addPlugin(readingTime);
-  // eleventyConfig.addPlugin(accessibilityPlugin);
+  eleventyConfig.addPlugin(accessibilityPlugin);
   eleventyConfig.addPlugin(pluginPWA, {
     cleanupOutdatedCaches: true,
     navigationPreload: true,
@@ -27,6 +27,7 @@ module.exports = function(eleventyConfig) {
     ],
   });
   eleventyConfig.setDataDeepMerge(true);
+  eleventyConfig.setWatchJavaScriptDependencies(false);
 
   eleventyConfig.addLayoutAlias("post", "layouts/post.njk");
 

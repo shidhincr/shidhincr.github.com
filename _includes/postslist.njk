@@ -1,6 +1,6 @@
 {% for year in postslistYears %}
   <div class="postlist-year">
-    <h3>{{ year }}</h3>
+    <h2>{{ year }}</h2>
     <ol reversed class="postlist">
       {% for post in postslist[year] | reverse %}
         {% if post.data.published %}

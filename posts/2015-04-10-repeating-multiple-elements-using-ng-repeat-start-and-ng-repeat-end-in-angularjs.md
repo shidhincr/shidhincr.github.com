@@ -19,7 +19,7 @@ ng-repeat="todo in todoList.todos"
 ```
 Till Angular 1.2, ng-repeat was designed to work on a single DOM element. In other words, ng-repeat can repeat only the DOM element on which it is added. Therefore, some of the situations -- see below -- lead Angular community to think about modifying ng-repeat in version 1.2. In the next section, we'll see the problem with ng-repeat and the solutions introduced.
 
-### What was the issue ?
+## What was the issue ?
 
 Consider the model like this:
 
@@ -75,7 +75,7 @@ Let's implement the above example with these new directives:
 ```
 The above code will generate the desired output. You can see a [DEMO](//jsfiddle.net/shidhincr/3eLp5u6m/1/) here
 
-<iframe loading="lazy" class="embedd-iframe" src="//jsfiddle.net/shidhincr/3eLp5u6m/1/embedded/js,html,css,result/" ></iframe>
+<iframe loading="lazy" class="embedd-iframe" src="//jsfiddle.net/shidhincr/3eLp5u6m/1/embedded/js,html,css,result/" title="js-fiddle"></iframe>
 
 ### Summary
 
