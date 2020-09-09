@@ -173,7 +173,7 @@ pre + .info {
 }
 
 /* Posts list */
-.postlist-year > h3 {
+.postlist-year > h2 {
   background: linear-gradient(to left,#E91E63,#9C27B0,#3F51B5);
   -webkit-text-fill-color: transparent;
   -webkit-background-clip: text;
