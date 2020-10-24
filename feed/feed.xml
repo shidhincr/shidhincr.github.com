@@ -1296,10 +1296,13 @@ plugins=(git bundler foobar)&lt;/p&gt;
 &lt;p&gt;&lt;img src=&quot;https://www.undefinednull.com/img/blog-images/flow-server-stopped-working.png&quot; alt=&quot;flow server is not responding&quot;&gt;&lt;/p&gt;
 &lt;pre class=&quot;language-shell&quot;&gt;&lt;code class=&quot;language-shell&quot;&gt;The flow server is not responding&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;Seems like it is because of an unhandled exception that lead to crashing the flow server.&lt;/p&gt;
-&lt;p&gt;Here is a quick fix. Go to you command prompt and run:&lt;/p&gt;
+&lt;p&gt;Here is a quick fix. Go to the command prompt and run:&lt;/p&gt;
 &lt;pre class=&quot;language-shell&quot;&gt;&lt;code class=&quot;language-shell&quot;&gt;&lt;span class=&quot;token function&quot;&gt;pkill&lt;/span&gt; -f flow-bin&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;After this, try to run the &lt;code&gt;flow&lt;/code&gt;. You can see that the flow-server will be restarted.&lt;br&gt;
-Everything should work properly from now.&lt;/p&gt;
+&lt;p&gt;After this, try to run the &lt;code&gt;flow&lt;/code&gt;. The flow-server will be restarted and everything should work properly from now.&lt;/p&gt;
+&lt;h2 id=&quot;references%3A&quot;&gt;References: &lt;a class=&quot;direct-link&quot; href=&quot;#references%3A&quot; aria-hidden=&quot;true&quot;&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://github.com/facebook/flow/issues/1428&quot;&gt;https://github.com/facebook/flow/issues/1428&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
 </content>
 	</entry>
 </feed>
