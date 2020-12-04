@@ -4,7 +4,7 @@
 	<subtitle>Scribbles of a UI Engineer, JavaScript enthusiast</subtitle>
 	<link href="https://www.undefinednull.com/feed/feed.xml" rel="self"/>
 	<link href="https://www.undefinednull.com"/>
-	<updated>2020-10-24T04:00:00+04:00</updated>
+	<updated>2020-10-24T05:30:00+05:30</updated>
 	<id>https://www.undefinednull.com/</id>
 	<author>
 		<name>Shidhin CR</name>
@@ -14,7 +14,7 @@
 	<entry>
 		<title>Starting my new blog: Finally Octopress</title>
 		<link href="https://www.undefinednull.com/posts/2013-09-25-starting-my-new-blog-finally-octopress/"/>
-		<updated>2013-09-25T04:00:00+04:00</updated>
+		<updated>2013-09-25T05:30:00+05:30</updated>
 		<id>https://www.undefinednull.com/posts/2013-09-25-starting-my-new-blog-finally-octopress/</id>
 		<content type="html">&lt;p&gt;I wanted to start writing blog ever since I started coding. I never had a success setting it up because of time constraints and many other reasons. During this time, I&#39;ve evaluated a number of blogging platforms and eventually I thought of using wordpress as my blogging platform when I start my blog.&lt;/p&gt;
 &lt;!-- more --&gt;
@@ -35,7 +35,7 @@ I also read about Octopress from my daily reading list, but didn&#39;t give much
 	<entry>
 		<title> Some Gotchas In Arithmetic Expression Evaluation : JavaScript</title>
 		<link href="https://www.undefinednull.com/2013/09/26/some-gotchas-in-arithmetic-expression-evaluation-javascript/"/>
-		<updated>2013-09-26T04:00:00+04:00</updated>
+		<updated>2013-09-26T05:30:00+05:30</updated>
 		<id>https://www.undefinednull.com/2013/09/26/some-gotchas-in-arithmetic-expression-evaluation-javascript/</id>
 		<content type="html">&lt;h2 id=&quot;solve-a-small-problem-in-javascript&quot;&gt;Solve a small problem in JavaScript &lt;a class=&quot;direct-link&quot; href=&quot;#solve-a-small-problem-in-javascript&quot; aria-hidden=&quot;true&quot;&gt;#&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;This post is just for recollecting some of the basics of JavaScript. Let&#39;s start with a small JavaScript code. Here is the code –– Solve it with out using the console.&lt;/p&gt;
@@ -168,7 +168,7 @@ a	  -
 	<entry>
 		<title>Octopress Blog Tweaks: Adding Author Info Section Below Each Posts</title>
 		<link href="https://www.undefinednull.com/2013/10/15/octopress-blog-tweaks-adding-author-information-section-below-each-posts/"/>
-		<updated>2013-10-15T04:00:00+04:00</updated>
+		<updated>2013-10-15T05:30:00+05:30</updated>
 		<id>https://www.undefinednull.com/2013/10/15/octopress-blog-tweaks-adding-author-information-section-below-each-posts/</id>
 		<content type="html">&lt;p&gt;A good blogging platform is one which allows easy customization. I&#39;ve been using Octopress for more than 2 weeks and happy to tell that it&#39;s one of those allows customization with out any pain. I want to share a tweak I added to my blog recently : It&#39;s an author information section below every post. Let&#39;s see how I built it and added to my blog.&lt;/p&gt;
 &lt;!-- more --&gt;
@@ -213,7 +213,7 @@ a	  -
 	<entry>
 		<title>Multiple Left-hand assignment in JavaScript, is really bad. Think before you do it.</title>
 		<link href="https://www.undefinednull.com/2014/02/03/multiple-left-hand-assignment-in-javascript-is-really-bad-think-once-before-you-do-it/"/>
-		<updated>2014-02-03T04:00:00+04:00</updated>
+		<updated>2014-02-03T05:30:00+05:30</updated>
 		<id>https://www.undefinednull.com/2014/02/03/multiple-left-hand-assignment-in-javascript-is-really-bad-think-once-before-you-do-it/</id>
 		<content type="html">&lt;p&gt;&lt;strong&gt;“JavaScript allows multiple left-hand assignments”&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;You may ask, what does that mean ? Well, if you’re not familiar, in JavaScript you can write the variable assignment expressions like this.&lt;/p&gt;
@@ -235,7 +235,7 @@ a	  -
 	<entry>
 		<title>Mastering the scope of the directives in AngularJS</title>
 		<link href="https://www.undefinednull.com/2014/02/11/mastering-the-scope-of-a-directive-in-angularjs/"/>
-		<updated>2014-02-11T04:00:00+04:00</updated>
+		<updated>2014-02-11T05:30:00+05:30</updated>
 		<id>https://www.undefinednull.com/2014/02/11/mastering-the-scope-of-a-directive-in-angularjs/</id>
 		<content type="html">&lt;div class=&quot;image-center&quot;&gt;
 &lt;p&gt;&lt;img src=&quot;https://www.undefinednull.com/img/scopes_in_directives.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
@@ -353,7 +353,7 @@ randomColor = function for generating random color code
 	<entry>
 		<title>&#39;Resolve&#39; in AngularJS routes, explained as story</title>
 		<link href="https://www.undefinednull.com/2014/02/17/resolve-in-angularjs-routes-explained-as-story/"/>
-		<updated>2014-02-17T04:00:00+04:00</updated>
+		<updated>2014-02-17T05:30:00+05:30</updated>
 		<id>https://www.undefinednull.com/2014/02/17/resolve-in-angularjs-routes-explained-as-story/</id>
 		<content type="html">&lt;p&gt;I feel AngularJS documentation is baffling sometimes. Reason may be,  I&#39;m going through the same &lt;a href=&quot;http://www.bennadel.com/blog/2439-My-Experience-With-AngularJS-The-Super-heroic-JavaScript-MVW-Framework.htm&quot;&gt;learning curve&lt;/a&gt; described by &lt;a href=&quot;https://twitter.com/bennadel&quot;&gt;@bennadel&lt;/a&gt;. Through this article, I&#39;m primarily aiming to help those who got stuck at some point of the curve. Don&#39;t take it too seriously; I&#39;m just sharing some of my experiences with AngularJS.&lt;/p&gt;
 &lt;!-- more --&gt;
@@ -400,7 +400,7 @@ Note: When controller is defined in the route, never initialise it again through
 	<entry>
 		<title>AngularJS: Real time model persistence using local storage</title>
 		<link href="https://www.undefinednull.com/2014/02/25/angularjs-real-time-model-persistence-using-local-storage/"/>
-		<updated>2014-02-25T04:00:00+04:00</updated>
+		<updated>2014-02-25T05:30:00+05:30</updated>
 		<id>https://www.undefinednull.com/2014/02/25/angularjs-real-time-model-persistence-using-local-storage/</id>
 		<content type="html">&lt;p&gt;Last week, I came across a situation while working on a simple AngularJS application. I&#39;d to sync the data between multiple open tabs. As you guess,  the easy way to sync data between multiple tabs is through &lt;strong&gt;local storage&lt;/strong&gt;. Ofcourse there are better ways of doing this using &lt;strong&gt;websockets&lt;/strong&gt;; but here I am going to explain the client-side way –– using local storage and real time updating other tabs.&lt;/p&gt;
 &lt;!-- more --&gt;
@@ -425,7 +425,7 @@ Note: When controller is defined in the route, never initialise it again through
 	<entry>
 		<title>Explaining Call and Apply in JavaScript, through Mr.Dave</title>
 		<link href="https://www.undefinednull.com/2014/06/26/explaining-call-and-apply-in-javascript-through-mr-dot-dave/"/>
-		<updated>2014-06-26T04:00:00+04:00</updated>
+		<updated>2014-06-26T05:30:00+05:30</updated>
 		<id>https://www.undefinednull.com/2014/06/26/explaining-call-and-apply-in-javascript-through-mr-dot-dave/</id>
 		<content type="html">&lt;h2 id=&quot;call-and-apply%2C-makes-sense.-who-is-mr.dave-%3F&quot;&gt;Call and Apply, makes sense. Who is Mr.Dave ? &lt;a class=&quot;direct-link&quot; href=&quot;#call-and-apply%2C-makes-sense.-who-is-mr.dave-%3F&quot; aria-hidden=&quot;true&quot;&gt;#&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;First, I admit the title looks bit weird. I know this topic has been explained a thousand times in many JavaScript blogs, and I don&#39;t want to repeat the same here too. So I am gonna explain this through a person &#39;&lt;strong&gt;Dave&lt;/strong&gt;&#39;.&lt;br&gt;
@@ -481,7 +481,7 @@ Note: Only difference between the &#39;call&#39; and &#39;apply&#39; is the way 
 	<entry>
 		<title>Practical Guide to PreLink, PostLink and Controller Methods of Angular Directives</title>
 		<link href="https://www.undefinednull.com/2014/07/07/practical-guide-to-prelink-postlink-and-controller-methods-of-angular-directives/"/>
-		<updated>2014-07-07T04:00:00+04:00</updated>
+		<updated>2014-07-07T05:30:00+05:30</updated>
 		<id>https://www.undefinednull.com/2014/07/07/practical-guide-to-prelink-postlink-and-controller-methods-of-angular-directives/</id>
 		<content type="html">&lt;p&gt;I have discussed about the scope of a directive in my previous &lt;a href=&quot;http://www.undefinednull.com/2014/02/11/mastering-the-scope-of-a-directive-in-angularjs/&quot;&gt;article&lt;/a&gt;. Here we&#39;re going to see how to use the link and controller functions of an AngularJs directive.&lt;/p&gt;
 &lt;!-- more --&gt;
@@ -565,7 +565,7 @@ Used for defining a proper API to the directive. Using controller, directives ca
 	<entry>
 		<title>Setting up My Macbook for Development Environment</title>
 		<link href="https://www.undefinednull.com/posts/2014-07-15-setting-up-my-macbook-for-development-environment/"/>
-		<updated>2014-07-15T04:00:00+04:00</updated>
+		<updated>2014-07-15T05:30:00+05:30</updated>
 		<id>https://www.undefinednull.com/posts/2014-07-15-setting-up-my-macbook-for-development-environment/</id>
 		<content type="html">&lt;p&gt;Here is my setup for my Macbook. I use macbook primarily for web development, so this set up will be useful for those working in similar field.&lt;/p&gt;
 &lt;!-- more --&gt;
@@ -642,7 +642,7 @@ Sign into Chrome and sync all bookmarks, extentions. Write a post about Chrome e
 	<entry>
 		<title>A brief walk-through of the ng-options in AngularJS</title>
 		<link href="https://www.undefinednull.com/2014/08/11/a-brief-walk-through-of-the-ng-options-in-angularjs/"/>
-		<updated>2014-08-11T04:00:00+04:00</updated>
+		<updated>2014-08-11T05:30:00+05:30</updated>
 		<id>https://www.undefinednull.com/2014/08/11/a-brief-walk-through-of-the-ng-options-in-angularjs/</id>
 		<content type="html">&lt;div class=&quot;image-center&quot;&gt;
 &lt;p&gt;&lt;img src=&quot;https://www.undefinednull.com/img/ng-options.jpg&quot; alt=&quot;ng-options&quot;&gt;&lt;/p&gt;
@@ -749,7 +749,7 @@ For object data sources, the default model bound to the select box is the value,
 	<entry>
 		<title>Remote debugging localhost with weinre ( and HTTPS too ) </title>
 		<link href="https://www.undefinednull.com/2015/03/17/remote-debugging-localhost-with-weinre/"/>
-		<updated>2015-03-17T04:00:00+04:00</updated>
+		<updated>2015-03-17T05:30:00+05:30</updated>
 		<id>https://www.undefinednull.com/2015/03/17/remote-debugging-localhost-with-weinre/</id>
 		<content type="html">&lt;p&gt;Debugging mobile websites/applications is a real pain. No debuggers for Javascript, no console logs, cannot inspect html/css, and so on.&lt;/p&gt;
 &lt;!-- more --&gt;
@@ -809,7 +809,7 @@ For object data sources, the default model bound to the select box is the value,
 	<entry>
 		<title>Implementing a curry function in JavaScript using TDD</title>
 		<link href="https://www.undefinednull.com/2015/03/19/implementing-a-curry-function-in-javascript-using-tdd/"/>
-		<updated>2015-03-19T04:00:00+04:00</updated>
+		<updated>2015-03-19T05:30:00+05:30</updated>
 		<id>https://www.undefinednull.com/2015/03/19/implementing-a-curry-function-in-javascript-using-tdd/</id>
 		<content type="html">&lt;p&gt;TDD stands for Test Driven Development. To those who don&#39;t know what TDD means: In a typical TDD Environment, a developer start with a basic test case describing the minimal requirement for implementing the module. Then he writes the actual implementation code for making the test case pass.&lt;/p&gt;
 &lt;!-- more --&gt;
@@ -933,7 +933,7 @@ For object data sources, the default model bound to the select box is the value,
 	<entry>
 		<title>Repeating Multiple Elements using ng-repeat-start and ng-repeat-end in AngularJS</title>
 		<link href="https://www.undefinednull.com/2015/04/10/repeating-multiple-elements-using-ng-repeat-start-and-ng-repeat-end-in-angularjs/"/>
-		<updated>2015-04-10T04:00:00+04:00</updated>
+		<updated>2015-04-10T05:30:00+05:30</updated>
 		<id>https://www.undefinednull.com/2015/04/10/repeating-multiple-elements-using-ng-repeat-start-and-ng-repeat-end-in-angularjs/</id>
 		<content type="html">&lt;p&gt;When the AngularJS &lt;a href=&quot;http://www.angularjs.org/&quot;&gt;website&lt;/a&gt; is released, the TODO example in their website was one of the main attractions. The example was simple and just below 30 lines of code ( Here is the &lt;a href=&quot;https://jsfiddle.net/1waxcf9x/&quot;&gt;link&lt;/a&gt;  if you want to check ). The whole trick behind the scene was done by a directive named &lt;strong&gt;ng-repeat&lt;/strong&gt;, as shown below:&lt;/p&gt;
 &lt;!-- more --&gt;
@@ -960,7 +960,7 @@ For object data sources, the default model bound to the select box is the value,
 	<entry>
 		<title>React TDD Example: Unit Testing and Building a React Component with Jest, Gulp and React Test Utils</title>
 		<link href="https://www.undefinednull.com/2015/05/03/react-tdd-example-unit-testing-and-building-a-react-component-with-jest-gulp-and-react-test-utils/"/>
-		<updated>2015-05-03T04:00:00+04:00</updated>
+		<updated>2015-05-03T05:30:00+05:30</updated>
 		<id>https://www.undefinednull.com/2015/05/03/react-tdd-example-unit-testing-and-building-a-react-component-with-jest-gulp-and-react-test-utils/</id>
 		<content type="html">&lt;p&gt;ReactJs has attained lot of momentum since its initial release in 2013, and became the best JavaScript library for developing rich UI interface. React also popularized different concepts like Virtual DOM, Uni-directional data flow and Componentization in the front-end community. As of today, React has more than 20,000 stars in &lt;a href=&quot;https://github.com/facebook/react&quot;&gt;Github repo&lt;/a&gt;, and actively maintained by the Facebook team.&lt;/p&gt;
 &lt;!-- more --&gt;
@@ -1058,7 +1058,7 @@ Note: By using &lt;strong&gt;jest.dontMock&lt;/strong&gt;, we get the original r
 	<entry>
 		<title>iTerm tips and zsh plugins for better development environment</title>
 		<link href="https://www.undefinednull.com/2015/07/31/iterm-tips-and-zsh-plugins-for-better-development-environment/"/>
-		<updated>2015-07-31T04:00:00+04:00</updated>
+		<updated>2015-07-31T05:30:00+05:30</updated>
 		<id>https://www.undefinednull.com/2015/07/31/iterm-tips-and-zsh-plugins-for-better-development-environment/</id>
 		<content type="html">&lt;p&gt;This post is about the two tools I use regularly in my development environment:  &lt;strong&gt;iTerm&lt;/strong&gt; and &lt;strong&gt;oh-my-zsh&lt;/strong&gt;. &lt;a href=&quot;https://www.iterm2.com/&quot;&gt;iTerm&lt;/a&gt; is a mac terminal replacement and zsh + &lt;a href=&quot;https://github.com/robbyrussell/oh-my-zsh&quot;&gt;oh-my-zsh&lt;/a&gt; is an excellent combo to replace the bash shell with some cool stuffs.&lt;/p&gt;
 &lt;div class=&quot;image-center&quot;&gt;
@@ -1141,7 +1141,7 @@ plugins=(git bundler foobar)&lt;/p&gt;
 	<entry>
 		<title>Injecting Custom JavaScript into React Native&#39;s Webview</title>
 		<link href="https://www.undefinednull.com/2015/12/27/injecting-custom-javascript-into-react-natives-webview/"/>
-		<updated>2015-12-27T04:00:00+04:00</updated>
+		<updated>2015-12-27T05:30:00+05:30</updated>
 		<id>https://www.undefinednull.com/2015/12/27/injecting-custom-javascript-into-react-natives-webview/</id>
 		<content type="html">&lt;p&gt;&lt;img src=&quot;https://www.undefinednull.com/img/react-native-webview.png&quot; alt=&quot;react native webview&quot; title=&quot;React native webview&quot;&gt;&lt;/p&gt;
 &lt;p&gt;I was playing around with &lt;a href=&quot;https://facebook.github.io/react-native/&quot;&gt;React native&lt;/a&gt; these days. Ever since they added the support for the webview in React native for Android ( which happened in their last &lt;a href=&quot;https://github.com/facebook/react-native/releases/tag/v0.17.0&quot;&gt;release&lt;/a&gt; ), I was eager to try it out. So, today&#39;s post is about React native webview.&lt;/p&gt;
@@ -1156,7 +1156,7 @@ plugins=(git bundler foobar)&lt;/p&gt;
 	<entry>
 		<title>React Redux Part 1 : Implementing a counter component in react by using state</title>
 		<link href="https://www.undefinednull.com/2016/01/21/react-redux-part-1-implementing-a-counter-component-in-react-by-using-state/"/>
-		<updated>2016-01-21T04:00:00+04:00</updated>
+		<updated>2016-01-21T05:30:00+05:30</updated>
 		<id>https://www.undefinednull.com/2016/01/21/react-redux-part-1-implementing-a-counter-component-in-react-by-using-state/</id>
 		<content type="html">&lt;p&gt;The frontend world is moving so fast these days. The hottest trend is React along with the Flux pattern. Flux is a architectural pattern introduced by Facebook to solve some of the problems in large data centric applications. Facebook introduced flux as a concept, but there&#39;re number of flux libraries born from then. Today we&#39;re gonna talk about the most popular library in that category named &lt;a href=&quot;http://redux.js.org/&quot;&gt;Redux&lt;/a&gt;.&lt;/p&gt;
 &lt;!-- more --&gt;
@@ -1184,7 +1184,7 @@ plugins=(git bundler foobar)&lt;/p&gt;
 	<entry>
 		<title>Debugging React Native Apps using Visual Studio Code</title>
 		<link href="https://www.undefinednull.com/2016/04/21/debugging-react-native-apps-using-visual-studio-code/"/>
-		<updated>2016-04-21T04:00:00+04:00</updated>
+		<updated>2016-04-21T05:30:00+05:30</updated>
 		<id>https://www.undefinednull.com/2016/04/21/debugging-react-native-apps-using-visual-studio-code/</id>
 		<content type="html">&lt;p&gt;I always think that I am a &lt;a href=&quot;https://blog.codinghorror.com/the-magpie-developer/&quot;&gt;Magpie developer&lt;/a&gt;. I don&#39;t know if others do this often; But, most of the times, I switch between my IDEs,  trying out new frameworks ( even though it doesn&#39;t solve most of my problems ).&lt;/p&gt;
 &lt;!-- more --&gt;
@@ -1242,7 +1242,7 @@ plugins=(git bundler foobar)&lt;/p&gt;
 	<entry>
 		<title>Improve Website Speed with Link Preload</title>
 		<link href="https://www.undefinednull.com/posts/improve-website-speed-with-link-preload/"/>
-		<updated>2020-04-01T04:00:00+04:00</updated>
+		<updated>2020-04-01T05:30:00+05:30</updated>
 		<id>https://www.undefinednull.com/posts/improve-website-speed-with-link-preload/</id>
 		<content type="html">&lt;p&gt;In recent years, Web peformance optimizations became a mandatory skill for every front end developers. Web performance can be classified into two: page load performance and runtime performance. Here in this post, we&#39;ll see how to improve the page load performance using &lt;strong&gt;&lt;a href=&quot;https://developer.mozilla.org/en-US/docs/Web/HTML/Preloading_content&quot;&gt;link preloading&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
 &lt;!-- more --&gt;
@@ -1289,7 +1289,7 @@ plugins=(git bundler foobar)&lt;/p&gt;
 	<entry>
 		<title>Fix: The flow server is not responding</title>
 		<link href="https://www.undefinednull.com/posts/fix-the-flow-server-is-not-responding-issue-mac-osx/"/>
-		<updated>2020-10-24T04:00:00+04:00</updated>
+		<updated>2020-10-24T05:30:00+05:30</updated>
 		<id>https://www.undefinednull.com/posts/fix-the-flow-server-is-not-responding-issue-mac-osx/</id>
 		<content type="html">&lt;p&gt;Recently, I was setting up &lt;code&gt;flow&lt;/code&gt; for one of my project. Everything was running normally, but after sometime, there was this error on the screen:&lt;/p&gt;
 &lt;!-- more --&gt;
