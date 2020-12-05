@@ -2,7 +2,7 @@ const { DateTime } = require("luxon");
 const fs = require("fs");
 const pluginRss = require("@11ty/eleventy-plugin-rss");
 const pluginSyntaxHighlight = require("@11ty/eleventy-plugin-syntaxhighlight");
-const pluginPWA = require('eleventy-plugin-pwa');
+const pluginPWA = require('@pragmatics/eleventy-plugin-pwa');
 const accessibilityPlugin = require("eleventy-plugin-accessibility");
 const htmlmin = require("html-minifier");
 const readingTime = require("eleventy-plugin-reading-time");
@@ -11,7 +11,7 @@ const lazyImagesPlugin = require("eleventy-plugin-lazyimages");
 const Terser = require("terser");
 const _ = require("lodash");
 
-module.exports = function(eleventyConfig) {
+module.exports = function (eleventyConfig) {
   eleventyConfig.addPlugin(lazyImagesPlugin, {
     appendInitScript: false
   });
@@ -20,6 +20,7 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addPlugin(readingTime);
   eleventyConfig.addPlugin(accessibilityPlugin);
   eleventyConfig.addPlugin(pluginPWA, {
+    inlineWorkboxRuntime: true,
     cleanupOutdatedCaches: true,
     navigationPreload: true,
     globPatterns: [
@@ -35,11 +36,11 @@ module.exports = function(eleventyConfig) {
     return DateTime.fromJSDate(dateObj, { zone: "utc" }).toFormat("d LLL yyyy");
   });
 
-  eleventyConfig.addFilter("cssmin", function(code) {
+  eleventyConfig.addFilter("cssmin", function (code) {
     return new CleanCSS({}).minify(code).styles;
   });
 
-  eleventyConfig.addFilter("jsmin", function(code) {
+  eleventyConfig.addFilter("jsmin", function (code) {
     let minified = Terser.minify(code);
     if (minified.error) {
       console.log("Terser error: ", minified.error);
@@ -73,7 +74,7 @@ module.exports = function(eleventyConfig) {
   });
 
   eleventyConfig.addFilter("groupByYear", posts => {
-    const _posts = _.groupBy(posts, function(post) {
+    const _posts = _.groupBy(posts, function (post) {
       const year = new Date(post.date).getFullYear();
       return year;
     });
@@ -121,7 +122,7 @@ module.exports = function(eleventyConfig) {
       .use(markdownItContainer, "info")
   );
 
-  eleventyConfig.addTransform("htmlmin", function(content, outputPath) {
+  eleventyConfig.addTransform("htmlmin", function (content, outputPath) {
     if (outputPath.endsWith(".html")) {
       let minified = htmlmin.minify(content, {
         useShortDoctype: true,
@@ -136,7 +137,7 @@ module.exports = function(eleventyConfig) {
 
   eleventyConfig.setBrowserSyncConfig({
     callbacks: {
-      ready: function(err, browserSync) {
+      ready: function (err, browserSync) {
         const content_404 = fs.readFileSync("_site/404.html");
 
         browserSync.addMiddleware("*", (req, res) => {
