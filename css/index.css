@@ -32,10 +32,9 @@ p,
 img {
   max-width: 50em; /* 600px /16 */
 }
-/* p,
 .tmpl-post li {
   line-height: 1.6;
-} */
+}
 a[href] {
   color: var(--blue);
 }
