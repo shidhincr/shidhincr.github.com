@@ -11,6 +11,8 @@ const lazyImagesPlugin = require("eleventy-plugin-lazyimages");
 const Terser = require("terser");
 const _ = require("lodash");
 
+const DEV = process.env.NODE_ENV !== 'production';
+
 module.exports = function (eleventyConfig) {
   eleventyConfig.addPlugin(lazyImagesPlugin, {
     appendInitScript: false
@@ -19,14 +21,25 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addPlugin(pluginSyntaxHighlight);
   eleventyConfig.addPlugin(readingTime);
   eleventyConfig.addPlugin(accessibilityPlugin);
-  eleventyConfig.addPlugin(pluginPWA, {
-    inlineWorkboxRuntime: true,
-    cleanupOutdatedCaches: true,
-    navigationPreload: true,
-    globPatterns: [
-      "**/*.{html,mjs,map,webp,ico,svg,woff2,woff,eot,ttf,otf,ttc,json}"
-    ],
-  });
+  console.log({ DEV })
+  if (!DEV) {
+    eleventyConfig.addPlugin(pluginPWA, {
+      inlineWorkboxRuntime: true,
+      cleanupOutdatedCaches: true,
+      clientsClaim: true,
+      navigationPreload: true,
+      globPatterns: [
+        "**/*.{mjs,map,webp,ico,svg,woff2,woff,eot,ttf,otf,ttc,json}"
+      ],
+      runtimeCaching: [{
+        urlPattern: ({ url }) => {
+          /* runtime caching enabled only for HTML files */
+          return url.origin === self.origin;
+        },
+        handler: 'CacheFirst',
+      }],
+    });
+  }
   eleventyConfig.setDataDeepMerge(true);
   eleventyConfig.setWatchJavaScriptDependencies(false);
 
@@ -34,6 +47,17 @@ module.exports = function (eleventyConfig) {
 
   eleventyConfig.addFilter("readableDate", dateObj => {
     return DateTime.fromJSDate(dateObj, { zone: "utc" }).toFormat("d LLL yyyy");
+  });
+
+  eleventyConfig.addFilter("sortBy", (arr, prop) => {
+    const isNum = val => val == +val;
+    const sorter = (a, b) => {
+      const aProp = _.get(a, prop);
+      const bProp = _.get(b, prop);
+      return (isNum(aProp) && isNum(bProp)) ? (+aProp - bProp) : (aProp < bProp)
+    };
+    arr.sort(sorter);
+    return arr;
   });
 
   eleventyConfig.addFilter("cssmin", function (code) {

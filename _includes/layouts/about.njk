@@ -8,7 +8,10 @@ templateClass: tmpl-post
   <img src="/img/shidhin_dp.png" alt="Shidhin CR" class="about-me__image">
 </div>
 <div class="rainbow-border-box"></div>
+<div class="about-page">
+  {{ content | safe }}
+</div>
 
-{{ content | safe }}
-
-<p><a href="{{ '/' | url }}">← Home</a></p>
+<p>
+  <a href="{{ '/' | url }}">← Home</a>
+</p>
