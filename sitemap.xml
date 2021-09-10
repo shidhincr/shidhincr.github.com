@@ -130,4 +130,9 @@
     <loc>https://www.undefinednull.com/about/</loc>
     <lastmod>2020-12-09</lastmod>
   </url>
+  
+  <url>
+    <loc>https://www.undefinednull.com/posts/typescript-tips-getting-component-props-types-in-react/</loc>
+    <lastmod>2021-09-10</lastmod>
+  </url>
 </urlset>
