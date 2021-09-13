@@ -4,7 +4,7 @@
   "description": "Personal blog of Shidhin CR",
   "scripts": {
     "build": "del _site && NODE_ENV=production eleventy",
-    "start": "eleventy --serve",
+    "start": "eleventy --serve --port=8082",
     "debug": "DEBUG=* eleventy",
     "github-deploy": "gh-pages -d _site --branch master",
     "deploy": "run-s build github-deploy"

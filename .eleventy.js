@@ -27,7 +27,7 @@ module.exports = function (eleventyConfig) {
       inlineWorkboxRuntime: true,
       cleanupOutdatedCaches: true,
       clientsClaim: true,
-      navigationPreload: true,
+      navigationPreload: false,
       globPatterns: [
         "**/*.{mjs,map,webp,ico,svg,woff2,woff,eot,ttf,otf,ttc,json}"
       ],
@@ -36,7 +36,7 @@ module.exports = function (eleventyConfig) {
           /* runtime caching enabled only for HTML files */
           return url.origin === self.origin;
         },
-        handler: 'CacheFirst',
+        handler: 'StaleWhileRevalidate',
       }],
     });
   }
