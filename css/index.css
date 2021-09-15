@@ -164,6 +164,7 @@ pre + .info {
 }
 .nav-item {
   display: inline-block;
+  padding: 3px;
 }
 .nav-item a[href]:not(:hover) {
   text-decoration: none;
@@ -276,7 +277,7 @@ main img {
   margin: auto;
 }
 .tmpl-post p {
-  line-height: 1.7;
+  line-height: 1.6;
   margin: 25px 0;
 }
 .tmpl-post > .post-card__title {
@@ -365,6 +366,8 @@ main img {
 }
 .post-card__meta-readtime {
   font-size: 0.9em;
+  min-height: 15px;
+  padding: 5px;
 }
 .post-card__category {
   font-family: monospace;
@@ -379,6 +382,7 @@ main img {
 }
 .post-card__excerpt {
   line-height: 1.8em;
+  padding: 5px;
 }
 .post-card__date {
   font-size: 0.9em;
@@ -387,7 +391,7 @@ main img {
 
 .tmpl-post p > code {
   background-color: #f7f5f5;
-  color: #e91e63;
+  color: #d81b5b;
   border-radius: 2px;
   /* box-shadow: 0 1px 3px #b1b1b1; */
   border: 1px solid #f1f1f1;
@@ -537,4 +541,11 @@ main > pre[class*="language-"] {
   margin-left: -40px;
   margin-right: -40px;
   padding: 15px 40px;
+}
+/*SEO Fixes*/
+.tmpl-post ul>li>a {
+    padding: 5px 0;
+    display: inline-block;
+    text-decoration: none;
+    color: #d81b5a !important;
 }
