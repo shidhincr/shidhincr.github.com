@@ -1,5 +1,5 @@
-(function() {
-  let load = function() {
+(function () {
+  let load = function () {
     var d = document,
       s = d.createElement("script");
     s.src = "https://shidhincr.disqus.com/embed.js";
@@ -7,22 +7,31 @@
     (d.head || d.body).appendChild(s);
   };
 
+  let observer;
   let elem = document.querySelector("[data-load-disqus]");
+  let handle = () => {
+    elem.innerHTML = "Loading Comments ...";
+    load();
+    setTimeout(() => {
+      if (observer) {
+        observer.unobserve(elem);
+      }
+      elem.removeEventListener("click", handle);
+      elem.remove();
+    }, 2000);
+  };
+
   if (elem) {
-    elem.addEventListener(
-      "click",
-      function handle(params) {
-        elem.innerHTML = "Loading Comments ...";
-        load();
-        setTimeout(() => {
-          var disqusDiv = document.querySelector('#disqus_thread');
-          if(disqusDiv) {
-            disqusDiv.scrollIntoView();
+    if ("IntersectionObserver" in window) {
+      observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            handle();
           }
-          elem.remove();
-        }, 2000);
-      },
-      { once: true }
-    );
+        });
+      });
+      observer.observe(elem);
+    }
+    elem.addEventListener("click", handle, { once: true });
   }
 })();
