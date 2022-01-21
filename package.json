@@ -6,8 +6,8 @@
     "build": "del _site && NODE_ENV=production eleventy",
     "start": "eleventy --serve --port=8082",
     "debug": "DEBUG=* eleventy",
-    "github-deploy": "gh-pages -d _site --branch master",
-    "deploy": "run-s build github-deploy"
+    "gh-deploy": "gh-pages -d _site --branch master",
+    "deploy": "run-s build gh-deploy"
   },
   "repository": {
     "type": "git",
