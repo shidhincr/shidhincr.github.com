@@ -16,13 +16,16 @@ html,
 body {
   padding: 0;
   margin: 0;
-  font-family: "Lora", sans-serif;
+  font-family: sans-serif;
   font-weight: 400;
   color: var(--darkgray);
   /* background: linear-gradient(to top, #7f7fd5, #86a8e7, #91eae4); */
   background: linear-gradient(to top, #76769a, #f5d1d1, #cae0e0);
   background-attachment: fixed;
   overflow-x: hidden;
+}
+body.fonts-loaded {
+  font-family: "Lora", sans-serif;
 }
 p:last-child {
   margin-bottom: 0;
