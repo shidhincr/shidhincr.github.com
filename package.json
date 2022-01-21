@@ -7,11 +7,12 @@
     "start": "eleventy --serve --port=8082",
     "debug": "DEBUG=* eleventy",
     "gh-deploy": "gh-pages -d _site --branch master",
-    "deploy": "run-s build gh-deploy"
+    "deploy": "run-s build gh-deploy",
+    "test": "NODE_ENV=test eleventy 2>&1 | tee -a /tmp/ci-output.txt; if grep -Fq 'Linter' /tmp/ci-output.txt; then exit 1; fi"
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/11ty/eleventy-base-blog.git"
+    "url": "git://github.com/shidhincr/shidhincr.github.com.git"
   },
   "author": {
     "name": "Shidhin CR",

@@ -20,7 +20,9 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addPlugin(pluginRss);
   eleventyConfig.addPlugin(pluginSyntaxHighlight);
   eleventyConfig.addPlugin(readingTime);
-  eleventyConfig.addPlugin(accessibilityPlugin);
+  if(process.env.NODE_ENV ==='test') {
+    eleventyConfig.addPlugin(accessibilityPlugin);
+  }
   console.log({ DEV })
   if (!DEV) {
     eleventyConfig.addPlugin(pluginPWA, {
