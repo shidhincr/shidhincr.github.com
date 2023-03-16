@@ -13,7 +13,7 @@ categories:
 Have you ever clicked on a button or typed something on a website and waited for a long time before anything happened? If so, you have experienced a poor user experience due to low responsiveness. Responsiveness is how quickly a website responds to user input, such as clicks, taps, scrolls, and keystrokes. A responsive website should provide immediate feedback to the user and avoid delays or freezes.
 <!-- more -->
 
-![interaction to next paint](/img/blog-images/inp-cwv.webp)
+![interaction to next paint](/img/blog-images/inp-cwv.png)
 
 One way to measure responsiveness is by using an experimental metric called Interaction to Next Paint (INP). INP observes the latency of all interactions that a user has made with a website, and reports a single value that represents the longest interaction observed. A low INP means that the website was consistently able to respond quickly to all or most of the user interactions.
 
