@@ -4,7 +4,7 @@
 	<subtitle>Scribbles of a UI Engineer, JavaScript enthusiast</subtitle>
 	<link href="https://www.undefinednull.com/feed/feed.xml" rel="self"/>
 	<link href="https://www.undefinednull.com"/>
-	<updated>2022-03-16T05:30:00+05:30</updated>
+	<updated>2023-03-16T05:30:00+05:30</updated>
 	<id>https://www.undefinednull.com/</id>
 	<author>
 		<name>Shidhin CR</name>
@@ -1365,7 +1365,7 @@ plugins=(git bundler foobar)&lt;/p&gt;
 	<entry>
 		<title>Core Web Vitals: Interaction to Next Paint (INP)</title>
 		<link href="https://www.undefinednull.com/posts/core-web-vitals-interaction-to-next-paint-inp/"/>
-		<updated>2022-03-16T05:30:00+05:30</updated>
+		<updated>2023-03-16T05:30:00+05:30</updated>
 		<id>https://www.undefinednull.com/posts/core-web-vitals-interaction-to-next-paint-inp/</id>
 		<content type="html">&lt;p&gt;Have you ever clicked on a button or typed something on a website and waited for a long time before anything happened? If so, you have experienced a poor user experience due to low responsiveness. Responsiveness is how quickly a website responds to user input, such as clicks, taps, scrolls, and keystrokes. A responsive website should provide immediate feedback to the user and avoid delays or freezes.&lt;/p&gt;
 &lt;!-- more --&gt;
