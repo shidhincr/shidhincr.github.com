@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Core Web Vitals: Interaction to Next Paint (INP)"
-date: 2022-03-16
+date: 2023-03-16
 author: Shidhin C R
 published: true
 comments: true
