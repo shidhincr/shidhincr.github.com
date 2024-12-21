@@ -4,7 +4,7 @@
 	<subtitle>Scribbles of a UI Engineer, JavaScript enthusiast</subtitle>
 	<link href="https://www.undefinednull.com/feed/feed.xml" rel="self"/>
 	<link href="https://www.undefinednull.com"/>
-	<updated>2023-03-16T05:30:00+05:30</updated>
+	<updated>2024-05-16T05:30:00+05:30</updated>
 	<id>https://www.undefinednull.com/</id>
 	<author>
 		<name>Shidhin CR</name>
@@ -1414,6 +1414,100 @@ plugins=(git bundler foobar)&lt;/p&gt;
 &lt;h2 id=&quot;summary&quot;&gt;Summary &lt;a class=&quot;direct-link&quot; href=&quot;#summary&quot; aria-hidden=&quot;true&quot;&gt;#&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;By following these tips, you can improve your website&#39;s responsiveness and provide a better user experience for your visitors. Remember that INP is an experimental metric that may change over time as it evolves with feedback from developers and users. You can use tools like PageSpeed Insights or Chrome DevTools to measure your INP score and identify opportunities for improvement.&lt;/p&gt;
 &lt;p&gt;Thanks for reading. Please let me know if you have any comments by pressing the comment button below.&lt;/p&gt;
+</content>
+	</entry>
+	
+	<entry>
+		<title>Finding Performance Issues with Lighthouse Audit: A Developer&#39;s Guide</title>
+		<link href="https://www.undefinednull.com/posts/finding-performance-issues-with-lighthouse-audit-a-developers-guide/"/>
+		<updated>2024-05-16T05:30:00+05:30</updated>
+		<id>https://www.undefinednull.com/posts/finding-performance-issues-with-lighthouse-audit-a-developers-guide/</id>
+		<content type="html">&lt;p&gt;Lighthouse is an automated tool integrated into browser DevTools. Using Lighthouse, you can conduct various audits of any website, including performance, accessibility, SEO, and best practices. It also provides a detailed report of the Core Web Vitals, enabling developers to assess the health score of any website. In most cases, Lighthouse offers suggestions to improve the website’s performance.&lt;/p&gt;
+&lt;!-- more --&gt;
+&lt;p&gt;&lt;img src=&quot;https://www.undefinednull.com/img/blog-images/lighthouse.png&quot; alt=&quot;Lighthouse audit in Chrome devtools&quot;&gt;&lt;/p&gt;
+&lt;h2 id=&quot;%E2%80%8Blet&#39;s-understand-why-these-audits-are-important%3A&quot;&gt;​Let&#39;s understand why these audits are important: &lt;a class=&quot;direct-link&quot; href=&quot;#%E2%80%8Blet&#39;s-understand-why-these-audits-are-important%3A&quot; aria-hidden=&quot;true&quot;&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;&lt;strong class=&quot;highlight-text&quot;&gt;Performance&lt;/strong&gt;: Your site’s speed is one of the key factors that can make or break user engagement. Lighthouse dives deep into various performance metrics and core web vitals, providing you with a detailed report that reflects your website&#39;s loading time, responsiveness, and overall user experience.&lt;/p&gt;
+&lt;p&gt;&lt;strong class=&quot;highlight-text&quot;&gt;Accessibility&lt;/strong&gt;: In today&#39;s inclusive digital world, ensuring that your website is accessible to everyone, including individuals with disabilities, is not just ethical; it&#39;s essential. Lighthouse helps identify accessibility issues, guiding you on how to make your website more usable for all visitors.&lt;/p&gt;
+&lt;p&gt;&lt;strong class=&quot;highlight-text&quot;&gt;SEO (Search Engine Optimization)&lt;/strong&gt;: A well-optimized website is crucial for being discovered in search engine results. Lighthouse evaluates important SEO factors and gives you actionable insights to improve your site&#39;s visibility to search engines, ensuring you&#39;re not lost in the digital crowd.&lt;/p&gt;
+&lt;p&gt;&lt;strong class=&quot;highlight-text&quot;&gt;Best Practices&lt;/strong&gt;: The digital realm is ever-changing, and adhering to best practices is vital for maintaining a robust online presence. Lighthouse provides suggestions based on industry standards, helping you stay ahead of the curve.&lt;/p&gt;
+&lt;h2 id=&quot;how-to-access-lighthouse&quot;&gt;How to access lighthouse &lt;a class=&quot;direct-link&quot; href=&quot;#how-to-access-lighthouse&quot; aria-hidden=&quot;true&quot;&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;You can access lighthouse by going to the browser devtools.&lt;/p&gt;
+&lt;p&gt;Open DevTools using cmd + option + i (Mac) or ctrl + shift + i (Windows/Linux). Navigate to the &amp;quot;Lighthouse&amp;quot; tab in the DevTools panel. If you don&#39;t see it immediately, click the &amp;quot;More panels&amp;quot; button (&amp;gt;&amp;gt;) to find it.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://www.undefinednull.com/img/blog-images/lighthouse-devtools.png&quot; alt=&quot;Lighthouse in Chrome DevTools&quot;&gt;&lt;/p&gt;
+&lt;h2 id=&quot;running-an-audit-using-lighthouse&quot;&gt;Running an audit using Lighthouse &lt;a class=&quot;direct-link&quot; href=&quot;#running-an-audit-using-lighthouse&quot; aria-hidden=&quot;true&quot;&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;Before running an audit, you can choose between different emulators:&lt;/p&gt;
+&lt;h3 id=&quot;mobile-emulation&quot;&gt;Mobile Emulation &lt;a class=&quot;direct-link&quot; href=&quot;#mobile-emulation&quot; aria-hidden=&quot;true&quot;&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;By default, Lighthouse runs the audit simulating a mobile device. This uses:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;A mobile viewport size&lt;/li&gt;
+&lt;li&gt;Mobile CPU throttling&lt;/li&gt;
+&lt;li&gt;Mobile network conditions (4G)&lt;/li&gt;
+&lt;li&gt;Touch-based interaction mode&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;desktop-mode&quot;&gt;Desktop Mode &lt;a class=&quot;direct-link&quot; href=&quot;#desktop-mode&quot; aria-hidden=&quot;true&quot;&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;You can switch to desktop mode which uses:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;A larger viewport size&lt;/li&gt;
+&lt;li&gt;No CPU throttling&lt;/li&gt;
+&lt;li&gt;Better network conditions&lt;/li&gt;
+&lt;li&gt;Mouse-based interaction mode&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Select the appropriate mode based on your target audience. If your website primarily serves mobile users, stick with the mobile emulation. For desktop-focused applications, use the desktop mode.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://www.undefinednull.com/img/blog-images/lighthouse-emulator.png&quot; alt=&quot;Lighthouse emulator options&quot;&gt;&lt;/p&gt;
+&lt;div class=&quot;info&quot;&gt;
+Results can vary significantly between mobile and desktop modes, so it&#39;s often valuable to test both.
+&lt;/div&gt;
+&lt;p&gt;&lt;strong&gt;Now there are different modes we can choose&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong class=&quot;highlight-text&quot;&gt;Navigation&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Navigation mode analyzes a single page load, making it ideal for traditional web pages where users navigate from one URL to another. This mode captures essential metrics like First Contentful Paint (FCP), Largest Contentful Paint (LCP), and Time to Interactive (TTI). It&#39;s the most commonly used mode for general performance auditing, providing comprehensive insights into the page&#39;s loading performance.&lt;/p&gt;
+&lt;p&gt;&lt;strong class=&quot;highlight-text&quot;&gt;Timespan&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Timespan mode allows you to measure performance over a custom period of time. This mode is particularly useful for Single Page Applications (SPAs) or pages with significant user interactions. It continuously records metrics while users interact with the page, making it ideal for identifying memory leaks or performance degradation during usage. Additionally, timespan mode excels at analyzing client-side routing behaviors and how dynamic content loading affects performance.&lt;/p&gt;
+&lt;p&gt;&lt;strong class=&quot;highlight-text&quot;&gt;Snapshot&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Snapshot mode provides a detailed analysis of your page&#39;s current state at a specific moment. Unlike navigation or timespan modes, it doesn&#39;t measure loading performance or user interactions. Instead, it focuses on examining the static aspects of your page, such as DOM structure, accessibility features, SEO elements, and compliance with best practices. This mode is particularly valuable when you need to assess your page&#39;s accessibility standards, validate SEO implementations, or check Progressive Web App (PWA) requirements.&lt;/p&gt;
+&lt;h3 id=&quot;selecting-categories-for-the-audit&quot;&gt;Selecting categories for the audit &lt;a class=&quot;direct-link&quot; href=&quot;#selecting-categories-for-the-audit&quot; aria-hidden=&quot;true&quot;&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;Before running the audit, you need to select which categories you want to analyze. Lighthouse offers several categories:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;Performance&lt;/strong&gt;: Analyzes loading speed, responsiveness, and visual stability&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Accessibility&lt;/strong&gt;: Checks for WCAG compliance and usability features&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Best Practices&lt;/strong&gt;: Examines modern web development standards&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;SEO&lt;/strong&gt;: Evaluates search engine optimization factors&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Progressive Web App&lt;/strong&gt;: Tests PWA compatibility and features&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&quot;https://www.undefinednull.com/img/blog-images/lighthouse-emulator.png&quot; alt=&quot;Lighthouse categories&quot;&gt;&lt;/p&gt;
+&lt;div class=&quot;info&quot;&gt;
+Choose categories based on your current optimization goals. For performance audits, you can uncheck other categories to speed up the analysis.
+&lt;/div&gt;
+&lt;p&gt;Once you&#39;ve selected your categories, click &amp;quot;Analyze page load&amp;quot; to start the audit. Lighthouse will then generate a comprehensive report based on your selections.&lt;/p&gt;
+&lt;p&gt;If you want to know how lighthouse run and collect the report, you can check the lighthouse architecture from &lt;a href=&quot;https://github.com/GoogleChrome/lighthouse/blob/main/docs/architecture.md&quot;&gt;here&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://www.undefinednull.com/img/blog-images/lighthouse-architecture.png&quot; alt=&quot;Lighthouse categories&quot;&gt;&lt;/p&gt;
+&lt;h2 id=&quot;now-the-result-will-be-generated-for-each-of-the-items-like-this&quot;&gt;Now the result will be generated for each of the items like this &lt;a class=&quot;direct-link&quot; href=&quot;#now-the-result-will-be-generated-for-each-of-the-items-like-this&quot; aria-hidden=&quot;true&quot;&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;&lt;img src=&quot;https://www.undefinednull.com/img/blog-images/lighthouse-results.png&quot; alt=&quot;Lighthouse results&quot;&gt;&lt;/p&gt;
+&lt;h2 id=&quot;reading-the-lighthouse-results&quot;&gt;Reading the lighthouse results &lt;a class=&quot;direct-link&quot; href=&quot;#reading-the-lighthouse-results&quot; aria-hidden=&quot;true&quot;&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;explain each of them&lt;/p&gt;
+&lt;p&gt;Lighthouse results show Core Web Vitals as part of its performance metrics section. Here&#39;s how they appear:&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Largest Contentful Paint (LCP)&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;Shows timing for the largest content element to become visible&lt;br&gt;
+Good: &amp;lt; 2.5s&lt;br&gt;
+Needs Improvement: 2.5s to 4s&lt;br&gt;
+Poor: &amp;gt; 4s&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;First Input Delay (FID)&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;Measures interactivity/responsiveness&lt;br&gt;
+Good: &amp;lt; 100ms&lt;br&gt;
+Needs Improvement: 100ms to 300ms&lt;br&gt;
+Poor: &amp;gt; 300ms&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Cumulative Layout Shift (CLS)&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;Measures visual stability&lt;br&gt;
+Good: &amp;lt; 0.1&lt;br&gt;
+Needs Improvement: 0.1 to 0.25&lt;br&gt;
+Poor: &amp;gt; 0.25&lt;/p&gt;
+&lt;div class=&quot;info&quot;&gt;
+Lighthouse also gives suggestions for improvements
+&lt;/div&gt;
+&lt;p&gt;&lt;img src=&quot;https://www.undefinednull.com/img/blog-images/lighthouse-opportunities.png&quot; alt=&quot;Lighthouse opportunities and suggestions&quot;&gt;&lt;/p&gt;
+&lt;h2 id=&quot;references&quot;&gt;References &lt;a class=&quot;direct-link&quot; href=&quot;#references&quot; aria-hidden=&quot;true&quot;&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://developer.chrome.com/docs/lighthouse/overview&quot;&gt;https://developer.chrome.com/docs/lighthouse/overview&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
 </content>
 	</entry>
 </feed>
