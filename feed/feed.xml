@@ -1483,7 +1483,6 @@ Choose categories based on your current optimization goals. For performance audi
 &lt;h2 id=&quot;now-the-result-will-be-generated-for-each-of-the-items-like-this&quot;&gt;Now the result will be generated for each of the items like this &lt;a class=&quot;direct-link&quot; href=&quot;#now-the-result-will-be-generated-for-each-of-the-items-like-this&quot; aria-hidden=&quot;true&quot;&gt;#&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;&lt;img src=&quot;https://www.undefinednull.com/img/blog-images/lighthouse-results.png&quot; alt=&quot;Lighthouse results&quot;&gt;&lt;/p&gt;
 &lt;h2 id=&quot;reading-the-lighthouse-results&quot;&gt;Reading the lighthouse results &lt;a class=&quot;direct-link&quot; href=&quot;#reading-the-lighthouse-results&quot; aria-hidden=&quot;true&quot;&gt;#&lt;/a&gt;&lt;/h2&gt;
-&lt;p&gt;explain each of them&lt;/p&gt;
 &lt;p&gt;Lighthouse results show Core Web Vitals as part of its performance metrics section. Here&#39;s how they appear:&lt;/p&gt;
 &lt;p&gt;&lt;em&gt;Largest Contentful Paint (LCP)&lt;/em&gt;&lt;/p&gt;
 &lt;p&gt;Shows timing for the largest content element to become visible&lt;br&gt;
