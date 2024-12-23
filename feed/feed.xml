@@ -4,7 +4,7 @@
 	<subtitle>Scribbles of a UI Engineer, JavaScript enthusiast</subtitle>
 	<link href="https://www.undefinednull.com/feed/feed.xml" rel="self"/>
 	<link href="https://www.undefinednull.com"/>
-	<updated>2024-05-16T05:30:00+05:30</updated>
+	<updated>2024-10-07T05:30:00+05:30</updated>
 	<id>https://www.undefinednull.com/</id>
 	<author>
 		<name>Shidhin CR</name>
@@ -1507,6 +1507,43 @@ Lighthouse also gives suggestions for improvements
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&quot;https://developer.chrome.com/docs/lighthouse/overview&quot;&gt;https://developer.chrome.com/docs/lighthouse/overview&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
+</content>
+	</entry>
+	
+	<entry>
+		<title>Browser memory profiling tips and techniques</title>
+		<link href="https://www.undefinednull.com/posts/browser-memory-profiling-tips-and-techniques/"/>
+		<updated>2024-10-07T05:30:00+05:30</updated>
+		<id>https://www.undefinednull.com/posts/browser-memory-profiling-tips-and-techniques/</id>
+		<content type="html">&lt;p&gt;Since I joined Atlan, I have focused on improving the performance of our web app built with VueJS and related libraries. The first bug I fixed at Atlan was a memory leak in the front-end. Instead of detailing the specifics of the bug, this post will discuss the techniques I used to identify the memory leak in the browser and enhance the app&#39;s performance.&lt;/p&gt;
+&lt;!-- more --&gt;
+&lt;h2 id=&quot;first-steps&quot;&gt;First steps &lt;a class=&quot;direct-link&quot; href=&quot;#first-steps&quot; aria-hidden=&quot;true&quot;&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;When the browser crashes or reports high memory usage, check the browser task manager first. The task manager displays the total memory consumed by the web page along with the associated JavaScript memory. The JavaScript memory represents the sum of all live objects on the page.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://www.undefinednull.com/img/blog-images/browser-task-manager.png&quot; alt=&quot;Browser task manager&quot;&gt;&lt;br&gt;
+&lt;img src=&quot;https://www.undefinednull.com/img/blog-images/browser-task-manager-report.png&quot; alt=&quot;Browser task manager report&quot;&gt;&lt;/p&gt;
+&lt;p&gt;You can also use the Performance Monitor tool in DevTools. This tool provides a live view of memory usage and DOM nodes. It is available in Chrome and Edge browsers.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://www.undefinednull.com/img/blog-images/performance-monitor.png&quot; alt=&quot;Performance monitor&quot;&gt;&lt;/p&gt;
+&lt;h2 id=&quot;finding-memory-leaks-using-heap-snapshots&quot;&gt;Finding memory leaks using heap snapshots &lt;a class=&quot;direct-link&quot; href=&quot;#finding-memory-leaks-using-heap-snapshots&quot; aria-hidden=&quot;true&quot;&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;The heap snapshot tool lets you capture a snapshot of a web page&#39;s memory usage. It helps identify memory leaks and optimize the web page to reduce memory consumption. You can access this feature from the memory panel in the DevTools.&lt;/p&gt;
+&lt;p&gt;Always select the correct JavaScript VM before taking the snapshot. Click on the VM icon in the top right corner of the DevTools window to do this. Then, click the &lt;code&gt;Start&lt;/code&gt; button to take the snapshot.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://www.undefinednull.com/img/blog-images/heap-snapshot.png&quot; alt=&quot;Heap snapshot&quot;&gt;&lt;/p&gt;
+&lt;p&gt;After you take the snapshot, view it in the Memory panel. Always check the retained heap size to see if it is high. This serves as the starting point for optimizing your web page.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://www.undefinednull.com/img/blog-images/heap-snapshot-report.png&quot; alt=&quot;Heap snapshot report&quot;&gt;&lt;/p&gt;
+&lt;h2 id=&quot;using-the-performance-panel-to-identify-memory-issues&quot;&gt;Using the performance panel to identify memory issues &lt;a class=&quot;direct-link&quot; href=&quot;#using-the-performance-panel-to-identify-memory-issues&quot; aria-hidden=&quot;true&quot;&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;The performance panel serves as another useful tool for identifying memory issues. It offers a detailed view of the web page&#39;s memory usage. To begin, navigate to the performance panel and start a new recording session, as shown in the screenshot below.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://www.undefinednull.com/img/blog-images/performance-panel.png&quot; alt=&quot;Performance panel&quot;&gt;&lt;/p&gt;
+&lt;p&gt;After you hit the record button, interact with the page to isolate the memory issue. For example, click on a button that allocates a large amount of memory. Once you have done that, stop the recording session by clicking the stop button.&lt;/p&gt;
+&lt;h2 id=&quot;finding-dom-memory-leaks&quot;&gt;Finding DOM memory leaks &lt;a class=&quot;direct-link&quot; href=&quot;#finding-dom-memory-leaks&quot; aria-hidden=&quot;true&quot;&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;Most of the time, the detached DOM tree (DOM nodes that are referenced from JavaScript memory but removed from the render tree) causes memory leaks. Modern browsers provide an easy way to view the detached DOM nodes. You can also use the three-way heap snapshot technique to identify the detached DOM nodes, which we will explain below. See the screenshots.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://www.undefinednull.com/img/blog-images/detached-elements.png&quot; alt=&quot;Detached elements&quot;&gt;&lt;/p&gt;
+&lt;h3 id=&quot;three-way-heap-snapshots&quot;&gt;Three-way Heap Snapshots &lt;a class=&quot;direct-link&quot; href=&quot;#three-way-heap-snapshots&quot; aria-hidden=&quot;true&quot;&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;To begin the three-way heap snapshot process, load the page without performing any actions and take the first heap snapshot. This initial snapshot serves as a baseline for memory usage. Next, interact with the page by performing various actions, and then take the second heap snapshot to capture the memory state after these interactions. Afterward, press the force garbage collect button to clear any unreferenced memory, and take a third heap snapshot. This sequence of snapshots will help you analyze how memory is allocated and retained during user interactions.&lt;/p&gt;
+&lt;p&gt;Once you have the three snapshots, you can utilize the filtering options to identify memory leaks. Change the filter on the third heap snapshot to “Objects retained by detached DOM nodes” to view all detached DOM elements that are still being referenced in memory. Additionally, to identify VM objects that have not been garbage collected, adjust the filter to “Objects allocated between snapshot1 and snapshot 2.” This comparison allows you to see what has changed between the snapshots and helps pinpoint potential memory leaks in your application.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://www.undefinednull.com/img/blog-images/heap-snapshot-1.png&quot; alt=&quot;3 way heap snapshot 1&quot;&gt;&lt;br&gt;
+&lt;img src=&quot;https://www.undefinednull.com/img/blog-images/heap-snapshot-2.png&quot; alt=&quot;3 way heap snapshot 2&quot;&gt;&lt;br&gt;
+&lt;img src=&quot;https://www.undefinednull.com/img/blog-images/heap-snapshot-3.png&quot; alt=&quot;3 way heap snapshot 3&quot;&gt;&lt;/p&gt;
+&lt;h2 id=&quot;you-can-also-use-the-comparison&quot;&gt;You can also use the comparison &lt;a class=&quot;direct-link&quot; href=&quot;#you-can-also-use-the-comparison&quot; aria-hidden=&quot;true&quot;&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;&lt;img src=&quot;https://www.undefinednull.com/img/blog-images/heap-snapshot-comparison.png&quot; alt=&quot;3 way heap snapshot comparison&quot;&gt;&lt;/p&gt;
 </content>
 	</entry>
 </feed>
