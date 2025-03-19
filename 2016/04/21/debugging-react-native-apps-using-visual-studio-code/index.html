@@ -5,12 +5,11 @@
           {
             "where": {
               "and": [
-                { "href_matches": "/posts/*" }
+                { "href_matches": "/*" }
               ]
             },
-           "eagerness": "immediate",
-           "requires": ["anonymous-client-ip-when-cross-origin"],
-           "referrer_policy": "no-referrer"
+            "source": "document",
+           "eagerness": "immediate"
           }
         ]
       }</script></head><body><header><section class="header-section"><h1 id="homeLink" class="home"><a href="/">&lt; UNDEFINED NULL /&gt;</a></h1><ul class="nav"><li class="nav-item"><a href="/">Home</a></li><li class="nav-item"><a href="/archive/">Archive</a></li><li class="nav-item"><a href="/about/">About</a></li></ul></section></header><main class="tmpl-post"><h1 class="post-card__title">Debugging React Native Apps using Visual Studio Code</h1><div class="post-card__meta"><div class="post-card__meta-date">21 Apr 2016</div><div class="post-card__meta-readtime">About 3 min read</div></div><div class="rainbow-border-box"></div><span class="post-card__category">React Native </span><span class="post-card__category">Debugging </span><span class="post-card__category">IDEs</span><p>I always think that I am a <a href="https://blog.codinghorror.com/the-magpie-developer/">Magpie developer</a>. I don't know if others do this often; But, most of the times, I switch between my IDEs, trying out new frameworks ( even though it doesn't solve most of my problems ).</p><p>So far I was using -- and pretty happy with -- Webstorm, Atom and Sublime. As I started with react-native development these days, I was searching for all the tools that will make my life easier. That's when I added Visual studio Code to my IDEs list again. I tried Visual studio code initially when it's released but didn't give much importance. However, after trying the new version 1.0.0, I really liked it. The one main reason is the smooth debugging support they added using <code>react-native-tools</code> plugin.</p><p>This post is all about setting up Visual studio code for react-native development. I'm going to list down all the plugins I am using for linting, debugging and some of the settings I had to change to support ES6 code in Visual studio code.</p><h2 id="download-and-install">Download and Install <a class="direct-link" href="#download-and-install" aria-hidden="true">#</a></h2><p>Download the latest version of visual studio code from <a href="https://code.visualstudio.com/Download">here</a>. It's just lightweight as Atom or Sublime.</p><p>install the following npm packages globally.</p><pre><code>npm install -g typescript eslint babel-eslint

@@ -5,12 +5,11 @@
           {
             "where": {
               "and": [
-                { "href_matches": "/posts/*" }
+                { "href_matches": "/*" }
               ]
             },
-           "eagerness": "immediate",
-           "requires": ["anonymous-client-ip-when-cross-origin"],
-           "referrer_policy": "no-referrer"
+            "source": "document",
+           "eagerness": "immediate"
           }
         ]
       }</script></head><body><header><section class="header-section"><h1 id="homeLink" class="home"><a href="/">&lt; UNDEFINED NULL /&gt;</a></h1><ul class="nav"><li class="nav-item"><a href="/">Home</a></li><li class="nav-item"><a href="/archive/">Archive</a></li><li class="nav-item"><a href="/about/">About</a></li></ul></section></header><main class="tmpl-post"><h1 class="post-card__title">Remote debugging localhost with weinre ( and HTTPS too )</h1><div class="post-card__meta"><div class="post-card__meta-date">17 Mar 2015</div><div class="post-card__meta-readtime">About 4 min read</div></div><div class="rainbow-border-box"></div><span class="post-card__category">localhost </span><span class="post-card__category">testing </span><span class="post-card__category">weinre</span><p>Debugging mobile websites/applications is a real pain. No debuggers for Javascript, no console logs, cannot inspect html/css, and so on.</p><p>Sometimes I think that I am debugging like the old IE6 days where I had to put <code>alert</code> in every line of the code to find out where the actual issue is. If you also came across the same, you know the pain.</p><p>Lately, Google chrome came for the rescue. They relieved this pain by introducing remote debugging support in chrome mobile. Chrome remote debugging was a real life saver, where we get the same chrome devtools connected to the webpage in mobile browser. And, We can debug like the way we do it in desktop browsers.</p><p><strong>That is Awesome!</strong></p><p>But still the problem of Android browser debugging remains the same. Chrome remote debugging can be connected to the webpages loaded inside Chrome browser ( mobile ) only. If we need to debug default browsers, we have to use any other debugging tool. Here, in this post, we'll discuss about another wonderful remote debugging tool known as <strong>Weinre</strong>.</p><h2 id="install-weinre">Install Weinre <a class="direct-link" href="#install-weinre" aria-hidden="true">#</a></h2><p>Weinre is available as an npm package. If you have configured npm in your system, let's install weinre globally with the below command:</p><pre><code>npm -g install weinre
