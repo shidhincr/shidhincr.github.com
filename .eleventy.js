@@ -2,7 +2,7 @@ const { DateTime } = require("luxon");
 const fs = require("fs");
 const pluginRss = require("@11ty/eleventy-plugin-rss");
 const pluginSyntaxHighlight = require("@11ty/eleventy-plugin-syntaxhighlight");
-const pluginPWA = require('@pragmatics/eleventy-plugin-pwa');
+// const pluginPWA = require("@pragmatics/eleventy-plugin-pwa");
 const accessibilityPlugin = require("eleventy-plugin-accessibility");
 const htmlmin = require("html-minifier");
 const readingTime = require("eleventy-plugin-reading-time");
@@ -11,35 +11,38 @@ const lazyImagesPlugin = require("eleventy-plugin-lazyimages");
 const Terser = require("terser");
 const _ = require("lodash");
 
-const DEV = process.env.NODE_ENV !== 'production';
+const DEV = process.env.NODE_ENV !== "production";
 
 module.exports = function (eleventyConfig) {
   eleventyConfig.addPlugin(lazyImagesPlugin, {
-    appendInitScript: false
+    appendInitScript: false,
   });
   eleventyConfig.addPlugin(pluginRss);
   eleventyConfig.addPlugin(pluginSyntaxHighlight);
   eleventyConfig.addPlugin(readingTime);
-  if(process.env.NODE_ENV ==='test') {
+  if (process.env.NODE_ENV === "test") {
     eleventyConfig.addPlugin(accessibilityPlugin);
   }
-  console.log({ DEV })
-  if (!DEV) {
+  console.log({ DEV });
+  if (false) {
+    //if (!DEV) {
     eleventyConfig.addPlugin(pluginPWA, {
       inlineWorkboxRuntime: true,
       cleanupOutdatedCaches: true,
       clientsClaim: true,
       navigationPreload: false,
       globPatterns: [
-        "**/*.{mjs,map,webp,ico,svg,woff2,woff,eot,ttf,otf,ttc,json}"
+        "**/*.{mjs,map,webp,ico,svg,woff2,woff,eot,ttf,otf,ttc,json}",
       ],
-      runtimeCaching: [{
-        urlPattern: ({ url }) => {
-          /* runtime caching enabled only for HTML files */
-          return url.origin === self.origin;
+      runtimeCaching: [
+        {
+          urlPattern: ({ url }) => {
+            /* runtime caching enabled only for HTML files */
+            return url.origin === self.origin;
+          },
+          handler: "StaleWhileRevalidate",
         },
-        handler: 'StaleWhileRevalidate',
-      }],
+      ],
     });
   }
   eleventyConfig.setDataDeepMerge(true);
@@ -47,16 +50,16 @@ module.exports = function (eleventyConfig) {
 
   eleventyConfig.addLayoutAlias("post", "layouts/post.njk");
 
-  eleventyConfig.addFilter("readableDate", dateObj => {
+  eleventyConfig.addFilter("readableDate", (dateObj) => {
     return DateTime.fromJSDate(dateObj, { zone: "utc" }).toFormat("d LLL yyyy");
   });
 
   eleventyConfig.addFilter("sortBy", (arr, prop) => {
-    const isNum = val => val == +val;
+    const isNum = (val) => val == +val;
     const sorter = (a, b) => {
       const aProp = _.get(a, prop);
       const bProp = _.get(b, prop);
-      return (isNum(aProp) && isNum(bProp)) ? (+aProp - bProp) : (aProp < bProp)
+      return isNum(aProp) && isNum(bProp) ? +aProp - bProp : aProp < bProp;
     };
     arr.sort(sorter);
     return arr;
@@ -77,11 +80,11 @@ module.exports = function (eleventyConfig) {
   });
 
   // https://html.spec.whatwg.org/multipage/common-microsyntaxes.html#valid-date-string
-  eleventyConfig.addFilter("htmlDateString", dateObj => {
+  eleventyConfig.addFilter("htmlDateString", (dateObj) => {
     return DateTime.fromJSDate(dateObj, { zone: "utc" }).toFormat("yyyy-LL-dd");
   });
 
-  eleventyConfig.addFilter("excerpt", post => {
+  eleventyConfig.addFilter("excerpt", (post) => {
     const content = post.templateContent || "";
     const rgx = new RegExp("<!-- more -->", "igm");
     const arr = content.split(rgx);
@@ -91,15 +94,15 @@ module.exports = function (eleventyConfig) {
     return arr[0];
   });
 
-  eleventyConfig.addFilter("log", data => {
+  eleventyConfig.addFilter("log", (data) => {
     return console.dir(data);
   });
 
-  eleventyConfig.addFilter("keys", obj => {
+  eleventyConfig.addFilter("keys", (obj) => {
     return _.keys(obj);
   });
 
-  eleventyConfig.addFilter("groupByYear", posts => {
+  eleventyConfig.addFilter("groupByYear", (posts) => {
     const _posts = _.groupBy(posts, function (post) {
       const year = new Date(post.date).getFullYear();
       return year;
@@ -132,12 +135,12 @@ module.exports = function (eleventyConfig) {
   let options = {
     html: true,
     breaks: true,
-    linkify: true
+    linkify: true,
   };
   let opts = {
     permalink: true,
     permalinkClass: "direct-link",
-    permalinkSymbol: "#"
+    permalinkSymbol: "#",
   };
 
   eleventyConfig.setLibrary(
@@ -145,7 +148,7 @@ module.exports = function (eleventyConfig) {
     markdownIt(options)
       .use(markdownItAnchor, opts)
       .use(markdownItContainer, "image-center")
-      .use(markdownItContainer, "info")
+      .use(markdownItContainer, "info"),
   );
 
   eleventyConfig.addTransform("htmlmin", function (content, outputPath) {
@@ -153,7 +156,7 @@ module.exports = function (eleventyConfig) {
       let minified = htmlmin.minify(content, {
         useShortDoctype: true,
         removeComments: true,
-        collapseWhitespace: true
+        collapseWhitespace: true,
       });
       return minified;
     }
@@ -171,8 +174,8 @@ module.exports = function (eleventyConfig) {
           res.write(content_404);
           res.end();
         });
-      }
-    }
+      },
+    },
   });
 
   return {
@@ -192,7 +195,7 @@ module.exports = function (eleventyConfig) {
       input: ".",
       includes: "_includes",
       data: "_data",
-      output: "_site"
-    }
+      output: "_site",
+    },
   };
 };
