@@ -1,0 +1,631 @@
+<!doctype html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Fetch Later API Demo</title><style>* {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .header h1 {
+            color: #333;
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        .header p {
+            color: #666;
+            font-size: 1.1rem;
+        }
+
+        .support-status {
+            background: #f8f9fa;
+            border-radius: 10px;
+            padding: 15px;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .support-status.supported {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+
+        .support-status.unsupported {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+
+        .demo-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .demo-card {
+            background: white;
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            border: 1px solid #e0e0e0;
+        }
+
+        .demo-card h3 {
+            color: #333;
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+        }
+
+        .demo-card p {
+            color: #666;
+            margin-bottom: 15px;
+            line-height: 1.5;
+        }
+
+        .btn {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            margin: 5px;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .status-display {
+            background: #f8f9fa;
+            border-radius: 10px;
+            padding: 15px;
+            margin-top: 15px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+        }
+
+        .analytics-panel {
+            background: linear-gradient(45deg, #2196F3, #21CBF3);
+            color: white;
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+        .analytics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .metric {
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 10px;
+            padding: 15px;
+            text-align: center;
+        }
+
+        .metric-value {
+            font-size: 2rem;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .metric-label {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        .log-panel {
+            background: #1a1a1a;
+            color: #00ff00;
+            border-radius: 10px;
+            padding: 20px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+            max-height: 300px;
+            overflow-y: auto;
+            margin-bottom: 20px;
+        }
+
+        .log-entry {
+            margin-bottom: 5px;
+            padding: 2px 0;
+        }
+
+        .log-entry.error {
+            color: #ff6b6b;
+        }
+
+        .log-entry.success {
+            color: #51cf66;
+        }
+
+        .log-entry.info {
+            color: #74c0fc;
+        }
+
+        .clear-log {
+            background: #ff6b6b;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            margin-bottom: 10px;
+        }
+
+        .quota-info {
+            background: #fff3cd;
+            border: 1px solid #ffeaa7;
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 20px;
+        }
+
+        .quota-info h4 {
+            color: #856404;
+            margin-bottom: 10px;
+        }
+
+        .quota-info p {
+            color: #856404;
+            margin-bottom: 5px;
+        }
+
+        .request-status {
+            display: inline-block;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            margin-left: 10px;
+        }
+
+        .request-status.pending {
+            background: #fff3cd;
+            color: #856404;
+        }
+
+        .request-status.sent {
+            background: #d4edda;
+            color: #155724;
+        }
+
+        .request-status.failed {
+            background: #f8d7da;
+            color: #721c24;
+        }</style></head><body><div class="container"><div class="header"><h1>🚀 Fetch Later API Demo</h1><p>Interactive demonstration of the experimental fetchLater() API</p></div><div class="support-status" id="supportStatus"><strong>Checking browser support...</strong></div><div class="quota-info"><h4>📊 Quota Information</h4><p>• Maximum quota per document: 640KiB</p><p>• Deferred requests are batched and sent when the tab closes</p><p>• Always handle QuotaExceededError in production</p></div><div class="analytics-panel"><h3>📈 Live Analytics</h3><div class="analytics-grid"><div class="metric"><div class="metric-value" id="pageViews">1</div><div class="metric-label">Page Views</div></div><div class="metric"><div class="metric-value" id="timeSpent">0s</div><div class="metric-label">Time Spent</div></div><div class="metric"><div class="metric-value" id="interactions">0</div><div class="metric-label">Interactions</div></div><div class="metric"><div class="metric-value" id="deferredRequests">0</div><div class="metric-label">Deferred Requests</div></div></div></div><div class="demo-grid"><div class="demo-card"><h3>⏰ Delayed Beacon</h3><p>Schedule a request to be sent after a specific delay (30 seconds)</p><button class="btn" onclick="scheduleDelayedRequest()">Schedule Delayed Request</button><div class="status-display" id="delayedStatus">Ready to schedule</div></div><div class="demo-card"><h3>🎯 End-of-Session Reporting</h3><p>Create a request that will be sent when the page becomes hidden</p><button class="btn" onclick="setupEndOfSessionReporting()">Setup Session Reporting</button><div class="status-display" id="sessionStatus">Not configured</div></div><div class="demo-card"><h3>📊 Analytics Beacon</h3><p>Send current analytics data with a deferred request</p><button class="btn" onclick="sendAnalyticsBeacon()">Send Analytics</button><div class="status-display" id="analyticsStatus">Ready to send</div></div><div class="demo-card"><h3>❌ Cancellable Request</h3><p>Create a request that can be cancelled before sending</p><button class="btn" onclick="createCancellableRequest()">Create Cancellable</button> <button class="btn" onclick="cancelRequest()" id="cancelBtn" disabled="disabled">Cancel Request</button><div class="status-display" id="cancellableStatus">No active request</div></div><div class="demo-card"><h3>🔄 Update Deferred Data</h3><p>Update the payload of a deferred request before it's sent</p><button class="btn" onclick="createUpdatableRequest()">Create Updatable</button> <button class="btn" onclick="updateRequestData()" id="updateBtn" disabled="disabled">Update Data</button><div class="status-display" id="updatableStatus">No active request</div></div><div class="demo-card"><h3>⚡ Fallback Demo</h3><p>Demonstrate fallback when fetchLater is not available</p><button class="btn" onclick="demonstrateFallback()">Try Fallback</button><div class="status-display" id="fallbackStatus">Ready to test</div></div></div><div class="log-panel"><button class="clear-log" onclick="clearLog()">Clear Log</button><div id="logContainer"></div></div></div><script>// Demo state
+        let analytics = {
+            pageViews: 1,
+            timeSpent: 0,
+            interactions: 0,
+            startTime: Date.now(),
+            deferredRequests: 0
+        };
+
+        let activeRequests = {
+            cancellable: null,
+            updatable: null,
+            session: null
+        };
+
+        let cancellableController = null;
+
+        // Initialize demo
+        function init() {
+            checkBrowserSupport();
+            startAnalyticsTracking();
+            setupEventListeners();
+            log('Demo initialized', 'info');
+        }
+
+        function checkBrowserSupport() {
+            const supportStatus = document.getElementById('supportStatus');
+            
+            if (typeof window.fetchLater === 'function') {
+                supportStatus.className = 'support-status supported';
+                supportStatus.innerHTML = '<strong>✅ fetchLater API is supported in this browser!</strong>';
+                log('fetchLater API is supported', 'success');
+            } else {
+                supportStatus.className = 'support-status unsupported';
+                supportStatus.innerHTML = '<strong>❌ fetchLater API is not supported in this browser</strong><br>This demo will show fallback behavior';
+                log('fetchLater API is not supported - using fallbacks', 'error');
+            }
+        }
+
+        function startAnalyticsTracking() {
+            // Update time spent every second
+            setInterval(() => {
+                analytics.timeSpent = Math.floor((Date.now() - analytics.startTime) / 1000);
+                document.getElementById('timeSpent').textContent = analytics.timeSpent + 's';
+            }, 1000);
+
+            // Track interactions
+            document.addEventListener('click', () => {
+                analytics.interactions++;
+                document.getElementById('interactions').textContent = analytics.interactions;
+            });
+
+            // Track page visibility
+            document.addEventListener('visibilitychange', () => {
+                if (document.visibilityState === 'hidden') {
+                    log('Page is now hidden - deferred requests will be sent', 'info');
+                } else {
+                    log('Page is now visible', 'info');
+                }
+            });
+        }
+
+        function setupEventListeners() {
+            // Prevent actual page navigation for demo
+            window.addEventListener('beforeunload', (e) => {
+                log('Page unload detected - deferred requests would be sent now', 'info');
+            });
+        }
+
+        // Demo functions
+        function scheduleDelayedRequest() {
+            const statusEl = document.getElementById('delayedStatus');
+            
+            if (window.fetchLater) {
+                try {
+                    const result = window.fetchLater('/api/delayed-report', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({
+                            type: 'delayed_analytics',
+                            timestamp: Date.now(),
+                            data: analytics
+                        }),
+                        activateAfter: 30000 // 30 seconds
+                    });
+
+                    analytics.deferredRequests++;
+                    updateDeferredRequestsDisplay();
+                    
+                    statusEl.innerHTML = 'Scheduled for 30 seconds <span class="request-status pending">PENDING</span>';
+                    log('Delayed request scheduled for 30 seconds', 'success');
+
+                    // Check status after delay
+                    setTimeout(() => {
+                        if (result.activated) {
+                            statusEl.innerHTML = 'Request sent! <span class="request-status sent">SENT</span>';
+                            log('Delayed request was sent', 'success');
+                        } else {
+                            statusEl.innerHTML = 'Request pending... <span class="request-status pending">PENDING</span>';
+                            log('Delayed request still pending', 'info');
+                        }
+                    }, 31000);
+
+                } catch (error) {
+                    if (error.name === 'QuotaExceededError') {
+                        statusEl.innerHTML = 'Quota exceeded! <span class="request-status failed">FAILED</span>';
+                        log('Quota exceeded for delayed request', 'error');
+                    } else {
+                        statusEl.innerHTML = 'Error occurred <span class="request-status failed">FAILED</span>';
+                        log('Error scheduling delayed request: ' + error.message, 'error');
+                    }
+                }
+            } else {
+                // Fallback
+                statusEl.innerHTML = 'Using fallback (immediate fetch) <span class="request-status sent">SENT</span>';
+                log('Using fallback for delayed request', 'info');
+                simulateFallbackRequest('/api/delayed-report');
+            }
+        }
+
+        function setupEndOfSessionReporting() {
+            const statusEl = document.getElementById('sessionStatus');
+            
+            if (window.fetchLater) {
+                try {
+                    if (activeRequests.session) {
+                        log('Replacing existing session request', 'info');
+                    }
+
+                    activeRequests.session = window.fetchLater('/api/session-end', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({
+                            type: 'session_data',
+                            ...analytics,
+                            setupTime: Date.now()
+                        })
+                    });
+
+                    analytics.deferredRequests++;
+                    updateDeferredRequestsDisplay();
+                    
+                    statusEl.innerHTML = 'Configured - will send on page hidden <span class="request-status pending">PENDING</span>';
+                    log('End-of-session reporting configured', 'success');
+
+                } catch (error) {
+                    statusEl.innerHTML = 'Configuration failed <span class="request-status failed">FAILED</span>';
+                    log('Failed to configure session reporting: ' + error.message, 'error');
+                }
+            } else {
+                statusEl.innerHTML = 'Using visibilitychange fallback <span class="request-status pending">PENDING</span>';
+                log('Using visibilitychange fallback for session reporting', 'info');
+                
+                // Setup fallback
+                document.addEventListener('visibilitychange', () => {
+                    if (document.visibilityState === 'hidden') {
+                        simulateFallbackRequest('/api/session-end');
+                    }
+                });
+            }
+        }
+
+        function sendAnalyticsBeacon() {
+            const statusEl = document.getElementById('analyticsStatus');
+            
+            if (window.fetchLater) {
+                try {
+                    const result = window.fetchLater('/api/analytics', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({
+                            type: 'analytics_beacon',
+                            ...analytics,
+                            timestamp: Date.now()
+                        }),
+                        activateAfter: 5000 // 5 seconds for demo
+                    });
+
+                    analytics.deferredRequests++;
+                    updateDeferredRequestsDisplay();
+                    
+                    statusEl.innerHTML = 'Analytics beacon scheduled <span class="request-status pending">PENDING</span>';
+                    log('Analytics beacon scheduled', 'success');
+
+                    setTimeout(() => {
+                        statusEl.innerHTML = 'Analytics sent! <span class="request-status sent">SENT</span>';
+                        log('Analytics beacon sent', 'success');
+                    }, 5500);
+
+                } catch (error) {
+                    statusEl.innerHTML = 'Failed to send analytics <span class="request-status failed">FAILED</span>';
+                    log('Failed to send analytics: ' + error.message, 'error');
+                }
+            } else {
+                statusEl.innerHTML = 'Sent via fallback <span class="request-status sent">SENT</span>';
+                log('Sending analytics via fallback', 'info');
+                simulateFallbackRequest('/api/analytics');
+            }
+        }
+
+        function createCancellableRequest() {
+            const statusEl = document.getElementById('cancellableStatus');
+            const cancelBtn = document.getElementById('cancelBtn');
+            
+            if (window.fetchLater) {
+                try {
+                    cancellableController = new AbortController();
+                    
+                    activeRequests.cancellable = window.fetchLater('/api/cancellable', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({
+                            type: 'cancellable_request',
+                            timestamp: Date.now()
+                        }),
+                        signal: cancellableController.signal,
+                        activateAfter: 45000 // 45 seconds
+                    });
+
+                    analytics.deferredRequests++;
+                    updateDeferredRequestsDisplay();
+                    
+                    statusEl.innerHTML = 'Cancellable request created <span class="request-status pending">PENDING</span>';
+                    cancelBtn.disabled = false;
+                    log('Cancellable request created', 'success');
+
+                    // Auto-send after delay if not cancelled
+                    setTimeout(() => {
+                        if (activeRequests.cancellable && !activeRequests.cancellable.activated) {
+                            statusEl.innerHTML = 'Request sent (not cancelled) <span class="request-status sent">SENT</span>';
+                            cancelBtn.disabled = true;
+                            log('Cancellable request was sent', 'success');
+                        }
+                    }, 46000);
+
+                } catch (error) {
+                    statusEl.innerHTML = 'Failed to create request <span class="request-status failed">FAILED</span>';
+                    log('Failed to create cancellable request: ' + error.message, 'error');
+                }
+            } else {
+                statusEl.innerHTML = 'Fallback: immediate request <span class="request-status sent">SENT</span>';
+                log('Fallback: creating immediate request', 'info');
+                simulateFallbackRequest('/api/cancellable');
+            }
+        }
+
+        function cancelRequest() {
+            const statusEl = document.getElementById('cancellableStatus');
+            const cancelBtn = document.getElementById('cancelBtn');
+            
+            if (cancellableController && activeRequests.cancellable) {
+                cancellableController.abort();
+                statusEl.innerHTML = 'Request cancelled <span class="request-status failed">CANCELLED</span>';
+                cancelBtn.disabled = true;
+                log('Request cancelled successfully', 'info');
+                
+                activeRequests.cancellable = null;
+                cancellableController = null;
+            }
+        }
+
+        function createUpdatableRequest() {
+            const statusEl = document.getElementById('updatableStatus');
+            const updateBtn = document.getElementById('updateBtn');
+            
+            if (window.fetchLater) {
+                try {
+                    activeRequests.updatable = window.fetchLater('/api/updatable', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({
+                            type: 'updatable_request',
+                            version: 1,
+                            data: analytics
+                        }),
+                        activateAfter: 60000 // 1 minute
+                    });
+
+                    analytics.deferredRequests++;
+                    updateDeferredRequestsDisplay();
+                    
+                    statusEl.innerHTML = 'Updatable request created (v1) <span class="request-status pending">PENDING</span>';
+                    updateBtn.disabled = false;
+                    log('Updatable request created', 'success');
+
+                } catch (error) {
+                    statusEl.innerHTML = 'Failed to create updatable request <span class="request-status failed">FAILED</span>';
+                    log('Failed to create updatable request: ' + error.message, 'error');
+                }
+            } else {
+                statusEl.innerHTML = 'Fallback: immediate request <span class="request-status sent">SENT</span>';
+                log('Fallback: creating immediate updatable request', 'info');
+                simulateFallbackRequest('/api/updatable');
+            }
+        }
+
+        function updateRequestData() {
+            const statusEl = document.getElementById('updatableStatus');
+            
+            if (activeRequests.updatable && !activeRequests.updatable.activated) {
+                try {
+                    // In a real implementation, you'd abort the old request and create a new one
+                    // For demo purposes, we'll simulate the update
+                    log('Updating request data (simulated)', 'info');
+                    statusEl.innerHTML = 'Request data updated (v2) <span class="request-status pending">PENDING</span>';
+                    
+                } catch (error) {
+                    statusEl.innerHTML = 'Failed to update request <span class="request-status failed">FAILED</span>';
+                    log('Failed to update request: ' + error.message, 'error');
+                }
+            } else {
+                statusEl.innerHTML = 'No active updatable request <span class="request-status failed">FAILED</span>';
+                log('No active updatable request to update', 'error');
+            }
+        }
+
+        function demonstrateFallback() {
+            const statusEl = document.getElementById('fallbackStatus');
+            
+            log('Demonstrating fallback mechanisms', 'info');
+            
+            // Try sendBeacon first
+            if (navigator.sendBeacon) {
+                const success = navigator.sendBeacon('/api/fallback-beacon', JSON.stringify(analytics));
+                if (success) {
+                    statusEl.innerHTML = 'Sent via sendBeacon <span class="request-status sent">SENT</span>';
+                    log('Fallback: sendBeacon successful', 'success');
+                } else {
+                    statusEl.innerHTML = 'sendBeacon failed, trying fetch <span class="request-status pending">PENDING</span>';
+                    log('sendBeacon failed, trying fetch with keepalive', 'info');
+                    
+                    // Fallback to fetch with keepalive
+                    fetch('/api/fallback-fetch', {
+                        method: 'POST',
+                        keepalive: true,
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify(analytics)
+                    }).then(() => {
+                        statusEl.innerHTML = 'Sent via fetch (keepalive) <span class="request-status sent">SENT</span>';
+                        log('Fallback: fetch with keepalive successful', 'success');
+                    }).catch(error => {
+                        statusEl.innerHTML = 'All fallbacks failed <span class="request-status failed">FAILED</span>';
+                        log('All fallback methods failed: ' + error.message, 'error');
+                    });
+                }
+            } else {
+                statusEl.innerHTML = 'sendBeacon not available <span class="request-status failed">FAILED</span>';
+                log('sendBeacon not available', 'error');
+            }
+        }
+
+        // Utility functions
+        function simulateFallbackRequest(url) {
+            log(`Simulating fallback request to ${url}`, 'info');
+            
+            if (navigator.sendBeacon) {
+                navigator.sendBeacon(url + '-fallback', JSON.stringify(analytics));
+                log('Fallback request sent via sendBeacon', 'success');
+            } else {
+                fetch(url + '-fallback', {
+                    method: 'POST',
+                    keepalive: true,
+                    body: JSON.stringify(analytics)
+                }).catch(error => {
+                    log('Fallback request failed: ' + error.message, 'error');
+                });
+            }
+        }
+
+        function updateDeferredRequestsDisplay() {
+            document.getElementById('deferredRequests').textContent = analytics.deferredRequests;
+        }
+
+        function log(message, type = 'info') {
+            const logContainer = document.getElementById('logContainer');
+            const timestamp = new Date().toLocaleTimeString();
+            const logEntry = document.createElement('div');
+            logEntry.className = `log-entry ${type}`;
+            logEntry.textContent = `[${timestamp}] ${message}`;
+            
+            logContainer.appendChild(logEntry);
+            logContainer.scrollTop = logContainer.scrollHeight;
+        }
+
+        function clearLog() {
+            document.getElementById('logContainer').innerHTML = '';
+        }
+
+        // Initialize when page loads
+        window.addEventListener('load', init);</script></body></html>
